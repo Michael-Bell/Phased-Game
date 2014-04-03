@@ -3,7 +3,8 @@
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
 		preload : preload,
 		create : create,
-		update : update
+		update : update,
+		render : render
 	});
 
 var shotDelayTime = 10;
@@ -12,8 +13,13 @@ var doublejump = 0;
 var jumpCount = 0;
 var Credits;
 var player;
-var BulletGroup;
+var bullets;
 
+var fireRate = 100;
+
+var nextFire = 0;
+
+var bulletTime = 0;
 function preload() {
 
 	console.log('preload start');
@@ -22,7 +28,11 @@ function preload() {
 	game.load.image('ground', 'assets/ground.png');
 	game.load.image('bullet', 'assets/key_blue.png');
 	game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
+	game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
+	game.load.image('button', 'assets/switch_yellow_off.png');
+
 	console.log('preloaddone');
+
 }
 
 function create() {
@@ -35,23 +45,22 @@ function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 
 	//Background Image
-	game.add.sprite(0, 0, 'sky');
-
+	sky = game.add.sprite(0, 0, 'sky');
+	sky.scale.setTo(10, 2);
 	//Add the platforms
 	ground = game.add.group();
 	ground.enableBody = true;
-	for (var i = 0; i < 12; i++) {
-		var block = ground.create(i * 70, 600 - 70, 'ground');
-		block.body.immovable = true;
-
-	}
 
 	for (var i = 0; i < 3; i++) {
 		var block = ground.create((5 * 70) + i * 70, 600 - 400, 'ground'); // Dirty math hack to shift over blocks
 		block.body.immovable = true;
 
 	}
+	for (var i = 0; i < 100; i++) {
+		var block = ground.create( + i * 70, 800, 'ground'); // Dirty math hack to shift over blocks
+		block.body.immovable = true;
 
+	}
 	for (var i = 0; i < 3; i++) {
 		var block = ground.create(i * 70, 600 - 250, 'ground');
 		block.body.immovable = true;
@@ -60,7 +69,7 @@ function create() {
 	/* TODO Create Function to add blocks in a simple, robust way */
 
 	// Enter Player 1
-	player = game.add.sprite(0, 475, 'player');
+	player = game.add.sprite(75, 475, 'player');
 	player.anchor.setTo(.5, .5);
 	game.physics.arcade.enable(player);
 
@@ -70,19 +79,44 @@ function create() {
 	player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 7);
 	player.animations.add('jump', [11]);
 	player.animations.add('stand', [0]);
+	player.health = 10;
 
 	player.anchor.setTo(.5, .5);
-
 
 	cursors = game.input.keyboard.createCursorKeys();
 	shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
 	pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
 
-	BulletGroup = game.add.group(10);
-	//BulletGroup = game.createGroup(10);
-	BulletGroup.enableBody = true;
-	game.physics.arcade.enable(BulletGroup);
-bullet = BulletGroup.create(player.x, player.y, 'bullet');
+	bullets = game.add.group();
+
+	bullets.enableBody = true;
+
+	bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+	for (var i = 0; i < 20; i++) {
+
+		var b = bullets.create(0, 0, 'bullet');
+
+		b.name = 'bullet' + i;
+
+		b.exists = false;
+
+		b.visible = false;
+
+		b.checkWorldBounds = true;
+
+		b.events.onOutOfBounds.add(resetBullet, this);
+
+	}
+
+	//create enemy at x1230
+	flya = game.add.sprite(300, 700, 'fly');
+	game.physics.arcade.enable(flya);
+	flya.animations.add('fly', [1, 2]);
+	flya.health = 5;
+	flya.maxHeight = 800;
+	flya.minHeight = 600;
+	flya.body.immovable = true;
 
 	console.log('createdone');
 
@@ -91,9 +125,28 @@ bullet = BulletGroup.create(player.x, player.y, 'bullet');
 function update() {
 
 	game.physics.arcade.collide(player, ground);
+	game.physics.arcade.collide(player, flya, collisionHandler, null, this);
+	game.physics.arcade.collide(flya, bullets, bulletenemy, null, this);
+
 	player.body.velocity.x = 0;
-  game.camera.y = player.y-500;
-  game.camera.x = player.x-500;
+	game.camera.y = player.y - 200;
+	game.camera.x = player.x - 500;
+
+	if (flya.health > 0) {
+		flya.animations.play('fly')
+		if (flya.y >= 700)
+			flya.direction = false;
+		else if (flya.y <= 200)
+			flya.direction = true;
+		if (flya.direction) {
+			flya.body.velocity.setTo(0, 100);
+		} else {
+			flya.body.velocity.setTo(0, -100);
+		}
+	} else {
+		flya.frame = 0;
+		flya.body.velocity.setTo(0, 500)
+	}
 
 	if (shootKey.isDown) {
 		fire = true;
@@ -139,12 +192,31 @@ jumpCheck = function () {
 
 }
 function createBullet() {
-	bullet = BulletGroup.create(player.x, player.y, 'bullet');
-	if (player.scale.x === -1) {
-		bullet.scale.x *= -1;
-		bullet.body.velocity.x = -100;
-	} else {
-		bullet.body.velocity.x = 100;
+
+
+	if (game.time.now > bulletTime)
+		{
+
+		bullet = bullets.getFirstExists(false);
+
+		if (bullet)
+			{
+
+			bullet.reset(player.x + 6, player.y - 8);
+
+			if (player.scale.x === -1) {
+			bullet.scale.x = -1;
+			bullet.body.velocity.x = -100;
+		} else {
+			bullet.body.velocity.x = 100;
+      			bullet.scale.x = 1;
+
+		}
+
+			bulletTime = game.time.now + 150;
+
+		}
+
 	}
 
 }
@@ -170,3 +242,66 @@ function sleep(millis, callback) {
 		callback();
 	}, millis);
 }
+
+function render() {
+
+	// Sprite debug info
+
+	game.debug.spriteInfo(player, 32, 32);
+
+}
+
+function collisionHandler(player, fly) {
+
+	//  If the player collides with the chillis then they get eaten :)
+
+	//  The chilli frame ID is 17
+	if (player.health > 0) {
+		player.health = 0;
+	} else {
+		player.kill();
+		dead();
+	}
+	/*
+	if (veg.frame == 17){
+
+	veg.kill();
+
+	}
+	 */
+
+}
+
+function dead() {
+	x = game.camera.x + (game.width / 2);
+
+	y = game.camera.y + (game.height / 2);
+	button = game.add.button(x, y, 'button', actionOnClick, this, 1, 0, 2);
+
+}
+
+function actionOnClick() {
+	game.state.start(game.state.current);
+}
+
+function bulletenemy(flya, bullet) {
+	if (flya.health > 1) {
+		flya.health--;
+	} else {
+		flya.kill();
+	}
+	bullet.kill();
+
+}
+
+
+function resetBullet (bullet) {
+
+
+
+    bullet.kill();
+
+
+
+}
+

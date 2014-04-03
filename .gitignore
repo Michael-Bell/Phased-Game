@@ -19,3 +19,5 @@ $RECYCLE.BIN/
 
 # Portable Server
 *.exe
+/nbproject/private/
+mongoose.conf
