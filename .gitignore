@@ -19,5 +19,5 @@ $RECYCLE.BIN/
 
 # Portable Server
 *.exe
-/nbproject/private/
+/nbproject/*
 mongoose.conf
