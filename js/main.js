@@ -1,6 +1,6 @@
 /*  Console.log() are used to see how far into the script the game goes before crashing*/
 
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'Game', {
     preload: preload,
     create: create,
     update: update,

@@ -1,0 +1,45 @@
+body {
+    text-align: center;
+    color: #000000;
+    background-color: #4de17f;
+    width: 100%;
+}
+
+header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+
+    font-size: 35px;
+    line-height: 0.9;
+    margin-bottom: 15px;
+
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.padding {
+    overflow: hidden;
+}
+
+sidebar {
+    text-align: center;
+
+    height: 75%;
+}
+
+#page-wrap {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#Game {
+    width: 800px;;
+    float: left;
+
+}
