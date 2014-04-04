@@ -213,7 +213,7 @@ function collisionHandler(player, collidingObject) {
         player.kill();
         dead();
     } else {
-        player.health = 0;
+        player.health = 10;
     }
 
     if (collidingObject.frame == 17)collidingObject.kill();
