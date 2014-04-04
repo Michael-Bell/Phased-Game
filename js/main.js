@@ -35,6 +35,7 @@ function preload() {
 
 }
 
+
 function create() {
 	console.log('createstart');
 	//  Modify the world and camera bounds
@@ -47,45 +48,12 @@ function create() {
 	//Background Image
 	sky = game.add.sprite(0, 0, 'sky');
 	sky.scale.setTo(10, 2);
-	//Add the platforms
-	ground = game.add.group();
-	ground.enableBody = true;
-
-	for (var i = 0; i < 3; i++) {
-		var block = ground.create((5 * 70) + i * 70, 600 - 400, 'ground'); // Dirty math hack to shift over blocks
-		block.body.immovable = true;
-
-	}
-	for (var i = 0; i < 100; i++) {
-		var block = ground.create( + i * 70, 800, 'ground'); // Dirty math hack to shift over blocks
-		block.body.immovable = true;
-
-	}
-	for (var i = 0; i < 3; i++) {
-		var block = ground.create(i * 70, 600 - 250, 'ground');
-		block.body.immovable = true;
-
-	}
-	/* TODO Create Function to add blocks in a simple, robust way */
-
-	// Enter Player 1
-	player = game.add.sprite(75, 475, 'player');
-	player.anchor.setTo(.5, .5);
-	game.physics.arcade.enable(player);
-
-	player.body.bounce.y = 0.1;
-	player.body.gravity.y = 400;
-	player.body.collideWorldBounds = true;
-	player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 7);
-	player.animations.add('jump', [11]);
-	player.animations.add('stand', [0]);
-	player.health = 10;
-
-	player.anchor.setTo(.5, .5);
-
-	cursors = game.input.keyboard.createCursorKeys();
-	shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
-	pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
+    CreatePlatform();
+    /* TODO Create Function to add blocks in a simple, robust way */
+    CreatePlayer();
+    cursors = game.input.keyboard.createCursorKeys();
+    shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
+    pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
 
 	bullets = game.add.group();
 
@@ -110,15 +78,8 @@ function create() {
 	}
 
 	//create enemy at x1230
-	flya = game.add.sprite(300, 700, 'fly');
-	game.physics.arcade.enable(flya);
-	flya.animations.add('fly', [1, 2]);
-	flya.health = 5;
-	flya.maxHeight = 800;
-	flya.minHeight = 600;
-	flya.body.immovable = true;
-
-	console.log('createdone');
+    GenerateEnemy();
+    console.log('createdone');
 
 }
 
@@ -229,19 +190,6 @@ function jump(number) {
 		}
 }
 
-function displayCredits() {
-	Credits = game.add.text(0, 0, 'Assets: 0', {
-			font : "20px Arial",
-			fill : "#ffffff",
-			align : "left"
-		});
-}
-
-function sleep(millis, callback) {
-	setTimeout(function () {
-		callback();
-	}, millis);
-}
 
 function render() {
 
@@ -251,24 +199,20 @@ function render() {
 
 }
 
-function collisionHandler(player, fly) {
+function collisionHandler(player, collide) {
 
-	//  If the player collides with the chillis then they get eaten :)
+    //  If the player collides with the chillis then they get eaten :)
 
-	//  The chilli frame ID is 17
-	if (player.health > 0) {
-		player.health = 0;
-	} else {
-		player.kill();
-		dead();
-	}
-	/*
-	if (veg.frame == 17){
+    //  The chilli frame ID is 17
+    if (player.health <= 0) {
+        player.kill();
+        dead();
+    } else {
+        player.health = 0;
+    }
 
-	veg.kill();
+    if (collide.frame == 17)collide.kill();
 
-	}
-	 */
 
 }
 
