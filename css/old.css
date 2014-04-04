@@ -15,6 +15,116 @@ header {
 
 }
 
+strong {
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+margin-top: 25px;
+}
+
+a {
+    color: #28c3ab;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    color: #176e61;
+}
+
+.light {
+    font-weight: 400;
+}
+
+.container {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.col {
+    display: table-cell;
+}
+
+.col1 {
+    background: pink;
+    width: 800px;
+}
+
+.col2 {
+    height: 100%;
+    background: orange;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    text-align: center;
+    color: #000000;
+    background-color: #4de17f;
+    width: 100%;
+}
+
+header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+
+    font-size: 35px;
+    line-height: 0.9;
+    margin-bottom: 15px;
+
+}
+
 .right {
     float: right;
 }

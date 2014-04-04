@@ -1,8 +1,8 @@
 body {
-    text-align: center;
+  
     color: #000000;
     background-color: #4de17f;
-    width: 100%;
+  
 }
 
 header {
@@ -14,13 +14,20 @@ header {
     margin-bottom: 15px;
 
 }
-
+.bottom-padding{margin-bottom: 25px;}
 strong {
     font-weight: bold;
 }
+.some-height{
+    min-height:75%; 
+    height: 425px;
+}
+
+
 
 footer {
-
+text-align: center;
+margin-top: 25px;
 }
 
 a {
@@ -38,25 +45,4 @@ a:focus {
 
 .light {
     font-weight: 400;
-}
-
-.container {
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-}
-
-.col {
-    display: table-cell;
-}
-
-.col1 {
-    background: pink;
-    width: 800px;
-}
-
-.col2 {
-    height: 100%;
-    background: orange;
-    width: 100%;
 }
