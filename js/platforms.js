@@ -1,6 +1,8 @@
 function CreatePlatform() {
 //Add the platforms
-    ground = game.add.group();
+    /* TODO Just make a map in Tiled or something and import it in with tileset or something, be way easier */
+    /* TODO Moving Platforms... */
+    ground = game.add.group(); // using a group
     ground.enableBody = true;
 
     for (var i = 0; i < 3; i++) {
