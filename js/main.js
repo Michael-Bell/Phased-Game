@@ -129,7 +129,7 @@ function update() {
     game.camera.y = player.y - 200;
     game.camera.x = player.x - 500; // Hacky camera following
     /* TODO I saw a camera.follow function in the docs, see if its better at following the sprites */
-
+    healthCheck();
 
 
     playerControls.call(this);

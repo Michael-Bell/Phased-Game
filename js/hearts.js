@@ -16,5 +16,32 @@ function initHearts(){
 }
 
 
+function healthCheck(){
+    healthToDisplay = player.health;
+    // Animating alpha property of each item using forEach() method.
+
+  heartGroup.forEach(function(item) {
+
+
+
+        // Update alpha first.
+
+        item.frame=0;
+
+
+
+     while(item.frame<4 && healthToDisplay>0){
+         item.frame++;
+        // console.log(item.frame);
+         healthToDisplay--;
+     }
+
+
+
+    });
+
+}
+
+
 
 
