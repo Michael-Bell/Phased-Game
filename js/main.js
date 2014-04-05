@@ -21,7 +21,7 @@ var jumpCount = 0;
 var player;
 var bullets;
 var gold = 0;
-var playerdmg = 1+Math.floor(STR/10);
+var playerDMG = 1 + Math.floor(STR/10);
 
 
 var map;
@@ -160,7 +160,6 @@ function createBullet() {
 function jump(number) {
     player.body.velocity.y = -350 ;// 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
     if (number == 2) {// is this a double jump
-        player.body.velocity.y = -250-DEX;
         player.body.angularVelocity = -200; // start spinning
 
     }
@@ -207,19 +206,6 @@ function dead() { // you died :(
 function actionOnClick() {
     /* TODO this is going to cause bugs when we start putting in multiple game states */
     game.state.start(game.state.current); // reset the game, should be replaced with something more reliable
-}
-
-function bulletenemy(flya, bullet) {
-    /* TODO merge this with collisionhandler*/
-    if (flya.health > 1) {
-        flya.health=-playerdmg;
-    } else {
-        flya.kill();// destroy enemy sprite
-        collectgold(5);//TODO possibly a collectgold and xp universal for any way a flya could die
-        currentxp=+0.5;
-    }
-    bullet.kill(); // destroy bullet sprite
-
 }
 
 
