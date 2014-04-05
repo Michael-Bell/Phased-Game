@@ -92,7 +92,7 @@ function create() {
 
     /* TODO Work on Enemy function, allows you to enter parameters to set where the enemy will spawn, and the min/max height as well as speed it travels at */
     GenerateEnemy();
-
+    animateEnemies();
     if(rain)createRain();
 
     console.log('createdone');

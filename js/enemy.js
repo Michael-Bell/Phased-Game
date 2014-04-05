@@ -26,5 +26,18 @@ function GenerateEnemy() {
 
 
 function animateEnemies(){  // tween animate flying up and down
+    //  Here we'll chain 4 different tweens together and play through them all in a loop
+
+    var tween = game.add.tween(enemyGroup)//.to({ x: 600 }, 2000, Phaser.Easing.Linear.None)
+
+        .to({ y: 300 }, 1000, Phaser.Easing.Linear.None)
+
+        //.to({ x: 100 }, 2000, Phaser.Easing.Linear.None)
+
+        .to({ y: 100 }, 1000, Phaser.Easing.Linear.None)
+
+        .loop()
+
+        .start();
 
 }
