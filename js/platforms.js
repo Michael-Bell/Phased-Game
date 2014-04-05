@@ -1,3 +1,4 @@
+var layer;
 function CreatePlatform() {
 //Add the platforms
     /* TODO Just make a map in Tiled or something and import it in with tileset or something, be way easier */
@@ -20,4 +21,5 @@ function CreatePlatform() {
         block.body.immovable = true;
 
     }
+
 }
