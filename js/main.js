@@ -15,6 +15,7 @@ var Credits;
 var player;
 var bullets;
 var gold = 0;
+var playerdmg = 1+Math.floor(STR/10);
 
 var fireRate = 100;
 
@@ -242,7 +243,7 @@ function actionOnClick() {
 function bulletenemy(flya, bullet) {
     /* TODO merge this with collisionhandler*/
     if (flya.health > 1) {
-        flya.health--;
+        flya.health=-playerdmg;
     } else {
         flya.kill();// destroy enemy sprite
         collectgold(5);//TODO possibly a collectgold and xp universal for any way a flya could die
