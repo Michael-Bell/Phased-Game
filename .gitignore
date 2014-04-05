@@ -17,6 +17,9 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+#webstorm
+/.idea/*
+
 # Portable Server
 *.exe
 /nbproject/*
