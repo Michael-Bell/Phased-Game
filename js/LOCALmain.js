@@ -20,6 +20,7 @@ var jumpCount = 0;
 
 var player;
 var bullets;
+var gold = 0;
 
 
 var map;
@@ -38,6 +39,7 @@ function preload() {
     game.load.image('bullet', 'assets/key_blue.png');
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
     game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
+<<<<<<< HEAD
     game.load.image('button', 'assets/switch_yellow_off.png');
     if(rain)loadRain();
 
@@ -52,6 +54,9 @@ function preload() {
 
 
     game.load.image('tiles', 'assets/groundSprite.png');
+=======
+    game.load.image('button', 'assets/play_again.png');
+>>>>>>> 3566d4cab2ccb4b4612bd2f627a16480fa480e70
 
     console.log('preloaddone');
 
@@ -168,7 +173,7 @@ function update() {
 
     } else { // if not on the ground
         /* TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
-        // player.frame = 11 // set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
+       player.frame = 11 // set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
     }
     if (fire) {
 
@@ -179,6 +184,7 @@ jumpCheck = function () { // lovely function to see if you can jump
     if (jumpCount < 2) { // if less than 2 jumps on the counter
         jumpCount++; // add a jump
         player.frame = 11; //set the jump frame(may be redundant?)
+        // Why is this not working?
         jump(jumpCount); // tell the player to jump, pass along the number of jumps so player knows whether to double jump
     }
 
@@ -220,6 +226,7 @@ function jump(number) {
         player.body.angularVelocity = -200; // start spinning
 
     }
+    
 }
 
 
@@ -264,6 +271,21 @@ function actionOnClick() {
     game.state.start(game.state.current); // reset the game, should be replaced with something more reliable
 }
 
+<<<<<<< HEAD
+=======
+function bulletenemy(flya, bullet) {
+    /* TODO merge this with collisionhandler*/
+    if (flya.health > 1) {
+        flya.health--;
+    } else {
+        flya.kill();// destroy enemy sprite
+        collectgold(5);//TODO possibly a collectgold and xp universal for any way a flya could die
+        currentxp=+0.5;
+    }
+    bullet.kill(); // destroy bullet sprite
+
+}
+>>>>>>> 3566d4cab2ccb4b4612bd2f627a16480fa480e70
 
 
 function resetBullet(bullet) {
