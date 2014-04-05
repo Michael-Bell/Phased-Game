@@ -159,6 +159,7 @@ function createBullet() {
 function jump(number) {
     player.body.velocity.y = -350 ;// 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
     if (number == 2) {// is this a double jump
+        player.body.velocity.y = -250-DEX;
         player.body.angularVelocity = -200; // start spinning
 
     }
