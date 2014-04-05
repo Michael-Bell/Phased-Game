@@ -29,7 +29,7 @@ function preload() {
     game.load.image('bullet', 'assets/key_blue.png');
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
     game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
-    game.load.image('button', 'assets/switch_yellow_off.png');
+    game.load.image('button', 'assets/play_again.png');
 
     console.log('preloaddone');
 
@@ -143,7 +143,7 @@ function update() {
 
     } else { // if not on the ground
         /* TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
-        // player.frame = 11 // set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
+       player.frame = 11 // set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
     }
     if (fire) {
 
@@ -154,6 +154,7 @@ jumpCheck = function () { // lovely function to see if you can jump
     if (jumpCount < 2) { // if less than 2 jumps on the counter
         jumpCount++; // add a jump
         player.frame = 11; //set the jump frame(may be redundant?)
+        // Why is this not working?
         jump(jumpCount); // tell the player to jump, pass along the number of jumps so player knows whether to double jump
     }
 
@@ -195,6 +196,7 @@ function jump(number) {
         player.body.angularVelocity = -200; // start spinning
 
     }
+    
 }
 
 
