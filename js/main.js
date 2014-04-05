@@ -209,7 +209,7 @@ function actionOnClick() {
     game.state.start(game.state.current); // reset the game, should be replaced with something more reliable
 }
 
-<<<<<<< HEAD
+
 function bulletenemy(flya, bullet) {
     /* TODO merge this with collisionhandler*/
     if (flya.health > 1) {
@@ -222,8 +222,6 @@ function bulletenemy(flya, bullet) {
     bullet.kill(); // destroy bullet sprite
 
 }
-=======
->>>>>>> 55ae5f9d28660f548946639e4ee1f8402a676ec0
 
 
 function resetBullet(bullet) {
