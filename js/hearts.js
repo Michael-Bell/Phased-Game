@@ -1,14 +1,20 @@
 function initHearts(){
-    logo1 = game.add.sprite(0, 0, 'heart');
-    logo1.fixedToCamera = true;
-    logo1.cameraOffset.setTo(100, 100);
-    logo1.frame=0;
-    logo2 = game.add.sprite(0, 0, 'heart');
-    logo2.fixedToCamera = true;
-    logo2.cameraOffset.setTo(200, 100);
-    logo2.frame=1;
-    logo3 = game.add.sprite(0, 0, 'heart');
-    logo3.fixedToCamera = true;
-    logo3.cameraOffset.setTo(300, 100);
-    logo3.frame=2;
+    heartGroup = game.add.group()
+    for(i=0; i<10; i++){
+        x = 202+(i*40);
+        y = 700;
+        var c = heartGroup.create(0,0, 'heart', 0);
+        c.name = 'heart' + i;
+        c.fixedToCamera = true;
+        c.cameraOffset.setTo(x,600-35-10);
+        c.scale.setTo(.5,.5);
+
+        c.frame=1;
+        console.log("heart # " + i + " done");
+        console.log("x: " + x + " y:"+y );
+    }
 }
+
+
+
+

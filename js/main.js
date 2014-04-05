@@ -16,6 +16,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'Game', {
 });
 //Various Variables, some are not even used, some are important, some are repetative, and some are essential, I don't really remember which are which
 
+
 var jumpCount = 0;
 
 var player;
@@ -40,10 +41,14 @@ function preload() {
     game.load.image('bullet', 'assets/key_blue.png');
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
     game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
-    game.load.spritesheet('heart', 'assets/heart/spritesheet.png', 70, 70, 3);
+    game.load.spritesheet('heart', 'assets/heart/spritesheet.png', 70, 70, 5);
     if(rain)loadRain();
 
     game.load.image('button', 'assets/play_again.png');
+    //  Load the Google WebFont Loader script
+
+
+
 
     console.log('preloaddone');
 
@@ -69,13 +74,19 @@ function create() {
     cursors = game.input.keyboard.createCursorKeys();
     shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
+
+
     bullets = game.add.group();
 
     bullets.enableBody = true;
 
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
 
-    for (var i = 0; i < 20; i++) {
+
+
+    for (var i = 0; i < 20; i++)
+
+    {
 
         var b = bullets.create(0, 0, 'bullet');
 
@@ -92,13 +103,13 @@ function create() {
     }
 
 
+
     /* TODO Work on Enemy function, allows you to enter parameters to set where the enemy will spawn, and the min/max height as well as speed it travels at DONE*/
 
     initEnemy(); // setup enemy Group
     lotsOfEnemies(); // Place some enemies
     animateEnemies(); // Need some movement
-
-    initHearts(); // Just showing off the heart sprite and how to put it onscreen
+    initHearts(); // Setup the heart Group, make it locked into the camera frame
     if(rain)createRain();
 
     console.log('createdone');
@@ -111,7 +122,7 @@ function update() {
    game.physics.arcade.collide(player, ground); // Player cannot go through ground
     game.physics.arcade.collide(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
     /* TODO create enemy group, give it a better name than flya */
-    game.physics.arcade.collide(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
+    game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
     // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
 
     player.body.velocity.x = 0;

@@ -20,3 +20,9 @@ console.log('createRain');
     emitter.maxRotation = 0;
     emitter.start(false, 1600, 5, 0);
 }
+
+
+
+
+
+
