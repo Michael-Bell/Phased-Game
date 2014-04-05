@@ -50,6 +50,7 @@ function preload() {
 
 
 /* TODO Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
+
 function create() {
     console.log('createstart');
 
@@ -67,7 +68,6 @@ function create() {
     cursors = game.input.keyboard.createCursorKeys();
     shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
-
     bullets = game.add.group();
 
     bullets.enableBody = true;
@@ -90,9 +90,14 @@ function create() {
 
     }
 
-    /* TODO Work on Enemy function, allows you to enter parameters to set where the enemy will spawn, and the min/max height as well as speed it travels at */
-    GenerateEnemy();
-    animateEnemies();
+
+    /* TODO Work on Enemy function, allows you to enter parameters to set where the enemy will spawn, and the min/max height as well as speed it travels at DONE*/
+
+    initEnemy(); // setup enemy Group
+    lotsOfEnemies(); // Place some enemies
+    animateEnemies(); // Need some movement
+
+
     if(rain)createRain();
 
     console.log('createdone');
