@@ -1,7 +1,7 @@
 /*  Console.log() are used to see how far into the script the game goes before crashing*/
 
 // Enable the rain
-rain = false;
+rain = true;
 
 
 
