@@ -1,4 +1,4 @@
 var collectgold = function(goldincrease){
-    gold =+ (goldincrease+Math.floor(Math.random)*LUK/5);
+    gold =+ goldincrease+Math.floor(Math.random()*LUK/5);
     
 };
