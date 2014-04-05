@@ -1,3 +1,4 @@
+/* TODO Document your codez!!! */
 var currentxp = 0;
 var xpneeded= 2;
 var currentlevel = 0;
