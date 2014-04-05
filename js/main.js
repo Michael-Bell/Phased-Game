@@ -98,7 +98,7 @@ function create() {
     lotsOfEnemies(); // Place some enemies
     animateEnemies(); // Need some movement
 
-    showHearts(); // Just showing off the heart sprite and how to put it onscreen
+    initHearts(); // Just showing off the heart sprite and how to put it onscreen
     if(rain)createRain();
 
     console.log('createdone');

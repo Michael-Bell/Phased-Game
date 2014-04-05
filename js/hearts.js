@@ -1,4 +1,4 @@
-function showHearts(){
+function initHearts(){
     logo1 = game.add.sprite(0, 0, 'heart');
     logo1.fixedToCamera = true;
     logo1.cameraOffset.setTo(100, 100);
