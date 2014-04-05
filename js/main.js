@@ -193,7 +193,7 @@ function collisionHandler(weakerObject, strongerObject) {
 
         if (weakerObject === player)dead(); // if the weaker object that we killed is the player, run the dead function
     } else {
-        weakerObject.health=-playerDMG; // remove the player's damage from the weaker object
+        weakerObject.health=-playerDMG; // remove the player's damage from the weaker object (Modifier not doing anything atm)
     }
 
     if (strongerObject.frame == 17)strongerObject.kill();
