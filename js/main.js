@@ -21,6 +21,7 @@ var jumpCount = 0;
 var player;
 var bullets;
 var gold = 0;
+var playerDMG = 1 + Math.floor(STR/10);
 
 
 var map;
