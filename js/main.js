@@ -14,6 +14,7 @@ var jumpCount = 0;
 var Credits;
 var player;
 var bullets;
+var gold = 0;
 
 var fireRate = 100;
 
