@@ -244,7 +244,8 @@ function bulletenemy(flya, bullet) {
         flya.health--;
     } else {
         flya.kill();// destroy enemy sprite
-        collectgold(5);//TODO possibly a collect gold universal for any way a flya could die
+        collectgold(5);//TODO possibly a collectgold and xp universal for any way a flya could die
+        currentxp=+0.5;
     }
     bullet.kill(); // destroy bullet sprite
 
