@@ -40,6 +40,7 @@ function preload() {
     game.load.image('bullet', 'assets/key_blue.png');
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
     game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
+    game.load.spritesheet('heart', 'assets/heart/spritesheet.png', 70, 70, 3);
     if(rain)loadRain();
 
     game.load.image('button', 'assets/play_again.png');
@@ -97,7 +98,7 @@ function create() {
     lotsOfEnemies(); // Place some enemies
     animateEnemies(); // Need some movement
 
-
+    showHearts(); // Just showing off the heart sprite and how to put it onscreen
     if(rain)createRain();
 
     console.log('createdone');
@@ -176,8 +177,10 @@ function jump(number) {
 function render() {
 
     // Sprite debug info
+    //game.debug.spriteInfo(logo1, 32, 32);
+    game.debug.spriteInfo(player, 100, 32);
 
-    game.debug.spriteInfo(player, 32, 32);
+
 
 }
 

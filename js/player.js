@@ -49,7 +49,7 @@ function playerControls() {
 
     } else { // if not on the ground
         /* TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
-        player.frame = 11 // set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
+        player.frame = 11 ;// set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
     }
     if (fire) {
 
