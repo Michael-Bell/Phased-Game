@@ -9,10 +9,10 @@ if(currentxp >= xpneeded){
     allocationpoints =+ 5+(Math.floor(INT/10));
 }
 
-var STR = Math.floor(Math.random)*25;
-var INT = Math.floor(Math.random)*25;
-var DEX = Math.floor(Math.random)*25;
-var LUK = Math.floor(Math.random)*25;
+var STR = 10;
+var INT = 10;
+var DEX = 10;
+var LUK = 10;
 
 var xpgain = function(xp){
     xp(Math.floor(INT/10));
