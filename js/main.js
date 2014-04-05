@@ -39,24 +39,9 @@ function preload() {
     game.load.image('bullet', 'assets/key_blue.png');
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
     game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
-<<<<<<< HEAD
-    game.load.image('button', 'assets/switch_yellow_off.png');
     if(rain)loadRain();
 
-
-
-    game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
-
-
-
-    //  Next we load the tileset. This is just an image, loaded in via the normal way we load images:
-
-
-
-    game.load.image('tiles', 'assets/groundSprite.png');
-=======
     game.load.image('button', 'assets/play_again.png');
->>>>>>> 3566d4cab2ccb4b4612bd2f627a16480fa480e70
 
     console.log('preloaddone');
 
@@ -113,12 +98,13 @@ function create() {
 
 }
 
+
 function update() {
 
    game.physics.arcade.collide(player, ground); // Player cannot go through ground
-    game.physics.arcade.collide(player, flya, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
+    game.physics.arcade.collide(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
     /* TODO create enemy group, give it a better name than flya */
-    game.physics.arcade.collide(flya, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
+    game.physics.arcade.collide(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
     // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
 
     player.body.velocity.x = 0;
@@ -126,59 +112,9 @@ function update() {
     game.camera.x = player.x - 500; // Hacky camera following
     /* TODO I saw a camera.follow function in the docs, see if its better at following the sprites */
 
-    if (flya.health > 0) { //is the flya alive
-        flya.animations.play('fly');  //if flya is alive, animate with flying animation
-        if (flya.y >= 700) //  is flya  above 700px on the map
-            flya.direction = false;
-        else if (flya.y <= 200) // is flya under 200px on the map
-            flya.direction = true;
-        if (flya.direction) { // switch flya velocity depending on direction bool
-            flya.body.velocity.setTo(0, 100);
-        } else {
-            flya.body.velocity.setTo(0, -100);
-        }
-    } else { // if flya is dead
-        flya.frame = 0; // set to dead frame
-        flya.body.velocity.setTo(0, 500); //flya fly up fast, or down, I can't remember
-    }
-    /* TODO move to enemy.js, also make it generic to a enemy group,  */
 
-    /* TODO Move all keychecking to player.js*/
-    if (shootKey.isDown) { // is the S key pressed
-        fire = true;
-    } else if (shootKey.justReleased) { //if S key is released
-        fire = false;
-    }
-    if (cursors.left.isDown) { //left arrow pressed
-        player.body.velocity.x = -150; //set velocity
-        player.animations.play('walk'); // play walking animation
 
-        if (player.scale.x === 1) // is the sprite facing right?
-            player.scale.x *= -1; // face left
-    } else if (cursors.right.isDown) {
-        player.body.velocity.x = 150;
-
-        if (player.scale.x === -1)
-            player.scale.x *= -1;
-
-        player.animations.play('walk');
-    } else {
-        player.frame = 0;
-    }
-    cursors.up.onDown.add(jumpCheck, this);
-    if (player.body.touching.down) { //is the player sprite touching another object on bottom?
-        jumpCount = 0; // reset jump counter
-        player.body.angularVelocity = 0; // stop spinning
-        player.angle = 0; // stand up straight
-
-    } else { // if not on the ground
-        /* TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
-       player.frame = 11 // set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
-    }
-    if (fire) {
-
-        createBullet();
-    }
+    playerControls.call(this);
 }
 jumpCheck = function () { // lovely function to see if you can jump
     if (jumpCount < 2) { // if less than 2 jumps on the counter
@@ -252,7 +188,7 @@ function collisionHandler(weakerObject, strongerObject) {
 
     if (strongerObject.frame == 17)strongerObject.kill();
 
-    if(strongerObject === bullet) strongerObject.kill(); // if the stronger object in the encounter is a bullet, kill the bullet sprite
+   // if(strongerObject === bullet) strongerObject.kill(); // if the stronger object in the encounter is a bullet, kill the bullet sprite
 
 
 }
@@ -271,21 +207,6 @@ function actionOnClick() {
     game.state.start(game.state.current); // reset the game, should be replaced with something more reliable
 }
 
-<<<<<<< HEAD
-=======
-function bulletenemy(flya, bullet) {
-    /* TODO merge this with collisionhandler*/
-    if (flya.health > 1) {
-        flya.health--;
-    } else {
-        flya.kill();// destroy enemy sprite
-        collectgold(5);//TODO possibly a collectgold and xp universal for any way a flya could die
-        currentxp=+0.5;
-    }
-    bullet.kill(); // destroy bullet sprite
-
-}
->>>>>>> 3566d4cab2ccb4b4612bd2f627a16480fa480e70
 
 
 function resetBullet(bullet) {
