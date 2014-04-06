@@ -39,6 +39,7 @@ function preload() {
     game.load.image('sky', 'assets/sky.png');
     game.load.image('ground', 'assets/ground.png');
     game.load.image('bullet', 'assets/key_blue.png');
+    game.load.image('goldcoin', 'assets/goldcoin.png');
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
     game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
     game.load.spritesheet('heart', 'assets/heart/spritesheet.png', 70, 70, 5);
@@ -159,9 +160,9 @@ function createBullet() {
 
             if (player.scale.x === -1) { // check which direction the player is facing, make bullet face the same way and set velocity
                 bullet.scale.x = -1;
-                bullet.body.velocity.x = -100;
+                bullet.body.velocity.x = -150;
             } else {
-                bullet.body.velocity.x = 100;
+                bullet.body.velocity.x = 150;
                 bullet.scale.x = 1;
 
             }
@@ -201,6 +202,10 @@ function collisionHandler(weakerObject, strongerObject) {
 
     if (weakerObject.health <= 0) {
         weakerObject.kill();
+        if(weakerObject===enemyGroup){
+            gencoins(weakerObject.x,weakerObject.y);
+            
+        }
 
         if (weakerObject === player)dead(); // if the weaker object that we killed is the player, run the dead function
     } else {
