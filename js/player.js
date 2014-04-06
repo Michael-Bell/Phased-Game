@@ -13,9 +13,10 @@ function CreatePlayer() {
 
     player.health = 10; // health, not yet used
 
-
+    player.inv = false; // player is not invunerable to start
+    player.inv.time = 1000; // invunerable for 1 sec after damage taken
     player.body.immovable = false; // a test, enemies are pushing the player through the floor
-
+    player.dmg = 1 + Math.floor(STR/10);
 }
 
 
@@ -55,4 +56,10 @@ function playerControls() {
 
         createBullet();
     }
+}
+
+
+
+function playerInv(){
+    player.inv =false;
 }

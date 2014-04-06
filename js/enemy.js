@@ -12,6 +12,7 @@ function GenerateEnemy(x, y, uniqueID) {
 
     var c = enemyGroup.create(x, y, 'fly');
     c.name = 'fly'+ uniqueID;
+    c.dmg = 1;
     c.body.immovable = true;
     //  Now using the power of callAll we can add the same animation to all enemies in the group:
 

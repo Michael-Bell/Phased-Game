@@ -18,11 +18,11 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'Game', {
 
 
 var jumpCount = 0;
-
+var invTimer;
 var player;
 var bullets;
 var gold = 0;
-var playerDMG = 1 + Math.floor(STR/10);
+
 
 
 var map;
@@ -111,7 +111,6 @@ function create() {
     animateEnemies(); // Need some movement
     initHearts(); // Setup the heart Group, make it locked into the camera frame
     if(rain)createRain();
-
     console.log('createdone');
 
 }
@@ -120,7 +119,7 @@ function create() {
 function update() {
 
    game.physics.arcade.collide(player, ground); // Player cannot go through ground
-    game.physics.arcade.collide(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
+    game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
     /* TODO create enemy group, give it a better name than flya */
     game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
     // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
@@ -131,7 +130,11 @@ function update() {
     /* TODO I saw a camera.follow function in the docs, see if its better at following the sprites */
     healthCheck();
 
-
+    if(player.inv) {
+    if(!invTimer){   game.time.events.add(Phaser.Timer.SECOND * 4, playerInv, this);}
+    invTimer=true;
+    }
+    else{invTimer=false;}
     playerControls.call(this);
 }
 jumpCheck = function () { // lovely function to see if you can jump
@@ -189,7 +192,11 @@ function render() {
 
     // Sprite debug info
     //game.debug.spriteInfo(logo1, 32, 32);
-    game.debug.spriteInfo(player, 100, 32);
+   // game.debug.spriteInfo(player, 100, 32);
+    game.debug.text("Time until event: " + game.time.events.duration, 32, 32);
+
+
+
 
 
 
@@ -198,20 +205,22 @@ function render() {
 function collisionHandler(weakerObject, strongerObject) {
 // Stronger object damages weaker objects, removes 1 health
     // Easy to change amount of health by adding in a third variable
+    if (!(weakerObject === player && player.inv)) {
+        if (weakerObject.health <= 0) {
+            weakerObject.kill();
 
-    if (weakerObject.health <= 0) {
-        weakerObject.kill();
+            if (weakerObject === player)dead(); // if the weaker object that we killed is the player, run the dead function
+        } else {
+            if (weakerObject === player) player.inv = true;;
+            weakerObject.health = weakerObject.health-strongerObject.dmg; // remove the stronger Objects damage from the weaker object (Modifier not doing anything atm)
+        }
 
-        if (weakerObject === player)dead(); // if the weaker object that we killed is the player, run the dead function
-    } else {
-        weakerObject.health=-playerDMG; // remove the player's damage from the weaker object (Modifier not doing anything atm)
+        //  if (strongerObject == 17)strongerObject.kill();
+
+        // if(strongerObject === bullet) strongerObject.kill(); // if the stronger object in the encounter is a bullet, kill the bullet sprite
+
+
     }
-
-    if (strongerObject.frame == 17)strongerObject.kill();
-
-   // if(strongerObject === bullet) strongerObject.kill(); // if the stronger object in the encounter is a bullet, kill the bullet sprite
-
-
 }
 
 function dead() { // you died :(
