@@ -121,7 +121,7 @@ function create() {
 
 
 function update() {
-    gencoins(75, 700);
+   // gencoins(75, 700);
    game.physics.arcade.collide(player, ground); // Player cannot go through ground
     game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
 
@@ -136,11 +136,8 @@ function update() {
     /* TODO I saw a camera.follow function in the docs, see if its better at following the sprites */
     healthCheck();
 
-    if(player.inv) {
-    if(!invTimer){   game.time.events.add(Phaser.Timer.SECOND * 4, playerInv, this);}
-    invTimer=true;
-    }
-    else{invTimer=false;}
+
+
     playerControls.call(this);
 }
 jumpCheck = function () { // lovely function to see if you can jump
@@ -217,7 +214,7 @@ function collisionHandler(weakerObject, strongerObject) {
 
             if (weakerObject === player)dead(); // if the weaker object that we killed is the player, run the dead function
         } else {
-            if (weakerObject === player) player.inv = true;;
+            if (weakerObject === player){ player.inv = true; game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this);}
             weakerObject.health = weakerObject.health-strongerObject.dmg; // remove the stronger Objects damage from the weaker object (Modifier not doing anything atm)
         }
 
