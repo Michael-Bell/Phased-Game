@@ -42,6 +42,8 @@ function preload() {
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
     game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
     game.load.spritesheet('heart', 'assets/heart/spritesheet.png', 70, 70, 5);
+    game.load.image('goldcoin', 'assets/goldcoin.png');
+
     if(rain)loadRain();
 
     game.load.image('button', 'assets/play_again.png');
@@ -110,6 +112,8 @@ function create() {
     lotsOfEnemies(); // Place some enemies
     animateEnemies(); // Need some movement
     initHearts(); // Setup the heart Group, make it locked into the camera frame
+    initCoinGroup();
+
     if(rain)createRain();
     console.log('createdone');
 
@@ -119,6 +123,8 @@ function create() {
 function update() {
 
    game.physics.arcade.collide(player, ground); // Player cannot go through ground
+    game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
+
     game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
     /* TODO create enemy group, give it a better name than flya */
     game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
