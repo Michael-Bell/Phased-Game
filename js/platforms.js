@@ -11,7 +11,7 @@ function CreatePlatform() {
         block.body.immovable = true;
 
     }
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 125; i++) {
         var block = ground.create(+i * 70, 800, 'ground'); // Dirty math hack to shift over blocks
         block.body.immovable = true;
 
