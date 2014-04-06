@@ -1,6 +1,6 @@
 body {
     background-color: #c60f13;
-  
+
 }
 
 header {
@@ -12,20 +12,23 @@ header {
     margin-bottom: 15px;
 
 }
-.bottom-padding{margin-bottom: 25px;}
+
+.bottom-padding {
+    margin-bottom: 25px;
+}
+
 strong {
     font-weight: bold;
 }
-.some-height{
-    min-height:75%; 
+
+.some-height {
+    min-height: 75%;
     height: 425px;
 }
 
-
-
 footer {
-text-align: center;
-margin-top: 25px;
+    text-align: center;
+    margin-top: 25px;
 }
 
 a {
