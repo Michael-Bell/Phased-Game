@@ -22,7 +22,6 @@ var jumpCount = 0;
 var player;
 var bullets;
 var gold = 0;
-var playerDMG = 1 + Math.floor(STR/10);
 
 
 var map;
@@ -39,10 +38,11 @@ function preload() {
     game.load.image('sky', 'assets/sky.png');
     game.load.image('ground', 'assets/ground.png');
     game.load.image('bullet', 'assets/key_blue.png');
-    game.load.image('goldcoin', 'assets/goldcoin.png');
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
     game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
     game.load.spritesheet('heart', 'assets/heart/spritesheet.png', 70, 70, 5);
+    game.load.image('goldcoin', 'assets/goldcoin.png');
+
     if(rain)loadRain();
 
     game.load.image('button', 'assets/play_again.png');
@@ -111,17 +111,20 @@ function create() {
     lotsOfEnemies(); // Place some enemies
     animateEnemies(); // Need some movement
     initHearts(); // Setup the heart Group, make it locked into the camera frame
-    if(rain)createRain();
+    initCoinGroup();
 
+    if(rain)createRain();
     console.log('createdone');
 
 }
 
 
 function update() {
-
+   // gencoins(75, 700);
    game.physics.arcade.collide(player, ground); // Player cannot go through ground
-    game.physics.arcade.collide(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
+    game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
+
+    game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
     /* TODO create enemy group, give it a better name than flya */
     game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
     // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
@@ -190,7 +193,8 @@ function render() {
 
     // Sprite debug info
     //game.debug.spriteInfo(logo1, 32, 32);
-    game.debug.spriteInfo(player, 100, 32);
+   // game.debug.spriteInfo(player, 100, 32);
+    game.debug.text("Time until event: " + game.time.events.duration, 32, 32);
 
 
 

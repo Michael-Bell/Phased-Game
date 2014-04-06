@@ -1,8 +1,6 @@
 body {
-  
-    color: #000000;
-    background-color: #4de17f;
-  
+    background-color: #c60f13;
+
 }
 
 header {
@@ -14,24 +12,27 @@ header {
     margin-bottom: 15px;
 
 }
-.bottom-padding{margin-bottom: 25px;}
+
+.bottom-padding {
+    margin-bottom: 25px;
+}
+
 strong {
     font-weight: bold;
 }
-.some-height{
-    min-height:75%; 
+
+.some-height {
+    min-height: 75%;
     height: 425px;
 }
 
-
-
 footer {
-text-align: center;
-margin-top: 25px;
+    text-align: center;
+    margin-top: 25px;
 }
 
 a {
-    color: #28c3ab;
+    color: #c60f13;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -40,7 +41,7 @@ a {
 a:hover,
 a:focus {
     text-decoration: none;
-    color: #176e61;
+    color: #610506;
 }
 
 .light {

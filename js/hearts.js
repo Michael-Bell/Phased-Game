@@ -30,7 +30,7 @@ function healthCheck(){
 
 
 
-     while(item.frame<4 && healthToDisplay>0){
+     while(item.frame<2 && healthToDisplay>0){
          item.frame++;
         // console.log(item.frame);
          healthToDisplay--;
@@ -39,9 +39,17 @@ function healthCheck(){
 
 
     });
+    heartGroup.forEach(function(item) {
+
+        while(item.frame<4 && healthToDisplay>0){
+            item.frame++;
+            // console.log(item.frame);
+            healthToDisplay--;
+        }
+
+    });
 
 }
-
 
 
 
