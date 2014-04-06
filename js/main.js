@@ -121,7 +121,7 @@ function create() {
 
 
 function update() {
-
+    gencoins(75, 700);
    game.physics.arcade.collide(player, ground); // Player cannot go through ground
     game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
 
