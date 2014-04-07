@@ -180,7 +180,7 @@ function createBullet() {
 
 function jump(number) {
     player.body.velocity.y = -350 ;// 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
-    if (number == 2) {// is this a double jump
+    if (number === 2) {// is this a double jump
         player.body.velocity.y = -250-DEX;
         player.body.angularVelocity = -200; // start spinning
 
@@ -200,28 +200,46 @@ function render() {
 
 }
 
-function collisionHandler(weakerObject, strongerObject) {
-// Stronger object damages weaker objects, removes 1 health
-    // Easy to change amount of health by adding in a third variable
+ function collisionHandler(weakerObject, strongerObject) {
 
-    if (weakerObject.health <= 0) {
-        weakerObject.kill();
-        if(weakerObject===enemyGroup){
-            gencoins(weakerObject.x,weakerObject.y);
-            
-        }
+ // Stronger object damages weaker objects, removes 1 health
 
-        if (weakerObject === player)dead(); // if the weaker object that we killed is the player, run the dead function
-    } else {
-        weakerObject.health=-playerDMG; // remove the player's damage from the weaker object (Modifier not doing anything atm)
-    }
+     // Easy to change amount of health by adding in a third variable
 
-    if (strongerObject.frame == 17)strongerObject.kill();
+     if (!(weakerObject === player && player.inv)) {
 
-   // if(strongerObject === bullet) strongerObject.kill(); // if the stronger object in the encounter is a bullet, kill the bullet sprite
+         if (weakerObject.health <= 0) {
+
+             weakerObject.kill();
+
+ 
+
+             if (weakerObject === player)dead(); // if the weaker object that we killed is the player, run the dead function
+
+         } else {
 
 
-}
+           if (weakerObject === player){ player.inv = true; game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this);}
+
+             weakerObject.health = weakerObject.health-strongerObject.dmg; // remove the stronger Objects damage from the weaker object (Modifier not doing anything atm)
+
+         }
+
+ 
+
+         //  if (strongerObject == 17)strongerObject.kill();
+
+ 
+
+         // if(strongerObject === bullet) strongerObject.kill(); // if the stronger object in the encounter is a bullet, kill the bullet sprite
+
+ 
+
+ 
+
+     }
+
+ }
 
 function dead() { // you died :(
     /* TODO make a death screen with cool statistics on the game */
