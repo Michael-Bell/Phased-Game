@@ -3,7 +3,7 @@ function CreatePlayer() {
     player = game.add.sprite(75, 475, 'player'); // starting location
     player.anchor.setTo(.5, .5); // this lets us rotate/flip sprite in the middle of the sprite, if not set, it will rotate from top left corner
     game.physics.arcade.enable(player); // we need physics
-
+    
     player.body.bounce.y = 0.1; // gives a slight bounce
     player.body.gravity.y = 400; // enable gravity
     /* TODO maybe we should have the player fall through the world, if you miss a jump, you fall and die? */
@@ -12,14 +12,14 @@ function CreatePlayer() {
     player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 7); // setup animation
 
     player.health = 30; // health
-
+    player.velocity = 200;
     player.inv = false; // player is not invunerable to start
     player.inv.time = 1000; // invunerable for 1 sec after damage taken
     player.body.immovable = false; // a test, enemies are pushing the player through the floor
     player.dmg = 1 + Math.floor(STR/10);
 }
 
-
+/* TODO Add Acceleration to the game */
 function playerControls() {
     if (shootKey.isDown) { // is the S key pressed
         fire = true;
@@ -27,13 +27,13 @@ function playerControls() {
         fire = false;
     }
     if (cursors.left.isDown) { //left arrow pressed
-        player.body.velocity.x = -150; //set velocity
+        player.body.velocity.x = -player.velocity; //set velocity
         player.animations.play('walk'); // play walking animation
 
         if (player.scale.x === 1) // is the sprite facing right?
             player.scale.x *= -1; // face left
     } else if (cursors.right.isDown) {
-        player.body.velocity.x = 150;
+        player.body.velocity.x = player.velocity;
 
         if (player.scale.x === -1)
             player.scale.x *= -1;
