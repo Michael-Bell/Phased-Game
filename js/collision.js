@@ -24,7 +24,6 @@ switch (weakerObject) {
      break; // Never Forget
 
     default:
-        alert("default");
         if(weakerObject.health>0){
         weakerObject.health= weakerObject.health-strongerObject.dmg;
         }
