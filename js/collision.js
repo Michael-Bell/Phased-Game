@@ -8,20 +8,20 @@
 
 switch (weakerObject) {
     case player:
-            if (player.inv===false) {
+            if (player.inv===false) { // if the player can be damaged
 
-         if (weakerObject.health <= 0) {
+         if (weakerObject.health <= 0) { // and the players health is 0
          
-             weakerObject.kill();
+             weakerObject.kill(); //we kill the player
              dead(); // we just killed the player, this tells the game to reset, we can add in more stuff later
-         } else {
-            player.inv = true; 
-            game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // we know this is the player, so we want him to be invincible
+         } else { //if the player is vunerable, and healthy
+            player.inv = true;  // the player is made invunerable
+            game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // We want him to be vunerable again in two seconds
             /* TODO Jesse: Add knockback */
-             weakerObject.health = weakerObject.health-strongerObject.dmg; // remove the stronger Objects damage from the weaker object (Modifier not doing anything atm)
+             weakerObject.health = weakerObject.health-strongerObject.dmg; // we want to remove the damage done by the enemy to him
          }
      }
-     break;
+     break; // Never Forget
 
     default:
         alert("default");

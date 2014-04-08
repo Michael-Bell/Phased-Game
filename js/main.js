@@ -35,7 +35,7 @@ function preload() {
 
     console.log('preload start');
     // Load Assets
-    game.load.image('sky', 'assets/sky.png');
+    //game.load.image('sky', 'assets/sky.png');
     game.load.image('ground', 'assets/ground.png');
     game.load.image('bullet', 'assets/key_blue.png');
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
@@ -68,8 +68,9 @@ function create() {
     // Enable Physics
     game.physics.startSystem(Phaser.Physics.ARCADE);
     //Background Image
-    sky = game.add.sprite(0, 0, 'sky');
-    sky.scale.setTo(10, 2);
+    //sky = game.add.sprite(0, 0, 'sky');
+    //sky.scale.setTo(10, 2);
+    game.stage.backgroundColor = '#C60F13'; // This is making the background red instead of a sky
     CreatePlatform();
     CreatePlayer();
     cursors = game.input.keyboard.createCursorKeys();
