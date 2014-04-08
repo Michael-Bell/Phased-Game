@@ -115,6 +115,9 @@ function create() {
     initCoinGroup();
 
     if(rain)createRain();
+    
+    initHealthRegen();
+    
     console.log('createdone');
 
 }
@@ -195,7 +198,9 @@ function render() {
     // Sprite debug info
     //game.debug.spriteInfo(logo1, 32, 32);
    // game.debug.spriteInfo(player, 100, 32);
-    game.debug.text("Time until event: " + game.time.events.duration, 32, 32);
+ game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
+
+    game.debug.text("Next tick: " + game.time.events.next.toFixed(0), 32, 96);
 
 
 
