@@ -200,47 +200,6 @@ function render() {
 
 }
 
- function collisionHandler(weakerObject, strongerObject) {
-
- // Stronger object damages weaker objects, removes 1 health
-
-     // Easy to change amount of health by adding in a third variable
-
-     if (!(weakerObject === player && player.inv)) {
-
-         if (weakerObject.health <= 0) {
-
-             weakerObject.kill();
-
- 
-
-             if (weakerObject === player)dead(); // if the weaker object that we killed is the player, run the dead function
-
-         } else {
-
-
-           if (weakerObject === player){ player.inv = true; game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this);}
-
-             weakerObject.health = weakerObject.health-strongerObject.dmg; // remove the stronger Objects damage from the weaker object (Modifier not doing anything atm)
-
-         }
-
- 
-
-         //  if (strongerObject == 17)strongerObject.kill();
-
- 
-
-         // if(strongerObject === bullet) strongerObject.kill(); // if the stronger object in the encounter is a bullet, kill the bullet sprite
-
- 
-
- 
-
-     }
-
- }
-
 function dead() { // you died :(
     /* TODO make a death screen with cool statistics on the game */
     x = game.camera.x + (game.width / 2);
