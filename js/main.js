@@ -40,7 +40,7 @@ function preload() {
     game.load.image('bullet', 'assets/key_blue.png');
     game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
     game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
-    game.load.spritesheet('heart', 'assets/heart/spritesheet.png', 70, 70, 5);
+    game.load.spritesheet('heart', 'assets/heart/red_spritesheet.png', 70, 70, 5);
     game.load.image('goldcoin', 'assets/goldcoin.png');
 
     if(rain)loadRain();
@@ -70,7 +70,7 @@ function create() {
     //Background Image
     //sky = game.add.sprite(0, 0, 'sky');
     //sky.scale.setTo(10, 2);
-    game.stage.backgroundColor = '#C60F13'; // This is making the background red instead of a sky
+    game.stage.backgroundColor = '#5da423'; // This is making the background red instead of a sky
     CreatePlatform();
     CreatePlayer();
     cursors = game.input.keyboard.createCursorKeys();
