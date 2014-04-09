@@ -35,8 +35,9 @@ nb-configuration.xml
 /nbproject/*
 mongoose.conf
 
-
+## bower_components needed to run the website, will make script to compile bower resources into app.js soon
 /bower_components/*
 /.sass-cache/*
 *.DS_Store
+/node_modules/*
 
