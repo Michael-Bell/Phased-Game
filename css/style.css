@@ -32,18 +32,7 @@ footer {
     margin-top: 25px;
 }
 
-a {
-    color: #c60f13;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-}
 
-a:hover,
-a:focus {
-    text-decoration: none;
-    color: #610506;
-}
 
 .light {
     font-weight: 400;
