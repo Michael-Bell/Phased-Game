@@ -9,7 +9,7 @@ function CreatePlayer() {
     /* TODO maybe we should have the player fall through the world, if you miss a jump, you fall and die? */
     player.body.collideWorldBounds = true; // our player cannot fall through the world
 
-    player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 7); // setup animation
+    player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 12); // setup animation
 
     player.health = 30; // health
     player.velocity = 200;

@@ -25,6 +25,7 @@ strong {
     min-height: 75%;
     height: 425px;
 }
+.min-height{min-height:55px;}
 
 footer {
     text-align: center;

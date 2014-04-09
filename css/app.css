@@ -157,7 +157,7 @@ select {
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 64rem;
+  max-width: 6249.9375rem;
   *zoom: 1;
 }
 /* line 116, ../bower_components/foundation/scss/foundation/components/_global.scss */
@@ -6233,7 +6233,7 @@ meta.foundation-mq-topbar {
 
   /* line 452, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
   .contain-to-grid .top-bar {
-    max-width: 64rem;
+    max-width: 6249.9375rem;
     margin: 0 auto;
     margin-bottom: 0;
   }
