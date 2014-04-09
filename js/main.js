@@ -70,7 +70,7 @@ function create() {
     //Background Image
     //sky = game.add.sprite(0, 0, 'sky');
     //sky.scale.setTo(10, 2);
-    game.stage.backgroundColor = '#5da423'; // This is making the background red instead of a sky
+    game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
     CreatePlatform();
     CreatePlayer();
     cursors = game.input.keyboard.createCursorKeys();
