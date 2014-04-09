@@ -60,6 +60,7 @@ function preload() {
 
 function create() {
     console.log('createstart');
+    
 
     //  Modify the world and camera bounds
 
@@ -215,7 +216,7 @@ function dead() { // you died :(
     x = game.camera.x + (game.width / 2);
 
     y = game.camera.y + (game.height / 2);
-    button = game.add.button(x, y, 'button', actionOnClick, this, 1, 0, 2); // lets put a reset button in the center of the screen
+   $('#highscores').foundation('reveal', 'open');
 
 }
 
