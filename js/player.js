@@ -72,5 +72,7 @@ function initHealthRegen(){
 game.time.events.loop(Phaser.Timer.SECOND* 10, healthRegen, this);
 }
 function healthRegen(){
+if(player.health<40){
 player.health++;
+}
 }
