@@ -12,9 +12,9 @@ module.exports = function (grunt) {
 					destPrefix : 'js/vendor'
 				},
 				files : {
-					'jquery/dist/jquery.min.js' : 'jquery.min.js',
-					'foundation/js/foundation.min.js' : 'foundation.min.js',
-					'modernizr/modernizr.js' : 'modernizr.js'
+					'jquery.min.js' : 'jquery/dist/jquery.min.js',
+					'foundation.min.js' : 'foundation/js/foundation.min.js',
+					'modernizr.js' : 'modernizr/modernizr.js'
 				}
 			}
 		}
