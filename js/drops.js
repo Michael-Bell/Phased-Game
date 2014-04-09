@@ -24,13 +24,16 @@ function coinBounce(){
   
         if (item.body.touching.down)
         {
-            if(item.body.velocity.x>10 || item.body.velocity.x<-10){
+            if(item.body.velocity.x>15 || item.body.velocity.x<-15){
             item.body.velocity.x= item.body.velocity.x/1.2;
-            item.body.velocity.y =  -350;
+            item.body.velocity.y =  -200;
+            console.log('a');
+            
             }
             else{
             item.body.velocity.x= 0;
             item.body.velocity.y = 0;
+            console.log('b');
             }
         }
         

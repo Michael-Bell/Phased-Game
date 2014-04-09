@@ -128,7 +128,7 @@ function create() {
 
 
 function update() {
-   coinBounce();
+   
    game.physics.arcade.collide(player, ground); // Player cannot go through ground
     game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
 
@@ -136,7 +136,7 @@ function update() {
     /* TODO create enemy group, give it a better name than flya */
     game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
     // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
-
+    coinBounce();
     player.body.velocity.x = 0;
     game.camera.y = player.y - 200;
     game.camera.x = player.x - 500; // Hacky camera following
