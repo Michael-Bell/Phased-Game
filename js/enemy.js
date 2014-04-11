@@ -35,11 +35,11 @@ function animateEnemies(){  // tween animate flying up and down
 
     var tween = game.add.tween(enemyGroup)//.to({ x: 600 }, 2000, Phaser.Easing.Linear.None)
 
-        .to({ y: 500 }, 2000, Phaser.Easing.Linear.None)
+        .to({ y: 560-70 }, 2000, Phaser.Easing.Linear.None)
 
         //.to({ x: 100 }, 2000, Phaser.Easing.Linear.None)
 
-        .to({ y: 700 }, 2000, Phaser.Easing.Linear.None)
+        .to({ y: 140 }, 2000, Phaser.Easing.Linear.None)
 
         .loop()
 

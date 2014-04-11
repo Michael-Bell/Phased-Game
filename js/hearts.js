@@ -6,7 +6,7 @@ function initHearts(){
         var c = heartGroup.create(0,0, 'heart', 0);
         c.name = 'heart' + i;
         c.fixedToCamera = true;
-        c.cameraOffset.setTo(x,600-35-10);
+        c.cameraOffset.setTo(x,560-35-10);
         c.scale.setTo(.5,.5);
 
         c.frame=1;

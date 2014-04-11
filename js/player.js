@@ -1,6 +1,6 @@
 function CreatePlayer() {
 // Enter Player 1
-    player = game.add.sprite(75, 475, 'player'); // starting location
+    player = game.add.sprite(0,394, 'player'); // starting location
     player.anchor.setTo(.5, .5); // this lets us rotate/flip sprite in the middle of the sprite, if not set, it will rotate from top left corner
     game.physics.arcade.enable(player); // we need physics
     
@@ -10,7 +10,8 @@ function CreatePlayer() {
     player.body.collideWorldBounds = true; // our player cannot fall through the world
 
     player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 12); // setup animation
-
+    player.scale.x =.9;
+    player.scale.y = .9;
     player.health = 30; // health
     player.velocity = 200;
     player.inv = false; // player is not invunerable to start
@@ -43,7 +44,7 @@ function playerControls() {
         player.frame = 0;
     }
     cursors.up.onDown.add(jumpCheck, this);
-    if (player.body.touching.down) { //is the player sprite touching another object on bottom?
+    if (player.body.blocked.down) { //is the player sprite touching another object on bottom?
         jumpCount = 0; // reset jump counter
         player.body.angularVelocity = 0; // stop spinning
         player.angle = 0; // stand up straight

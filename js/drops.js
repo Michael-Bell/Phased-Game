@@ -22,18 +22,18 @@ function gencoins(x,y){ //Trying to make a gold coin come drop out of an enemy
 function coinBounce(){
     coinGroup.forEach(function(item) {
   
-        if (item.body.touching.down)
+        if (item.body.blocked.down)
         {
             if(item.body.velocity.x>15 || item.body.velocity.x<-15){
             item.body.velocity.x= item.body.velocity.x/1.2;
             item.body.velocity.y =  -200;
-            console.log('a');
+            //console.log('a');
             
             }
             else{
             item.body.velocity.x= 0;
             item.body.velocity.y = 0;
-            console.log('b');
+            //console.log('b');
             }
         }
         
