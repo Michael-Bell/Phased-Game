@@ -56,6 +56,12 @@ function tileGen() {
     coinBoxGroup.enableBody = true;
     coinBoxGroup.physicsBodyType = Phaser.Physics.ARCADE;
 	map.createFromObjects('coin', 3, 'coinBox', 0, true, false, coinBoxGroup);
+    coinBoxGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
+    coinBoxGroup.forEach(function(item) {
+        // Update alpha first.
+        item.body.immovable = true;
+    });
+
   
 
 
@@ -76,17 +82,19 @@ function tileGen() {
 var asdf;
 function collideCoinbox(player,block){
 asdf=block;
+if(block.body.touching.down){
+    block.kill();
+    gencoins(block.x,block.y);
+    gencoins(block.x,block.y);
+    gencoins(block.x,block.y);
+    gencoins(block.x,block.y);
+    gencoins(block.x,block.y);
+    gencoins(block.x,block.y);
+    gencoins(block.x,block.y);
+    gencoins(block.x,block.y);
+    gencoins(block.x,block.y);
+}
 
-block.kill();
-gencoins(block.x,block.y);
-gencoins(block.x,block.y);
-gencoins(block.x,block.y);
-gencoins(block.x,block.y);
-gencoins(block.x,block.y);
-gencoins(block.x,block.y);
-gencoins(block.x,block.y);
-gencoins(block.x,block.y);
-gencoins(block.x,block.y);
 
 
 }

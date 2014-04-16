@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="128" height="16" tilewidth="70" tileheight="70">
+ <tileset firstgid="1" source="groundSprite.tsx"/>
+ <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
+  <image source="../enemies/flysheet.png" width="138" height="64"/>
+ </tileset>
+ <layer name="ground" width="128" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztl0EOAjEIRceF97+yqyYNgVKgDNj8l7BR0+h/0MHnAQBIfKcCPclwNM77TIVe6M8JR9Q7V+iFO9lxz/UCiNNhpqzuRwE/1c4HntmHfx8dZp3idY9ngA0tK7pfnc6Wns3t+rgD8lhltbNvW/ohwzPugBicf2mGLP+/uNeyXN9yB0h34ZyjljXte+28SE6rzCUP/+5fyzPCG7/n5Pnd/UedWJ9X2vzu7FpZ/jPmR/t8tX9PZtm7yao3Mn5TddbV/nfm7o199PaS4N6r+H6r3ag6u1E/zRAEZw==
+  </data>
+ </layer>
+ <objectgroup name="flyObj" width="128" height="16">
+  <object gid="10" x="2190" y="361"/>
+  <object gid="10" x="1139" y="652"/>
+  <object gid="10" x="2860" y="407"/>
+  <object gid="10" x="3627" y="558"/>
+  <object gid="10" x="4321" y="410"/>
+  <object gid="10" x="4514" y="404"/>
+  <object gid="10" x="5396" y="7"/>
+  <object gid="10" x="6008" y="825"/>
+  <object gid="10" x="7005" y="713"/>
+  <object gid="10" x="7196" y="689"/>
+  <object gid="10" x="7708" y="622"/>
+  <object gid="10" x="7969" y="704"/>
+  <object gid="10" x="8333" y="695"/>
+  <object gid="10" x="978" y="949"/>
+  <object gid="10" x="1175" y="943"/>
+ </objectgroup>
+ <objectgroup name="coin" width="128" height="16">
+  <object gid="3" x="3920" y="471"/>
+  <object gid="3" x="3429" y="-56"/>
+  <object gid="3" x="3504" y="-56"/>
+  <object gid="3" x="3580" y="-53"/>
+  <object gid="3" x="2726" y="768"/>
+  <object gid="3" x="3007" y="847"/>
+  <object gid="3" x="2704" y="193"/>
+  <object gid="3" x="3089" y="465"/>
+  <object gid="3" x="1677" y="629"/>
+  <object gid="3" x="7371" y="605"/>
+  <object gid="3" x="8153" y="641"/>
+  <object gid="3" x="6580" y="780"/>
+  <object gid="3" x="5768" y="59"/>
+  <object gid="3" x="5065" y="-123"/>
+  <object gid="1" x="4" y="559"/>
+  <object gid="1" x="901" y="393"/>
+ </objectgroup>
+</map>

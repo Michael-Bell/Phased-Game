@@ -44,7 +44,7 @@ function playerControls() {
         player.frame = 0;
     }
     cursors.up.onDown.add(jumpCheck, this);
-    if (player.body.blocked.down) { //is the player sprite touching another object on bottom?
+    if (player.body.blocked.down || player.body.touching.down) { //is the player sprite touching another object on bottom?
         jumpCount = 0; // reset jump counter
         player.body.angularVelocity = 0; // stop spinning
         player.angle = 0; // stand up straight

@@ -34,7 +34,7 @@ function preload() {
 	game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
 	game.load.spritesheet('heart', 'assets/heart/red_spritesheet.png', 70, 70, 5);
 	game.load.image('goldcoin', 'assets/goldcoin.png');
-	game.load.tilemap('level', 'assets/map/testMap.json', null, Phaser.Tilemap.TILED_JSON);
+	game.load.tilemap('level', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
 	game.load.image('tiles', 'assets/map/groundSprite.png');
   game.load.image('coinBox', 'assets/bonus.png');
 
@@ -185,7 +185,7 @@ function jump(number) {
 	player.body.velocity.y = -350; // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
 	if (number === 2) { // is this a double jump
 		player.body.velocity.y = -250 - DEX;
-		player.body.angularVelocity = -200; // start spinning
+		player.body.angularVelocity = -125; // start spinning
 
 	}
 
@@ -196,7 +196,7 @@ function render() {
 	// Sprite debug info
 //	game.debug.bodyInfo(player, 32, 32);
   game.debug.body(player);
-	// game.debug.spriteInfo(player, 100, 32);
+	// game.debug.spriteInfo(item, 32, 32);
 	//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
 
 	//game.debug.text("Next tick: " + game.time.events.next.toFixed(0), 32, 96);

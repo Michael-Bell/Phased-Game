@@ -4,7 +4,7 @@
 
      // damage is set by itemtosetdamageto.dmg=1; ex: player.js has player.dmg=1;
 
-     console.log(strongerObject.dmg);
+     //console.log(strongerObject.dmg);
 
 switch (weakerObject) {
     case player:
