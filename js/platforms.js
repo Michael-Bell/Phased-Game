@@ -31,11 +31,62 @@ function tileGen() {
 	//tileset = game.add.tileset('tiles');
 	//tileset.setCollisionRange(0, tileset.total - 1, true, true, true, true);
 	map.addTilesetImage('groundSprite', 'tiles');
+	map.addTilesetImage('flysheet', 'fly');
 	//  Creates a layer from the World1 layer in the map data.
 	//  A Layer is effectively like a Phaser.Sprite, so is added to the display list.
-	map.setCollisionBetween(0,8);
+	map.setCollisionBetween(0, 8);
 	//layer = game.add.tilemapLayer(0, 0, 640, 480, map.tiles, map, 0);
 	layer = map.createLayer('ground');
+	flyLayer = map.createLayer('flies');
+
+	//  And now we convert all of the Tiled objects with an ID of 34 into sprites within the coins group
+
+	//   map.createFromObjects('flies', 0, 'fly', 0, true, false, enemyGroup);
+	map.createFromObjects('flyObj', 10, 'fly', 0, true, false, enemyGroup);
+  map.createFromObjects('flyObj', 11, 'fly', 0, true, false, enemyGroup);
+  map.createFromObjects('flyObj', 12, 'fly', 0, true, false, enemyGroup);
+  
+    enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);    
+      enemyGroup.forEach(function(item) {
+        // Update alpha first.
+        item.dmg=1;
+    });
+    
+        coinBoxGroup = game.add.group();
+    coinBoxGroup.enableBody = true;
+    coinBoxGroup.physicsBodyType = Phaser.Physics.ARCADE;
+	map.createFromObjects('coin', 3, 'coinBox', 0, true, false, coinBoxGroup);
+  
+
+
+
+//  And play them
+
+    enemyGroup.callAll('animations.play', 'animations', 'wings');
+
+	//   map.createFromObjects('flies', 2, 'fly', 0, true, false, enemyGroup);
+
+	// map.createFromObjects('flies', 3, 'fly', 0, true, false, enemyGroup);
+
+
 	//  This resizes the game world to match the layer dimensions
 	layer.resizeWorld();
+}
+
+var asdf;
+function collideCoinbox(player,block){
+asdf=block;
+
+block.kill();
+gencoins(block.x,block.y);
+gencoins(block.x,block.y);
+gencoins(block.x,block.y);
+gencoins(block.x,block.y);
+gencoins(block.x,block.y);
+gencoins(block.x,block.y);
+gencoins(block.x,block.y);
+gencoins(block.x,block.y);
+gencoins(block.x,block.y);
+
+
 }

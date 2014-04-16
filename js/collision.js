@@ -4,7 +4,7 @@
 
      // damage is set by itemtosetdamageto.dmg=1; ex: player.js has player.dmg=1;
 
-     
+     console.log(strongerObject.dmg);
 
 switch (weakerObject) {
     case player:
@@ -27,6 +27,7 @@ switch (weakerObject) {
     default:
         if(weakerObject.health>0){
         weakerObject.health= weakerObject.health-strongerObject.dmg;
+        
         }
         else{
         weakerObject.kill();

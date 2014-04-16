@@ -32,18 +32,21 @@ function GenerateEnemy(x, y, uniqueID) {
 
 function animateEnemies(){  // tween animate flying up and down
     //  Here we'll chain 4 different tweens together and play through them all in a loop
+      enemyGroup.forEach(function(item) {
+        // Update alpha first.
+            var tween = game.add.tween(item)//.to({ x: 600 }, 2000, Phaser.Easing.Linear.None)
 
-    var tween = game.add.tween(enemyGroup)//.to({ x: 600 }, 2000, Phaser.Easing.Linear.None)
-
-        .to({ y: 560-70 }, 2000, Phaser.Easing.Linear.None)
+        .to({ y: item.x+300 }, 2000, Phaser.Easing.Linear.None)
 
         //.to({ x: 100 }, 2000, Phaser.Easing.Linear.None)
 
-        .to({ y: 140 }, 2000, Phaser.Easing.Linear.None)
+        .to({ y: item.x }, 2000, Phaser.Easing.Linear.None)
 
         .loop()
 
         .start();
+    });
+
 
 }
 

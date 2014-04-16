@@ -36,6 +36,7 @@ function preload() {
 	game.load.image('goldcoin', 'assets/goldcoin.png');
 	game.load.tilemap('level', 'assets/map/testMap.json', null, Phaser.Tilemap.TILED_JSON);
 	game.load.image('tiles', 'assets/map/groundSprite.png');
+  game.load.image('coinBox', 'assets/bonus.png');
 
 	if (rain)
 		loadRain();
@@ -64,7 +65,11 @@ function create() {
 	//sky.scale.setTo(10, 2);
 	game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
 	//CreatePlatform();
+	initEnemy(); // setup enemy Group
+//	lotsOfEnemies(); // Place some enemies
 tileGen();
+	animateEnemies(); // Need some movement
+
 	CreatePlayer();
 	cursors = game.input.keyboard.createCursorKeys();
 	shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
@@ -95,9 +100,6 @@ tileGen();
 
 	/* TODO Work on Enemy function, allows you to enter parameters to set where the enemy will spawn, and the min/max height as well as speed it travels at DONE*/
 
-	initEnemy(); // setup enemy Group
-	lotsOfEnemies(); // Place some enemies
-	animateEnemies(); // Need some movement
 	initHearts(); // Setup the heart Group, make it locked into the camera frame
 	initCoinGroup();
 
@@ -119,11 +121,13 @@ function update() {
 	//game.physics.arcade.collide(player, ground); // Player cannot go through ground
 	// game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
 game.physics.arcade.collide(player, layer); // Player cannot go through ground
+game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
  game.physics.arcade.collide(coinGroup, layer); // delete this if you want the coins to go through the ground
 game.physics.arcade.overlap(coinGroup, player, playerCoins, null, this);
 	game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
-	/* TODO create enemy group, give it a better name than flya */
-	game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
+		game.physics.arcade.collide(player, flyLayer, flyColl, null, this); // collisionHandler is called when player and flya(enemy) collide
+
+  game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
 	// TODO make collisionHandler awesome and have it handle all collisions - DONE For now
 	coinBounce();
 	player.body.velocity.x = 0;
@@ -190,7 +194,7 @@ function jump(number) {
 function render() {
 
 	// Sprite debug info
-	game.debug.bodyInfo(player, 32, 32);
+//	game.debug.bodyInfo(player, 32, 32);
   game.debug.body(player);
 	// game.debug.spriteInfo(player, 100, 32);
 	//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
@@ -219,3 +223,5 @@ function resetBullet(bullet) {
 	bullet.kill();
 
 }
+
+function flyColl(){alert('col');}
