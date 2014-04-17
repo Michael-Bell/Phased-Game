@@ -1,26 +1,26 @@
-function createBullet() {
+ function createBullet() {
 
-    /* TODO Make bullets die when off camera */
+   /* TODO Make bullets die when off camera */
 
     if (game.time.now > bulletTime) // is it too soon to shoot again?
     {
 
-        bullet = bullets.create(player.x, player.y - 6, 'bullet');
-        bullet.events.onOutOfBounds.add(goodbye, this);
-        bullet1 = bullet;
+        bullet = bullets.create(player.x, player.y-6, 'bullet');
+        bullet.events.onOutOfBounds.add( goodbye, this );
+        bullet1=bullet;
 
-        if (player.scale.x > 0) { // check which direction the player is facing, make bullet face the same way and set velocity
-            bullet.scale.x = 1;
-            bullet.x = player.x + 15;
-            bullet.body.velocity.x = 150;
-        } else {
-            bullet.body.velocity.x = -150;
-            bullet.scale.x = -1;
-            bullet.x = player.x - 15;
+            if (player.scale.x > 0) { // check which direction the player is facing, make bullet face the same way and set velocity
+                bullet.scale.x = 1;
+                bullet.x=player.x+15;
+                bullet.body.velocity.x = 150;
+            } else {
+                bullet.body.velocity.x = -150;
+                bullet.scale.x = -1;
+                bullet.x=player.x-15;
 
-        }
+            }
 
-        bulletTime = game.time.now + 300; // delay in ms till next shot can be fired
+            bulletTime = game.time.now + 300; // delay in ms till next shot can be fired
 
 
     }
@@ -28,7 +28,10 @@ function createBullet() {
 }
 
 
-function initBullets() {
+
+
+
+function initBullets(){
     bullets = game.add.group();
 
     bullets.enableBody = true;
@@ -36,24 +39,23 @@ function initBullets() {
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
 
 
+  }
+  var a;
+
+ function goodbye(obj) {
+ console.log(obj);
+   obj.kill();
 }
-var a;
 
-function goodbye(obj) {
-    console.log(obj);
-    obj.kill();
-}
+var asdf=true;
 
-var asdf = true;
+function checkBullet(){
+bullets.forEach(function(item) {
+    //console.log(item);
 
-function checkBullet() {
-    bullets.forEach(function (item) {
-        //console.log(item);
-
-        if (item.inCamera === false) {
-            //  item.visible=false;
-        }
+    if(item.inCamera===false){
+  //  item.visible=false;
+    }
 
 
-    });
-}
+    });}

@@ -2,12 +2,12 @@
  * Created by Owner on 4/4/14.
  */
 
-function loadRain() {
+function loadRain(){
     game.load.spritesheet('rain', 'assets/rain.png', 17, 17);
     console.log('load Rain');
 }
-function createRain() {
-    console.log('createRain');
+function createRain(){
+console.log('createRain');
     var emitter = game.add.emitter(game.world.centerX, 0, 400);
     emitter.width = game.world.width;
     // emitter.angle = 30; // uncomment to set an angle for the rain.
