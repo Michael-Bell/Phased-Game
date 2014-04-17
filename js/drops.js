@@ -4,7 +4,7 @@ function gencoins(x,y,goldincrease){ //Trying to make a gold coin come drop out 
     g.body.velocity.y = -150-Math.random()*150;
     g.body.velocity.x = 100-Math.random()*200;
     g.bounceCount = 0;
-    g.despawntimer = game.time.now+10000;
+    g.despawntimer = game.time.now+100000+Math.random()*1000;
     g.goldincrease = goldincrease;
 }
 function coinBounce(){
