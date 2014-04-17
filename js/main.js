@@ -123,6 +123,7 @@ function update() {
 	game.physics.arcade.collide(player, layer); // Player cannot go through ground
 	game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
     game.physics.arcade.collide(player, endBlocks, levelComplete,null,this);
+    game.physics.arcade.collide(bullets, layer, bulletWallColl,null,this);
 	game.physics.arcade.collide(coinGroup, layer); // delete this if you want the coins to go through the ground
 	game.physics.arcade.overlap(coinGroup, player, playerCoins, null, this);
 	game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide

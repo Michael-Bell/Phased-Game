@@ -50,6 +50,8 @@ function tileGen() {
 	enemyGroup.forEach(function (item) {
 		// Update alpha first.
 		item.dmg = 1;
+        item.goldWorth = 5;
+        item.xpWorth = 0.5;
 	});
 
 	coinBoxGroup = game.add.group();

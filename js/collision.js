@@ -41,3 +41,9 @@ function collisionHandler(weakerObject, strongerObject) {
 	}
 
 }
+
+
+
+function bulletWallColl(bullet, wall){
+    bullet.kill();
+}

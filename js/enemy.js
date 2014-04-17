@@ -15,7 +15,7 @@ function GenerateEnemy(x, y, uniqueID) {
 	c.goldWorth = 5;
 	c.xpWorth = 0.5;
 	//  Now using the power of callAll we can add the same animation to all enemies in the group:
-
+/* NOTE THIS IS A DEPRECATED FUNCTION; PLEASE USE THE ENEMYGROUP.FORALL IN PLATFROMS.JS TO SET GROUP VARS */
 	enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
 
 	//  And play them
