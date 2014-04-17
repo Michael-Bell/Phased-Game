@@ -1,23 +1,23 @@
 function CreatePlayer() {
 // Enter Player 1
-    player = game.add.sprite(0,394, 'player'); // starting location
+    player = game.add.sprite(0, 394, 'player'); // starting location
     player.anchor.setTo(.5, .5); // this lets us rotate/flip sprite in the middle of the sprite, if not set, it will rotate from top left corner
     game.physics.arcade.enable(player); // we need physics
-    
+
     player.body.bounce.y = 0.1; // gives a slight bounce
     player.body.gravity.y = 400; // enable gravity
     /* TODO maybe we should have the player fall through the world, if you miss a jump, you fall and die? */
     player.body.collideWorldBounds = true; // our player cannot fall through the world
 
     player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 12); // setup animation
-    player.scale.x =.9;
+    player.scale.x = .9;
     player.scale.y = .9;
     player.health = 30; // health
     player.velocity = 200;
     player.inv = false; // player is not invunerable to start
     player.inv.time = 1000; // invunerable for 1 sec after damage taken
     player.body.immovable = false; // a test, enemies are pushing the player through the floor
-    player.dmg = 1 + Math.floor(STR/10);
+    player.dmg = 1 + Math.floor(STR / 10);
     player.healthRegen = true;
 }
 
@@ -32,13 +32,13 @@ function playerControls() {
         player.body.velocity.x = -player.velocity; //set velocity
         player.animations.play('walk'); // play walking animation
 
-       
-            player.scale.x = -.9; // face left
+
+        player.scale.x = -.9; // face left
     } else if (cursors.right.isDown) {
         player.body.velocity.x = player.velocity;
 
-        
-            player.scale.x = .9;
+
+        player.scale.x = .9;
 
         player.animations.play('walk');
     } else {
@@ -54,29 +54,29 @@ function playerControls() {
 
     } else { // if not on the ground
         /* TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
-        player.frame = 11 ;// set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
+        player.frame = 11;// set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
     }
     if (fire) {
 
         createBullet();
     }
+    }
+
+
+
+function playerInv() {
+    player.inv = false;
 }
 
 
-
-function playerInv(){
-    player.inv =false;
-}
-
-
-function initHealthRegen(){
- //  A looped event is like a repeat event but with no limit, it will literally repeat itself forever, or until
+function initHealthRegen() {
+    //  A looped event is like a repeat event but with no limit, it will literally repeat itself forever, or until
 //  The first parameter is how long to wait before the event fires. In this case 1 second (you could pass in 1000 as the value as well.)
 //  The next two parameters are the function to call ('updateCounter') and the context under which that will happen.
-game.time.events.loop(Phaser.Timer.SECOND* 10, healthRegen, this);
+    game.time.events.loop(Phaser.Timer.SECOND * 10, healthRegen, this);
 }
-function healthRegen(){
-if(player.health<40 && player.healthRegen === true){
-player.health++;
-}
+function healthRegen() {
+    if (player.health < 40 && player.healthRegen === true) {
+        player.health++;
+    }
 }
