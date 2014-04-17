@@ -1,10 +1,11 @@
-function gencoins(x,y){ //Trying to make a gold coin come drop out of an enemy
+function gencoins(x,y,goldincrease){ //Trying to make a gold coin come drop out of an enemy
     var g = coinGroup.create(x, y, 'goldcoin');
     g.body.gravity.y = 300;
     g.body.velocity.y = -150-Math.random()*150;
     g.body.velocity.x = 100-Math.random()*200;
     g.bounceCount = 0;
     g.despawntimer = game.time.now+10000;
+    g.goldincrease = goldincrease;
 }
 function coinBounce(){
     coinGroup.forEach(function(item) {
@@ -42,7 +43,7 @@ function initCoinGroup(){
 }
 
 function playerCoins(player, coin){
-    gold = /*goldincrease*/ + gold + Math.floor(Math.random()*DEX/5);
+    gold = coin.goldincrease + gold + Math.floor(Math.random()*DEX/5);
     coin.kill();
     }
 

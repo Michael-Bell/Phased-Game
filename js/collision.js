@@ -17,7 +17,11 @@ switch (weakerObject) {
          } else { //if the player is vunerable, and healthy
             player.inv = true;  // the player is made invunerable
             game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // We want him to be vunerable again in two seconds
-            /* TODO Jesse: Add knockback */
+             player.body.velocity.x = - 500;
+             player.body.velocity.y = - 200;
+             player.velocity = 100;
+             player.healthRegen = false;
+             player.jumpCount = 2;
          }
                       weakerObject.health = weakerObject.health-strongerObject.dmg; // we want to remove the damage done by the enemy to him, even if he dies, so that the health displayed is still 0
 
@@ -30,6 +34,8 @@ switch (weakerObject) {
         
         }
         else{
+        gencoins(strongerObject.x,strongerObject.y,weakerObject.goldWorth);
+        xpgain(weakerObject.xpWorth);
         weakerObject.kill();
         strongerObject.kill();
         }

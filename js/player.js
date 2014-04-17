@@ -18,6 +18,7 @@ function CreatePlayer() {
     player.inv.time = 1000; // invunerable for 1 sec after damage taken
     player.body.immovable = false; // a test, enemies are pushing the player through the floor
     player.dmg = 1 + Math.floor(STR/10);
+    player.healthRegen = true;
 }
 
 /* TODO Add Acceleration to the game */
@@ -48,6 +49,8 @@ function playerControls() {
         jumpCount = 0; // reset jump counter
         player.body.angularVelocity = 0; // stop spinning
         player.angle = 0; // stand up straight
+        player.velocity = 200;
+        player.healthRegen = true;
 
     } else { // if not on the ground
         /* TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
@@ -73,7 +76,7 @@ function initHealthRegen(){
 game.time.events.loop(Phaser.Timer.SECOND* 10, healthRegen, this);
 }
 function healthRegen(){
-if(player.health<40){
+if(player.health<40 && player.healthRegen === true){
 player.health++;
 }
 }

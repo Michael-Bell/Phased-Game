@@ -14,6 +14,8 @@ function GenerateEnemy(x, y, uniqueID) {
     c.name = 'fly'+ uniqueID;
     c.dmg = 1;
     c.body.immovable = true;
+    c.goldWorth = 5;
+    c.xpWorth = 0.5;
     //  Now using the power of callAll we can add the same animation to all enemies in the group:
 
     enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
