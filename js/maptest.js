@@ -46,25 +46,20 @@ function create() {
 
 	map = game.add.tilemap("level");
 
-      //  The first parameter is the tileset name, as specified in the Tiled map editor (and in the tilemap json file)
+	//  The first parameter is the tileset name, as specified in the Tiled map editor (and in the tilemap json file)
 
-    //  The second parameter maps this name to the Phaser.Cache key 'tiles'
+	//  The second parameter maps this name to the Phaser.Cache key 'tiles'
 
-    map.addTilesetImage('groundSprite', 'tiles');
+	map.addTilesetImage('groundSprite', 'tiles');
 
+	//  Creates a layer from the World1 layer in the map data.
 
+	//  A Layer is effectively like a Phaser.Sprite, so is added to the display list.
 
-    //  Creates a layer from the World1 layer in the map data.
+	layer = map.createLayer('ground');
 
-    //  A Layer is effectively like a Phaser.Sprite, so is added to the display list.
+	//  This resizes the game world to match the layer dimensions
 
-    layer = map.createLayer('ground');
-
-
-
-    //  This resizes the game world to match the layer dimensions
-
-    layer.resizeWorld();
-
+	layer.resizeWorld();
 
 }

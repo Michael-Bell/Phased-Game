@@ -16,7 +16,7 @@ var jumpCount = 0;
 
 var player;
 var bullets;
-var gold = 0;
+
 
 var map;
 
@@ -36,7 +36,8 @@ function preload() {
 	game.load.image('goldcoin', 'assets/goldcoin.png');
 	game.load.tilemap('level', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
 	game.load.image('tiles', 'assets/map/groundSprite.png');
-  game.load.image('coinBox', 'assets/bonus.png');
+	game.load.image('coinBox', 'assets/bonus.png');
+    game.load.image('endblock', 'assets/ground_sand.png');
 
 	if (rain)
 		loadRain();
@@ -66,8 +67,8 @@ function create() {
 	game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
 	//CreatePlatform();
 	initEnemy(); // setup enemy Group
-//	lotsOfEnemies(); // Place some enemies
-tileGen();
+	//	lotsOfEnemies(); // Place some enemies
+	tileGen();
 	animateEnemies(); // Need some movement
 
 	CreatePlayer();
@@ -81,8 +82,7 @@ tileGen();
 
 	bullets.physicsBodyType = Phaser.Physics.ARCADE;
 
-	for (var i = 0; i < 20; i++)
-		{
+	for (var i = 0; i < 20; i++) {
 
 		var b = bullets.create(0, 0, 'bullet');
 
@@ -108,10 +108,10 @@ tileGen();
 
 	initHealthRegen();
 
-	gencoins(200, 700);
-	gencoins(200, 700);
-	gencoins(200, 700);
-	gencoins(200, 700);
+	gencoins(200, 700,1);
+	gencoins(200, 700,1);
+	gencoins(200, 700,1);
+	gencoins(200, 700,1);
 	console.log('createdone');
 
 }
@@ -120,25 +120,25 @@ function update() {
 
 	//game.physics.arcade.collide(player, ground); // Player cannot go through ground
 	// game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
-game.physics.arcade.collide(player, layer); // Player cannot go through ground
-game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
- game.physics.arcade.collide(coinGroup, layer); // delete this if you want the coins to go through the ground
-game.physics.arcade.overlap(coinGroup, player, playerCoins, null, this);
+	game.physics.arcade.collide(player, layer); // Player cannot go through ground
+	game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
+    game.physics.arcade.collide(player, endBlocks, levelComplete,null,this);
+	game.physics.arcade.collide(coinGroup, layer); // delete this if you want the coins to go through the ground
+	game.physics.arcade.overlap(coinGroup, player, playerCoins, null, this);
 	game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
-		game.physics.arcade.collide(player, flyLayer, flyColl, null, this); // collisionHandler is called when player and flya(enemy) collide
+	game.physics.arcade.collide(player, flyLayer, flyColl, null, this); // collisionHandler is called when player and flya(enemy) collide
 
-  game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
+	game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
 	// TODO make collisionHandler awesome and have it handle all collisions - DONE For now
 	coinBounce();
 	player.body.velocity.x = 0;
 	//game.camera.y = player.y - 200;
 	//game.camera.x = player.x - 500; // Hacky camera following
-   game.camera.follow(player);
-
+	game.camera.follow(player);
 
 	/* TODO I saw a camera.follow function in the docs, see if its better at following the sprites */
 	healthCheck();
-xpcheck();
+	xpcheck();
 	playerControls.call(this);
 }
 jumpCheck = function () { // lovely function to see if you can jump
@@ -164,8 +164,8 @@ function jump(number) {
 function render() {
 
 	// Sprite debug info
-//	game.debug.bodyInfo(player, 32, 32);
-  game.debug.body(player);
+	//	game.debug.bodyInfo(player, 32, 32);
+	game.debug.body(player);
 	// game.debug.spriteInfo(item, 32, 32);
 	//game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
 
@@ -184,8 +184,7 @@ function dead() { // you died :(
 
 function actionOnClick() {
 	/* TODO this is going to cause bugs when we start putting in multiple game states */
-	$('#restartGame').foundation('reveal', 'close');
-	game.state.start(game.state.current); // reset the game, should be replaced with something more reliable
+
 }
 
 function resetBullet(bullet) {
@@ -194,4 +193,10 @@ function resetBullet(bullet) {
 
 }
 
-function flyColl(){alert('col');}
+function flyColl() {
+	alert('col');
+}
+
+
+function levelComplete(player, block){	$('#level').foundation('reveal', 'open');
+}

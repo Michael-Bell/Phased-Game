@@ -6,7 +6,7 @@
  </tileset>
  <layer name="ground" width="128" height="19">
   <data encoding="base64" compression="zlib">
-   eJztl0EOwzAIBNNDD/n/h3OyZCFsDJhArB2JS1tZ7Q449LoAAAAAAEDPvytQkwhH7bxfV+iF+uxwRL1zhV44kxX3XC8APxVmSuu+FbCT7bxhmX34t1Fh1ilW93gG6JCyovvV7mzp2dyujzsgjllWK/u2ph8iPOMO8MH5H82Q5v8X91qU61PugNFd2OcoZU37XjrPk9Ms85GHr/uX8vTwxu/ZeX51/14n2ueVNL8ru1aU/4j5kT6f7d+SWfRuQvvh7iriN2Vnne1/Ze7e2EdPrxHcexnfb7YbZWfX6gEDfwRz
+   eJztl0EOwzAIBJND/v/lnCxZCBsDJhBrR+LSVla7Aw69LgAAAAAA0PN0BWoS4aidd3eFXqjPDkfUO1fohTNZcc/1AvBTYaa07lsBO9nOG5bZh38bFWadYnWPZ4AOKSu6X+3Olp7N7fq4A+KYZbWyb2v6IcIz7gAfnP/RDGn+f3GvRbk+5Q4Y3YV9jlLWtO+l8zw5zTIfefi7fylPD1/8np3nV/fvdaJ9Xknzu7JrRfmPmB/p89n+LZlF7yazfoj4TdlZZ/tfmbsv9tHTawT3Xsb3m+1G2dm1egGWmARY
   </data>
  </layer>
  <objectgroup name="flyObj" width="128" height="19">
@@ -43,5 +43,10 @@
   <object gid="3" x="5065" y="87"/>
   <object gid="1" x="4" y="769"/>
   <object gid="1" x="901" y="603"/>
+ </objectgroup>
+ <objectgroup name="endBlocks" width="128" height="19">
+  <object gid="9" x="8750" y="1190"/>
+  <object gid="9" x="8820" y="1190"/>
+  <object gid="9" x="8890" y="1190"/>
  </objectgroup>
 </map>

@@ -43,32 +43,38 @@ function tileGen() {
 
 	//   map.createFromObjects('flies', 0, 'fly', 0, true, false, enemyGroup);
 	map.createFromObjects('flyObj', 10, 'fly', 0, true, false, enemyGroup);
-  map.createFromObjects('flyObj', 11, 'fly', 0, true, false, enemyGroup);
-  map.createFromObjects('flyObj', 12, 'fly', 0, true, false, enemyGroup);
+	map.createFromObjects('flyObj', 11, 'fly', 0, true, false, enemyGroup);
+	map.createFromObjects('flyObj', 12, 'fly', 0, true, false, enemyGroup);
 
-    enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
-      enemyGroup.forEach(function(item) {
-        // Update alpha first.
-        item.dmg=1;
-    });
+	enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
+	enemyGroup.forEach(function (item) {
+		// Update alpha first.
+		item.dmg = 1;
+	});
 
-        coinBoxGroup = game.add.group();
-    coinBoxGroup.enableBody = true;
-    coinBoxGroup.physicsBodyType = Phaser.Physics.ARCADE;
+	coinBoxGroup = game.add.group();
+	coinBoxGroup.enableBody = true;
+	coinBoxGroup.physicsBodyType = Phaser.Physics.ARCADE;
 	map.createFromObjects('coin', 3, 'coinBox', 0, true, false, coinBoxGroup);
-    coinBoxGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
-    coinBoxGroup.forEach(function(item) {
+
+	coinBoxGroup.forEach(function (item) {
+		// Update alpha first.
+		item.body.immovable = true;
+	});
+
+    endBlocks = game.add.group();
+    endBlocks.enableBody = true;
+    endBlocks.physicsBodyType = Phaser.Physics.ARCADE;
+    map.createFromObjects('endBlocks', 9, 'endblock', 0, true, false, endBlocks);
+
+    endBlocks.forEach(function (item) {
         // Update alpha first.
         item.body.immovable = true;
     });
 
+	//  And play them
 
-
-
-
-//  And play them
-
-    enemyGroup.callAll('animations.play', 'animations', 'wings');
+	enemyGroup.callAll('animations.play', 'animations', 'wings');
 
 	//   map.createFromObjects('flies', 2, 'fly', 0, true, false, enemyGroup);
 
@@ -80,21 +86,19 @@ function tileGen() {
 }
 
 var asdf;
-function collideCoinbox(player,block){
-asdf=block;
-if(block.body.touching.down){
-    block.kill();
-    gencoins(block.x,block.y);
-    gencoins(block.x,block.y);
-    gencoins(block.x,block.y);
-    gencoins(block.x,block.y);
-    gencoins(block.x,block.y);
-    gencoins(block.x,block.y);
-    gencoins(block.x,block.y);
-    gencoins(block.x,block.y);
-    gencoins(block.x,block.y);
-}
-
-
+function collideCoinbox(player, block) {
+	asdf = block;
+	if (block.body.touching.down) {
+		block.kill();
+		gencoins(block.x, block.y, 1);
+		gencoins(block.x, block.y,1);
+		gencoins(block.x, block.y,1);
+		gencoins(block.x, block.y,1);
+		gencoins(block.x, block.y,1);
+		gencoins(block.x, block.y,1);
+		gencoins(block.x, block.y,1);
+		gencoins(block.x, block.y,1);
+		gencoins(block.x, block.y,1);
+	}
 
 }
