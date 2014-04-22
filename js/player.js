@@ -20,6 +20,8 @@ function CreatePlayer() {
 	player.dmg = 1 + Math.floor(STR / 10);
 	player.healthRegen = true;
     player.gold = 0;
+    player.knockedLeft=0;
+    player.knockedRight=0;
 }
 
 /* TODO Add Acceleration to the game */
