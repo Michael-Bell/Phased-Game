@@ -54,7 +54,7 @@ function bulletWallColl(bullet, wall){
 }
 
 function knockback(){
-    if(player.knockedLeft>0 && player.knockedLeft<15) {
+    if(player.knockedLeft>0) {
         player.body.acceleration.x = 3000;
         player.knockedLeft++;
         if(player.knockedLeft>=14){
@@ -62,7 +62,7 @@ function knockback(){
             player.body.acceleration.x = 0;
         }
     }
-    if(player.knockedRight>0 && player.knockedRight<15) {
+    if(player.knockedRight>0) {
         player.body.acceleration.x = -3000;
         player.knockedRight++;
         if(player.knockedRight>=14){
