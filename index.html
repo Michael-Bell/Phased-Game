@@ -1,142 +1,253 @@
 <!doctype html>
 <html class="no-js" lang="en">
-    
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"
-        />
-        <link rel="stylesheet" href="css/app.css" />
-        <script src="js/vendor/modernizr.js">
-            
-        </script>
-        <script type="text/javascript" src="js/phaser.js">
-            
-        </script>
-        <script type="text/javascript" src="js/platforms.js">
-            
-        </script>
-        <script type="text/javascript" src="js/bullet.js">
-            
-        </script>
-        <script type="text/javascript" src="js/camera.js">
-            
-        </script>
-        <script type="text/javascript" src="js/player.js">
-            
-        </script>
-        <script type="text/javascript" src="js/enemy.js">
-            
-        </script>
-        <script type="text/javascript" src="js/rain.js">
-            
-        </script>
-        <script type="text/javascript" src="js/hearts.js">
-            
-        </script>
-        <script type="text/javascript" src="js/experience.js">
-            
-        </script>
-        <script type="text/javascript" src="js/drops.js">
-            
-        </script>
-        <script type="text/javascript" src="js/collision.js">
-            
-        </script>
-        <script type="text/javascript" src="js/main.js">
-            
-        </script>
- 
-        <title>Game</title>
-    </head>
-    
-    <body>
-        <div class="row">
-            <div class="large-10 columns">
-                <div id="Game"></div>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+            />
+    <link rel="stylesheet" href="css/app.css"/>
+    <script src="js/vendor/modernizr.js">
+
+    </script>
+    <script type="text/javascript" src="js/phaser.js">
+
+    </script>
+    <script type="text/javascript" src="js/platforms.js">
+
+    </script>
+    <script type="text/javascript" src="js/bullet.js">
+
+    </script>
+    <script type="text/javascript" src="js/camera.js">
+
+    </script>
+    <script type="text/javascript" src="js/player.js">
+
+    </script>
+    <script type="text/javascript" src="js/enemy.js">
+
+    </script>
+    <script type="text/javascript" src="js/rain.js">
+
+    </script>
+    <script type="text/javascript" src="js/hearts.js">
+
+    </script>
+    <script type="text/javascript" src="js/experience.js">
+
+    </script>
+    <script type="text/javascript" src="js/drops.js">
+
+    </script>
+    <script type="text/javascript" src="js/collision.js">
+
+    </script>
+    <script type="text/javascript" src="js/main.js">
+
+    </script>
+
+    <title>Game</title>
+</head>
+
+<body>
+<div id="scoreModal" class="reveal-modal" data-reveal>
+    <div class="large-7 column">
+        <dl class="tabs" data-tab>
+            <dd class="active">
+                <a href="#panel2-1">
+                    Your Score
+                </a>
+            </dd>
+            <dd>
+                <a href="#panel2-2">
+                    HighScores
+                </a>
+            </dd>
+            <dd>
+                <a href="#panel2-3">
+                    Latest Scores
+                </a>
+            </dd>
+        </dl>
+        <div class="tabs-content">
+            <div class="content active" id="panel2-1">
+                <h3>
+                    <small>
+                        Score:
+                    </small>
+                </h3>
+
+                <div id="scoreBox">
+                </div>
+                <h3>
+                    <small>
+                        Gold:
+                    </small>
+                </h3>
+
+                <div id="goldBox">
+                </div>
+                <h3>
+                    <small>
+                        XP:
+                    </small>
+                </h3>
+
+                <div id="xpBox">
+                </div>
+                <br> </br>
+                <blockquote>
+                    You tried your best, but you have perished. Better luck next time, maybe one day, this'll tell you
+                    what killed you...
+                </blockquote>
             </div>
-            <div class="large-2 columns text-center">
-                <div class="panel">
-                    <p>
-                    <h2><small>Score</small></h2>
-                    Health Points: <div id="health"></div>
-                    Gold: <div id="gold"></div>
-                    XP: <div id="xp"></div>
-                    </p>
-                </div>
-                <a href="#" class="button" data-reveal-id="info" data-reveal>
-  About
-</a>
-                <div id="info" class="reveal-modal" data-reveal>
-                    <h1>
-                        <small>Phased Game</small>
-                    </h1>
-                    <p>This is a platforming game being built for IT. It uses the
-                        <em>
-                            <a href="http://phaser.io">
-        Phaser.js
-      </a>game engine</em> to power it. Hopefully this will be a fun game, and it
-                        will not break. You can play the current release
-                        <a href="http://michaelbell.ca/Phased-Game">
-      here
-    </a>.
-                        <a href="http://github.com/michael-bell/Phased-Game" class="button expand [radius round]">
-      View the Code
-    </a>
-                    </p>
-                    <a class="close-reveal-modal">&#215;</a>
-                </div>
-                <a href="#" class="button" data-reveal-id="htp" data-reveal>
-  How to Play
-</a>
-                <div id="htp" class="reveal-modal" data-reveal>
-                    <h1>
-                        <small>How to Play</small>
-                    </h1>
-                    <p>Document the controls here...</p>
-                    <a class="close-reveal-modal">&#215;</a>
-                </div>
-            
+
+            <div class="content" id="panel2-2">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="200">Name</th>
+                        <th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody id="highscores">
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="content" id="panel2-3">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="200">Name</th>
+                        <th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody id="todo-list">
+
+                    </tbody>
+                </table>
             </div>
 
         </div>
-        <div class="row">
-            <div class="large-12 text-center">
-                <footer>A game made by
-                    <strong>Jesse</strong> and
-                    <strong>Michael</strong>
-                </footer>
-            </div>
-        </div>
-        
-        <div id="highscores" class="reveal-modal" data-reveal>
-                    <h1>
-                        <small>You Died!</small>
-                    </h1>
-                    <p>Here are highscores</p>
-                    <a href="#" id="restartGame" class=button>Play Again</a>
-                    <a class="close-reveal-modal">&#215;</a>
-                </div>
 
-        <div id="level" class="reveal-modal" data-reveal>
+    </div>
+
+
+    <div class="large-4 columns">
+        <h1 class="subheader">You Died</h1>
+
+        <h3>
+            <small>Submit your score</small>
+        </h3>
+
+
+        <label>Name <input type="text" id="name" placeholder="John Smith"></label>
+
+        <label>Score</label>
+        <h4>
+            <small>
+                <div id="score2"></div>
+            </small>
+        </h4>
+        <button id="submit">Submit</button>
+
+
+    </div>
+
+
+</div>
+<div class="row">
+    <div class="large-10 columns">
+        <div id="Game"></div>
+    </div>
+    <div class="large-2 columns text-center">
+        <div class="panel">
+            <p>
+
+            <h2>
+                <small>Score</small>
+            </h2>
+            Health Points:
+            <div id="health"></div>
+            Gold:
+            <div id="gold"></div>
+            XP:
+            <div id="xp"></div>
+            </p>
+        </div>
+        <a href="#" class="button" data-reveal-id="info" data-reveal>
+            About
+        </a>
+
+        <div id="info" class="reveal-modal" data-reveal>
             <h1>
-                <small>Finished!</small>
+                <small>Phased Game</small>
             </h1>
-            <p>Here are highscores</p>
-            <a href="#" id="restartGame" class=button>Play Again</a>
+            <p>This is a platforming game being built for IT. It uses the
+                <em>
+                    <a href="http://phaser.io">
+                        Phaser.js
+                    </a>game engine</em> to power it. Hopefully this will be a fun game, and it
+                will not break. You can play the current release
+                <a href="http://michaelbell.ca/Phased-Game">
+                    here
+                </a>.
+                <a href="http://github.com/michael-bell/Phased-Game" class="button expand [radius round]">
+                    View the Code
+                </a>
+            </p>
+            <a class="close-reveal-modal">&#215;</a>
+        </div>
+        <a href="#" class="button" data-reveal-id="htp" data-reveal>
+            How to Play
+        </a>
+
+        <div id="htp" class="reveal-modal" data-reveal>
+            <h1>
+                <small>How to Play</small>
+            </h1>
+            <p>Document the controls here...</p>
             <a class="close-reveal-modal">&#215;</a>
         </div>
 
-        <script src="js/vendor/jquery.min.js">
-            
-        </script>
-        <script src="js/vendor/foundation.min.js">
-            
-        </script>
-        <script src="js/app.js">
-            
-        </script>
-    </body>
+    </div>
 
+</div>
+<div class="row">
+    <div class="large-12 text-center">
+        <footer>A game made by
+            <strong>Jesse</strong> and
+            <strong>Michael</strong>
+        </footer>
+    </div>
+</div>
+
+
+<div id="level" class="reveal-modal" data-reveal>
+    <h1>
+        <small>Finished!</small>
+    </h1>
+    <p>Here are highscores</p>
+    <a href="#" id="restartGame" class=button>Play Again</a>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<script src="js/vendor/jquery.min.js">
+
+</script>
+<script src="js/vendor/foundation.min.js">
+
+</script>
+<script src="//cdn.jsdelivr.net/pouchdb/2.1.0/pouchdb.min.js"></script>
+
+
+<script src="js/app.js">
+
+</script>
+<script type="text/javascript" src="js/database.js"></script>
+
+</body>
 
 
 </html>

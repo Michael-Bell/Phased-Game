@@ -183,7 +183,14 @@ function dead() { // you died :(
     x = game.camera.x + (game.width / 2);
 
     y = game.camera.y + (game.height / 2);
-    $('#highscores').foundation('reveal', 'open');
+    score = player.gold;
+    $("#scoreBox").text(score);
+    $("#score2").text(score);
+    $("#goldBox").text(player.gold);
+    $("#xpBox").text(currentxp);
+    $('#scoreModal').foundation('reveal', 'open');
+    showTodos();
+    console.log('dead');
 
 }
 
