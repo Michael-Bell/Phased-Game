@@ -23,3 +23,4 @@ function textUpdate(){
     Foundation.utils.S('#gold').innerHTML=player.gold;
     Foundation.utils.S('#xp').innerHTML=currentxp; */
 }
+
