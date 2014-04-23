@@ -10,10 +10,11 @@ Some people don't have Node.js installed, so if you don't have Node.js/bower the
 Platformer graphics by Kenney Vleugels (www.kenney.nl), soon to be replaced
 
 
-
-Before I forget, this is how to set a score
-```shell
- curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"score":1240,"id":null,"name":"Curl Test3"}'  http://warm-hamlet-9230.herokuapp.com/highscores
-
+## Scoring system
+To Reset the score database run
+```javascript
+PouchDB.destroy('test', function(err, info) { });
+db = new PouchDB('test');
 ```
+From the console
 
