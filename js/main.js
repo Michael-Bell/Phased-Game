@@ -135,6 +135,7 @@ textUpdate();
     // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
     coinBounce();
     knockback();
+    leveltimer(0);
     player.body.velocity.x = 0;
     //game.camera.y = player.y - 200;
     //game.camera.x = player.x - 500; // Hacky camera following
@@ -211,4 +212,12 @@ var pausedState= function(game){};
 
 pausedState.prototype = {
 
+};
+
+leveltimer(15000);
+function leveltimer(time){
+    if(time!=0){
+        ltimer = time;
+    }
+    ltimer--;
 }

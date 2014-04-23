@@ -24,7 +24,6 @@ function collisionHandler(weakerObject, strongerObject) {
                 if(player.scale.x<0){
                     player.knockedLeft=1;
                 }else{
-                    player.body.velocity.x = -500;
                     player.knockedRight=1;
                 }
 			}
@@ -55,7 +54,7 @@ function bulletWallColl(bullet, wall){
 
 function knockback(){
     if(player.knockedLeft>0) {
-        player.body.acceleration.x = 3000;
+        player.body.acceleration.x = 2000;
         player.knockedLeft++;
         if(player.knockedLeft>=14){
             player.knockedLeft=0;
@@ -63,7 +62,7 @@ function knockback(){
         }
     }
     if(player.knockedRight>0) {
-        player.body.acceleration.x = -3000;
+        player.body.acceleration.x = -2000;
         player.knockedRight++;
         if(player.knockedRight>=14){
             player.knockedRight=0;
