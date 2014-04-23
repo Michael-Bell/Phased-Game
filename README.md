@@ -13,8 +13,8 @@ Platformer graphics by Kenney Vleugels (www.kenney.nl), soon to be replaced
 ## Scoring system
 To Reset the score database run
 ```javascript
-PouchDB.destroy('test', function(err, info) { });
-db = new PouchDB('test');
+PouchDB.destroy('phase', function(err, info) { });
+db = new PouchDB('phase');
 ```
 From the console
 
