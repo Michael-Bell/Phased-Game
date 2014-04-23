@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="128" height="19" tilewidth="70" tileheight="70">
- <tileset firstgid="1" source="groundSprite.tsx"/>
+ <tileset firstgid="1" name="groundSprite" tilewidth="70" tileheight="70">
+  <image source="../groundSprite.png" width="210" height="210"/>
+ </tileset>
  <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
   <image source="../enemies/flysheet.png" width="138" height="64"/>
  </tileset>
  <layer name="ground" width="128" height="19">
   <data encoding="base64" compression="zlib">
-   eJztl0EOwzAIBJND/v/lnCxZCBsDJhBrR+LSVla7Aw69LgAAAAAA0PN0BWoS4aidd3eFXqjPDkfUO1fohTNZcc/1AvBTYaa07lsBO9nOG5bZh38bFWadYnWPZ4AOKSu6X+3Olp7N7fq4A+KYZbWyb2v6IcIz7gAfnP/RDGn+f3GvRbk+5Q4Y3YV9jlLWtO+l8zw5zTIfefi7fylPD1/8np3nV/fvdaJ9Xknzu7JrRfmPmB/p89n+LZlF7yazfoj4TdlZZ/tfmbsv9tHTawT3Xsb3m+1G2dm1egGWmARY
+   eJztl0EOwzAIBJND/v/lnCxZCBsDJhBrR+LSVla7Aw69LgAAAAAA0PN0BWoS4aidd3eFXqjPDkfUO1fohTNZcc/1AvBTYaa07lsBO9nOG5bZh38bFWadYnWPZ4AOKSu6X+3Olp7N7fq4A+KYZbWyb2v6IcIz7gAfnP/RDGn+f3GvRbk+5Q4Y3YV9jlLWtO+l8zw5zTIfefi7fylPD1/8np3nV/fvdaJ9Xknzu7JrRfmPmB/p89n+LZlF7yazfoj4XdlZZ/tfmbsv9tHTawT3Xsb3m+1G2dm1egGacARZ
   </data>
  </layer>
- <objectgroup name="flyObj" width="128" height="19">
-  <object gid="10" x="2190" y="571"/>
-  <object gid="10" x="1139" y="862"/>
-  <object gid="10" x="2860" y="617"/>
-  <object gid="10" x="3627" y="768"/>
-  <object gid="10" x="4321" y="620"/>
-  <object gid="10" x="4514" y="614"/>
-  <object gid="10" x="5396" y="217"/>
-  <object gid="10" x="6008" y="1035"/>
-  <object gid="10" x="7005" y="923"/>
-  <object gid="10" x="7196" y="899"/>
-  <object gid="10" x="7708" y="832"/>
-  <object gid="10" x="7969" y="914"/>
-  <object gid="10" x="8333" y="905"/>
-  <object gid="10" x="978" y="1159"/>
-  <object gid="10" x="1175" y="1153"/>
- </objectgroup>
  <objectgroup name="coin" width="128" height="19">
   <object gid="3" x="3920" y="681"/>
   <object gid="3" x="3429" y="154"/>
@@ -48,5 +33,11 @@
   <object gid="9" x="8750" y="1190"/>
   <object gid="9" x="8820" y="1190"/>
   <object gid="9" x="8890" y="1190"/>
+ </objectgroup>
+ <objectgroup name="fly" width="128" height="19">
+  <object gid="10" x="546" y="812"/>
+  <object gid="11" x="878" y="788"/>
+  <object gid="10" x="1322" y="780"/>
+  <object gid="10" x="2598" y="1180"/>
  </objectgroup>
 </map>
