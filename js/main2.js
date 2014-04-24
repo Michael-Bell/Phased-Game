@@ -34,7 +34,7 @@ Game.Pre.prototype = {
         //  Load the Google WebFont Loader script
 
         this.load.onFileComplete.add(function( progress ) { console.log(progress);
-            $('#meter').css('width',progress+'%');
+        $('#meter').css('width',progress+'%');
             if(progress===100){
                 $('.prog').addClass('hide');
                 $('#Game').removeClass('hide');
