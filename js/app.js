@@ -23,3 +23,8 @@ function textUpdate(){
     Foundation.utils.S( "#xp").html( currentxp );
 }
 
+
+$(document).on('close', '[data-reveal]', function () {
+    var modal = $(this);
+    game.state.start('main');
+});
