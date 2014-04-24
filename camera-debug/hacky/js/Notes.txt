@@ -1,6 +1,0 @@
-Foundation.min.js
-foundation/*
-vendor/*
-
-
-DO NOT TOUCH THESE FILES

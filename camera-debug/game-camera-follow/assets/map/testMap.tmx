@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="28" height="16" tilewidth="70" tileheight="70">
- <tileset firstgid="1" source="groundSprite.tsx"/>
- <layer name="ground" width="28" height="16">
-  <data encoding="base64" compression="zlib">
-   eJxjZWBgYCUTwwA2MVyAGDXUBANpHyOd7SNkJyMZeKQBUHhi8zc5YUdMWHIwEJ93qAE4kDA97ORAY9PaTg4sfFraiW4fsp20iFds9tESEGsftfwKso+NSExufYXsZgDz5AGs
-  </data>
- </layer>
-</map>
