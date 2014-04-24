@@ -9,12 +9,12 @@ db.info(function (err, info) {
     db.changes({
         since : info.update_seq,
         live : true,
-        onChange : showTodos
+        onChange : showScores
     });
 });
 
 
-function addTodo(text, score) {
+function addScore(text, score) {
     console.log('addtodo');
 	var todo = {
 		_id : new Date().toISOString(),
@@ -29,46 +29,33 @@ function addTodo(text, score) {
 	});
 }
 
-var score;
 $('#submit').on('click', Foundation.utils.debounce(function (e) {
     $('#submit').addClass('disabled');
 
     name = $('#name').val();
-		addTodo(name, score);
+		addScore(name, score);
     console.log('submit');
 
 	}, 300, true));
 
-function death() {
-	score = randScore();
-	$("#scoreBox").text(score);
-	$("#score2").text(score);
-	$("#goldBox").text(randScore());
-	$("#xpBox").text(randScore());
-	$('#scoreModal').foundation('reveal', 'open');
-	showTodos();
-}
-function randScore() {
-	return Math.floor(Math.random() * 200);
-}
 
-function showTodos() {
+function showScores() {
 	db.allDocs({
 		include_docs : true,
 		descending : true
 	}, function (err, doc) {
-		redrawTodosUI(doc.rows);
+		refreshTables(doc.rows);
 	});
 
     console.log('showtodos');
 }
-function redrawTodosUI(todos) {
+function refreshTables(todos) {
 	high = [{name:'null',score:0},{name:'null',score:0},{name:'null',score:0},{name:'null',score:0},{name:'null',score:0},{name:'null',score:0},{name:'null',score:0}];
 
 	ul.innerHTML = "";
 	temp = 0;
 	todos.forEach(function (todo) {
-		createTodoListItem(todo.doc, temp);
+		createScoreItem(todo.doc, temp);
 	});
     sortHighscores();
 }
@@ -76,7 +63,7 @@ function redrawTodosUI(todos) {
 var temp;
 var ul = document.getElementById('todo-list');
 
-function createTodoListItem(todo) {
+function createScoreItem(todo) {
 
 	high[high.length] = {
 		score : parseInt(todo.score),

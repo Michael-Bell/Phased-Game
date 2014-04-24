@@ -244,7 +244,7 @@ function dead() { // you died :(
     $("#goldBox").text(player.gold);
     $("#xpBox").text(currentxp);
     $('#scoreModal').foundation('reveal', 'open');
-    showTodos();
+    showScores();
     console.log('dead');
 
 }
