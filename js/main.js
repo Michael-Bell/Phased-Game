@@ -57,7 +57,8 @@ Game.main.prototype = {
     },
     update: function(){
         updateGame();
-    }
+    },
+    render: function(){render()}
 };
 
 game.state.add('main',Game.main);
@@ -107,7 +108,6 @@ function createGame() {
     game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
     //CreatePlatform();
     initEnemy(); // setup enemy Group
-    //	lotsOfEnemies(); // Place some enemies
     tileGen();
     animateEnemies(); // Need some movement
 
@@ -160,6 +160,7 @@ function updateGame() {
     textUpdate();
     //game.physics.arcade.collide(player, ground); // Player cannot go through ground
     // game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
+    game.physics.arcade.overlap(player, layer); // Player cannot go through ground
     game.physics.arcade.collide(player, layer); // Player cannot go through ground
     game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
     game.physics.arcade.collide(player, endBlocks, levelComplete, null, this);
@@ -207,7 +208,7 @@ function jump(number) {
 function render() {
 
     // Sprite debug info
-    //	game.debug.bodyInfo(player, 32, 32);
+    	game.debug.bodyInfo(player, 32, 32);
     game.debug.body(player);
     // game.debug.spriteInfo(item, 32, 32);
     //game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
@@ -230,7 +231,7 @@ function dead() { // you died :(
     $("#goldBox").text(player.gold);
     $("#xpBox").text(currentxp);
     $('#scoreModal').foundation('reveal', 'open');
-    showTodos();
+    showScores();
     console.log('dead');
 
 }
