@@ -12,9 +12,7 @@ $('.button').on('click', Foundation.utils.debounce(function(e){
 
 $('#restart').on('click', Foundation.utils.debounce(function(e){
     $('#scoreModal').foundation('reveal', 'close');
-    game.input.keyboard.disabled=false;
-    game.state.start('main'); // reset the game
-    $('#submit').removeClass('disabled');
+
 }, 300, true));
 
 function textUpdate(){
@@ -26,5 +24,7 @@ function textUpdate(){
 
 $(document).on('close', '[data-reveal]', function () {
     var modal = $(this);
-    game.state.start('main');
+    game.input.keyboard.disabled=false;
+    game.state.start('main'); // reset the game
+    $('#submit').removeClass('disabled');
 });
