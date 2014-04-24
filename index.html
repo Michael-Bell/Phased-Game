@@ -158,11 +158,15 @@
 
 </div>
 <div class="row">
+
     <div class="large-10 columns">
-        <div id="Game"></div>
+        <div class="prog progress min-height-vert-center nice round" id="prog"> <span id="meter" class="prog meter min-height-vert-center" style="width: 5%"></span> </div>
+        <div class="hide min-height-vert-center" id="Game"></div>
+
     </div>
+
     <div class="large-2 columns text-center">
-        <div class="panel">
+        <div class="panel hide">
             <p>
 
             <h2>
@@ -223,7 +227,6 @@
     </div>
 </div>
 
-
 <div id="level" class="reveal-modal" data-reveal>
     <h1>
         <small>Finished!</small>
@@ -239,7 +242,7 @@
 <script src="js/vendor/foundation.min.js">
 
 </script>
-<script src="//cdn.jsdelivr.net/pouchdb/2.1.0/pouchdb.min.js"></script>
+<script src="http://cdn.jsdelivr.net/pouchdb/2.1.0/pouchdb.min.js"></script>
 
 
 <script src="js/app.js">
@@ -248,6 +251,5 @@
 <script type="text/javascript" src="js/database.js"></script>
 
 </body>
-
 
 </html>

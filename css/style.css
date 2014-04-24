@@ -38,4 +38,10 @@ footer {
     font-weight: 400;
 }
 
-#Game{height:605px;}
+.min-height-vert-center {
+    height: 606px;
+    position: absolute;
+    top: 50%;
+    margin-top: -303px; /* negative half of the height */
+}
+

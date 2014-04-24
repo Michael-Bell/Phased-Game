@@ -18,7 +18,7 @@ function CreatePlayer() {
 	player.inv.time = 1000; // invunerable for 1 sec after damage taken
 	player.body.immovable = false; // a test, enemies are pushing the player through the floor
 	player.dmg = 1 + Math.floor(STR / 10);
-	player.healthRegen = true;
+    player.healthRegen = true;
     player.gold = 0;
     player.knockedLeft=0;
     player.knockedRight=0;

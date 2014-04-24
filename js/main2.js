@@ -6,7 +6,6 @@ rain = true;
 var game = new Phaser.Game(800, 560, Phaser.CANVAS, 'Game');
 //Various Variables, some are not even used, some are important, some are repetative, and some are essential, I don't really remember which are which
 
-//var gameState= function(game){};
 
 Game = {};
 
@@ -35,7 +34,7 @@ Game.Pre.prototype = {
         //  Load the Google WebFont Loader script
 
         this.load.onFileComplete.add(function( progress ) { console.log(progress);
-            $('#meter').css('width',progress+'%');
+        $('#meter').css('width',progress+'%');
             if(progress===100){
                 $('.prog').addClass('hide');
                 $('#Game').removeClass('hide');
@@ -63,16 +62,6 @@ Game.main.prototype = {
 
 game.state.add('main',Game.main);
 
-Game.dead = function(game){};
-
-Game.dead.prototype = {
-
-    create: function(){
-        deadStateCreate();
-    }
-};
-
-game.state.add('dead',Game.dead);
 
 
 var jumpCount = 0;
@@ -201,8 +190,6 @@ function updateGame() {
     game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
     // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
     coinBounce();
-    knockback();
-    leveltimer(0);
     player.body.velocity.x = 0;
     //game.camera.y = player.y - 200;
     //game.camera.x = player.x - 500; // Hacky camera following
@@ -248,8 +235,6 @@ function render() {
 function dead() { // you died :(
     /* TODO make a death screen with cool statistics on the game */
     game.input.keyboard.disabled=true; // disable control listeners
-    game.state.start('dead');
-
     x = game.camera.x + (game.width / 2);
 
     y = game.camera.y + (game.height / 2);
@@ -283,20 +268,9 @@ function flyColl() {
 function levelComplete(player, block) {
     $('#level').foundation('reveal', 'open');
 }
-//}
 
-var pausedState= function(game){};
 
 function deadStateCreate(){
     game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
 
-};
-
-leveltimer(15000);
-function leveltimer(time){
-    if(time!=0){
-        ltimer = time;
-    }
-    ltimer--;
-}
 }
