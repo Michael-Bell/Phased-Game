@@ -62,6 +62,16 @@ Game.main.prototype = {
 
 game.state.add('main',Game.main);
 
+Game.dead = function(game){};
+
+Game.dead.prototype = {
+
+    create: function(){
+        deadStateCreate();
+    }
+};
+
+game.state.add('dead',Game.dead);
 
 
 var jumpCount = 0;
@@ -235,6 +245,8 @@ function render() {
 function dead() { // you died :(
     /* TODO make a death screen with cool statistics on the game */
     game.input.keyboard.disabled=true; // disable control listeners
+    game.state.start('dead');
+
     x = game.camera.x + (game.width / 2);
 
     y = game.camera.y + (game.height / 2);
