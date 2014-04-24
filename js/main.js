@@ -56,7 +56,8 @@ Game.main.prototype = {
     },
     update: function(){
         updateGame();
-    }
+    },
+    render: function(){render()}
 };
 
 game.state.add('main',Game.main);
@@ -158,6 +159,7 @@ function updateGame() {
     textUpdate();
     //game.physics.arcade.collide(player, ground); // Player cannot go through ground
     // game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
+    game.physics.arcade.overlap(player, layer); // Player cannot go through ground
     game.physics.arcade.collide(player, layer); // Player cannot go through ground
     game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
     game.physics.arcade.collide(player, endBlocks, levelComplete, null, this);
@@ -203,7 +205,7 @@ function jump(number) {
 function render() {
 
     // Sprite debug info
-    //	game.debug.bodyInfo(player, 32, 32);
+    	game.debug.bodyInfo(player, 32, 32);
     game.debug.body(player);
     // game.debug.spriteInfo(item, 32, 32);
     //game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
