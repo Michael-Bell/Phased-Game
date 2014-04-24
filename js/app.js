@@ -21,14 +21,5 @@ function textUpdate(){
     Foundation.utils.S('#health').html(player.health );
     Foundation.utils.S('#gold').html(player.gold );
     Foundation.utils.S( "#xp").html( currentxp );
-    //var node = document.getElementById('#health');
-    //node.innerHTML('<p>some dynamic html</p>');
-   /* node = document.getElementById('gold');
-    node.innerHTML('<p>some dynamic html</p>');
-    node = document.getElementById('xp');
-    node.innerHTML('<p>some dynamic html</p>');
-    Foundation.utils.S('#health').innerHTML=player.health;
-    Foundation.utils.S('#gold').innerHTML=player.gold;
-    Foundation.utils.S('#xp').innerHTML=currentxp; */
 }
 
