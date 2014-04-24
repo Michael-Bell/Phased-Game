@@ -86,38 +86,10 @@ var map;
 var layer;
 
 var bulletTime = 0;
-function preloadAll1() {
-
-    console.log('preload start');
-    // Load Assets
-    //game.load.image('sky', 'assets/sky.png');
-    //game.load.image('ground', 'assets/ground.png');
-    this.load.image('bullet', 'assets/blue_bullet.png');
-    this.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
-    this.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
-    this.load.spritesheet('heart', 'assets/heart/red_spritesheet.png', 70, 70, 5);
-    this.load.image('goldcoin', 'assets/goldcoin.png');
-    this.load.tilemap('level', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.image('tiles', 'assets/map/groundSprite.png');
-    this.load.image('coinBox', 'assets/bonus.png');
-    this.load.image('endblock', 'assets/ground_sand.png');
-
-    //if (rain)
-    //  loadRain();
-
-    this.load.image('button', 'assets/play_again.png');
-    //  Load the Google WebFont Loader script
-
-    this.load.onFileComplete.add(function( progress ) { console.log(progress);  });
-    console.log('preloaddone');
-
-}
 
 
-function preloadAll() {
 
 
-}
 
 /* TODO Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
 

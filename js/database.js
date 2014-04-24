@@ -31,7 +31,9 @@ function addTodo(text, score) {
 
 var score;
 $('#submit').on('click', Foundation.utils.debounce(function (e) {
-		name = $('#name').val();
+    $('#submit').addClass('disabled');
+
+    name = $('#name').val();
 		addTodo(name, score);
     console.log('submit');
 
