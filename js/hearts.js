@@ -1,5 +1,5 @@
 function initHearts() {
-	heartGroup = game.add.group()
+	heartGroup = game.add.group();
 		for (i = 0; i < 10; i++) {
 			x = 202 + (i * 40);
 			y = 700;

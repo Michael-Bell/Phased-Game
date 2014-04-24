@@ -30,13 +30,13 @@ function animateEnemies() { // tween animate flying up and down
 		var tween = game.add.tween(item) //.to({ x: 600 }, 2000, Phaser.Easing.Linear.None)
 
 			.to({
-				y : item.x + 300
+				y : item.y + 300
 			}, 2000, Phaser.Easing.Linear.None)
 
 			//.to({ x: 100 }, 2000, Phaser.Easing.Linear.None)
 
 			.to({
-				y : item.x
+				y : item.y
 			}, 2000, Phaser.Easing.Linear.None)
 
 			.loop()

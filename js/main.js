@@ -1,7 +1,6 @@
 /*  Console.log() are used to see how far into the script the game goes before crashing*/
 
-// Enable the rain
-rain = true;
+
 
 var game = new Phaser.Game(800, 560, Phaser.CANVAS, 'Game');
 //Various Variables, some are not even used, some are important, some are repetative, and some are essential, I don't really remember which are which
@@ -28,7 +27,7 @@ Game.Pre.prototype = {
         game.load.image('coinBox', 'assets/bonus.png');
         game.load.image('endblock', 'assets/ground_sand.png');
 
-        if (rain)
+
             loadRain();
 
         game.load.image('button', 'assets/play_again.png');
@@ -144,7 +143,7 @@ function createGame() {
     initHearts(); // Setup the heart Group, make it locked into the camera frame
     initCoinGroup();
 
-    if (rain)
+
         createRain();
 
     initHealthRegen();
@@ -236,10 +235,7 @@ function dead() { // you died :(
 
 }
 
-function actionOnClick() {
-    /* TODO this is going to cause bugs when we start putting in multiple game states */
 
-}
 
 function resetBullet(bullet) {
 
