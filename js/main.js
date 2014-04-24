@@ -106,7 +106,6 @@ function createGame() {
     game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
     //CreatePlatform();
     initEnemy(); // setup enemy Group
-    //	lotsOfEnemies(); // Place some enemies
     tileGen();
     animateEnemies(); // Need some movement
 
