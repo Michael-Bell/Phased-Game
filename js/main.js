@@ -86,7 +86,7 @@ var map;
 var layer;
 
 var bulletTime = 0;
-var deadQuote = 'You tried your best, but you have perished. Better luck next time, maybe one day, this will tell you what killed you...';
+var deadQuote = 'You tried your best, but you have perished. Better luck next time. You were killed by ';
 var winQuote = "You Completed the level. Congrats on making it this far, maybe you should play a good game now, like League or something....";
 
 
@@ -219,14 +219,14 @@ function render() {
 
 }
 
-function dead() { // you died :(
+function dead(cause) { // you died :(
     /* TODO make a death screen with cool statistics on the game */
 
     showScores();
     if(player.health<2){
         score = getScore(1);
         $("#winDeathHeader").text('You Died');
-        $("#quote").text(deadQuote);
+        $("#quote").text(deadQuote+cause);
         $('#submit').removeClass('hide');
         $('#restart').removeClass('hide');
         $('#continue').addClass('hide');
