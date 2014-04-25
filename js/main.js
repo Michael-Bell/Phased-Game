@@ -206,7 +206,7 @@ function jump(number) {
     }
 
 }
-
+var score;
 function render() {
 
     // Sprite debug info
@@ -221,31 +221,40 @@ function render() {
 
 function dead() { // you died :(
     /* TODO make a death screen with cool statistics on the game */
+
+    showScores();
+    if(player.health<2){
+        score = getScore(1);
+        $("#winDeathHeader").text('You Died');
+        $("#quote").text(deadQuote);
+        $('#submit').removeClass('hide');
+        $('#restart').removeClass('hide');
+        $('#continue').addClass('hide');
+        console.log('dead');
+    }
+    else{
+        score = getScore(1.3);
+        $("#winDeathHeader").text('Level Complete');
+        $("#quote").text(winQuote);
+
+        $('#submit').addClass('hide');
+        $('#restart').addClass('hide');
+        $('#continue').removeClass('hide');
+        console.log('win');
+    }
+
     game.input.keyboard.disabled=true; // disable control listeners
     game.state.start('dead');
 
     x = game.camera.x + (game.width / 2);
 
     y = game.camera.y + (game.height / 2);
-    getScore();
+
     $("#scoreBox").text(score);
     $("#score2").text(score);
-
+    $("#goldBox").text(player.gold);
     $("#xpBox").text(currentxp);
     $('#scoreModal').foundation('reveal', 'open');
-    showScores();
-    if(player.health<2){
-        $("#winDeathHeader").text('You Died');
-        $("#quote").text(deadQuote);
-        $("#goldBox").text(getScore(1));
-        console.log('dead');
-    }
-    else{
-        $("#winDeathHeader").text('Level Complete');
-        $("#quote").text(winQuote);
-        $("#goldBox").text(getScore(1.3));
-        console.log('win');
-    }
 }
 
 
@@ -281,5 +290,5 @@ function leveltimer(time){
 }
 
 function getScore(bonus){
-    score = (Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX)*bonus;
+    return (Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX)*bonus;
 }
