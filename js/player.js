@@ -64,9 +64,6 @@ function playerControls() {
 	}
 }
 
-function resetJump(){
-jumpCount = 0;
-}
 
 function playerInv() {
 	player.inv = false;
