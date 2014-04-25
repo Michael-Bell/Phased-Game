@@ -13,7 +13,7 @@ function collisionHandler(weakerObject, strongerObject) {
 			if (weakerObject.health <= 1) { // and the players health is at 1, meaning this hit brings it to 0
 
 				weakerObject.kill(); //we kill the player
-				dead(); // we just killed the player, this tells the game to reset, we can add in more stuff later
+				dead(' running into an enemy...'); // we just killed the player, this tells the game to reset, we can add in more stuff later
 			} else { //if the player is vunerable, and healthy
 				player.inv = true; // the player is made invunerable
 				game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // We want him to be vunerable again in two seconds

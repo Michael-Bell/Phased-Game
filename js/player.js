@@ -7,7 +7,7 @@ function CreatePlayer() {
 	player.body.bounce.y = 0.1; // gives a slight bounce
 	player.body.gravity.y = 400; // enable gravity
 	/* TODO maybe we should have the player fall through the world, if you miss a jump, you fall and die? */
-	player.body.collideWorldBounds = true; // our player cannot fall through the world
+	//player.body.collideWorldBounds = true; // our player cannot fall through the world
 
 	player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 12); // setup animation
 	player.scale.x = .9;
@@ -62,6 +62,10 @@ function playerControls() {
 
 		createBullet();
 	}
+    if(!player.inWorld){
+        player.health=-100;
+        dead('falling out of the world!');
+    }
 }
 
 
