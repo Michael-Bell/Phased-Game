@@ -225,7 +225,7 @@ function dead() { // you died :(
     x = game.camera.x + (game.width / 2);
 
     y = game.camera.y + (game.height / 2);
-    score = player.gold;
+    getScore();
     $("#scoreBox").text(score);
     $("#score2").text(score);
     $("#goldBox").text(player.gold);
@@ -259,7 +259,7 @@ var pausedState= function(game){};
 function deadStateCreate(){
     game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
 
-};
+}
 
 leveltimer(15000);
 function leveltimer(time){
@@ -268,4 +268,7 @@ function leveltimer(time){
     }
     ltimer--;
 }
+
+function getScore(){
+    score = Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX;
 }

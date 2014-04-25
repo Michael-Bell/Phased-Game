@@ -6,8 +6,8 @@ var allocationpoints = 10;
 
 function xpcheck() {
 	if (currentxp >= xpneeded) {
-		currentlevel++;
-		xpneeded = Math.floor(currentlevel^(2) / 10 + 2);
+        currentlevel++;
+		xpneeded = Math.floor(currentlevel^(2));
 		allocationpoints = allocationpoints + 5 + (Math.floor(INT / 10));
 	}
 }
@@ -18,5 +18,5 @@ var DEX = 10;
 var LUK = 10;
 
 function xpgain(xp) {
-	currentxp = currentxp + xp * (100 + Math.floor(INT / 10)) / 100;
+	currentxp = currentxp + xp * Math.floor((100 + INT / 10) / 100);
 }
