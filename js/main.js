@@ -22,7 +22,7 @@ Game.Pre.prototype = {
         game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
         game.load.spritesheet('heart', 'assets/heart/red_spritesheet.png', 70, 70, 5);
         game.load.image('goldcoin', 'assets/goldcoin.png');
-        game.load.tilemap('level', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', 'assets/map/groundSprite.png');
         game.load.image('coinBox', 'assets/bonus.png');
         game.load.image('endblock', 'assets/ground_sand.png');
@@ -290,5 +290,5 @@ function leveltimer(time){
 }
 
 function getScore(bonus){
-    return (Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX)*bonus;
+    return Math.floor((Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX)*bonus);
 }

@@ -1,6 +1,6 @@
 function CreatePlayer() {
 	// Enter Player 1
-	player = game.add.sprite(0, 394, 'player'); // starting location
+	player = game.add.sprite(105,105, 'player'); // starting location
 	player.anchor.setTo(.5, .5); // this lets us rotate/flip sprite in the middle of the sprite, if not set, it will rotate from top left corner
 	game.physics.arcade.enable(player); // we need physics
 
