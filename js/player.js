@@ -52,9 +52,9 @@ function playerControls() {
 		player.angle = 0; // stand up straight
 		player.velocity = 200;
 		player.healthRegen = true;
-        game.time.events.add(Phaser.Timer.SECOND * 4, jumpCount=0, this);
+       // game.time.events.add(Phaser.Timer.SECOND * 4, jumpCount=0, this);
 
-       // jumpCount = 0; // reset jump counter
+        jumpCount = 0; // reset jump counter
 
 	} else { // if not on the ground
 		/* TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
