@@ -17,9 +17,9 @@ function collisionHandler(weakerObject, strongerObject) {
 			} else { //if the player is vunerable, and healthy
 				player.inv = true; // the player is made invunerable
 				game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // We want him to be vunerable again in two seconds
+                game.time.events.add(Phaser.Timer.SECOND * .1, incjumpCount, this); // We need a timer here so if he gets hit while on the ground, he doesn't get a triple jump.
 				player.velocity = 100;
 				player.healthRegen = false;
-				jumpCount = 2;
                 player.body.velocity.y =  - 200;
                 if(player.scale.x<0){
                     player.knockedLeft=1;
@@ -46,7 +46,9 @@ function collisionHandler(weakerObject, strongerObject) {
 
 }
 
-
+function incjumpCount(){
+    jumpCount = 2;
+}
 
 function bulletWallColl(bullet, wall){
     bullet.kill();

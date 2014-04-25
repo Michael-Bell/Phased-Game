@@ -48,12 +48,10 @@ function playerControls() {
 	}
 	cursors.up.onDown.add(jumpCheck, this);
 	if (player.body.blocked.down || player.body.touching.down) { //is the player sprite touching another object on bottom?
-		player.body.angularVelocity = 0; // stop spinning
-		player.angle = 0; // stand up straight
-		player.velocity = 200;
-		player.healthRegen = true;
-       // game.time.events.add(Phaser.Timer.SECOND * 4, jumpCount=0, this);
-
+        player.body.angularVelocity = 0; // stop spinning
+        player.angle = 0; // stand up straight
+        player.velocity = 200;
+        player.healthRegen = true;
         jumpCount = 0; // reset jump counter
 
 	} else { // if not on the ground
@@ -64,6 +62,10 @@ function playerControls() {
 
 		createBullet();
 	}
+}
+
+function resetJump(){
+jumpCount = 0;
 }
 
 function playerInv() {
