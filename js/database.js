@@ -30,12 +30,13 @@ function addScore(text, score) {
 }
 
 $('#submit').on('click', Foundation.utils.debounce(function (e) {
-    $('#submit').addClass('disabled');
-
-    name = $('#name').val();
-		addScore(name, score);
-    console.log('submit');
-
+    if (!$('#submit').hasClass('disabled')) {
+        $('#submit').addClass('disabled');
+console.log(!$('#submit').hasClass('disabled'));
+        name = $('#name').val();
+        addScore(name, score);
+        console.log('submit');
+    }
 	}, 300, true));
 
 

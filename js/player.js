@@ -12,7 +12,7 @@ function CreatePlayer() {
 	player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 12); // setup animation
 	player.scale.x = .9;
 	player.scale.y = .9;
-	player.health = 0; // health
+	player.health = 29; // health
 	player.velocity = 200;
 	player.inv = false; // player is not invunerable to start
 	player.inv.time = 1000; // invunerable for 1 sec after damage taken

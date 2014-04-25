@@ -86,6 +86,8 @@ var map;
 var layer;
 
 var bulletTime = 0;
+var deadQuote = 'You tried your best, but you have perished. Better luck next time, maybe one day, this will tell you what killed you...';
+var winQuote = "You Completed the level. Congrats on making it this far, maybe you should play a good game now, like League or something....";
 
 
 
@@ -228,12 +230,20 @@ function dead() { // you died :(
     getScore();
     $("#scoreBox").text(score);
     $("#score2").text(score);
-    $("#goldBox").text(player.gold);
+    $("#goldBox").text(getScore());
     $("#xpBox").text(currentxp);
     $('#scoreModal').foundation('reveal', 'open');
     showScores();
-    console.log('dead');
-
+    if(player.health<2){
+        $("#winDeathHeader").text('You Died');
+        $("#quote").text(deadQuote);
+        console.log('dead');
+    }
+    else{
+        $("#winDeathHeader").text('Level Complete');
+        $("#quote").text(winQuote);
+        console.log('win');
+    }
 }
 
 
@@ -250,7 +260,7 @@ function flyColl() {
 
 
 function levelComplete(player, block) {
-    $('#level').foundation('reveal', 'open');
+    dead();
 }
 //}
 
