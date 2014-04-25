@@ -230,18 +230,20 @@ function dead() { // you died :(
     getScore();
     $("#scoreBox").text(score);
     $("#score2").text(score);
-    $("#goldBox").text(getScore());
+
     $("#xpBox").text(currentxp);
     $('#scoreModal').foundation('reveal', 'open');
     showScores();
     if(player.health<2){
         $("#winDeathHeader").text('You Died');
         $("#quote").text(deadQuote);
+        $("#goldBox").text(getScore(1));
         console.log('dead');
     }
     else{
         $("#winDeathHeader").text('Level Complete');
         $("#quote").text(winQuote);
+        $("#goldBox").text(getScore(1.3));
         console.log('win');
     }
 }
@@ -264,7 +266,6 @@ function levelComplete(player, block) {
 }
 //}
 
-var pausedState= function(game){};
 
 function deadStateCreate(){
     game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
@@ -279,6 +280,6 @@ function leveltimer(time){
     ltimer--;
 }
 
-function getScore(){
-    score = Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX;
+function getScore(bonus){
+    score = (Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX)*bonus;
 }
