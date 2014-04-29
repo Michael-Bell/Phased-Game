@@ -17,7 +17,7 @@ Game.Pre.prototype = {
         // Load Assets
         //game.load.image('sky', 'assets/sky.png');
         //game.load.image('ground', 'assets/ground.png');
-        game.load.image('bullet', 'assets/blue_bullet.png');
+        game.load.image('bullet', 'assets/bullet.png');
         game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
         game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
         game.load.spritesheet('heart', 'assets/heart/red_spritesheet.png', 70, 70, 5);
