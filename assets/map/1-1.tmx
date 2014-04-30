@@ -8,7 +8,7 @@
  </tileset>
  <layer name="ground" width="128" height="19">
   <data encoding="base64" compression="zlib">
-   eJztl0EOwzAIBJND/v/lnCxZCBsDJhBrR+LSVla7Aw69LgAAAAAA0PN0BWoS4aidd3eFXqjPDkfUO1fohTNZcc/1AvBTYaa07lsBO9nOG5bZh38bFWadYnWPZ4AOKSu6X+3Olp7N7fq4A+KYZbWyb2v6IcIz7gAfnP/RDGn+f3GvRbk+5Q4Y3YV9jlLWtO+l8zw5zTIfefi7fylPD1/8np3nV/fvdaJ9Xknzu7JrRfmPmB/p89n+LZlF7yazfoj4XdlZZ/tfmbsv9tHTawT3Xsb3m+1G2dm1egGacARZ
+   eJztl9EKwzAIRftS+v9/3KdAEBOjxmrDPeDLNsJ2j6buugAAAAAAQM/dFahJhKN23tMVeqE+OxxR71yhF85kxT3XC8BPhZnSum8F7GQ7b1hmH/5tVJh1itU9ngE6pKzofrU7W3o2t+vjDohjltXKvq3phwjPuAN8cP5HM6T5/8W9FuX6lDtgdBf2OUpZ076XzvPkNMt85OHv/qU8PXzxe3aeX92/14n2eSXN78quFeU/Yn6kz2f7t2QWvZvM+iHid2Vnne1/Ze6+2EdPrxHcexnfb7YbZWfX6gVJRBCz
   </data>
  </layer>
  <objectgroup name="special" width="128" height="19">
