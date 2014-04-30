@@ -5,6 +5,8 @@
 var game = new Phaser.Game(800, 560, Phaser.CANVAS, 'Game');
 //Various Variables, some are not even used, some are important, some are repetative, and some are essential, I don't really remember which are which
 
+gameLevel={string:'level1',int:1, max:3};
+
 //var gameState= function(game){};
 
 Game = {};
@@ -22,11 +24,12 @@ Game.Pre.prototype = {
         game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
         game.load.spritesheet('heart', 'assets/heart/red_spritesheet.png', 70, 70, 5);
         game.load.image('goldcoin', 'assets/goldcoin.png');
-        game.load.tilemap('level', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', 'assets/map/groundSprite.png');
         game.load.image('coinBox', 'assets/bonus.png');
         game.load.image('endblock', 'assets/ground_sand.png');
-
+        game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level2', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level3', 'assets/map/1-3.json', null, Phaser.Tilemap.TILED_JSON);
 
             loadRain();
 
@@ -233,14 +236,30 @@ function dead(cause) { // you died :(
         console.log('dead');
     }
     else{
-        score = getScore(1.3);
-        $("#winDeathHeader").text('Level Complete');
-        $("#quote").text(winQuote);
+        console.log("else"+gameLevel.int+gameLevel.max)
+        if(gameLevel.int===gameLevel.max){
+            $("#winDeathHeader").text('You Win');
 
-        $('#submit').addClass('hide');
-        $('#restart').addClass('hide');
-        $('#continue').removeClass('hide');
-        console.log('win');
+            score = getScore(1.3);
+            $("#quote").text(winQuote);
+            $('#submit').removeClass('hide');
+            $('#restart').removeClass('hide');
+            $('#continue').addClass('hide');
+        }
+        else{
+            $("#winDeathHeader").text('Level Complete');
+            $("#quote").text("You Won Level " + gameLevel.int);
+            gameLevel.int++;
+            gameLevel.string = 'level' + gameLevel.int;
+            console.log(gameLevel.string + "    " + gameLevel.int);
+            $('#submit').addClass('hide');
+            $('#restart').addClass('hide');
+            $('#continue').removeClass('hide');
+            console.log('win');
+        }
+
+
+
     }
 
     game.input.keyboard.disabled=true; // disable control listeners

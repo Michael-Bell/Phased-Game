@@ -25,7 +25,7 @@ function CreatePlatform() {
 }
 
 function tileGen() {
-	map = game.add.tilemap("level");
+	map = game.add.tilemap(gameLevel.string);
 	//  The first parameter is the tileset name, as specified in the Tiled map editor (and in the tilemap json file)
 	//  The second parameter maps this name to the Phaser.Cache key 'tiles'
 	//tileset = game.add.tileset('tiles');

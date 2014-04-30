@@ -10,8 +10,8 @@ function initHearts() {
 			c.scale.setTo(.5, .5);
 
 			c.frame = 1;
-			console.log("heart # " + i + " done");
-			console.log("x: " + x + " y:" + y);
+			//console.log("heart # " + i + " done");
+			//console.log("x: " + x + " y:" + y);
 		}
 }
 

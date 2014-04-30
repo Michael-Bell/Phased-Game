@@ -20,9 +20,18 @@ function textUpdate(){
 
 $(document).on('close', '[data-reveal]', function () {
     var modal = $(this);
-    if (modal.context.id === scoreModal) {
+    if (modal.context.id === 'scoreModal') {
     game.input.keyboard.disabled = false;
-    //  game.state.start('main'); // reset the game
+        console.log('scoreModal Closed');
+    game.state.start('main'); // reset the game
     $('#submit').removeClass('disabled');
 }
 });
+
+
+
+
+$('#continue').on('click', Foundation.utils.debounce(function(e){
+    $('#scoreModal').foundation('reveal', 'close');
+
+}, 300, true));
