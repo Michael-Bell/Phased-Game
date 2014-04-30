@@ -42,9 +42,9 @@ function tileGen() {
 	//  And now we convert all of the Tiled objects with an ID of 34 into sprites within the coins group
 
 	//   map.createFromObjects('flies', 0, 'fly', 0, true, false, enemyGroup);
-	map.createFromObjects('fly', 10, 'fly', 0, true, false, enemyGroup);
-	map.createFromObjects('fly', 11, 'fly', 0, true, false, enemyGroup);
-	map.createFromObjects('fly', 12, 'fly', 0, true, false, enemyGroup);
+	map.createFromObjects('enemy', 10, 'fly', 0, true, false, enemyGroup);
+	map.createFromObjects('enemy', 11, 'fly', 0, true, false, enemyGroup);
+	map.createFromObjects('enemy', 12, 'fly', 0, true, false, enemyGroup);
 
 	enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
 	enemyGroup.forEach(function (item) {
@@ -57,7 +57,7 @@ function tileGen() {
 	coinBoxGroup = game.add.group();
 	coinBoxGroup.enableBody = true;
 	coinBoxGroup.physicsBodyType = Phaser.Physics.ARCADE;
-	map.createFromObjects('coin', 3, 'coinBox', 0, true, false, coinBoxGroup);
+	map.createFromObjects('special', 3, 'coinBox', 0, true, false, coinBoxGroup);
 
 	coinBoxGroup.forEach(function (item) {
 		// Update alpha first.
@@ -67,7 +67,7 @@ function tileGen() {
     endBlocks = game.add.group();
     endBlocks.enableBody = true;
     endBlocks.physicsBodyType = Phaser.Physics.ARCADE;
-    map.createFromObjects('endBlocks', 9, 'endblock', 0, true, false, endBlocks);
+    map.createFromObjects('special', 9, 'endblock', 0, true, false, endBlocks);
 
     endBlocks.forEach(function (item) {
         // Update alpha first.
@@ -77,6 +77,24 @@ function tileGen() {
 	//  And play them
 
 	enemyGroup.callAll('animations.play', 'animations', 'wings');
+
+
+    bounceBlock = game.add.group();
+
+    bounceBlock.enableBody = true;
+
+    bounceBlock.physicsBodyType = Phaser.Physics.ARCADE;
+
+    map.createFromObjects('special', 6, 'endblock', 0, true, false, bounceBlock);
+
+
+    bounceBlock.forEach(function (item) {
+        // Update alpha first.
+        item.body.immovable = true;
+
+    });
+
+
 
 	//   map.createFromObjects('flies', 2, 'fly', 0, true, false, enemyGroup);
 

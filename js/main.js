@@ -171,7 +171,7 @@ function updateGame() {
     game.physics.arcade.overlap(coinGroup, player, playerCoins, null, this);
     game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
     game.physics.arcade.collide(player, flyLayer, flyColl, null, this); // collisionHandler is called when player and flya(enemy) collide
-
+    game.physics.arcade.collide(player,bounceBlock, invGravity,null,this);
     game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
     // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
     coinBounce();
@@ -290,5 +290,11 @@ function leveltimer(time){
 }
 
 function getScore(bonus){
-    return (Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX)*bonus;
+    return Math.floor((Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX)*bonus);
+}
+
+function invGravity(){
+
+       player.body.gravity.y=-1*player.body.gravity.y;;
+
 }
