@@ -11,30 +11,28 @@
    eJztl0EOwzAIBJND/v/lnCxZCBsDJhBrR+LSVla7Aw69LgAAAAAA0PN0BWoS4aidd3eFXqjPDkfUO1fohTNZcc/1AvBTYaa07lsBO9nOG5bZh38bFWadYnWPZ4AOKSu6X+3Olp7N7fq4A+KYZbWyb2v6IcIz7gAfnP/RDGn+f3GvRbk+5Q4Y3YV9jlLWtO+l8zw5zTIfefi7fylPD1/8np3nV/fvdaJ9Xknzu7JrRfmPmB/p89n+LZlF7yazfoj4XdlZZ/tfmbsv9tHTawT3Xsb3m+1G2dm1egGacARZ
   </data>
  </layer>
- <objectgroup name="coin" width="128" height="19">
-  <object gid="3" x="3920" y="681"/>
-  <object gid="3" x="3429" y="154"/>
-  <object gid="3" x="3504" y="154"/>
-  <object gid="3" x="3580" y="157"/>
-  <object gid="3" x="2726" y="978"/>
-  <object gid="3" x="3007" y="1057"/>
-  <object gid="3" x="2704" y="403"/>
-  <object gid="3" x="3089" y="675"/>
-  <object gid="3" x="1677" y="839"/>
-  <object gid="3" x="7371" y="815"/>
-  <object gid="3" x="8153" y="851"/>
-  <object gid="3" x="6580" y="990"/>
-  <object gid="3" x="5768" y="269"/>
-  <object gid="3" x="5065" y="87"/>
-  <object gid="1" x="4" y="769"/>
-  <object gid="1" x="901" y="603"/>
- </objectgroup>
- <objectgroup name="endBlocks" width="128" height="19">
+ <objectgroup name="special" width="128" height="19">
   <object gid="9" x="8750" y="1190"/>
   <object gid="9" x="8820" y="1190"/>
   <object gid="9" x="8890" y="1190"/>
+  <object gid="1" x="4" y="769"/>
+  <object gid="3" x="3580" y="157"/>
+  <object gid="3" x="7371" y="815"/>
+  <object gid="3" x="2726" y="978"/>
+  <object gid="3" x="8153" y="851"/>
+  <object gid="1" x="901" y="603"/>
+  <object gid="3" x="3007" y="1057"/>
+  <object gid="3" x="6580" y="990"/>
+  <object gid="3" x="3920" y="681"/>
+  <object gid="3" x="2704" y="403"/>
+  <object gid="3" x="5768" y="269"/>
+  <object gid="3" x="3429" y="154"/>
+  <object gid="3" x="3089" y="675"/>
+  <object gid="3" x="5065" y="87"/>
+  <object gid="3" x="3504" y="154"/>
+  <object gid="3" x="1677" y="839"/>
  </objectgroup>
- <objectgroup name="fly" width="128" height="19">
+ <objectgroup name="enemy" width="128" height="19">
   <object gid="10" x="546" y="812"/>
   <object gid="11" x="878" y="788"/>
   <object gid="10" x="1322" y="780"/>

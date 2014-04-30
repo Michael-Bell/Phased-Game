@@ -10,11 +10,7 @@ function collisionHandler(weakerObject, strongerObject) {
 	case player:
 		if (player.inv === false) { // if the player can be damaged
 
-			if (weakerObject.health <= 1) { // and the players health is at 1, meaning this hit brings it to 0
 
-				weakerObject.kill(); //we kill the player
-				dead(' running into an enemy...'); // we just killed the player, this tells the game to reset, we can add in more stuff later
-			} else { //if the player is vunerable, and healthy
 				player.inv = true; // the player is made invunerable
 				game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // We want him to be vunerable again in two seconds
                 game.time.events.add(Phaser.Timer.SECOND * .1, incjumpCount, this); // We need a timer here so if he gets hit while on the ground, he doesn't get a triple jump.
@@ -26,15 +22,15 @@ function collisionHandler(weakerObject, strongerObject) {
                 }else{
                     player.knockedRight=1;
                 }
-			}
-			weakerObject.health = weakerObject.health - strongerObject.dmg; // we want to remove the damage done by the enemy to him, even if he dies, so that the health displayed is still 0
+
+            weakerObject.damage(strongerObject.dmg); // we want to remove the damage done by the enemy to him, even if he dies, so that the health displayed is still 0
 
 		}
 		break; // Never Forget
 
 	default:
 		if (weakerObject.health > 0) {
-			weakerObject.health = weakerObject.health - strongerObject.dmg;
+			weakerObject.damage(strongerObject.dmg);
 
 		} else {
 			gencoins(strongerObject.x, strongerObject.y, weakerObject.goldWorth);

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="16" height="89" tilewidth="70" tileheight="70">
+ <tileset firstgid="1" name="groundSprite" tilewidth="70" tileheight="70">
+  <image source="../groundSprite.png" width="210" height="210"/>
+ </tileset>
+ <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
+  <image source="../enemies/flysheet.png" width="138" height="64"/>
+ </tileset>
+ <layer name="ground" width="16" height="89" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztk8kOwCAIRPFA/P8/7qWHHloXnhtaEhIjeQ6MGkQkwLTGDJ7OST2ayZ/Yu+fZV/Cd8p57P3l2K/vz3HuvvCzCe/POGjvweq/1I1M1BfrU/9wd1tSpPuVLzqFvucd/oOfU9KSAJ/qjOQubi569BiND/89Tj/J0Tqrfit/Z/xRD9UfwK/v/tuf1/czQp3yJryv775mPE/nYIC9SZwPb
+  </data>
+ </layer>
+ <objectgroup name="special" width="16" height="89" visible="0">
+  <object gid="9" x="42" y="6220"/>
+  <object gid="9" x="78" y="6220"/>
+  <object gid="9" x="112" y="6219"/>
+  <object gid="9" x="158" y="6218"/>
+  <object gid="9" x="198" y="6223"/>
+  <object gid="9" x="261" y="6216"/>
+  <object gid="9" x="300" y="6206"/>
+  <object gid="9" x="354" y="6203"/>
+  <object gid="9" x="401" y="6210"/>
+  <object gid="9" x="424" y="6211"/>
+  <object gid="9" x="442" y="6212"/>
+  <object gid="9" x="476" y="6208"/>
+  <object gid="9" x="513" y="6203"/>
+  <object gid="9" x="542" y="6200"/>
+  <object gid="9" x="592" y="6199"/>
+  <object gid="9" x="665" y="6194"/>
+  <object gid="9" x="633" y="6194"/>
+  <object gid="9" x="737" y="6190"/>
+  <object gid="9" x="713" y="6200"/>
+  <object gid="9" x="794" y="6199"/>
+  <object gid="9" x="837" y="6203"/>
+  <object gid="9" x="880" y="6202"/>
+  <object gid="9" x="924" y="6196"/>
+  <object gid="9" x="956" y="6198"/>
+  <object gid="9" x="993" y="6199"/>
+  <object gid="9" x="1030" y="6200"/>
+  <object gid="9" x="1066" y="6203"/>
+  <object gid="3" x="920" y="2111"/>
+ </objectgroup>
+ <objectgroup name="enemy" width="16" height="89" visible="0">
+  <object gid="10" x="799" y="1893"/>
+ </objectgroup>
+</map>
