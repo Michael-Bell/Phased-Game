@@ -3,11 +3,7 @@
 $(document).foundation();
 
 
-$('.button').on('click', Foundation.utils.debounce(function(e){
-    $('#highscores').foundation('reveal', 'close');
-    $('#level').foundation('reveal','close');
-    game.state.start(game.state.current); // reset the game, should be replaced with something more reliable
-}, 300, true));
+
 
 
 $('#restart').on('click', Foundation.utils.debounce(function(e){
@@ -24,7 +20,9 @@ function textUpdate(){
 
 $(document).on('close', '[data-reveal]', function () {
     var modal = $(this);
-    game.input.keyboard.disabled=false;
-    game.state.start('main'); // reset the game
+    if (modal.context.id === scoreModal) {
+    game.input.keyboard.disabled = false;
+    //  game.state.start('main'); // reset the game
     $('#submit').removeClass('disabled');
+}
 });
