@@ -5,40 +5,45 @@ function collisionHandler(weakerObject, strongerObject) {
 	// damage is set by itemtosetdamageto.dmg=1; ex: player.js has player.dmg=1;
 
 	//console.log(strongerObject.dmg);
+    switch (weakerObject) {
+        case player:
+            if (player.inv === false) { // if the player can be damaged
 
-	switch (weakerObject) {
-	case player:
-		if (player.inv === false) { // if the player can be damaged
+                if (weakerObject.health <= 1) { // and the players health is at 1, meaning this hit brings it to 0
 
-
-				player.inv = true; // the player is made invunerable
-				game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // We want him to be vunerable again in two seconds
-                game.time.events.add(Phaser.Timer.SECOND * .1, incjumpCount, this); // We need a timer here so if he gets hit while on the ground, he doesn't get a triple jump.
-				player.velocity = 100;
-				player.healthRegen = false;
-                player.body.velocity.y =  - 200;
-                if(player.scale.x<0){
-                    player.knockedLeft=1;
-                }else{
-                    player.knockedRight=1;
+                    weakerObject.kill(); //we kill the player
+                    dead(' running into an enemy...'); // we just killed the player, this tells the game to reset, we can add in more stuff later
+                } else { //if the player is vunerable, and healthy
+                    player.inv = true; // the player is made invunerable
+                    game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // We want him to be vunerable again in two seconds
+                    game.time.events.add(Phaser.Timer.SECOND * .1, incjumpCount, this); // We need a timer here so if he gets hit while on the ground, he doesn't get a triple jump.
+                    player.velocity = 100;
+                    player.healthRegen = false;
+                    player.body.velocity.y = - 200;
+                    if(player.scale.x<0){
+                        player.knockedLeft=1;
+                    }else{
+                        player.knockedRight=1;
+                    }
                 }
+                weakerObject.health = weakerObject.health - strongerObject.dmg; // we want to remove the damage done by the enemy to him, even if he dies, so that the health displayed is still 0
 
-            weakerObject.damage(strongerObject.dmg); // we want to remove the damage done by the enemy to him, even if he dies, so that the health displayed is still 0
+            }
+            break; // Never Forget
 
-		}
-		break; // Never Forget
+        default:
+            if (weakerObject.health > 0) {
+                weakerObject.health = weakerObject.health - strongerObject.dmg;
 
-	default:
-		if (weakerObject.health > 0) {
-			weakerObject.damage(strongerObject.dmg);
+            } else {
+                gencoins(strongerObject.x, strongerObject.y, weakerObject.goldWorth);
+                xpgain(weakerObject.xpWorth);
+                weakerObject.kill();
+                strongerObject.kill();
+            }
+    }
 
-		} else {
-			gencoins(strongerObject.x, strongerObject.y, weakerObject.goldWorth);
-			xpgain(weakerObject.xpWorth);
-			weakerObject.kill();
-			strongerObject.kill();
-		}
-	}
+
 
 }
 
