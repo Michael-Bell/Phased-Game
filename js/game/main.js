@@ -17,8 +17,6 @@ Game.Pre.prototype = {
     preload:function(){
         console.log('preload start');
         // Load Assets
-        //game.load.image('sky', 'assets/sky.png');
-        //game.load.image('ground', 'assets/ground.png');
         game.load.image('bullet', 'assets/bullet.png');
         game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
         game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
@@ -33,8 +31,6 @@ Game.Pre.prototype = {
 
             loadRain();
 
-        game.load.image('button', 'assets/play_again.png');
-        //  Load the Google WebFont Loader script
 
         this.load.onFileComplete.add(function( progress ) { console.log(progress);
             $('#meter').css('width',progress+'%');
@@ -238,6 +234,7 @@ function dead(cause) { // you died :(
     else{
         console.log("else"+gameLevel.int+gameLevel.max)
         if(gameLevel.int===gameLevel.max){
+            console.log(gameLevel);
             $("#winDeathHeader").text('You Win');
 
             score = getScore(1.3);
@@ -264,11 +261,6 @@ function dead(cause) { // you died :(
 
     game.input.keyboard.disabled=true; // disable control listeners
     game.state.start('dead');
-
-    x = game.camera.x + (game.width / 2);
-
-    y = game.camera.y + (game.height / 2);
-
     $("#scoreBox").text(score);
     $("#score2").text(score);
     $("#goldBox").text(player.gold);
