@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>main.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="app.html">
+                app.js
+              </a>
+            
+              
+              <a class="source" href="bullet.html">
+                bullet.js
+              </a>
+            
+              
+              <a class="source" href="camera.html">
+                camera.js
+              </a>
+            
+              
+              <a class="source" href="collision.html">
+                collision.js
+              </a>
+            
+              
+              <a class="source" href="database.html">
+                database.js
+              </a>
+            
+              
+              <a class="source" href="drops.html">
+                drops.js
+              </a>
+            
+              
+              <a class="source" href="enemy.html">
+                enemy.js
+              </a>
+            
+              
+              <a class="source" href="experience.html">
+                experience.js
+              </a>
+            
+              
+              <a class="source" href="hearts.html">
+                hearts.js
+              </a>
+            
+              
+              <a class="source" href="main.html">
+                main.js
+              </a>
+            
+              
+              <a class="source" href="maptest.html">
+                maptest.js
+              </a>
+            
+              
+              <a class="source" href="platforms.html">
+                platforms.js
+              </a>
+            
+              
+              <a class="source" href="player.html">
+                player.js
+              </a>
+            
+              
+              <a class="source" href="rain.html">
+                rain.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>main.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*  Console.log() are used to see how far into the script the game goes before crashing*/</span>
+
+
+
+<span class="hljs-keyword">var</span> game = <span class="hljs-keyword">new</span> Phaser.Game(<span class="hljs-number">800</span>, <span class="hljs-number">560</span>, Phaser.CANVAS, <span class="hljs-string">'Game'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Various Variables, some are not even used, some are important, some are repetative, and some are essential, I don’t really remember which are which</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+gameLevel={string:<span class="hljs-string">'level1'</span>,int:<span class="hljs-number">1</span>, max:<span class="hljs-number">3</span>};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>var gameState= function(game){};</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+Game = {};
+
+Game.Pre = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(game)</span>{</span>};
+
+Game.Pre.prototype = {
+    preload:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        console.log(<span class="hljs-string">'preload start'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Load Assets
+game.load.image(‘sky’, ‘assets/sky.png’);
+game.load.image(‘ground’, ‘assets/ground.png’);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        game.load.image(<span class="hljs-string">'bullet'</span>, <span class="hljs-string">'assets/bullet.png'</span>);
+        game.load.spritesheet(<span class="hljs-string">'player'</span>, <span class="hljs-string">'assets/character/sheet/sprite.png'</span>, <span class="hljs-number">75</span>, <span class="hljs-number">96</span>, <span class="hljs-number">12</span>);
+        game.load.spritesheet(<span class="hljs-string">'fly'</span>, <span class="hljs-string">'assets/enemies/flysheet.png'</span>, <span class="hljs-number">69</span>, <span class="hljs-number">32</span>, <span class="hljs-number">3</span>);
+        game.load.spritesheet(<span class="hljs-string">'heart'</span>, <span class="hljs-string">'assets/heart/red_spritesheet.png'</span>, <span class="hljs-number">70</span>, <span class="hljs-number">70</span>, <span class="hljs-number">5</span>);
+        game.load.image(<span class="hljs-string">'goldcoin'</span>, <span class="hljs-string">'assets/goldcoin.png'</span>);
+        game.load.image(<span class="hljs-string">'tiles'</span>, <span class="hljs-string">'assets/map/groundSprite.png'</span>);
+        game.load.image(<span class="hljs-string">'coinBox'</span>, <span class="hljs-string">'assets/bonus.png'</span>);
+        game.load.image(<span class="hljs-string">'endblock'</span>, <span class="hljs-string">'assets/ground_sand.png'</span>);
+        game.load.tilemap(<span class="hljs-string">'level1'</span>, <span class="hljs-string">'assets/map/1-1.json'</span>, <span class="hljs-literal">null</span>, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap(<span class="hljs-string">'level2'</span>, <span class="hljs-string">'assets/map/1-2.json'</span>, <span class="hljs-literal">null</span>, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap(<span class="hljs-string">'level3'</span>, <span class="hljs-string">'assets/map/1-3.json'</span>, <span class="hljs-literal">null</span>, Phaser.Tilemap.TILED_JSON);
+
+            loadRain();
+
+        game.load.image(<span class="hljs-string">'button'</span>, <span class="hljs-string">'assets/play_again.png'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p> Load the Google WebFont Loader script</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+        <span class="hljs-keyword">this</span>.load.onFileComplete.add(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">( progress )</span> {</span> console.log(progress);
+            $(<span class="hljs-string">'#meter'</span>).css(<span class="hljs-string">'width'</span>,progress+<span class="hljs-string">'%'</span>);
+            <span class="hljs-keyword">if</span>(progress===<span class="hljs-number">100</span>){
+                $(<span class="hljs-string">'.prog'</span>).addClass(<span class="hljs-string">'hide'</span>);
+                $(<span class="hljs-string">'#Game'</span>).removeClass(<span class="hljs-string">'hide'</span>);
+                game.state.start(<span class="hljs-string">'main'</span>)
+            }
+        });
+        console.log(<span class="hljs-string">'preloaddone'</span>);
+
+    }
+};
+
+game.state.add(<span class="hljs-string">'pre'</span>,Game.Pre);
+game.state.start(<span class="hljs-string">'pre'</span>);
+
+Game.main = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(game)</span>{</span>};
+
+Game.main.prototype = {
+    create:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        createGame();
+    },
+    update: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        updateGame();
+    },
+    render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>render()}
+};
+
+game.state.add(<span class="hljs-string">'main'</span>,Game.main);
+
+Game.dead = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(game)</span>{</span>};
+
+Game.dead.prototype = {
+
+    create: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        deadStateCreate();
+    }
+};
+
+game.state.add(<span class="hljs-string">'dead'</span>,Game.dead);
+
+
+<span class="hljs-keyword">var</span> jumpCount = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">var</span> player;
+<span class="hljs-keyword">var</span> bullets;
+
+
+<span class="hljs-keyword">var</span> map;
+
+<span class="hljs-keyword">var</span> layer;
+
+<span class="hljs-keyword">var</span> bulletTime = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> deadQuote = <span class="hljs-string">'You tried your best, but you have perished. Better luck next time. You were killed by '</span>;
+<span class="hljs-keyword">var</span> winQuote = <span class="hljs-string">"You Completed the level. Congrats on making it this far, maybe you should play a good game now, like League or something...."</span>;
+
+
+
+
+
+<span class="hljs-comment">/* TODO Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createGame</span><span class="hljs-params">()</span> {</span>
+    console.log(<span class="hljs-string">'createstart'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p> Modify the world and camera bounds</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+    game.world.setBounds(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">8000</span>, <span class="hljs-number">1000</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Enable Physics</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    game.physics.startSystem(Phaser.Physics.ARCADE);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Background Image
+sky = game.add.sprite(0, 0, ‘sky’);
+sky.scale.setTo(10, 2);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    game.stage.backgroundColor = <span class="hljs-string">'#20894E'</span>; <span class="hljs-comment">// This is making the background red instead of a sky</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>CreatePlatform();</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initEnemy(); <span class="hljs-comment">// setup enemy Group</span>
+    tileGen();
+    animateEnemies(); <span class="hljs-comment">// Need some movement</span>
+
+    CreatePlayer();
+    cursors = game.input.keyboard.createCursorKeys();
+    shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
+    pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
+
+    bullets = game.add.group();
+
+    bullets.enableBody = <span class="hljs-literal">true</span>;
+
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) {
+
+        <span class="hljs-keyword">var</span> b = bullets.create(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'bullet'</span>);
+
+        b.name = <span class="hljs-string">'bullet'</span> + i;
+
+        b.exists = <span class="hljs-literal">false</span>;
+
+        b.visible = <span class="hljs-literal">false</span>;
+
+        b.checkWorldBounds = <span class="hljs-literal">true</span>;
+
+        b.events.onOutOfBounds.add(resetBullet, <span class="hljs-keyword">this</span>);
+
+    }
+
+    <span class="hljs-comment">/* TODO Work on Enemy function, allows you to enter parameters to set where the enemy will spawn, and the min/max height as well as speed it travels at DONE*/</span>
+
+    initHearts(); <span class="hljs-comment">// Setup the heart Group, make it locked into the camera frame</span>
+    initCoinGroup();
+
+
+        createRain();
+
+    initHealthRegen();
+
+    gencoins(<span class="hljs-number">200</span>, <span class="hljs-number">700</span>, <span class="hljs-number">1</span>);
+    gencoins(<span class="hljs-number">200</span>, <span class="hljs-number">700</span>, <span class="hljs-number">1</span>);
+    gencoins(<span class="hljs-number">200</span>, <span class="hljs-number">700</span>, <span class="hljs-number">1</span>);
+    gencoins(<span class="hljs-number">200</span>, <span class="hljs-number">700</span>, <span class="hljs-number">1</span>);
+    console.log(<span class="hljs-string">'createdone'</span>);
+
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateGame</span><span class="hljs-params">()</span> {</span>
+    textUpdate();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>game.physics.arcade.collide(player, ground); // Player cannot go through ground
+game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    game.physics.arcade.overlap(player, layer); <span class="hljs-comment">// Player cannot go through ground</span>
+    game.physics.arcade.collide(player, layer); <span class="hljs-comment">// Player cannot go through ground</span>
+    game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, <span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>);
+    game.physics.arcade.collide(player, endBlocks, levelComplete, <span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>);
+    game.physics.arcade.collide(bullets, layer, bulletWallColl, <span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>);
+    game.physics.arcade.collide(coinGroup, layer); <span class="hljs-comment">// delete this if you want the coins to go through the ground</span>
+    game.physics.arcade.overlap(coinGroup, player, playerCoins, <span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>);
+    game.physics.arcade.overlap(player, enemyGroup, collisionHandler, <span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>); <span class="hljs-comment">// collisionHandler is called when player and flya(enemy) collide</span>
+    game.physics.arcade.collide(player, flyLayer, flyColl, <span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>); <span class="hljs-comment">// collisionHandler is called when player and flya(enemy) collide</span>
+    game.physics.arcade.collide(player,bounceBlock, invGravity,<span class="hljs-literal">null</span>,<span class="hljs-keyword">this</span>);
+    game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, <span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>); <span class="hljs-comment">// calls CollisionHandler function when bullet hits flya</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>TODO make collisionHandler awesome and have it handle all collisions - DONE For now</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    coinBounce();
+    knockback();
+    leveltimer(<span class="hljs-number">0</span>);
+    player.body.velocity.x = <span class="hljs-number">0</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>game.camera.y = player.y - 200;
+game.camera.x = player.x - 500; // Hacky camera following</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    game.camera.follow(player);
+
+    <span class="hljs-comment">/* TODO I saw a camera.follow function in the docs, see if its better at following the sprites */</span>
+    healthCheck();
+    xpcheck();
+    playerControls.call(<span class="hljs-keyword">this</span>);
+}
+jumpCheck = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span> <span class="hljs-comment">// lovely function to see if you can jump</span>
+    <span class="hljs-keyword">if</span> (jumpCount &lt; <span class="hljs-number">2</span>) { <span class="hljs-comment">// if less than 2 jumps on the counter</span>
+        jumpCount++; <span class="hljs-comment">// add a jump</span>
+        player.frame = <span class="hljs-number">11</span>; <span class="hljs-comment">//set the jump frame(may be redundant?)</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Why is this not working?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        jump(jumpCount); <span class="hljs-comment">// tell the player to jump, pass along the number of jumps so player knows whether to double jump</span>
+    }
+
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jump</span><span class="hljs-params">(number)</span> {</span>
+    player.body.velocity.y = -<span class="hljs-number">350</span>; <span class="hljs-comment">// 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down</span>
+    <span class="hljs-keyword">if</span> (number === <span class="hljs-number">2</span>) { <span class="hljs-comment">// is this a double jump</span>
+        player.body.velocity.y = -<span class="hljs-number">250</span> - DEX;
+        player.body.angularVelocity = -<span class="hljs-number">125</span>; <span class="hljs-comment">// start spinning</span>
+
+    }
+
+}
+<span class="hljs-keyword">var</span> score;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">render</span><span class="hljs-params">()</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Sprite debug info</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    	game.debug.bodyInfo(player, <span class="hljs-number">32</span>, <span class="hljs-number">32</span>);
+    game.debug.body(player);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>game.debug.spriteInfo(item, 32, 32);
+game.debug.text(“Time until event: “ + game.time.events.duration.toFixed(0), 32, 64);</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>game.debug.text(“Next tick: “ + game.time.events.next.toFixed(0), 32, 96);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dead</span><span class="hljs-params">(cause)</span> {</span> <span class="hljs-comment">// you died :(</span>
+    <span class="hljs-comment">/* TODO make a death screen with cool statistics on the game */</span>
+
+    showScores();
+    <span class="hljs-keyword">if</span>(player.health&lt;<span class="hljs-number">2</span>){
+        score = getScore(<span class="hljs-number">1</span>);
+        $(<span class="hljs-string">"#winDeathHeader"</span>).text(<span class="hljs-string">'You Died'</span>);
+        $(<span class="hljs-string">"#quote"</span>).text(deadQuote+cause);
+        $(<span class="hljs-string">'#submit'</span>).removeClass(<span class="hljs-string">'hide'</span>);
+        $(<span class="hljs-string">'#restart'</span>).removeClass(<span class="hljs-string">'hide'</span>);
+        $(<span class="hljs-string">'#continue'</span>).addClass(<span class="hljs-string">'hide'</span>);
+        console.log(<span class="hljs-string">'dead'</span>);
+    }
+    <span class="hljs-keyword">else</span>{
+        console.log(<span class="hljs-string">"else"</span>+gameLevel.int+gameLevel.max)
+        <span class="hljs-keyword">if</span>(gameLevel.int===gameLevel.max){
+            $(<span class="hljs-string">"#winDeathHeader"</span>).text(<span class="hljs-string">'You Win'</span>);
+
+            score = getScore(<span class="hljs-number">1.3</span>);
+            $(<span class="hljs-string">"#quote"</span>).text(winQuote);
+            $(<span class="hljs-string">'#submit'</span>).removeClass(<span class="hljs-string">'hide'</span>);
+            $(<span class="hljs-string">'#restart'</span>).removeClass(<span class="hljs-string">'hide'</span>);
+            $(<span class="hljs-string">'#continue'</span>).addClass(<span class="hljs-string">'hide'</span>);
+        }
+        <span class="hljs-keyword">else</span>{
+            $(<span class="hljs-string">"#winDeathHeader"</span>).text(<span class="hljs-string">'Level Complete'</span>);
+            $(<span class="hljs-string">"#quote"</span>).text(<span class="hljs-string">"You Won Level "</span> + gameLevel.int);
+            gameLevel.int++;
+            gameLevel.string = <span class="hljs-string">'level'</span> + gameLevel.int;
+            console.log(gameLevel.string + <span class="hljs-string">"    "</span> + gameLevel.int);
+            $(<span class="hljs-string">'#submit'</span>).addClass(<span class="hljs-string">'hide'</span>);
+            $(<span class="hljs-string">'#restart'</span>).addClass(<span class="hljs-string">'hide'</span>);
+            $(<span class="hljs-string">'#continue'</span>).removeClass(<span class="hljs-string">'hide'</span>);
+            console.log(<span class="hljs-string">'win'</span>);
+        }
+
+
+
+    }
+
+    game.input.keyboard.disabled=<span class="hljs-literal">true</span>; <span class="hljs-comment">// disable control listeners</span>
+    game.state.start(<span class="hljs-string">'dead'</span>);
+
+    x = game.camera.x + (game.width / <span class="hljs-number">2</span>);
+
+    y = game.camera.y + (game.height / <span class="hljs-number">2</span>);
+
+    $(<span class="hljs-string">"#scoreBox"</span>).text(score);
+    $(<span class="hljs-string">"#score2"</span>).text(score);
+    $(<span class="hljs-string">"#goldBox"</span>).text(player.gold);
+    $(<span class="hljs-string">"#xpBox"</span>).text(currentxp);
+    $(<span class="hljs-string">'#scoreModal'</span>).foundation(<span class="hljs-string">'reveal'</span>, <span class="hljs-string">'open'</span>);
+}
+
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resetBullet</span><span class="hljs-params">(bullet)</span> {</span>
+
+    bullet.kill();
+
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flyColl</span><span class="hljs-params">()</span> {</span>
+    alert(<span class="hljs-string">'col'</span>);
+}
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">levelComplete</span><span class="hljs-params">(player, block)</span> {</span>
+    dead();
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>}</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deadStateCreate</span><span class="hljs-params">()</span>{</span>
+    game.stage.backgroundColor = <span class="hljs-string">'#20894E'</span>; <span class="hljs-comment">// This is making the background red instead of a sky</span>
+
+}
+
+leveltimer(<span class="hljs-number">15000</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">leveltimer</span><span class="hljs-params">(time)</span>{</span>
+    <span class="hljs-keyword">if</span>(time!=<span class="hljs-number">0</span>){
+        ltimer = time;
+    }
+    ltimer--;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getScore</span><span class="hljs-params">(bonus)</span>{</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.floor(player.gold*LUK/<span class="hljs-number">10</span>) + <span class="hljs-built_in">Math</span>.floor(currentxp*INT/<span class="hljs-number">10</span>) + STR + DEX)*bonus);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">invGravity</span><span class="hljs-params">()</span>{</span>
+
+       player.body.gravity.y=-<span class="hljs-number">1</span>*player.body.gravity.y;;
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
