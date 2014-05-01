@@ -2,14 +2,19 @@ function createBullet() {
 
 	/* TODO Make bullets die when off camera */
 
-	if (game.time.now > bulletTime) // is it too soon to shoot again?
+	if (game.time.now > bulletTime)
+	// is it too soon to shoot again?
 	{
-
+        //make a new bullet
 		bullet = bullets.create(player.x, player.y - 6, 'bullet');
 		bullet.events.onOutOfBounds.add(goodbye, this);
+        //kill on exiting world
+        // Saw a Camera Cull function, would this be better?
 		bullet1 = bullet;
+        //temp debugging variable, not needed
 
-		if (player.scale.x > 0) { // check which direction the player is facing, make bullet face the same way and set velocity
+		if (player.scale.x > 0) {
+		// check which direction the player is facing, make bullet face the same way and set velocity
 			bullet.scale.x = 1;
 			bullet.x = player.x + 15;
 			bullet.body.velocity.x = 150;
@@ -20,13 +25,16 @@ function createBullet() {
 
 		}
 
-		bulletTime = game.time.now + 300; // delay in ms till next shot can be fired
+		bulletTime = game.time.now + 300;
+		// delay in ms till next shot can be fired
 
 
 	}
 
 }
 
+// Deprecated function, no longer used
+// was to create the bullet goup
 function initBullets() {
 	bullets = game.add.group();
 
@@ -37,19 +45,21 @@ function initBullets() {
 }
 var a;
 
+// still used, probably removable
 function goodbye(obj) {
 	console.log(obj);
 	obj.kill();
 }
 
-var asdf = true;
-
+// testing function, is not working
 function checkBullet() {
 	bullets.forEach(function (item) {
-		//console.log(item);
+
 
 		if (item.inCamera === false) {
-			//  item.visible=false;
+		// if the item is not in camera...
+            // kill the item...
+				//  item.visible=false;
 		}
 
 	});
