@@ -115,50 +115,7 @@
 
 	<span class="hljs-comment">/* TODO Make bullets die when off camera */</span>
 
-	<span class="hljs-keyword">if</span> (game.time.now &gt; bulletTime) <span class="hljs-comment">// is it too soon to shoot again?</span>
-	{
-
-		bullet = bullets.create(player.x, player.y - <span class="hljs-number">6</span>, <span class="hljs-string">'bullet'</span>);
-		bullet.events.onOutOfBounds.add(goodbye, <span class="hljs-keyword">this</span>);
-		bullet1 = bullet;
-
-		<span class="hljs-keyword">if</span> (player.scale.x &gt; <span class="hljs-number">0</span>) { <span class="hljs-comment">// check which direction the player is facing, make bullet face the same way and set velocity</span>
-			bullet.scale.x = <span class="hljs-number">1</span>;
-			bullet.x = player.x + <span class="hljs-number">15</span>;
-			bullet.body.velocity.x = <span class="hljs-number">150</span>;
-		} <span class="hljs-keyword">else</span> {
-			bullet.body.velocity.x = -<span class="hljs-number">150</span>;
-			bullet.scale.x = -<span class="hljs-number">1</span>;
-			bullet.x = player.x - <span class="hljs-number">15</span>;
-
-		}
-
-		bulletTime = game.time.now + <span class="hljs-number">300</span>; <span class="hljs-comment">// delay in ms till next shot can be fired</span>
-
-
-	}
-
-}
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initBullets</span><span class="hljs-params">()</span> {</span>
-	bullets = game.add.group();
-
-	bullets.enableBody = <span class="hljs-literal">true</span>;
-
-	bullets.physicsBodyType = Phaser.Physics.ARCADE;
-
-}
-<span class="hljs-keyword">var</span> a;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">goodbye</span><span class="hljs-params">(obj)</span> {</span>
-	console.log(obj);
-	obj.kill();
-}
-
-<span class="hljs-keyword">var</span> asdf = <span class="hljs-literal">true</span>;
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkBullet</span><span class="hljs-params">()</span> {</span>
-	bullets.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> {</span></pre></div></div>
+	<span class="hljs-keyword">if</span> (game.time.now &gt; bulletTime)</pre></div></div>
             
         </li>
         
@@ -169,12 +126,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>console.log(item);</p>
+              <p>is it too soon to shoot again?</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-		<span class="hljs-keyword">if</span> (item.inCamera === <span class="hljs-literal">false</span>) {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>	{</pre></div></div>
             
         </li>
         
@@ -185,7 +141,162 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p> item.visible=false;</p>
+              <p>make a new bullet</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		bullet = bullets.create(player.x, player.y - <span class="hljs-number">6</span>, <span class="hljs-string">'bullet'</span>);
+		bullet.events.onOutOfBounds.add(goodbye, <span class="hljs-keyword">this</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>kill on exiting world
+Saw a Camera Cull function, would this be better?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		bullet1 = bullet;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>temp debugging variable, not needed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+		<span class="hljs-keyword">if</span> (player.scale.x &gt; <span class="hljs-number">0</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>check which direction the player is facing, make bullet face the same way and set velocity</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			bullet.scale.x = <span class="hljs-number">1</span>;
+			bullet.x = player.x + <span class="hljs-number">15</span>;
+			bullet.body.velocity.x = <span class="hljs-number">150</span>;
+		} <span class="hljs-keyword">else</span> {
+			bullet.body.velocity.x = -<span class="hljs-number">150</span>;
+			bullet.scale.x = -<span class="hljs-number">1</span>;
+			bullet.x = player.x - <span class="hljs-number">15</span>;
+
+		}
+
+		bulletTime = game.time.now + <span class="hljs-number">300</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>delay in ms till next shot can be fired</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+
+	}
+
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Deprecated function, no longer used
+was to create the bullet goup</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initBullets</span><span class="hljs-params">()</span> {</span>
+	bullets = game.add.group();
+
+	bullets.enableBody = <span class="hljs-literal">true</span>;
+
+	bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+}
+<span class="hljs-keyword">var</span> a;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>still used, probably removable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">goodbye</span><span class="hljs-params">(obj)</span> {</span>
+	console.log(obj);
+	obj.kill();
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>testing function, is not working</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkBullet</span><span class="hljs-params">()</span> {</span>
+	bullets.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> {</span>
+
+
+		<span class="hljs-keyword">if</span> (item.inCamera === <span class="hljs-literal">false</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>if the item is not in camera…
+kill the item…
+ item.visible=false;</p>
 
             </div>
             
