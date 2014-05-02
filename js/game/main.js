@@ -107,6 +107,8 @@ function createGame() {
     // Enable Physics
     game.physics.startSystem(Phaser.Physics.P2JS);
     game.physics.p2.gravity.y = 1000;
+    game.physics.p2.setImpactEvents(true);
+
     //Background Image
     //sky = game.add.sprite(0, 0, 'sky');
     //sky.scale.setTo(10, 2);
@@ -201,10 +203,10 @@ jumpCheck = function () { // lovely function to see if you can jump
 };
 
 function jump(number) {
-    player.body.moveUp(300); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
+    player.body.moveUp(900); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
     if (number === 2) { // is this a double jump
-        player.body..moveUp(300+DEX);
-        player.body.angularVelocity = -125; // start spinning
+        player.body.moveUp(900+DEX);
+      player.body.rotateLeft(150); // start spinning
 
     }
 

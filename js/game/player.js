@@ -3,6 +3,8 @@ function CreatePlayer() {
     player = game.add.sprite(105, 105, 'player'); // starting location
     player.anchor.setTo(.5, .5); // this lets us rotate/flip sprite in the middle of the sprite, if not set, it will rotate from top left corner
     game.physics.p2.enable(player); // we need physics
+    player.body.angularDamping=1;
+
 /*    player.body.bounce.y = 0.1; // gives a slight bounce
     player.body.gravity.y = 400; // enable gravity*/
     /* TODO maybe we should have the player fall through the world, if you miss a jump, you fall and die? */
@@ -46,17 +48,16 @@ function playerControls() {
         player.frame = 0;
     }
     cursors.up.onDown.add(jumpCheck, this);
-/*    if (player.body.blocked.down || player.body.touching.down) { //is the player sprite touching another object on bottom?
+    if (touchingDown()) { //is the player sprite touching another object on bottom?
         player.body.angularVelocity = 0; // stop spinning
-        player.angle = 0; // stand up straight
-        player.velocity = 200;
+        player.body.angle = 0; // stand up straight
         player.healthRegen = true;
         jumpCount = 0; // reset jump counter
 
     } else { // if not on the ground
-        *//* TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*//*
+      /*   TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
         player.frame = 11; // set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
-    }*/
+    }
     if (fire) {
 
         createBullet();
@@ -82,4 +83,22 @@ function healthRegen() {
     if (player.health < 40 && player.healthRegen === true) {
         player.health++;
     }
+}
+
+
+
+function touchingDown(){
+    var yAxis = p2.vec2.fromValues(0, 1);
+    var result = false;
+    for (var i = 0; i < game.physics.p2.world.narrowphase.contactEquations.length; i++)
+    {
+        var c = game.physics.p2.world.narrowphase.contactEquations[i];
+        if (c.bodyA === player.body.data || c.bodyB === player.body.data)
+        {
+            var d = p2.vec2.dot(c.normalA, yAxis); // Normal dot Y-axis
+            if (c.bodyA === player.body.data) d *= -1;
+            if (d > 0.5) result = true;
+        }
+    }
+    return result;
 }
