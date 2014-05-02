@@ -1,20 +1,21 @@
 /*  Console.log() are used to see how far into the script the game goes before crashing*/
 
-
-
+/** Create the Game Object*/
 var game = new Phaser.Game(800, 560, Phaser.CANVAS, 'Game');
 //Various Variables, some are not even used, some are important, some are repetative, and some are essential, I don't really remember which are which
 
-gameLevel={string:'level1',int:1, max:3};
+/** Contains information on current level */
+gameLevel = {string: 'level1', int: 1, max: 3};
 
-//var gameState= function(game){};
-
+/** create the Gamestate object*/
 Game = {};
 
-Game.Pre = function(game){};
+/** Preloading State */
+Game.Pre = function (game) {
+};
 
 Game.Pre.prototype = {
-    preload:function(){
+    preload: function () {
         console.log('preload start');
         // Load Assets
         game.load.image('bullet', 'assets/bullet.png');
@@ -29,12 +30,13 @@ Game.Pre.prototype = {
         game.load.tilemap('level2', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level3', 'assets/map/1-3.json', null, Phaser.Tilemap.TILED_JSON);
 
-            loadRain();
+        loadRain();
 
 
-        this.load.onFileComplete.add(function( progress ) { console.log(progress);
-            $('#meter').css('width',progress+'%');
-            if(progress===100){
+        this.load.onFileComplete.add(function (progress) {
+            console.log(progress);
+            $('#meter').css('width', progress + '%');
+            if (progress === 100) {
                 $('.prog').addClass('hide');
                 $('#Game').removeClass('hide');
                 game.state.start('main')
@@ -45,33 +47,37 @@ Game.Pre.prototype = {
     }
 };
 
-game.state.add('pre',Game.Pre);
+game.state.add('pre', Game.Pre);
 game.state.start('pre');
 
-Game.main = function(game){};
-
-Game.main.prototype = {
-    create:function(){
-        createGame();
-    },
-    update: function(){
-        updateGame();
-    },
-    render: function(){render()}
+Game.main = function (game) {
 };
 
-game.state.add('main',Game.main);
+Game.main.prototype = {
+    create: function () {
+        createGame();
+    },
+    update: function () {
+        updateGame();
+    },
+    render: function () {
+        render()
+    }
+};
 
-Game.dead = function(game){};
+game.state.add('main', Game.main);
+
+Game.dead = function (game) {
+};
 
 Game.dead.prototype = {
 
-    create: function(){
+    create: function () {
         deadStateCreate();
     }
 };
 
-game.state.add('dead',Game.dead);
+game.state.add('dead', Game.dead);
 
 
 var jumpCount = 0;
@@ -81,7 +87,7 @@ var bullets;
 
 
 var map;
-
+var bgColor=0x20894E;
 var layer;
 
 var bulletTime = 0;
@@ -89,10 +95,7 @@ var deadQuote = 'You tried your best, but you have perished. Better luck next ti
 var winQuote = "You Completed the level. Congrats on making it this far, maybe you should play a good game now, like League or something....";
 
 
-
-
-
-/* TODO Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
+/** @todo Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
 
 function createGame() {
     console.log('createstart');
@@ -102,11 +105,12 @@ function createGame() {
     game.world.setBounds(0, 0, 8000, 1000);
 
     // Enable Physics
-    game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.physics.startSystem(Phaser.Physics.P2JS);
+    game.physics.p2.gravity.y = 1000;
     //Background Image
     //sky = game.add.sprite(0, 0, 'sky');
     //sky.scale.setTo(10, 2);
-    game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
+    game.stage.backgroundColor = bgColor; // This is making the background red instead of a sky
     //CreatePlatform();
     initEnemy(); // setup enemy Group
     tileGen();
@@ -145,7 +149,7 @@ function createGame() {
     initCoinGroup();
 
 
-        createRain();
+    createRain();
 
     initHealthRegen();
 
@@ -161,7 +165,7 @@ function updateGame() {
     textUpdate();
     //game.physics.arcade.collide(player, ground); // Player cannot go through ground
     // game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
-    game.physics.arcade.overlap(player, layer); // Player cannot go through ground
+ /*   game.physics.arcade.overlap(player, layer); // Player cannot go through ground
     game.physics.arcade.collide(player, layer); // Player cannot go through ground
     game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
     game.physics.arcade.collide(player, endBlocks, levelComplete, null, this);
@@ -170,9 +174,9 @@ function updateGame() {
     game.physics.arcade.overlap(coinGroup, player, playerCoins, null, this);
     game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
     game.physics.arcade.collide(player, flyLayer, flyColl, null, this); // collisionHandler is called when player and flya(enemy) collide
-    game.physics.arcade.collide(player,bounceBlock, invGravity,null,this);
+    game.physics.arcade.collide(player, bounceBlock, invGravity, null, this);
     game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
-    // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
+   */ // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
     coinBounce();
     knockback();
     leveltimer(0);
@@ -197,9 +201,9 @@ jumpCheck = function () { // lovely function to see if you can jump
 };
 
 function jump(number) {
-    player.body.velocity.y = -350; // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
+    player.body.moveUp(300); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
     if (number === 2) { // is this a double jump
-        player.body.velocity.y = -250 - DEX;
+        player.body..moveUp(300+DEX);
         player.body.angularVelocity = -125; // start spinning
 
     }
@@ -209,7 +213,7 @@ var score;
 function render() {
 
     // Sprite debug info
-    	game.debug.bodyInfo(player, 32, 32);
+    game.debug.bodyInfo(player, 32, 32);
     game.debug.body(player);
     // game.debug.spriteInfo(item, 32, 32);
     //game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
@@ -222,18 +226,18 @@ function dead(cause) { // you died :(
     /* TODO make a death screen with cool statistics on the game */
 
     showScores();
-    if(player.health<2){
+    if (player.health < 2) {
         score = getScore(1);
         $("#winDeathHeader").text('You Died');
-        $("#quote").text(deadQuote+cause);
+        $("#quote").text(deadQuote + cause);
         $('#submit').removeClass('hide');
         $('#restart').removeClass('hide');
         $('#continue').addClass('hide');
         console.log('dead');
     }
-    else{
-        console.log("else"+gameLevel.int+gameLevel.max)
-        if(gameLevel.int===gameLevel.max){
+    else {
+        console.log("else" + gameLevel.int + gameLevel.max)
+        if (gameLevel.int === gameLevel.max) {
             console.log(gameLevel);
             $("#winDeathHeader").text('You Win');
 
@@ -243,7 +247,7 @@ function dead(cause) { // you died :(
             $('#restart').removeClass('hide');
             $('#continue').addClass('hide');
         }
-        else{
+        else {
             $("#winDeathHeader").text('Level Complete');
             $("#quote").text("You Won Level " + gameLevel.int);
             gameLevel.int++;
@@ -256,10 +260,9 @@ function dead(cause) { // you died :(
         }
 
 
-
     }
 
-    game.input.keyboard.disabled=true; // disable control listeners
+    game.input.keyboard.disabled = true; // disable control listeners
     game.state.start('dead');
     $("#scoreBox").text(score);
     $("#score2").text(score);
@@ -267,7 +270,6 @@ function dead(cause) { // you died :(
     $("#xpBox").text(currentxp);
     $('#scoreModal').foundation('reveal', 'open');
 }
-
 
 
 function resetBullet(bullet) {
@@ -287,25 +289,26 @@ function levelComplete(player, block) {
 //}
 
 
-function deadStateCreate(){
-    game.stage.backgroundColor = '#20894E'; // This is making the background red instead of a sky
+function deadStateCreate() {
+    game.stage.backgroundColor = bgColor; // This is making the background red instead of a sky
 
 }
 
 leveltimer(15000);
-function leveltimer(time){
-    if(time!=0){
+function leveltimer(time) {
+    if (time != 0) {
         ltimer = time;
     }
     ltimer--;
 }
 
-function getScore(bonus){
-    return Math.floor((Math.floor(player.gold*LUK/10) + Math.floor(currentxp*INT/10) + STR + DEX)*bonus);
+function getScore(bonus) {
+    return Math.floor((Math.floor(player.gold * LUK / 10) + Math.floor(currentxp * INT / 10) + STR + DEX) * bonus);
 }
 
-function invGravity(){
+function invGravity() {
 
-       player.body.gravity.y=-1*player.body.gravity.y;;
+    player.body.gravity.y = -1 * player.body.gravity.y;
+    ;
 
 }
