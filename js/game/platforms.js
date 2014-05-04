@@ -1,3 +1,5 @@
+var coinCollisionGroup = game.physics.p2.createCollisionGroup();
+
 var layer;
 function CreatePlatform() {
     //Add the platforms
@@ -59,6 +61,9 @@ function tileGen() {
         item.goldWorth = 5;
         item.xpWorth = 0.5;
     });
+
+
+
     coinBoxGroup = game.add.group();
 
      coinBoxGroup.enableBody = true;
@@ -69,6 +74,8 @@ function tileGen() {
         // Update alpha first.
         item.body.immovable = true;
         item.body.static=true;
+        item.body.setCollisionGroup(coinCollisionGroup);
+        item.body.collides([coinCollisionGroup,playerCollisionGroup])
     });
 /*
     endBlocks = game.add.group();
