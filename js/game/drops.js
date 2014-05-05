@@ -11,6 +11,7 @@ function gencoins(x, y, goldincrease) { //Trying to make a gold coin come drop o
     g.goldincrease = goldincrease;
     g.body.setCollisionGroup(coinCollisionGroup);
     g.body.collides(tilesCollisionGroup);
+    g.body.collides(playerCollisionGroup);
 }
 function coinBounce() {
     coinGroup.forEach(function (item) {
@@ -40,14 +41,16 @@ function coinBounce() {
 function initCoinGroup() {
     // Create the coin group
     coinGroup = game.add.group();
-    coinGroup.enableBody = true;
-    coinGroup.physicsBodyType = Phaser.Physics.P2;
+/*    coinGroup.enableBody = true;
+    coinGroup.physicsBodyType = Phaser.Physics.P2;*/
 
 }
+var asdf;
+function playerCoins(test, impactCoin) {
+    _coin = impactCoin.sprite;
 
-function playerCoins(player, coin) {
-    player.gold = coin.goldincrease + player.gold + Math.floor(Math.random() * DEX / 5);
-    coin.kill();
+    player.gold = _coin.goldincrease + player.gold + Math.floor(Math.random() * DEX / 5);
+    _coin.kill();
 }
 
 // TODO  add item drops

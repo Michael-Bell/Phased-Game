@@ -165,10 +165,10 @@ function createGame() {
 
     initHealthRegen();
 
-    gencoins(200, 700, 1);
-    gencoins(200, 700, 1);
-    gencoins(200, 700, 1);
-    gencoins(200, 700, 1);
+    gencoins(200, 700, 2);
+    gencoins(200, 700, 2);
+    gencoins(200, 700, 2);
+    gencoins(200, 700, 2);
     console.log('createdone');
 
 }
