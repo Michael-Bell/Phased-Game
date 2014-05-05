@@ -1,6 +1,6 @@
 function CreatePlayer() {
     // Enter Player 1
-    player = game.add.sprite(105, 105, 'player'); // starting location
+    player = game.add.sprite(105, 932, 'player'); // starting location
     player.anchor.setTo(.5, .5); // this lets us rotate/flip sprite in the middle of the sprite, if not set, it will rotate from top left corner
     game.physics.p2.enable(player,false); // we need physics
     player.body.angularDamping=1;
@@ -50,7 +50,7 @@ function playerControls() {
         player.frame = 0;
     }
     cursors.up.onDown.add(jumpCheck, this);
-    if (touchingDown()) { //is the player sprite touching another object on bottom?
+    if (touchingDown(player)) { //is the player sprite touching another object on bottom?
         player.body.angularVelocity = 0; // stop spinning
         player.body.angle = 0; // stand up straight
         player.healthRegen = true;
@@ -89,16 +89,16 @@ function healthRegen() {
 
 
 
-function touchingDown(){
+function touchingDown(thing){
     var yAxis = p2.vec2.fromValues(0, 1);
     var result = false;
     for (var i = 0; i < game.physics.p2.world.narrowphase.contactEquations.length; i++)
     {
         var c = game.physics.p2.world.narrowphase.contactEquations[i];
-        if (c.bodyA === player.body.data || c.bodyB === player.body.data)
+        if (c.bodyA === thing.body.data || c.bodyB === thing.body.data)
         {
             var d = p2.vec2.dot(c.normalA, yAxis); // Normal dot Y-axis
-            if (c.bodyA === player.body.data) d *= -1;
+            if (c.bodyA === thing.body.data) d *= -1;
             if (d > 0.5) result = true;
         }
     }

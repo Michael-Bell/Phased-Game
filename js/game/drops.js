@@ -13,9 +13,9 @@ function gencoins(x, y, goldincrease) { //Trying to make a gold coin come drop o
     g.body.collides(tilesCollisionGroup);
 }
 function coinBounce() {
-/*    coinGroup.forEach(function (item) {
+    coinGroup.forEach(function (item) {
 
-        if (item.body.blocked.down) {
+        if (touchingDown(item)) {
             if (item.body.velocity.x > 15 || item.body.velocity.x < -15) { //If the coin is going fast sideways
                 item.body.velocity.x = item.body.velocity.x / 1.175;
                 if (item.bounceCount === 0) {
@@ -34,7 +34,7 @@ function coinBounce() {
             item.kill();
         }
 
-    });*/
+    });
 }
 
 function initCoinGroup() {
