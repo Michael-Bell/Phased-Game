@@ -1,6 +1,6 @@
 var tilesCollisionGroup;
 var layer;
-
+var specialLayer;
 
 function tileGen() {
     map = game.add.tilemap(gameLevel.string);
@@ -22,6 +22,15 @@ function tileGen() {
         tileBody.setCollisionGroup(tilesCollisionGroup);
         tileBody.collides(playerCollisionGroup);
         tileBody.collides(coinCollisionGroup);
+    }
+
+    specialLayer = map.createLayer('special');
+    map.setCollisionBetween(0,8,true,specialLayer);
+    var specialObjects = game.physics.p2.convertTilemap(map, specialLayer);
+    for (var i = 0; i < specialObjects.length; i++) {
+        var specialBody = specialObjects[i];
+        specialBody.setCollisionGroup(tilesCollisionGroup);
+        specialBody.collides(playerCollisionGroup);
     }
 
 

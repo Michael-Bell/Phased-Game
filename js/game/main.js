@@ -213,9 +213,9 @@ jumpCheck = function () { // lovely function to see if you can jump
 };
 
 function jump(number) {
-    player.body.moveUp(900); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
+    player.body.moveUp(600); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
     if (number === 2) { // is this a double jump
-        player.body.moveUp(900+DEX);
+        player.body.moveUp(600+DEX);
       player.body.rotateLeft(150); // start spinning
 
     }
