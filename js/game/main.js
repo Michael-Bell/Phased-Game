@@ -26,7 +26,7 @@ Game.Pre.prototype = {
         game.load.image('tiles', 'assets/map/groundSprite.png');
         game.load.image('coinBox', 'assets/bonus.png');
         game.load.image('endblock', 'assets/ground_sand.png');
-        game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level1', 'assets/map/1-1-t.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level2', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level3', 'assets/map/1-3.json', null, Phaser.Tilemap.TILED_JSON);
 
@@ -93,7 +93,8 @@ var layer;
 var bulletTime = 0;
 var deadQuote = 'You tried your best, but you have perished. Better luck next time. You were killed by ';
 var winQuote = "You Completed the level. Congrats on making it this far, maybe you should play a good game now, like League or something....";
-
+var playerCollisionGroup;
+var coinCollisionGroup;
 
 /** @todo Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
 
@@ -109,19 +110,23 @@ function createGame() {
     game.physics.p2.gravity.y = 1000;
     game.physics.p2.setImpactEvents(true);
 
+
     game.stage.backgroundColor = bgColor; // This is making the background red instead of a sky
     //CreatePlatform();
     //Background Image
     //sky = game.add.sprite(0, 0, 'sky');
     //sky.scale.setTo(10, 2);
     game.physics.p2.updateBoundsCollisionGroup();
+     playerCollisionGroup = game.physics.p2.createCollisionGroup();
+     coinCollisionGroup = game.physics.p2.createCollisionGroup();
+
+    tileGen();
 
     CreatePlayer();
     initEnemy(); // setup enemy Group
-    tileGen();
 
     animateEnemies(); // Need some movement
-    player.body.collides(coinCollisionGroup, playerCoins,this);
+    //player.body.collides(coinCollisionGroup, playerCoins,this);
 
 
     cursors = game.input.keyboard.createCursorKeys();

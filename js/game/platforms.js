@@ -1,30 +1,6 @@
-var coinCollisionGroup = game.physics.p2.createCollisionGroup();
-
+var tilesCollisionGroup;
 var layer;
-function CreatePlatform() {
-    //Add the platforms
-    /* TODO Just make a map in Tiled or something and import it in with tileset or something, be way easier */
-    /* TODO Moving Platforms... */
-    ground = game.add.group(); // using a group
-    ground.enableBody = true;
 
-    for (var i = 0; i < 3; i++) {
-        var block = ground.create((5 * 70) + i * 70, 600 - 400, 'ground'); // Dirty math hack to shift over blocks
-        block.body.immovable = true;
-
-    }
-    for (var i = 0; i < 125; i++) {
-        var block = ground.create(+i * 70, 800, 'ground'); // Dirty math hack to shift over blocks
-        block.body.immovable = true;
-
-    }
-    for (var i = 0; i < 3; i++) {
-        var block = ground.create(i * 70, 600 - 250, 'ground');
-        block.body.immovable = true;
-
-    }
-
-}
 
 function tileGen() {
     map = game.add.tilemap(gameLevel.string);
@@ -34,12 +10,19 @@ function tileGen() {
     //tileset.setCollisionRange(0, tileset.total - 1, true, true, true, true);
     map.addTilesetImage('groundSprite', 'tiles');
     map.addTilesetImage('flysheet', 'fly');
+    layer = map.createLayer('ground');
     //  Creates a layer from the World1 layer in the map data.
     //  A Layer is effectively like a Phaser.Sprite, so is added to the display list.
-    map.setCollisionBetween(0, 8);
-    layer = map.createLayer('ground');
+    map.setCollisionBetween(0, 8,true, layer);
 
-    game.physics.p2.convertTilemap(map, layer);
+    var tileObjects = game.physics.p2.convertTilemap(map, layer);
+    tilesCollisionGroup   = game.physics.p2.createCollisionGroup();
+    for (var i = 0; i < tileObjects.length; i++) {
+        var tileBody = tileObjects[i];
+        tileBody.setCollisionGroup(tilesCollisionGroup);
+        tileBody.collides(playerCollisionGroup);
+        tileBody.collides(coinCollisionGroup);
+    }
 
 
     //layer = game.add.tilemapLayer(0, 0, 640, 480, map.tiles, map, 0);
@@ -48,7 +31,7 @@ function tileGen() {
     //  And now we convert all of the Tiled objects with an ID of 34 into sprites within the coins group
 
     //   map.createFromObjects('flies', 0, 'fly', 0, true, false, enemyGroup);
-    map.createFromObjects('enemy', 10, 'fly', 0, true, false, enemyGroup);
+/*    map.createFromObjects('enemy', 10, 'fly', 0, true, false, enemyGroup);
     map.createFromObjects('enemy', 11, 'fly', 0, true, false, enemyGroup);
     map.createFromObjects('enemy', 12, 'fly', 0, true, false, enemyGroup);
 
@@ -65,10 +48,12 @@ function tileGen() {
 
 
     coinBoxGroup = game.add.group();
-
      coinBoxGroup.enableBody = true;
     coinBoxGroup.physicsBodyType = Phaser.Physics.P2JS;
-    map.createFromObjects('special', 3, 'coinBox', 0, true, false, coinBoxGroup);
+
+
+
+    //map.createFromObjects('special', 3, 'coinBox', 0, true, false, coinBoxGroup);
 
     coinBoxGroup.forEach(function (item) {
         // Update alpha first.
@@ -77,7 +62,8 @@ function tileGen() {
         item.body.setCollisionGroup(coinCollisionGroup);
         item.body.collides([coinCollisionGroup,playerCollisionGroup])
     });
-/*
+
+
     endBlocks = game.add.group();
     endBlocks.enableBody = true;
     endBlocks.physicsBodyType = Phaser.Physics.ARCADE;

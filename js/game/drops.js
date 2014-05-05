@@ -1,14 +1,19 @@
 function gencoins(x, y, goldincrease) { //Trying to make a gold coin come drop out of an enemy
-    var g = coinGroup.create(x, y, 'goldcoin');
-    g.body.gravity.y = 300;
+    var g = coinGroup.create(x, y, 'goldcoin')
+    game.physics.p2.enable(g);
+
+    /*    g.body.gravity.y = 300;*/
     g.body.velocity.y = -150 - Math.random() * 150;
     g.body.velocity.x = 100 - Math.random() * 200;
+
     g.bounceCount = 0;
     g.despawntimer = game.time.now + 100000 + Math.random() * 1000;
     g.goldincrease = goldincrease;
+    g.body.setCollisionGroup(coinCollisionGroup);
+    g.body.collides(tilesCollisionGroup);
 }
 function coinBounce() {
-    coinGroup.forEach(function (item) {
+/*    coinGroup.forEach(function (item) {
 
         if (item.body.blocked.down) {
             if (item.body.velocity.x > 15 || item.body.velocity.x < -15) { //If the coin is going fast sideways
@@ -29,14 +34,14 @@ function coinBounce() {
             item.kill();
         }
 
-    });
+    });*/
 }
 
 function initCoinGroup() {
     // Create the coin group
     coinGroup = game.add.group();
     coinGroup.enableBody = true;
-    coinGroup.physicsBodyType = Phaser.Physics.ARCADE;
+    coinGroup.physicsBodyType = Phaser.Physics.P2;
 
 }
 

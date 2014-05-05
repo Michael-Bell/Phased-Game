@@ -1,13 +1,12 @@
-var playerCollisionGroup;
 function CreatePlayer() {
     // Enter Player 1
     player = game.add.sprite(105, 105, 'player'); // starting location
     player.anchor.setTo(.5, .5); // this lets us rotate/flip sprite in the middle of the sprite, if not set, it will rotate from top left corner
-    game.physics.p2.enable(player); // we need physics
+    game.physics.p2.enable(player,false); // we need physics
     player.body.angularDamping=1;
-    playerCollisionGroup = game.physics.p2.createCollisionGroup();
-    player.body.setCollisionGroup(playerCollisionGroup);
 
+    player.body.setCollisionGroup(playerCollisionGroup);
+    player.body.collides(tilesCollisionGroup)
 /*    player.body.bounce.y = 0.1; // gives a slight bounce
     player.body.gravity.y = 400; // enable gravity*/
     /* TODO maybe we should have the player fall through the world, if you miss a jump, you fall and die? */
