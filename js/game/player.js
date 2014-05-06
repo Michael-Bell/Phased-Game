@@ -8,7 +8,7 @@ function CreatePlayer() {
     player.body.setCollisionGroup(playerCollisionGroup);
     player.body.collides(tilesCollisionGroup)
     player.body.collides(coinCollisionGroup,playerCoins,this);
-    player.body.collides(specialCollisionGroup,collideCoinbox, this);
+    player.body.collides(specialCollisionGroup);
 /*    player.body.bounce.y = 0.1; // gives a slight bounce
     player.body.gravity.y = 400; // enable gravity*/
     /* TODO maybe we should have the player fall through the world, if you miss a jump, you fall and die? */

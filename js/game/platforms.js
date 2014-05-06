@@ -27,6 +27,7 @@ function tileGen() {
     specialCollisionGroup = game.physics.p2.createCollisionGroup();
     specialLayer = map.createLayer('special');
     map.setCollisionBetween(0,8,true,specialLayer);
+    map.setTileIndexCallback(3, collideCoinbox, this);
     var specialObjects = game.physics.p2.convertTilemap(map, specialLayer);
     for (var i = 0; i < specialObjects.length; i++) {
         var specialBody = specialObjects[i];
@@ -116,7 +117,9 @@ function tileGen() {
 
 var asdf;
 function collideCoinbox(player, block) {
- console.log(block);
+    asdf=block;
+ console.log(block.parent);
+    block.removeFromWorld()
 /*
     if (touchingDown(block.sprite)) {
         block.kill();
