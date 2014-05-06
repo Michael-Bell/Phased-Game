@@ -1,3 +1,5 @@
+var enemyCollisionGroup;
+
 function initEnemy() {
     /* Create Enemy Group and apply group stats*/
     enemyGroup = game.add.group();

@@ -79,7 +79,7 @@ Game.dead.prototype = {
 
 game.state.add('dead', Game.dead);
 
-
+var bulletCollisionGroup;
 var jumpCount = 0;
 
 var player;
@@ -117,6 +117,7 @@ function createGame() {
     //sky = game.add.sprite(0, 0, 'sky');
     //sky.scale.setTo(10, 2);
     game.physics.p2.updateBoundsCollisionGroup();
+    bulletCollisionGroup= game.physics.p2.createCollisionGroup();
      playerCollisionGroup = game.physics.p2.createCollisionGroup();
      coinCollisionGroup = game.physics.p2.createCollisionGroup();
     initEnemy(); // setup enemy Group
@@ -137,23 +138,9 @@ function createGame() {
 
     bullets.enableBody = true;
 
-    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    bullets.physicsBodyType = Phaser.Physics.P2;
 
-    for (var i = 0; i < 20; i++) {
 
-        var b = bullets.create(0, 0, 'bullet');
-
-        b.name = 'bullet' + i;
-
-        b.exists = false;
-
-        b.visible = false;
-
-        b.checkWorldBounds = true;
-
-        b.events.onOutOfBounds.add(resetBullet, this);
-
-    }
 
     /* TODO Work on Enemy function, allows you to enter parameters to set where the enemy will spawn, and the min/max height as well as speed it travels at DONE*/
 
@@ -248,7 +235,7 @@ function dead(cause) { // you died :(
         console.log('dead');
     }
     else {
-        console.log("else" + gameLevel.int + gameLevel.max)
+        console.log("else" + gameLevel.int + gameLevel.max);
         if (gameLevel.int === gameLevel.max) {
             console.log(gameLevel);
             $("#winDeathHeader").text('You Win');
@@ -321,6 +308,6 @@ function getScore(bonus) {
 function invGravity() {
 
     player.body.gravity.y = -1 * player.body.gravity.y;
-    ;
+
 
 }

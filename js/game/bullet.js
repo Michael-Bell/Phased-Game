@@ -7,6 +7,11 @@ function createBullet() {
     {
         //make a new bullet
         bullet = bullets.create(player.x, player.y - 6, 'bullet');
+        game.physics.p2.enable(bullet,false); // we need physics
+        bullet.body.data.gravityScale = 0;
+        bullet.body.setCollisionGroup(bulletCollisionGroup);
+        bullet.body.collides(tilesCollisionGroup,bulletWallColl,this);
+bullet.body.collides(enemyCollisionGroup);
         bullet.events.onOutOfBounds.add(goodbye, this);
         //kill on exiting world
         // Saw a Camera Cull function, would this be better?

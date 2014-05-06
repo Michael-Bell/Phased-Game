@@ -38,8 +38,9 @@ function collisionHandler(weakerObject, strongerObject) {
             } else {
                 gencoins(strongerObject.x, strongerObject.y, weakerObject.goldWorth);
                 xpgain(weakerObject.xpWorth);
-                weakerObject.kill();
-                strongerObject.kill();
+                weakerObject.sprite.kill();
+                asdf=weakerObject;
+                strongerObject.sprite.kill();
             }
     }
 
@@ -51,7 +52,8 @@ function incjumpCount() {
 }
 
 function bulletWallColl(bullet, wall) {
-    bullet.kill();
+    asdf=bullet;
+    bullet.sprite.kill();
 }
 
 function knockback() {

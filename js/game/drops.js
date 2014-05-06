@@ -1,5 +1,5 @@
 function gencoins(x, y, goldincrease) { //Trying to make a gold coin come drop out of an enemy
-    var g = coinGroup.create(x, y, 'goldcoin')
+    var g = coinGroup.create(x, y, 'goldcoin');
     game.physics.p2.enable(g);
 
     /*    g.body.gravity.y = 300;*/

@@ -22,6 +22,7 @@ function tileGen() {
         tileBody.setCollisionGroup(tilesCollisionGroup);
         tileBody.collides(playerCollisionGroup);
         tileBody.collides(coinCollisionGroup);
+        tileBody.collides(bulletCollisionGroup);
 
     }
     specialCollisionGroup = game.physics.p2.createCollisionGroup();
@@ -48,13 +49,18 @@ function tileGen() {
 
     enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
     enemyGroup.callAll('animations.play', 'animations', 'wings');
-
+    enemyCollisionGroup = game.physics.p2.createCollisionGroup();
     enemyGroup.forEach(function (item) {
         // Update alpha first.
         item.dmg = 1;
         item.goldWorth = 5;
         item.xpWorth = 0.5;
         item.body.data.gravityScale = 1;
+        item.body.setCollisionGroup(enemyCollisionGroup);
+        item.body.collides(bulletCollisionGroup,collisionHandler,this);
+        item.body.collides(playerCollisionGroup);
+        item.body.collides(tilesCollisionGroup);
+
 
     });
 
@@ -121,7 +127,7 @@ var asdf;
 function collideCoinbox(player, block) {
     asdf=block;
  console.log(block.parent);
-    block.removeFromWorld()
+    block.removeFromWorld();
 /*
     if (touchingDown(block.sprite)) {
         block.kill();

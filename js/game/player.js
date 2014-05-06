@@ -6,7 +6,7 @@ function CreatePlayer() {
     player.body.angularDamping=1;
 
     player.body.setCollisionGroup(playerCollisionGroup);
-    player.body.collides(tilesCollisionGroup)
+    player.body.collides(tilesCollisionGroup);
     player.body.collides(coinCollisionGroup,playerCoins,this);
     player.body.collides(specialCollisionGroup);
 /*    player.body.bounce.y = 0.1; // gives a slight bounce
