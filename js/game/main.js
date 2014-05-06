@@ -119,11 +119,11 @@ function createGame() {
     game.physics.p2.updateBoundsCollisionGroup();
      playerCollisionGroup = game.physics.p2.createCollisionGroup();
      coinCollisionGroup = game.physics.p2.createCollisionGroup();
+    initEnemy(); // setup enemy Group
 
     tileGen();
 
     CreatePlayer();
-    initEnemy(); // setup enemy Group
 
     animateEnemies(); // Need some movement
     //player.body.collides(coinCollisionGroup, playerCoins,this);

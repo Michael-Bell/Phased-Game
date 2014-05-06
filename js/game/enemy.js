@@ -2,7 +2,7 @@ function initEnemy() {
     /* Create Enemy Group and apply group stats*/
     enemyGroup = game.add.group();
     enemyGroup.enableBody = true;
-    enemyGroup.physicsBodyType = Phaser.Physics.ARCADE;
+    enemyGroup.physicsBodyType = Phaser.Physics.P2JS;
 
 }
 
@@ -26,22 +26,11 @@ function GenerateEnemy(x, y, uniqueID) {
 function animateEnemies() { // tween animate flying up and down
     //  Here we'll chain 4 different tweens together and play through them all in a loop
     enemyGroup.forEach(function (item) {
-        // Update alpha first.
-        var tween = game.add.tween(item) //.to({ x: 600 }, 2000, Phaser.Easing.Linear.None)
-
-            .to({
-                y: item.y + 300
-            }, 2000, Phaser.Easing.Linear.None)
-
-            //.to({ x: 100 }, 2000, Phaser.Easing.Linear.None)
-
-            .to({
-                y: item.y
-            }, 2000, Phaser.Easing.Linear.None)
-
-            .loop()
-
-            .start();
+        asdf=item;
+        var temp = game.add.sprite(item.x,item.y);
+        game.physics.p2.enable(temp);
+        temp.body.static=true;
+        var spring = game.physics.p2.createSpring(item, temp, 225, 7, 2);
     });
 
 }

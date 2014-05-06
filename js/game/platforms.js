@@ -42,7 +42,7 @@ function tileGen() {
     //  And now we convert all of the Tiled objects with an ID of 34 into sprites within the coins group
 
     //   map.createFromObjects('flies', 0, 'fly', 0, true, false, enemyGroup);
-/*    map.createFromObjects('enemy', 10, 'fly', 0, true, false, enemyGroup);
+   map.createFromObjects('enemy', 10, 'fly', 0, true, false, enemyGroup);
     map.createFromObjects('enemy', 11, 'fly', 0, true, false, enemyGroup);
     map.createFromObjects('enemy', 12, 'fly', 0, true, false, enemyGroup);
 
@@ -54,9 +54,11 @@ function tileGen() {
         item.dmg = 1;
         item.goldWorth = 5;
         item.xpWorth = 0.5;
+        item.body.data.gravityScale = 1;
+
     });
 
-
+/*
 
     coinBoxGroup = game.add.group();
      coinBoxGroup.enableBody = true;

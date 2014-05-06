@@ -1,36 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="128" height="19" tilewidth="70" tileheight="70">
+<map version="1.0" orientation="orthogonal" width="20" height="19" tilewidth="70" tileheight="70">
  <tileset firstgid="1" name="groundSprite" tilewidth="70" tileheight="70">
   <image source="../groundSprite.png" width="210" height="210"/>
  </tileset>
  <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
   <image source="../enemies/flysheet.png" width="138" height="64"/>
  </tileset>
- <layer name="ground" width="128" height="19">
+ <layer name="ground" width="20" height="19">
   <data encoding="base64" compression="zlib">
-   eJztl9EKwzAIRftS+v9/3KdAEBOjxmrDPeDLNsJ2j6buugAAAAAAQM/dFahJhKN23tMVeqE+OxxR71yhF85kxT3XC8BPhZnSum8F7GQ7b1hmH/5tVJh1itU9ngE6pKzofrU7W3o2t+vjDohjltXKvq3phwjPuAN8cP5HM6T5/8W9FuX6lDtgdBf2OUpZ076XzvPkNMt85OHv/qU8PXzxe3aeX92/14n2eSXN78quFeU/Yn6kz2f7t2QWvZvM+iHid2Vnne1/Ze6+2EdPrxHcexnfb7YbZWfX6gVJRBCz
+   eJxjYBgFo2AUjIJRMBgBO5UxABzoAI0=
   </data>
  </layer>
- <objectgroup name="enemy" width="128" height="19">
+ <objectgroup name="enemy" width="20" height="19">
   <object gid="10" x="546" y="812"/>
   <object gid="11" x="878" y="788"/>
   <object gid="10" x="1322" y="780"/>
-  <object gid="10" x="2598" y="1180"/>
-  <object gid="10" x="2866" y="512"/>
-  <object gid="10" x="3342" y="688"/>
-  <object gid="10" x="3334" y="272"/>
-  <object gid="10" x="2126" y="344"/>
-  <object gid="10" x="4122" y="384"/>
-  <object gid="10" x="4530" y="348"/>
-  <object gid="10" x="5786" y="396"/>
-  <object gid="10" x="5946" y="660"/>
-  <object gid="10" x="6834" y="724"/>
-  <object gid="10" x="7606" y="616"/>
-  <object gid="10" x="8474" y="872"/>
  </objectgroup>
- <layer name="special" width="128" height="19">
+ <layer name="special" width="20" height="19">
   <data encoding="base64" compression="zlib">
-   eJzt0SEKAAAIA0DB///ZatQo3sGKsBUjAAAAAIAPsmVyn+xsetzhvwAAAHBHAS3pAC4=
+   eJxjYBgFo2AUjIKhC5jR8CjADQATuAAN
+  </data>
+ </layer>
+ <layer name="end" width="20" height="19">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMNCAEwumNgAAFhwALg==
   </data>
  </layer>
 </map>
