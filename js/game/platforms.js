@@ -1,6 +1,6 @@
 var tilesCollisionGroup;
 var layer;
-var specialLayer;
+var specialLayer,specialCollisionGroup;
 
 function tileGen() {
     map = game.add.tilemap(gameLevel.string);
@@ -22,14 +22,15 @@ function tileGen() {
         tileBody.setCollisionGroup(tilesCollisionGroup);
         tileBody.collides(playerCollisionGroup);
         tileBody.collides(coinCollisionGroup);
-    }
 
+    }
+    specialCollisionGroup = game.physics.p2.createCollisionGroup();
     specialLayer = map.createLayer('special');
     map.setCollisionBetween(0,8,true,specialLayer);
     var specialObjects = game.physics.p2.convertTilemap(map, specialLayer);
     for (var i = 0; i < specialObjects.length; i++) {
         var specialBody = specialObjects[i];
-        specialBody.setCollisionGroup(tilesCollisionGroup);
+        specialBody.setCollisionGroup(specialCollisionGroup);
         specialBody.collides(playerCollisionGroup);
     }
 
@@ -115,8 +116,9 @@ function tileGen() {
 
 var asdf;
 function collideCoinbox(player, block) {
-    asdf = block;
-    if (block.body.touching.down) {
+ console.log(block);
+/*
+    if (touchingDown(block.sprite)) {
         block.kill();
         gencoins(block.x, block.y, 1);
         gencoins(block.x, block.y, 1);
@@ -128,5 +130,6 @@ function collideCoinbox(player, block) {
         gencoins(block.x, block.y, 1);
         gencoins(block.x, block.y, 1);
     }
+*/
 
 }
