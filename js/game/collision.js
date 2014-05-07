@@ -18,7 +18,7 @@ str=strongerObject;
                     weakerObject.sprite.kill(); //we kill the player
                     dead(' running into an enemy...'); // we just killed the player, this tells the game to reset, we can add in more stuff later
                 } else { //if the player is vunerable, and healthy
-                    console.log('weakerObject.sprite.health <= 1 ELSE')
+                    console.log('weakerObject.sprite.health <= 1 ELSE');
                     weakerObject.sprite.inv = true; // the player is made invunerable
                     game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // We want him to be vunerable again in two seconds
                     game.time.events.add(Phaser.Timer.SECOND * .1, incjumpCount, this); // We need a timer here so if he gets hit while on the ground, he doesn't get a triple jump.
