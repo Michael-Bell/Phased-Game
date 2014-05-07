@@ -10,6 +10,7 @@ function CreatePlayer() {
     player.body.collides(coinCollisionGroup,playerCoins,this);
     player.body.collides(specialCollisionGroup);
     player.body.collides(enemyCollisionGroup,collisionHandler, this);
+    player.name="player";
 /*    player.body.bounce.y = 0.1; // gives a slight bounce
     player.body.gravity.y = 400; // enable gravity*/
     /* TODO maybe we should have the player fall through the world, if you miss a jump, you fall and die? */
@@ -58,6 +59,7 @@ function playerControls() {
         player.body.angle = 0; // stand up straight
         player.healthRegen = true;
         jumpCount = 0; // reset jump counter
+        player.velocity = 200;
 
     } else { // if not on the ground
       /*   TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/

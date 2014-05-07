@@ -1,7 +1,7 @@
 var tilesCollisionGroup;
 var layer;
 var specialLayer,specialCollisionGroup;
-
+var ff;
 function tileGen() {
     map = game.add.tilemap(gameLevel.string);
     //  The first parameter is the tileset name, as specified in the Tiled map editor (and in the tilemap json file)
@@ -14,6 +14,7 @@ function tileGen() {
     //  Creates a layer from the World1 layer in the map data.
     //  A Layer is effectively like a Phaser.Sprite, so is added to the display list.
     map.setCollisionBetween(0, 8,true, layer);
+    enemyCollisionGroup = game.physics.p2.createCollisionGroup();
 
     var tileObjects = game.physics.p2.convertTilemap(map, layer);
     tilesCollisionGroup   = game.physics.p2.createCollisionGroup();
@@ -23,6 +24,7 @@ function tileGen() {
         tileBody.collides(playerCollisionGroup);
         tileBody.collides(coinCollisionGroup);
         tileBody.collides(bulletCollisionGroup);
+        tileBody.collides(enemyCollisionGroup);
 
     }
     specialCollisionGroup = game.physics.p2.createCollisionGroup();
@@ -49,7 +51,6 @@ function tileGen() {
 
     enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
     enemyGroup.callAll('animations.play', 'animations', 'wings');
-    enemyCollisionGroup = game.physics.p2.createCollisionGroup();
     enemyGroup.goldWorth=5;
     enemyGroup.forEach(function (item) {
         // Update alpha first.
@@ -61,12 +62,13 @@ function tileGen() {
         item.body.collides(bulletCollisionGroup,collisionHandler,this);
         item.body.collides(playerCollisionGroup);
         item.body.collides(tilesCollisionGroup);
+       // item.body.angularVelocity = 5000;
 
-
+        ff=item;
     });
 
 /*
-
+var
     coinBoxGroup = game.add.group();
      coinBoxGroup.enableBody = true;
     coinBoxGroup.physicsBodyType = Phaser.Physics.P2JS;
