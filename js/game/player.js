@@ -10,6 +10,7 @@ function CreatePlayer() {
     player.body.collides(coinCollisionGroup,playerCoins,this);
     player.body.collides(specialCollisionGroup);
     player.body.collides(enemyCollisionGroup,collisionHandler, this);
+    player.body.collides(endCollisionGroup);
     player.name="player";
 /*    player.body.bounce.y = 0.1; // gives a slight bounce
     player.body.gravity.y = 400; // enable gravity*/

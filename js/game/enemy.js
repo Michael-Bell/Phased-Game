@@ -32,7 +32,7 @@ function animateEnemies() { // tween animate flying up and down
         var temp = game.add.sprite(item.x,item.y);
         game.physics.p2.enable(temp);
         temp.body.static=true;
-        var spring = game.physics.p2.createSpring(item, temp, 225, 7, 2);
+        var spring = game.physics.p2.createSpring(item, temp, 125, 6, 99);
     });
 
 }

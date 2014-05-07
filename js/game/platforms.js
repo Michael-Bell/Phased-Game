@@ -1,7 +1,8 @@
 var tilesCollisionGroup;
 var layer;
-var specialLayer,specialCollisionGroup;
+var specialLayer,specialCollisionGroup,endCollisionGroup;
 var ff;
+var asdfasdf;
 function tileGen() {
     map = game.add.tilemap(gameLevel.string);
     //  The first parameter is the tileset name, as specified in the Tiled map editor (and in the tilemap json file)
@@ -40,7 +41,7 @@ function tileGen() {
 
 
     //layer = game.add.tilemapLayer(0, 0, 640, 480, map.tiles, map, 0);
-    flyLayer = map.createLayer('flies');
+ //   flyLayer = map.createLayer('flies');
 
     //  And now we convert all of the Tiled objects with an ID of 34 into sprites within the coins group
 
@@ -67,7 +68,6 @@ function tileGen() {
         ff=item;
     });
 
-/*
 var
     coinBoxGroup = game.add.group();
      coinBoxGroup.enableBody = true;
@@ -85,20 +85,17 @@ var
         item.body.collides([coinCollisionGroup,playerCollisionGroup])
     });
 
-
-    endBlocks = game.add.group();
-    endBlocks.enableBody = true;
-    endBlocks.physicsBodyType = Phaser.Physics.ARCADE;
-    map.createFromObjects('special', 9, 'endblock', 0, true, false, endBlocks);
-
-    endBlocks.forEach(function (item) {
-        // Update alpha first.
-        item.body.immovable = true;
-    });
-
-    //  And play them
-
-
+    endCollisionGroup = game.physics.p2.createCollisionGroup();
+    endLayer = map.createLayer('end');
+    map.setCollisionBetween(0,9,true,endLayer);
+    var endObjects = game.physics.p2.convertTilemap(map, endLayer);
+    for (var i = 0; i < endObjects.length; i++) {
+        var specialBody = endObjects[i];
+        specialBody.setCollisionGroup(endCollisionGroup);
+        specialBody.collides(playerCollisionGroup);
+        specialBody.onBeginContact.add(levelComplete);
+    }
+/*
 
     bounceBlock = game.add.group();
 

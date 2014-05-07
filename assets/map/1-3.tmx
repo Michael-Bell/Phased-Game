@@ -3,21 +3,20 @@
  <tileset firstgid="1" name="groundSprite" tilewidth="70" tileheight="70">
   <image source="groundSprite.png" width="210" height="210"/>
  </tileset>
- <objectgroup name="special" width="56" height="19">
-  <object gid="6" x="281" y="1331"/>
-  <object gid="6" x="913" y="771"/>
-  <object gid="6" x="1545" y="1327"/>
-  <object gid="6" x="3081" y="71"/>
-  <object gid="6" x="3153" y="71"/>
-  <object gid="6" x="3225" y="71"/>
-  <object gid="6" x="3297" y="71"/>
-  <object gid="6" x="3369" y="71"/>
-  <object gid="9" x="3289" y="1319"/>
- </objectgroup>
  <layer name="ground" width="56" height="19">
   <data encoding="base64" compression="zlib">
-   eJzt17EKACAIRdEW6f//uF3MisRB7wFxEcTB4cn4J4n1uh8AAPQzjQIQz/o1/i3PKe9UyENeBqxC3+Lddpt3I3J2JFF9N7MARosBeg==
+   eJzt0zEKACAMA0AX8f8/dnIRrGi0ScVAJ5ceqTnFTzbm5+flvHr3zVEGE9lquSJbZ51FtyIuy6oQtDdV54mbVHV6uRhOls3DqWC74fT8a7tOJOz9UePoTb23flZt7H3RDq1O2bve6rO5K37GDFI=
   </data>
  </layer>
  <objectgroup name="enemy" width="56" height="19"/>
+ <layer name="end" width="56" height="19">
+  <data encoding="base64" compression="zlib">
+   eJztzyEKAAAIBEGr//+w2GxGQWZg06WLAAAAAK7k6KvtW+8FLXQALg==
+  </data>
+ </layer>
+ <layer name="special" width="56" height="19">
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIA7CC///s3gtEEkjCdVMBAADgmwXEKAAN
+  </data>
+ </layer>
 </map>

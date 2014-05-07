@@ -8,30 +8,9 @@
  </tileset>
  <layer name="ground" width="128" height="19">
   <data encoding="base64" compression="zlib">
-   eJztl9EKwzAIRftS+v9/3KdAEBOjxmrDPeDLNsJ2j6buugAAAAAAQM/dFahJhKN23tMVeqE+OxxR71yhF85kxT3XC8BPhZnSum8F7GQ7b1hmH/5tVJh1itU9ngE6pKzofrU7W3o2t+vjDohjltXKvq3phwjPuAN8cP5HM6T5/8W9FuX6lDtgdBf2OUpZ076XzvPkNMt85OHv/qU8PXzxe3aeX92/14n2eSXN78quFeU/Yn6kz2f7t2QWvZvM+iHid2Vnne1/Ze6+2EdPrxHcexnfb7YbZWfX6gVJRBCz
+   eJztl8sOAyEIRWczmf//465MiEF5KELNPQmbtjHtPeDQ5wEAAAAAAJSXFKhJhKN23kcKvVCfHY5671yhF+5E457rBbBOhZmyum8F/GQ7b3hmH/59VJj1Hq97PANsSFn1+9XubPuzuV0fd0Acs6w0+7alHyI84w5Yg/M/miHL/y/utSjXt9wBo7uQ5ihl3fe9dN5KTrPMRx7+3b+U5wonfs/O86v7X3VifV5J86vZtaL8R8yP9Pls/57MTuwmtFe82WjJzjrbv2buTjm/uUZw72V8v9lulJ1dqx9ZrBC3
   </data>
  </layer>
- <objectgroup name="special" width="128" height="19">
-  <object gid="9" x="8750" y="1190"/>
-  <object gid="9" x="8820" y="1190"/>
-  <object gid="9" x="8890" y="1190"/>
-  <object gid="1" x="4" y="769"/>
-  <object gid="3" x="3580" y="157"/>
-  <object gid="3" x="7371" y="815"/>
-  <object gid="3" x="2726" y="978"/>
-  <object gid="3" x="8153" y="851"/>
-  <object gid="1" x="901" y="603"/>
-  <object gid="3" x="3007" y="1057"/>
-  <object gid="3" x="6580" y="990"/>
-  <object gid="3" x="3920" y="681"/>
-  <object gid="3" x="2704" y="403"/>
-  <object gid="3" x="5768" y="269"/>
-  <object gid="3" x="3429" y="154"/>
-  <object gid="3" x="3089" y="675"/>
-  <object gid="3" x="5065" y="87"/>
-  <object gid="3" x="3504" y="154"/>
-  <object gid="3" x="1677" y="839"/>
- </objectgroup>
  <objectgroup name="enemy" width="128" height="19">
   <object gid="10" x="546" y="812"/>
   <object gid="11" x="878" y="788"/>
@@ -49,4 +28,14 @@
   <object gid="10" x="7606" y="616"/>
   <object gid="10" x="8474" y="872"/>
  </objectgroup>
+ <layer name="special" width="128" height="19">
+  <data encoding="base64" compression="zlib">
+   eJzt2EEKwCAMBMBA/v/nngqeLKJV1BnwbAyrBCOoydUF8CmLBTCbt2cs/QQAXuYCWsgLu1uR4VF7un9zZPgH5Qw35Pjks/1FzwAA+j3bxAA9
+  </data>
+ </layer>
+ <layer name="end" width="128" height="19">
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIA7Cu/v+wdPMFIYEkAAAAAAAAAMAHcwJALcqIABw=
+  </data>
+ </layer>
 </map>
