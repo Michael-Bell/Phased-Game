@@ -31,12 +31,13 @@ function tileGen() {
     specialCollisionGroup = game.physics.p2.createCollisionGroup();
     specialLayer = map.createLayer('special');
     map.setCollisionBetween(0,8,true,specialLayer);
-    map.setTileIndexCallback(3, collideCoinbox, this);
+    //map.setTileIndexCallback(3, collideCoinbox, this);
     var specialObjects = game.physics.p2.convertTilemap(map, specialLayer);
     for (var i = 0; i < specialObjects.length; i++) {
         var specialBody = specialObjects[i];
         specialBody.setCollisionGroup(specialCollisionGroup);
         specialBody.collides(playerCollisionGroup);
+        specialBody.onBeginContact.add(collideCoinbox,specialBody);
     }
 
 
@@ -124,10 +125,14 @@ var
 }
 
 var asdf;
-function collideCoinbox(player, block) {
+function collideCoinbox( block) {
     asdf=block;
- console.log(block.parent);
-    block.removeFromWorld();
+    if(!touchingDown(player)){
+        console.log('BOX!');
+        console.log(block.y);
+    }
+ //console.log(block.parent);
+ //   block.removeFromWorld();
 /*
     if (touchingDown(block.sprite)) {
         block.kill();
