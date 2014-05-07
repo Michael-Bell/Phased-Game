@@ -8,7 +8,7 @@ function CreatePlayer() {
     player.body.setCollisionGroup(playerCollisionGroup);
     player.body.collides(tilesCollisionGroup);
     player.body.collides(coinCollisionGroup,playerCoins,this);
-    player.body.collides(specialCollisionGroup);
+    player.body.collides(specialCollisionGroup,collideCoinbox,this);
     player.body.collides(enemyCollisionGroup,collisionHandler, this);
     player.body.collides(endCollisionGroup);
     player.body.fixedRotation=true;

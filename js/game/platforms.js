@@ -37,7 +37,7 @@ function tileGen() {
         var specialBody = specialObjects[i];
         specialBody.setCollisionGroup(specialCollisionGroup);
         specialBody.collides(playerCollisionGroup);
-        specialBody.onBeginContact.add(collideCoinbox,specialBody);
+        //specialBody.onBeginContact.add(collideCoinbox,specialBody);
     }
 
 
@@ -125,11 +125,21 @@ var
 }
 
 var asdf;
-function collideCoinbox( block) {
+function collideCoinbox(Player, block) {
     asdf=block;
-    if(!touchingDown(player)){
+    if(player.y>block.y+100){
         console.log('BOX!');
         console.log(block.y);
+        block.kill();
+        gencoins(block.x, block.y, 1);
+        gencoins(block.x, block.y, 1);
+        gencoins(block.x, block.y, 1);
+        gencoins(block.x, block.y, 1);
+        gencoins(block.x, block.y, 1);
+        gencoins(block.x, block.y, 1);
+        gencoins(block.x, block.y, 1);
+        gencoins(block.x, block.y, 1);
+        gencoins(block.x, block.y, 1);
     }
  //console.log(block.parent);
  //   block.removeFromWorld();
