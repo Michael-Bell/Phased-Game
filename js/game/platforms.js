@@ -50,6 +50,7 @@ function tileGen() {
     enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
     enemyGroup.callAll('animations.play', 'animations', 'wings');
     enemyCollisionGroup = game.physics.p2.createCollisionGroup();
+    enemyGroup.goldWorth=5;
     enemyGroup.forEach(function (item) {
         // Update alpha first.
         item.dmg = 1;

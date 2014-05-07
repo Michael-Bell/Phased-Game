@@ -1,5 +1,5 @@
 function collisionHandler(weakerObject, strongerObject) {
-
+aaa =weakerObject;
     // Stronger object damages weaker objects, removes 1 health
 
     // damage is set by itemtosetdamageto.dmg=1; ex: player.js has player.dmg=1;
@@ -26,7 +26,7 @@ function collisionHandler(weakerObject, strongerObject) {
                         player.knockedRight = 1;
                     }
                 }
-                weakerObject.health = weakerObject.health - strongerObject.dmg; // we want to remove the damage done by the enemy to him, even if he dies, so that the health displayed is still 0
+                weakerObject.health = weakerObject.health - strongerObject.sprite.dmg; // we want to remove the damage done by the enemy to him, even if he dies, so that the health displayed is still 0
 
             }
             break; // Never Forget
@@ -36,10 +36,9 @@ function collisionHandler(weakerObject, strongerObject) {
                 weakerObject.health = weakerObject.health - strongerObject.dmg;
 
             } else {
-                gencoins(strongerObject.x, strongerObject.y, weakerObject.goldWorth);
-                xpgain(weakerObject.xpWorth);
+                gencoins(strongerObject.x, strongerObject.y, weakerObject.sprite.goldWorth);
+                xpgain(weakerObject.sprite.xpWorth);
                 weakerObject.sprite.kill();
-                asdf=weakerObject;
                 strongerObject.sprite.kill();
             }
     }
@@ -50,7 +49,7 @@ function collisionHandler(weakerObject, strongerObject) {
 function incjumpCount() {
     jumpCount = 2;
 }
-
+var aaa;
 function bulletWallColl(bullet, wall) {
     asdf=bullet;
     bullet.sprite.kill();
