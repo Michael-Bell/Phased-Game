@@ -69,7 +69,7 @@ function tileGen() {
         ff=item;
     });
 
-var
+/*var
     coinBoxGroup = game.add.group();
      coinBoxGroup.enableBody = true;
     coinBoxGroup.physicsBodyType = Phaser.Physics.P2JS;
@@ -84,7 +84,7 @@ var
         item.body.static=true;
         item.body.setCollisionGroup(coinCollisionGroup);
         item.body.collides([coinCollisionGroup,playerCollisionGroup])
-    });
+    });*/
 
     endCollisionGroup = game.physics.p2.createCollisionGroup();
     endLayer = map.createLayer('end');
@@ -130,7 +130,7 @@ function collideCoinbox(Player, block) {
     if(player.y>block.y+100){   //If the player is underneath the coin box
         //console.log('BOX!');
         //console.log(block.y);
-        map.removeTileWorldXY(block.x/70,block.y/70,specialLayer);
+        map.removeTile(block.x/70,block.y/70,specialLayer);
         gencoins(block.x, block.y, 1);
         gencoins(block.x, block.y, 1);
         gencoins(block.x, block.y, 1);
