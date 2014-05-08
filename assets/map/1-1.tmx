@@ -30,7 +30,7 @@
  </objectgroup>
  <layer name="special" width="128" height="19">
   <data encoding="base64" compression="zlib">
-   eJzt2EEKwCAMBMBA/v/nngqeLKJV1BnwbAyrBCOoydUF8CmLBTCbt2cs/QQAXuYCWsgLu1uR4VF7un9zZPgH5Qw35Pjks/1FzwAA+j3bxAA9
+   eJzt2DsOABAQBUCJ+99ZpVEQ8QtmGiU2b0U2BGri6QPQFIsVYCdvz1zqCQBk/gX0kBdudyLDs/bUf2uVs0+zUG73Q4ZfvtsqagYAMC4BT/wANw==
   </data>
  </layer>
  <layer name="end" width="128" height="19">
