@@ -87,7 +87,7 @@ var bullets;
 
 
 var map;
-var bgColor=0x20894E;
+var bgColor=0x4488cc;
 var layer;
 
 var bulletTime = 0;
@@ -125,7 +125,7 @@ function createGame() {
     tileGen();
 
     CreatePlayer();
-
+    bulletInit();
     animateEnemies(); // Need some movement
     //player.body.collides(coinCollisionGroup, playerCoins,this);
 
@@ -134,12 +134,7 @@ function createGame() {
     shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
 
-    bullets = game.add.group();
-
-    bullets.enableBody = true;
-
-    bullets.physicsBodyType = Phaser.Physics.P2;
-
+    fdas = new Phaser.Physics.P2.BodyDebug(game,player);
 
 
     /* TODO Work on Enemy function, allows you to enter parameters to set where the enemy will spawn, and the min/max height as well as speed it travels at DONE*/
@@ -212,8 +207,8 @@ var score;
 function render() {
 
     // Sprite debug info
-    game.debug.bodyInfo(player, 32, 32);
-    game.debug.body(player);
+   // game.debug.bodyInfo(player, 32, 32);
+   // game.debug.body(player);
     // game.debug.spriteInfo(item, 32, 32);
     //game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
 

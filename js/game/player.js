@@ -69,7 +69,7 @@ function playerControls() {
     }
     if (fire) {
 
-        createBullet();
+        shootBullet();
     }
     if (!player.inWorld) {
         player.health = -100;
