@@ -131,6 +131,7 @@ function collideCoinbox(Player, block) {
         //console.log('BOX!');
         //console.log(block.y);
         map.removeTile(block.x/70,block.y/70,specialLayer);
+        block.removeFromWorld();
         gencoins(block.x, block.y, 1);
         gencoins(block.x, block.y, 1);
         gencoins(block.x, block.y, 1);
