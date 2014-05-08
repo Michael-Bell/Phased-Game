@@ -127,10 +127,10 @@ var
 var asdf;
 function collideCoinbox(Player, block) {
     asdf=block;
-    if(player.y>block.y+100){
-        console.log('BOX!');
-        console.log(block.y);
-        block.kill();
+    if(player.y>block.y+100){   //If the player is underneath the coin box
+        //console.log('BOX!');
+        //console.log(block.y);
+        map.removeTileWorldXY(block.x/70,block.y/70,specialLayer);
         gencoins(block.x, block.y, 1);
         gencoins(block.x, block.y, 1);
         gencoins(block.x, block.y, 1);
