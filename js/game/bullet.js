@@ -4,7 +4,7 @@
 
         // Define constants
         this.SHOT_DELAY = 500; // milliseconds (10 bullets/second)
-        this.BULLET_SPEED = 500; // pixels/second
+        this.BULLET_SPEED = 250; // pixels/second
         this.NUMBER_OF_BULLETS = 10;
 
 
@@ -20,7 +20,6 @@
          //   console.log(bullet);
             // Set its pivot point to the center of the bullet
             bullet.anchor.setTo(0.5, 0.5);
-
             // Enable physics on the bullet
             game.physics.p2.enable(bullet,false); // we need physics
 
@@ -55,6 +54,7 @@
         // Revive the bullet
         // This makes the bullet "alive"
         bullet.revive();
+        bullet.lifespan=1000;
 
         // Bullets should kill themselves when they leave the world.
         // Phaser takes care of this for me by setting this flag
@@ -81,18 +81,18 @@
 
    // Missile constructor
    var Missile = function(game, x, y) {
-       Phaser.Sprite.call(this, game, x, y, 'bullet');
+       spri = game.add.sprite(x,y,'bullet');
 
        // Set the pivot point for this sprite to the center
-       this.anchor.setTo(0.5, 0.5);
+       spri.anchor.setTo(0.5, 0.5);
 
        // Enable physics on the missile
-       game.physics.enable(this, Phaser.Physics.P2);
+       game.physics.enable(spri, Phaser.Physics.P2);
       // this.body.data.gravityScale = 0;
-console.log(this);
+console.log(spri);
        // Define constants that affect motion
-       this.SPEED = 250; // missile speed pixels/second
-       this.TURN_RATE = 5; // turn rate in degrees/frame
+       spri.SPEED = 250; // missile speed pixels/second
+       spri.TURN_RATE = 5; // turn rate in degrees/frame
    };
 
    // Missiles are a type of Phaser.Sprite
@@ -135,3 +135,4 @@ console.log(this);
        this.body.velocity.x = Math.cos(this.rotation) * this.SPEED;
        this.body.velocity.y = Math.sin(this.rotation) * this.SPEED;
    };
+

@@ -55,6 +55,7 @@ function playerControls() {
     } else {
         player.frame = 0;
     }
+    pauseKey.onDown.add(pause,this);
     cursors.up.onDown.add(jumpCheck, this);
     if (touchingDown(player)) { //is the player sprite touching another object on bottom?
         player.body.angularVelocity = 0; // stop spinning
@@ -110,4 +111,9 @@ function touchingDown(thing){
         }
     }
     return result;
+}
+
+
+function pause(){
+    game.paused=!game.paused;
 }

@@ -2,7 +2,6 @@ var tilesCollisionGroup;
 var layer;
 var specialLayer,specialCollisionGroup,endCollisionGroup;
 var ff;
-var asdfasdf;
 function tileGen() {
     map = game.add.tilemap(gameLevel.string);
     //  The first parameter is the tileset name, as specified in the Tiled map editor (and in the tilemap json file)

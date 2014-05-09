@@ -90,7 +90,7 @@ var map;
 var bgColor=0x4488cc;
 var layer;
 
-var bulletTime = 0;
+
 var deadQuote = 'You tried your best, but you have perished. Better luck next time. You were killed by ';
 var winQuote = "You Completed the level. Congrats on making it this far, maybe you should play a good game now, like League or something....";
 var playerCollisionGroup;
@@ -266,15 +266,6 @@ function dead(cause) { // you died :(
 }
 
 
-function resetBullet(bullet) {
-
-    bullet.kill();
-
-}
-
-function flyColl() {
-    alert('col');
-}
 
 
 function levelComplete(player, block) {

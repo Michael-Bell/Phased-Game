@@ -38,9 +38,3 @@ function animateEnemies() { // tween animate flying up and down
 
 }
 
-function lotsOfEnemies() {
-    //place a bunch of enemies
-    for (i = 0; i < 50; i++) {
-        GenerateEnemy(250 + (i * 200), 100, i);
-    }
-}
