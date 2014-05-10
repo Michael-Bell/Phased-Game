@@ -28,11 +28,14 @@
             bullet.body.setCollisionGroup(bulletCollisionGroup);
             bullet.body.collides(tilesCollisionGroup,bulletWallColl,this);
             bullet.body.collides(enemyCollisionGroup);
+            console.log(bullet);
             // Define constants that affect motion
             this.SPEED = 250; // missile speed pixels/second
             this.TURN_RATE = 5; // turn rate in degrees/frame
             // Set its initial state to "dead".
             bullet.kill();
+            bullet.events.onKilled.add(particleBurst,this);
+
         }
     };
 

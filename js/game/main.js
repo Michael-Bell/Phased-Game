@@ -26,6 +26,7 @@ Game.Pre.prototype = {
         game.load.image('tiles', 'assets/map/groundSprite.png');
         game.load.image('coinBox', 'assets/bonus.png');
         game.load.image('endblock', 'assets/ground_sand.png');
+        game.load.image('particle','assets/particle.png');
         game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level2', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level3', 'assets/map/1-3.json', null, Phaser.Tilemap.TILED_JSON);
@@ -90,6 +91,7 @@ var map;
 var bgColor=0x4488cc;
 var layer;
 
+var explosionEmitter;
 
 var deadQuote = 'You tried your best, but you have perished. Better luck next time. You were killed by ';
 var winQuote = "You Completed the level. Congrats on making it this far, maybe you should play a good game now, like League or something....";
@@ -146,6 +148,18 @@ function createGame() {
     createRain();
 
     initHealthRegen();
+
+    explosionEmitter = game.add.emitter(0, 0, 100);
+    explosionEmitter.makeParticles('particle');
+    explosionEmitter.minParticleSpeed.setTo(-400, -400);
+    explosionEmitter.maxParticleSpeed.setTo(400, 400);
+    explosionEmitter.gravity = 0;
+
+
+
+
+
+
 
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
@@ -292,8 +306,18 @@ function getScore(bonus) {
 }
 
 function invGravity() {
-
     player.body.gravity.y = -1 * player.body.gravity.y;
+}
 
 
+
+function particleBurst(item) {
+    //  Position the emitter where the mouse/touch event was
+    explosionEmitter.x = item.x;
+    explosionEmitter.y = item.y;
+    //  The first parameter sets the effect to "explode" which means all particles are emitted at once
+    //  The second gives each particle a 2000ms lifespan
+    //  The third is ignored when using burst/explode mode
+    //  The final parameter (10) is how many particles will be emitted in this single burst
+    explosionEmitter.start(true, 250, null, 50);
 }
