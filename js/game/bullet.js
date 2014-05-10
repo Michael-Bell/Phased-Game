@@ -57,7 +57,7 @@
         // Revive the bullet
         // This makes the bullet "alive"
         bullet.revive();
-        bullet.lifespan=1000;
+        bullet.lifespan=bulletLifespan;
 
         // Bullets should kill themselves when they leave the world.
         // Phaser takes care of this for me by setting this flag

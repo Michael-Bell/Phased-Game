@@ -91,6 +91,7 @@ var map;
 var bgColor=0x4488cc;
 var layer;
 
+var bulletLifespan=1000; //time for bullets to live in milliseconds
 var explosionEmitter;
 
 var deadQuote = 'You tried your best, but you have perished. Better luck next time. You were killed by ';
