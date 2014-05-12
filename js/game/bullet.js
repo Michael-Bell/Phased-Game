@@ -89,6 +89,30 @@ var Missile = function(game, x, y) {
     // Define constants that affect motion
     this.SPEED = 250; // missile speed pixels/second
     this.TURN_RATE = 5; // turn rate in degrees/frame
+    this.SMOKE_LIFETIME = 3000; // milliseconds
+    // Add a smoke emitter with 100 particles positioned relative to the
+    // bottom center of this missile
+    this.smokeEmitter = this.game.add.emitter(0, 0, 200);
+
+    // Set motion paramters for the emitted particles
+    this.smokeEmitter.gravity = 0;
+    this.smokeEmitter.setXSpeed(0, 0);
+    this.smokeEmitter.setYSpeed(-80, -50); // make smoke drift upwards
+
+    // Make particles fade out after 1000ms
+    this.smokeEmitter.setAlpha(1, 0, this.SMOKE_LIFETIME,
+        Phaser.Easing.Linear.InOut);
+
+    // Create the actual particles
+    this.smokeEmitter.makeParticles('particle');
+
+    // Start emitting smoke particles one at a time (explode=false) with a
+    // lifespan of this.SMOKE_LIFETIME at 50ms intervals
+    this.smokeEmitter.start(false, this.SMOKE_LIFETIME, 25);
+
+    // Create a point object to hold the position of the smoke emitter relative
+    // to the center of the missile. See update() below.
+    this.smokePosition = new Phaser.Point(this.width/2, 0);
 };
 
 // Missiles are a type of Phaser.Sprite
@@ -96,6 +120,14 @@ Missile.prototype = Object.create(Phaser.Sprite.prototype);
 Missile.prototype.constructor = Missile;
 
 Missile.prototype.update = function() {
+    // Rotate the point representing the relative position of the emitter around
+    // the center of the missile.
+    var p = this.smokePosition.rotate(0, 0, this.rotation);
+
+    // Position the smoke emitter at the new coordinates relative to the center
+    // of the missile
+    this.smokeEmitter.x = this.x - p.x;
+    this.smokeEmitter.y = this.y - p.y;
     // Calculate the angle from the missile to the mouse cursor game.input.x
     // and game.input.y are the mouse position; substitute with whatever
     // target coordinates you need.

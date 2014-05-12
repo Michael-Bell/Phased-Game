@@ -26,6 +26,7 @@ Game.Pre.prototype = {
         game.load.image('tiles', 'assets/map/groundSprite.png');
         game.load.image('coinBox', 'assets/bonus.png');
         game.load.image('endblock', 'assets/ground_sand.png');
+        //game.load.image('smoke','assets/smoke.png');
         game.load.image('particle', 'assets/particle.png');
         game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level2', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
