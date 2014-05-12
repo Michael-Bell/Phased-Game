@@ -26,7 +26,7 @@ Game.Pre.prototype = {
         game.load.image('tiles', 'assets/map/groundSprite.png');
         game.load.image('coinBox', 'assets/bonus.png');
         game.load.image('endblock', 'assets/ground_sand.png');
-        game.load.image('particle','assets/particle.png');
+        game.load.image('particle', 'assets/particle.png');
         game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level2', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level3', 'assets/map/1-3.json', null, Phaser.Tilemap.TILED_JSON);
@@ -88,10 +88,10 @@ var bullets;
 
 
 var map;
-var bgColor=0x4488cc;
+var bgColor = 0x4488cc;
 var layer;
 
-var bulletLifespan=1000; //time for bullets to live in milliseconds
+var bulletLifespan = 1000; //time for bullets to live in milliseconds
 var explosionEmitter;
 
 var deadQuote = 'You tried your best, but you have perished. Better luck next time. You were killed by ';
@@ -120,9 +120,9 @@ function createGame() {
     //sky = game.add.sprite(0, 0, 'sky');
     //sky.scale.setTo(10, 2);
     game.physics.p2.updateBoundsCollisionGroup();
-    bulletCollisionGroup= game.physics.p2.createCollisionGroup();
-     playerCollisionGroup = game.physics.p2.createCollisionGroup();
-     coinCollisionGroup = game.physics.p2.createCollisionGroup();
+    bulletCollisionGroup = game.physics.p2.createCollisionGroup();
+    playerCollisionGroup = game.physics.p2.createCollisionGroup();
+    coinCollisionGroup = game.physics.p2.createCollisionGroup();
     initEnemy(); // setup enemy Group
 
     tileGen();
@@ -137,7 +137,7 @@ function createGame() {
     shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
 
-    fdas = new Phaser.Physics.P2.BodyDebug(game,player);
+    fdas = new Phaser.Physics.P2.BodyDebug(game, player);
 
 
     /* TODO Work on Enemy function, allows you to enter parameters to set where the enemy will spawn, and the min/max height as well as speed it travels at DONE*/
@@ -157,11 +157,6 @@ function createGame() {
     explosionEmitter.gravity = 0;
 
 
-
-
-
-
-
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
@@ -174,18 +169,18 @@ function updateGame() {
     textUpdate();
     //game.physics.arcade.collide(player, ground); // Player cannot go through ground
     // game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
- /*   game.physics.arcade.overlap(player, layer); // Player cannot go through ground
-    game.physics.arcade.collide(player, layer); // Player cannot go through ground
-    game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
-    game.physics.arcade.collide(player, endBlocks, levelComplete, null, this);
-    game.physics.arcade.collide(bullets, layer, bulletWallColl, null, this);
-    game.physics.arcade.collide(coinGroup, layer); // delete this if you want the coins to go through the ground
-    game.physics.arcade.overlap(coinGroup, player, playerCoins, null, this);
-    game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
-    game.physics.arcade.collide(player, flyLayer, flyColl, null, this); // collisionHandler is called when player and flya(enemy) collide
-    game.physics.arcade.collide(player, bounceBlock, invGravity, null, this);
-    game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
-   */ // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
+    /*   game.physics.arcade.overlap(player, layer); // Player cannot go through ground
+     game.physics.arcade.collide(player, layer); // Player cannot go through ground
+     game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
+     game.physics.arcade.collide(player, endBlocks, levelComplete, null, this);
+     game.physics.arcade.collide(bullets, layer, bulletWallColl, null, this);
+     game.physics.arcade.collide(coinGroup, layer); // delete this if you want the coins to go through the ground
+     game.physics.arcade.overlap(coinGroup, player, playerCoins, null, this);
+     game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
+     game.physics.arcade.collide(player, flyLayer, flyColl, null, this); // collisionHandler is called when player and flya(enemy) collide
+     game.physics.arcade.collide(player, bounceBlock, invGravity, null, this);
+     game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
+     */ // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
     coinBounce();
     knockback();
     leveltimer(0);
@@ -212,8 +207,8 @@ jumpCheck = function () { // lovely function to see if you can jump
 function jump(number) {
     player.body.moveUp(600); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
     if (number === 2) { // is this a double jump
-        player.body.moveUp(600+DEX);
-      player.body.rotateLeft(150); // start spinning
+        player.body.moveUp(600 + DEX);
+        player.body.rotateLeft(150); // start spinning
 
     }
 
@@ -222,8 +217,8 @@ var score;
 function render() {
 
     // Sprite debug info
-   // game.debug.bodyInfo(player, 32, 32);
-   // game.debug.body(player);
+    // game.debug.bodyInfo(player, 32, 32);
+    // game.debug.body(player);
     // game.debug.spriteInfo(item, 32, 32);
     //game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
 
@@ -236,6 +231,8 @@ function dead(cause) { // you died :(
 
     showScores();
     if (player.health < 2) {
+        gameLevel.int=1;
+        gameLevel.string = 'level1';
         score = getScore(1);
         $("#winDeathHeader").text('You Died');
         $("#quote").text(deadQuote + cause);
@@ -249,7 +246,8 @@ function dead(cause) { // you died :(
         if (gameLevel.int === gameLevel.max) {
             console.log(gameLevel);
             $("#winDeathHeader").text('You Win');
-
+            gameLevel.int=1;
+            gameLevel.string = 'level1';
             score = getScore(1.3);
             $("#quote").text(winQuote);
             $('#submit').removeClass('hide');
@@ -281,8 +279,6 @@ function dead(cause) { // you died :(
 }
 
 
-
-
 function levelComplete(player, block) {
     dead();
 }
@@ -309,7 +305,6 @@ function getScore(bonus) {
 function invGravity() {
     player.body.gravity.y = -1 * player.body.gravity.y;
 }
-
 
 
 function particleBurst(item) {
