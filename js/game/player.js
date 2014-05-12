@@ -31,6 +31,14 @@ function CreatePlayer() {
     player.gold = 0;
     player.knockedLeft = 0;
     player.knockedRight = 0;
+
+
+    //temp, REMOVE
+    //give the player a friend to follow him
+    game.add.existing(
+        new Missile(game, player.x,player.y)
+    );
+
 }
 
 /* TODO Add Acceleration to the game */

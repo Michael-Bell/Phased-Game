@@ -76,34 +76,32 @@ shootBullet = function () {
     bullet.body.velocity.y = 0;
 };
 
-
 // Missile constructor
-var Missile = function (game, x, y) {
-    spri = game.add.sprite(x, y, 'bullet');
+var Missile = function(game, x, y) {
+    Phaser.Sprite.call(this, game, x, y, 'bullet');
 
     // Set the pivot point for this sprite to the center
-    spri.anchor.setTo(0.5, 0.5);
+    this.anchor.setTo(0.5, 0.5);
 
     // Enable physics on the missile
-    game.physics.enable(spri, Phaser.Physics.P2);
-    // this.body.data.gravityScale = 0;
-    console.log(spri);
+    game.physics.enable(this, Phaser.Physics.P2JS);
+    this.body.fixedRotation = true;
     // Define constants that affect motion
-    spri.SPEED = 250; // missile speed pixels/second
-    spri.TURN_RATE = 5; // turn rate in degrees/frame
+    this.SPEED = 250; // missile speed pixels/second
+    this.TURN_RATE = 5; // turn rate in degrees/frame
 };
 
 // Missiles are a type of Phaser.Sprite
 Missile.prototype = Object.create(Phaser.Sprite.prototype);
 Missile.prototype.constructor = Missile;
 
-Missile.prototype.update = function () {
+Missile.prototype.update = function() {
     // Calculate the angle from the missile to the mouse cursor game.input.x
     // and game.input.y are the mouse position; substitute with whatever
     // target coordinates you need.
     var targetAngle = this.game.math.angleBetween(
         this.x, this.y,
-        player.x, player.y
+        player.x,player.y
     );
 
     // Gradually (this.TURN_RATE) aim the missile towards the target angle
@@ -124,7 +122,7 @@ Missile.prototype.update = function () {
         }
 
         // Just set angle to target angle if they are close
-        if (Math.abs(delta) < this.game.math.degToRad(this.TURN_RATE)) {
+        if (Math.abs(delta) < game.math.degToRad(this.TURN_RATE)) {
             this.rotation = targetAngle;
         }
     }
@@ -133,4 +131,3 @@ Missile.prototype.update = function () {
     this.body.velocity.x = Math.cos(this.rotation) * this.SPEED;
     this.body.velocity.y = Math.sin(this.rotation) * this.SPEED;
 };
-
