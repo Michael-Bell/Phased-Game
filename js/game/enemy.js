@@ -28,11 +28,11 @@ function GenerateEnemy(x, y, uniqueID) {
 function animateEnemies() { // tween animate flying up and down
     //  Here we'll chain 4 different tweens together and play through them all in a loop
     enemyGroup.forEach(function (item) {
-        asdf=item;
-        var temp = game.add.sprite(item.x,item.y);
+        asdf = item;
+        var temp = game.add.sprite(item.x, item.y);
         game.physics.p2.enable(temp);
-        temp.body.static=true;
-        item.body.fixedRotation=true;
+        temp.body.static = true;
+        item.body.fixedRotation = true;
         var spring = game.physics.p2.createSpring(item, temp, 125, 6, 99);
     });
 

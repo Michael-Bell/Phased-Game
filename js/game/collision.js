@@ -1,8 +1,8 @@
 var str;
 function collisionHandler(weakerObject, strongerObject) {
-aaa =weakerObject;
+    aaa = weakerObject;
     // Stronger object damages weaker objects, removes 1 health
-str=strongerObject;
+    str = strongerObject;
     // damage is set by itemtosetdamageto.dmg=1; ex: player.js has player.dmg=1;
 
     //console.log(strongerObject.dmg);
@@ -11,7 +11,7 @@ str=strongerObject;
         case "player":
             console.log('Switch player');
 
-            if (weakerObject.sprite.inv === false ||true) { // if the player can be damaged
+            if (weakerObject.sprite.inv === false || true) { // if the player can be damaged
                 console.log('weakerObject.sprite.inv === false');
                 if (weakerObject.sprite.health <= 1) { // and the players health is at 1, meaning this hit brings it to 0
                     console.log('weakerObject.sprite.health <= 1');
@@ -56,7 +56,7 @@ function incjumpCount() {
 }
 var aaa;
 function bulletWallColl(bullet, wall) {
-    asdf=bullet;
+    asdf = bullet;
     bullet.sprite.kill();
 }
 
@@ -69,13 +69,13 @@ function knockback() {
         player.knockedLeft++;
         if (player.knockedLeft >= 14) {
             player.knockedLeft = 0;
-           // player.body.acceleration.x = 0;
+            // player.body.acceleration.x = 0;
         }
     }
     if (player.knockedRight > 0) {
         //player.body.thrust(1000);
         player.knockedRight++;
-       // console.log("knockback");
+        // console.log("knockback");
 
         if (player.knockedRight >= 14) {
             player.knockedRight = 0;

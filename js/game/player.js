@@ -2,19 +2,19 @@ function CreatePlayer() {
     // Enter Player 1
     player = game.add.sprite(105, 932, 'player'); // starting location
     player.anchor.setTo(.5, .5); // this lets us rotate/flip sprite in the middle of the sprite, if not set, it will rotate from top left corner
-    game.physics.p2.enable(player,false); // we need physics
-    player.body.angularDamping=1;
+    game.physics.p2.enable(player, false); // we need physics
+    player.body.angularDamping = 1;
 
     player.body.setCollisionGroup(playerCollisionGroup);
     player.body.collides(tilesCollisionGroup);
-    player.body.collides(coinCollisionGroup,playerCoins,this);
-    player.body.collides(specialCollisionGroup,collideCoinbox,this);
-    player.body.collides(enemyCollisionGroup,collisionHandler, this);
+    player.body.collides(coinCollisionGroup, playerCoins, this);
+    player.body.collides(specialCollisionGroup, collideCoinbox, this);
+    player.body.collides(enemyCollisionGroup, collisionHandler, this);
     player.body.collides(endCollisionGroup);
-    player.body.fixedRotation=true;
-    player.name="player";
-/*    player.body.bounce.y = 0.1; // gives a slight bounce
-    player.body.gravity.y = 400; // enable gravity*/
+    player.body.fixedRotation = true;
+    player.name = "player";
+    /*    player.body.bounce.y = 0.1; // gives a slight bounce
+     player.body.gravity.y = 400; // enable gravity*/
     /* TODO maybe we should have the player fall through the world, if you miss a jump, you fall and die? */
     //player.body.collideWorldBounds = true; // our player cannot fall through the world
 
@@ -55,7 +55,7 @@ function playerControls() {
     } else {
         player.frame = 0;
     }
-    pauseKey.onDown.add(pause,this);
+    pauseKey.onDown.add(pause, this);
     cursors.up.onDown.add(jumpCheck, this);
     if (touchingDown(player)) { //is the player sprite touching another object on bottom?
         player.body.angularVelocity = 0; // stop spinning
@@ -65,7 +65,7 @@ function playerControls() {
         player.velocity = 200;
 
     } else { // if not on the ground
-      /*   TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
+        /*   TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
         player.frame = 11; // set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
     }
     if (fire) {
@@ -96,15 +96,12 @@ function healthRegen() {
 }
 
 
-
-function touchingDown(thing){
+function touchingDown(thing) {
     var yAxis = p2.vec2.fromValues(0, 1);
     var result = false;
-    for (var i = 0; i < game.physics.p2.world.narrowphase.contactEquations.length; i++)
-    {
+    for (var i = 0; i < game.physics.p2.world.narrowphase.contactEquations.length; i++) {
         var c = game.physics.p2.world.narrowphase.contactEquations[i];
-        if (c.bodyA === thing.body.data || c.bodyB === thing.body.data)
-        {
+        if (c.bodyA === thing.body.data || c.bodyB === thing.body.data) {
             var d = p2.vec2.dot(c.normalA, yAxis); // Normal dot Y-axis
             if (c.bodyA === thing.body.data) d *= -1;
             if (d > 0.5) result = true;
@@ -114,6 +111,6 @@ function touchingDown(thing){
 }
 
 
-function pause(){
-    game.paused=!game.paused;
+function pause() {
+    game.paused = !game.paused;
 }

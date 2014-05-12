@@ -8,7 +8,7 @@
  </tileset>
  <layer name="ground" width="128" height="19">
   <data encoding="base64" compression="zlib">
-   eJztl8sOAyEIRWczmf//465MiEF5KELNPQmbtjHtPeDQ5wEAAAAAAJSXFKhJhKN23kcKvVCfHY5671yhF+5E457rBbBOhZmyum8F/GQ7b3hmH/59VJj1Hq97PANsSFn1+9XubPuzuV0fd0Acs6w0+7alHyI84w5Yg/M/miHL/y/utSjXt9wBo7uQ5ihl3fe9dN5KTrPMRx7+3b+U5wonfs/O86v7X3VifV5J86vZtaL8R8yP9Pls/57MTuwmtFe82WjJzjrbv2buTjm/uUZw72V8v9lulJ1dqx9ZrBC3
+   eJztl0EKAzEIRWczzP1v3FVAgolRY7ThP3DTltD+pxn7PAAAAAAAgPKSAjWJcNTO+0ihF+qzw1HvnSv0wp2suOd6AfipMFNa962AnWznDcvsw7+NCrPeY3WPZ4AOKat+v9qdbX82t+vjDohjltXKvq3phwjPuAN8cP5HM6T5/8W9FuX6ljtgdBfSHKWs+76XzvPkNMt85OHf/Ut5ejjxe3aeX92/14n2eSXNr9Qrkf4j5kf6fLZ/S2YndhPaK9ZsVsnOOtv/yt18yvnNNYJ7L+P7zXaj7Oxa/QCWsBDB
   </data>
  </layer>
  <objectgroup name="enemy" width="128" height="19">
@@ -35,7 +35,7 @@
  </layer>
  <layer name="end" width="128" height="19">
   <data encoding="base64" compression="zlib">
-   eJztw7EJAAAIA7Cu/v+wdPMFIYEkAAAAAAAAAMAHcwJALcqIABw=
+   eJztwzENAAAIA7C9+DfMOwuENmkCAAAAAAAAAMA1U4G/FpLYABw=
   </data>
  </layer>
 </map>

@@ -41,8 +41,8 @@ function coinBounce() {
 function initCoinGroup() {
     // Create the coin group
     coinGroup = game.add.group();
-/*    coinGroup.enableBody = true;
-    coinGroup.physicsBodyType = Phaser.Physics.P2;*/
+    /*    coinGroup.enableBody = true;
+     coinGroup.physicsBodyType = Phaser.Physics.P2;*/
 
 }
 var asdf;
