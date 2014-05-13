@@ -43,6 +43,11 @@ shootBullet = function () {
     if (this.game.time.now - this.lastBulletShotAt < this.SHOT_DELAY) return;
     this.lastBulletShotAt = this.game.time.now;
 
+    //shoot homing missile :)
+    game.add.existing(
+        new Missile(game, player.x,player.y)
+    );
+
     // Get a dead bullet from the pool
     var bullet = this.bulletPool.getFirstDead();
 
@@ -79,7 +84,7 @@ shootBullet = function () {
 // Missile constructor
 var Missile = function(game, x, y) {
     Phaser.Sprite.call(this, game, x, y, 'bullet');
-    missileLifespan=10;
+    missileLifespan=1000;
     // Set the pivot point for this sprite to the center
     this.anchor.setTo(0.5, 0.5);
 
@@ -109,12 +114,15 @@ var Missile = function(game, x, y) {
     // Start emitting smoke particles one at a time (explode=false) with a
     // lifespan of this.SMOKE_LIFETIME at 50ms intervals
     this.smokeEmitter.start(false, this.SMOKE_LIFETIME, 25);
-    this.smokeEmitter.lifespan=missileLifespan;
     // Create a point object to hold the position of the smoke emitter relative
     // to the center of the missile. See update() below.
     this.smokePosition = new Phaser.Point(this.width/2, 0);
     this.targetEnemy = getClosest(this);
     this.lifespan = missileLifespan;
+    this.events.onKilled.add(stopMissileEmitter, this);
+    this.events.onKilled.add(particleBurst, this);
+
+
 };
 
 // Missiles are a type of Phaser.Sprite
@@ -176,4 +184,8 @@ function getClosest(bullet){
     }
     });
     return enemy;
+}
+
+function stopMissileEmitter(){
+    this.smokeEmitter.on = !this.smokeEmitter.on;
 }

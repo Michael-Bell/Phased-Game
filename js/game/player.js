@@ -75,9 +75,7 @@ function playerControls() {
     if (fire) {
 
         shootBullet();
-       /* game.add.existing(
-            new Missile(game, player.x,player.y)
-        );*/
+
     }
     if (!player.inWorld) {
         player.health = -100;
