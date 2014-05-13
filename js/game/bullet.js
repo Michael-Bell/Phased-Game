@@ -84,7 +84,7 @@ shootBullet = function () {
 // Missile constructor
 var Missile = function(game, x, y) {
     Phaser.Sprite.call(this, game, x, y, 'bullet');
-    missileLifespan=1000;
+    missileLifespan=2500;
     // Set the pivot point for this sprite to the center
     this.anchor.setTo(0.5, 0.5);
 
@@ -118,10 +118,15 @@ var Missile = function(game, x, y) {
     // to the center of the missile. See update() below.
     this.smokePosition = new Phaser.Point(this.width/2, 0);
     this.targetEnemy = getClosest(this);
+    console.log(this.targetEnemy);
+    ff=this.targetEnemy;
     this.lifespan = missileLifespan;
     this.events.onKilled.add(stopMissileEmitter, this);
     this.events.onKilled.add(particleBurst, this);
 
+    this.body.setCollisionGroup(bulletCollisionGroup);
+    this.body.collides(tilesCollisionGroup, bulletWallColl, this);
+    this.body.collides(enemyCollisionGroup);
 
 };
 
@@ -179,13 +184,13 @@ function getClosest(bullet){
     enemy = enemyGroup.getFirstExists();
 
     enemyGroup.forEach(function (item) {
-    if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x>bullet.x){
-        enemy=bullet;
+    if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x>player.x){
+        enemy=item;
     }
     });
     return enemy;
 }
 
 function stopMissileEmitter(){
-    this.smokeEmitter.on = !this.smokeEmitter.on;
+    this.smokeEmitter.on = false;
 }

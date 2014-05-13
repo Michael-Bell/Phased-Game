@@ -43,8 +43,9 @@ function collisionHandler(weakerObject, strongerObject) {
             } else {
                 gencoins(strongerObject.x, strongerObject.y, weakerObject.sprite.goldWorth);
                 xpgain(weakerObject.sprite.xpWorth);
-                weakerObject.sprite.kill();
+                //weakerObject.sprite.kill();
                 strongerObject.sprite.kill();
+                weakerObject.sprite.destroy();
             }
     }
 
