@@ -33,11 +33,7 @@ function CreatePlayer() {
     player.knockedRight = 0;
 
 
-    //temp, REMOVE
-    //give the player a friend to follow him
-    game.add.existing(
-        new Missile(game, player.x,player.y)
-    );
+
 
 }
 
@@ -79,6 +75,9 @@ function playerControls() {
     if (fire) {
 
         shootBullet();
+        game.add.existing(
+            new Missile(game, player.x,player.y)
+        );
     }
     if (!player.inWorld) {
         player.health = -100;

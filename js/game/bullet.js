@@ -79,7 +79,7 @@ shootBullet = function () {
 // Missile constructor
 var Missile = function(game, x, y) {
     Phaser.Sprite.call(this, game, x, y, 'bullet');
-
+    missileLifespan=10;
     // Set the pivot point for this sprite to the center
     this.anchor.setTo(0.5, 0.5);
 
@@ -104,15 +104,17 @@ var Missile = function(game, x, y) {
         Phaser.Easing.Linear.InOut);
 
     // Create the actual particles
-    this.smokeEmitter.makeParticles('particle');
+    this.smokeEmitter.makeParticles('gparticle');
 
     // Start emitting smoke particles one at a time (explode=false) with a
     // lifespan of this.SMOKE_LIFETIME at 50ms intervals
     this.smokeEmitter.start(false, this.SMOKE_LIFETIME, 25);
-
+    this.smokeEmitter.lifespan=missileLifespan;
     // Create a point object to hold the position of the smoke emitter relative
     // to the center of the missile. See update() below.
     this.smokePosition = new Phaser.Point(this.width/2, 0);
+    this.targetEnemy = getClosest(this);
+    this.lifespan = missileLifespan;
 };
 
 // Missiles are a type of Phaser.Sprite
@@ -133,7 +135,7 @@ Missile.prototype.update = function() {
     // target coordinates you need.
     var targetAngle = this.game.math.angleBetween(
         this.x, this.y,
-        player.x,player.y
+        this.targetEnemy.x,this.targetEnemy.y
     );
 
     // Gradually (this.TURN_RATE) aim the missile towards the target angle
@@ -163,3 +165,15 @@ Missile.prototype.update = function() {
     this.body.velocity.x = Math.cos(this.rotation) * this.SPEED;
     this.body.velocity.y = Math.sin(this.rotation) * this.SPEED;
 };
+
+
+function getClosest(bullet){
+    enemy = enemyGroup.getFirstExists();
+
+    enemyGroup.forEach(function (item) {
+    if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x>bullet.x){
+        enemy=bullet;
+    }
+    });
+    return enemy;
+}
