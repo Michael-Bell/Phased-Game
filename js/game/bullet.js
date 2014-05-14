@@ -162,7 +162,7 @@ function getClosest(bullet){
     enemy = enemyGroup.getFirstExists();
 
     enemyGroup.forEach(function (item) {
-    if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x>player.x){
+    if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x-player.x>=0){
         enemy=item;
     }
     });
