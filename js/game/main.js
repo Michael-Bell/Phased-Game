@@ -187,7 +187,8 @@ function updateGame() {
     coinBounce();
     knockback();
     leveltimer(0);
-    player.body.velocity.x = 0;
+    //rotateEnemies();
+    player.body.velocity.x = 0;  //Remove for Ice level
     //game.camera.y = player.y - 200;
     //game.camera.x = player.x - 500; // Hacky camera following
     game.camera.follow(player);
@@ -208,6 +209,9 @@ jumpCheck = function () { // lovely function to see if you can jump
 };
 
 function jump(number) {
+    if(number===1){       //This makes the jump=1 after you are off the ground instead of instantly resetting back to 0.
+        game.time.events.add(Phaser.Timer.SECOND * .1, firstJump, this);
+    }
     player.body.moveUp(600); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
     if (number === 2) { // is this a double jump
         player.body.moveUp(600 + DEX);
@@ -215,6 +219,10 @@ function jump(number) {
 
     }
 
+}
+
+function firstJump(){  //For the timer so you don't get a triple jump.
+    jumpCount=1;
 }
 var score;
 function render() {
