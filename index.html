@@ -49,6 +49,7 @@
 </head>
 
 <body>
+<div id="mainContent">
 <div id="scoreModal" class="reveal-modal" data-reveal>
     <div class="large-7 column">
         <dl class="tabs" data-tab>
@@ -212,56 +213,11 @@
             <p><kbd>Up</kbd>+<kbd>Down</kbd>+<kbd>Left</kbd>+<kbd>Right</kbd>+<kbd>S</kbd>+<kbd>P</kbd></p>
             <a class="close-reveal-modal">&#215;</a>
         </div>
-        <a href="#" class="button" data-reveal-id="storeModal" data-reveal>
+        <a href="#" class="button" id="OpenStore">
             Store    </a>
     </div>
 
 </div>
-
-
-
-
-    <div id="storeModal"  class="reveal-modal" data-reveal>
-        <div class="row">
-            <div class="medium-4 columns">
-                <h1>
-                    <small>Store</small>
-                </h1>
-                <a href="#" class="button expand" data-revealid="buyLifespan" data-reveal>Bullet Lifespan</a>
-                <a href="#" class="button expand" data-revealid="buyBetterGun" data-reveal>Upgrade Bullets</a>
-                <a href="#" class="button expand" data-revealid="buyFastShoot" data-reveal>Faster Shooting</a>
-                <a href="#" class="button expand" data-revealid="buyVelocity" data-reveal>Bullet Velocity</a>
-                <a href="#" class="button expand" data-revealid="buyHeight" data-reveal>Jump Height</a>
-                <a href="#" class="button expand" data-revealid="buyMoreJump" data-reveal>More Jumps</a>
-                <a href="#" class="button expand" data-revealid="buyHealthRegen" data-reveal>Faster Regen</a>
-                <a href="#" class="button expand" data-revealid="buyMaxHealth" data-reveal>Max Health</a>
-                <a href="#" class="button expand" data-revealid="buyLifespan" data-reveal>Bullet Lifespan</a>
-                <a href="#" class="button expand" data-revealid="buyBetterGun" data-reveal>Upgrade Bullets</a>
-                <a href="#" class="button expand" data-revealid="buyFastShoot" data-reveal>Faster Shooting</a>
-                <a href="#" class="button expand" data-revealid="buyVelocity" data-reveal>Bullet Velocity</a>
-                <a href="#" class="button expand" data-revealid="buyHeight" data-reveal>Jump Height</a>
-                <a href="#" class="button expand" data-revealid="buyMoreJump" data-reveal>More Jumps</a>
-                <a href="#" class="button expand" data-revealid="buyHealthRegen" data-reveal>Faster Regen</a>
-                <a href="#" class="button expand" data-revealid="buyMaxHealth" data-reveal>Max Health</a>
-                <a href="#" class="button expand" data-revealid="buyLifespan" data-reveal>Bullet Lifespan</a>
-                <a href="#" class="button expand" data-revealid="buyBetterGun" data-reveal>Upgrade Bullets</a>
-                <a href="#" class="button expand" data-revealid="buyFastShoot" data-reveal>Faster Shooting</a>
-                <a href="#" class="button expand" data-revealid="buyVelocity" data-reveal>Bullet Velocity</a>
-                <a href="#" class="button expand" data-revealid="buyHeight" data-reveal>Jump Height</a>
-                <a href="#" class="button expand" data-revealid="buyMoreJump" data-reveal>More Jumps</a>
-                <a href="#" class="button expand" data-revealid="buyHealthRegen" data-reveal>Faster Regen</a>
-                <a href="#" class="button expand" data-revealid="buyMaxHealth" data-reveal>Max Health</a>
-            </div>
-            <div class="medium-4 columns"> </div>
-        <div class="medium-4 columns"> </div>
-
-    </div>
-        </div>
-
-
-
-
-
 
 
 <div class="row">
@@ -273,6 +229,41 @@
     </div>
 </div>
 
+</div>
+
+<div id="storeWindow" class="hide">
+    <dl class="tabs" data-tab>
+        <dd class="active"><a href="#goldPanel">Gold</a></dd>
+        <dd><a href="#statsPanel">DEX STR</a></dd>
+    </dl>
+    <div class="tabs-content">
+        <div class="content active" id="goldPanel">
+            <div class="row">
+                <div class="medium-4 columns">
+                    <a href="#" class="button expand" data-revealid="buyLifespan" data-reveal>Bullet Lifespan</a>
+                    <a href="#" class="button expand" data-revealid="buyBetterGun" data-reveal>Upgrade Bullets</a>
+                    <a href="#" class="button expand" data-revealid="buyFastShoot" data-reveal>Faster Shooting</a>
+                    <a href="#" class="button expand" data-revealid="buyVelocity" data-reveal>Bullet Velocity</a>
+                    <a href="#" class="button expand" data-revealid="buyHeight" data-reveal>Jump Height</a>
+                    <a href="#" class="button expand" data-revealid="buyMoreJump" data-reveal>More Jumps</a>
+                    <a href="#" class="button expand" data-revealid="buyHealthRegen" data-reveal>Faster Regen</a>
+                    <a href="#" class="button expand" data-revealid="buyMaxHealth" data-reveal>Max Health</a>
+                </div>
+                <div class="medium-4 columns text-center">
+                    <img src="assets/character/walk/jump.png" >
+                    <br>
+                    <a href="#" class="button" id="CloseStore">Exit Store</a>
+
+                </div>
+                <div class="medium-4 columns"><p>stats here</p></div>
+            </div>
+        </div>
+        <div class="content" id="statsPanel">
+            I dunno, stats stuff here
+        </div>
+    </div>
+
+</div>
 
 <script src="js/vendor/jquery.min.js">
 
@@ -287,7 +278,7 @@
 
 </script>
 <script type="text/javascript" src="js/game/database.js"></script>
-
+<script type="text/javascript" src="js/game/store.js"></script>
 </body>
 
 </html>
