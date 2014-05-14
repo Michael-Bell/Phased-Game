@@ -41,3 +41,4 @@ mongoose.conf
 *.DS_Store
 /node_modules/*
 
+*.js
