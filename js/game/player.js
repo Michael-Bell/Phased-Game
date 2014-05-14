@@ -31,8 +31,7 @@ function CreatePlayer() {
     player.gold = 0;
     player.knockedLeft = 0;
     player.knockedRight = 0;
-
-
+    player.bulletType = 1;
 
 
 }

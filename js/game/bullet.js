@@ -43,42 +43,22 @@ shootBullet = function () {
     if (this.game.time.now - this.lastBulletShotAt < this.SHOT_DELAY) return;
     this.lastBulletShotAt = this.game.time.now;
 
-    //shoot homing missile :)
-    game.add.existing(
-        new Missile(game, player.x,player.y)
-    );
+    switch (player.bulletType) {
 
-    // Get a dead bullet from the pool
-    var bullet = this.bulletPool.getFirstDead();
+        case 0:
+            normalBullet();
+            break; // Never Forget
 
-    // If there aren't any bullets available then don't shoot
-    if (bullet === null || bullet === undefined) return;
+        case 1:
+            game.add.existing(
+                new Missile(game, player.x,player.y)
+            );
+            break;
 
-    // Revive the bullet
-    // This makes the bullet "alive"
-    bullet.revive();
-    bullet.lifespan = bulletLifespan;
+        default:
 
-    // Bullets should kill themselves when they leave the world.
-    // Phaser takes care of this for me by setting this flag
-    // but you can do it yourself by killing the bullet if
-    // its x,y coordinates are outside of the world.
-    bullet.checkWorldBounds = true;
-    bullet.outOfBoundsKill = true;
-
-    // Set the bullet position to the gun position.
-    bullet.reset(player.x, player.y);
-
-    // Shoot it
-    if (player.scale.x < 0) {
-        bullet.body.velocity.x = -this.BULLET_SPEED;
-        bullet.scale.x = -1;
     }
-    else {
-        bullet.body.velocity.x = this.BULLET_SPEED;
-        bullet.scale.x = 1;
-    }
-    bullet.body.velocity.y = 0;
+
 };
 
 // Missile constructor
@@ -109,7 +89,7 @@ var Missile = function(game, x, y) {
         Phaser.Easing.Linear.InOut);
 
     // Create the actual particles
-    this.smokeEmitter.makeParticles('gparticle');
+    this.smokeEmitter.makeParticles('particle');
 
     // Start emitting smoke particles one at a time (explode=false) with a
     // lifespan of this.SMOKE_LIFETIME at 50ms intervals
@@ -118,8 +98,6 @@ var Missile = function(game, x, y) {
     // to the center of the missile. See update() below.
     this.smokePosition = new Phaser.Point(this.width/2, 0);
     this.targetEnemy = getClosest(this);
-    console.log(this.targetEnemy);
-    ff=this.targetEnemy;
     this.lifespan = missileLifespan;
     this.events.onKilled.add(stopMissileEmitter, this);
     this.events.onKilled.add(particleBurst, this);
@@ -193,4 +171,39 @@ function getClosest(bullet){
 
 function stopMissileEmitter(){
     this.smokeEmitter.on = false;
+}
+
+
+function normalBullet(){
+    // Get a dead bullet from the pool
+    var bullet = this.bulletPool.getFirstDead();
+
+    // If there aren't any bullets available then don't shoot
+    if (bullet === null || bullet === undefined) return;
+
+    // Revive the bullet
+    // This makes the bullet "alive"
+    bullet.revive();
+    bullet.lifespan = bulletLifespan;
+
+    // Bullets should kill themselves when they leave the world.
+    // Phaser takes care of this for me by setting this flag
+    // but you can do it yourself by killing the bullet if
+    // its x,y coordinates are outside of the world.
+    bullet.checkWorldBounds = true;
+    bullet.outOfBoundsKill = true;
+
+    // Set the bullet position to the gun position.
+    bullet.reset(player.x, player.y);
+
+    // Shoot it
+    if (player.scale.x < 0) {
+        bullet.body.velocity.x = -this.BULLET_SPEED;
+        bullet.scale.x = -1;
+    }
+    else {
+        bullet.body.velocity.x = this.BULLET_SPEED;
+        bullet.scale.x = 1;
+    }
+    bullet.body.velocity.y = 0;
 }
