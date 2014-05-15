@@ -166,6 +166,9 @@ function getClosest(bullet){
         enemy=item;
     }
     });
+    if(enemy===null){
+        return bullet;
+    }
     return enemy;
 }
 
