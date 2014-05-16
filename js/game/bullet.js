@@ -57,7 +57,10 @@ shootBullet = function () {
 
         default:
 
+
     }
+    fx.play('shoot');
+
 
 };
 
@@ -164,7 +167,7 @@ function getClosest(bullet){
         return bullet;
     }
     enemyGroup.forEach(function (item) {
-    if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x-player.x>=0){
+    if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x>player.x){
         enemy=item;
     }
     });
