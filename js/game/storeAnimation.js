@@ -1,7 +1,12 @@
 var anim,width,Animplayer,tilesprite;
 
-function makeAnim(){
-    width = $('#storeMiddle').width();
+function pauseAni(){
+    anim.paused = true;
+}
+
+function resumeAni(){
+    anim.paused=false;
+}
     width=Math.floor(width/70)*70;
 
     anim = new Phaser.Game(width, 300, Phaser.CANVAS, 'animationDiv', { preload: animpreload, create: animcreate, update: animupdate, render: testdebug});
@@ -12,7 +17,7 @@ function makeAnim(){
 
         anim.load.spritesheet('dude', 'assets/character/sheet/sprite.png', 75, 96, 12);
 
-        anim.load.image('floor','assets/ground.png');;
+        anim.load.image('floor','assets/ground.png');
 
     }
 
@@ -59,4 +64,7 @@ function makeAnim(){
         anim.debug.spriteInfo(Animplayer, 0, 32);
 
     }
-}
+
+
+
+

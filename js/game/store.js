@@ -16,7 +16,7 @@ $('#OpenStore').on('click', Foundation.utils.debounce(function(e){
     //show the store window
     $('#storeWindow').removeClass('hide');
     //Make the Animation
-    makeAnim();
+    resumeAni();
 }, 300, true));
 
 //Listener to react to store button click
@@ -29,7 +29,10 @@ $('#CloseStore').on('click', Foundation.utils.debounce(function(e){
     $('#mainContent').removeClass('hide');
     //Hide the store window
     $('#storeWindow').addClass('hide');
+    pauseAni();
 }, 300, true));
+width = $('#storeMiddle').width();
+$('#storeWindow').addClass('hide');
 
 
 function updateStore(){
