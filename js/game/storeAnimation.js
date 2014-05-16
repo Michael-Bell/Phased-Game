@@ -10,7 +10,7 @@ function makeAnim(){
 
     function animpreload() {
 
-        anim.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
+        anim.load.spritesheet('dude', 'assets/character/sheet/sprite.png', 75, 96, 12);
 
         anim.load.image('floor','assets/ground.png');;
 
@@ -26,7 +26,7 @@ function makeAnim(){
         // background color
         anim.stage.backgroundColor = 0x4488cc;
         // add player sprite
-        Animplayer = anim.add.sprite(anim.width / 2, anim.height - 118, 'player');
+        Animplayer = anim.add.sprite(anim.width / 2, anim.height - 118, 'dude');
         // add animations
         Animplayer.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 12);
         // Enable physics on the player
