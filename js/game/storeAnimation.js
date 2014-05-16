@@ -4,7 +4,7 @@ function makeAnim(){
     width = $('#storeMiddle').width();
     width=Math.floor(width/70)*70;
 
-    anim = new Phaser.Game(width, 300, Phaser.AUTO, 'animationDiv', { preload: animpreload, create: animcreate, update: animupdate, render: testdebug});
+    anim = new Phaser.Game(width, 300, Phaser.CANVAS, 'animationDiv', { preload: animpreload, create: animcreate, update: animupdate, render: testdebug});
 
 
 
