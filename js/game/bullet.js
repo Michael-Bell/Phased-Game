@@ -160,15 +160,15 @@ Missile.prototype.update = function() {
 
 function getClosest(bullet){
     enemy = enemyGroup.getFirstExists();
-
+    if(enemy===null){
+        return bullet;
+    }
     enemyGroup.forEach(function (item) {
     if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x-player.x>=0){
         enemy=item;
     }
     });
-    if(enemy===null){
-        return bullet;
-    }
+
     return enemy;
 }
 
