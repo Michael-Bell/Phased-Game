@@ -38,10 +38,15 @@ function CreatePlayer() {
 
 /* TODO Add Acceleration to the game */
 function playerControls() {
-    if (_Q.isDown) { // is the S key pressed
+    if (_Q.isDown) { // is the Q key pressed
         QFire = true;
-    } else if (_Q.justReleased) { //if S key is released
+    } else { //if Q key is released
         QFire = false;
+    }
+    if (_W.isDown) { // is the W key pressed
+        WFire = true;
+    } else { //if W key is released
+        WFire = false;
     }
     if (cursors.left.isDown) { //left arrow pressed
         player.body.velocity.x = -player.velocity; //set velocity
@@ -75,6 +80,15 @@ function playerControls() {
 
         if(canShoot(QAmmo)){
             normalBullet();
+        }
+
+    }
+    if (WFire) {
+
+        if(canShoot(WAmmo)){
+            game.add.existing(
+                new Missile(game, player.x,player.y)
+            );
         }
 
     }
