@@ -139,6 +139,10 @@ function createGame() {
     cursors = game.input.keyboard.createCursorKeys();
     shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
+    _Q = game.input.keyboard.addKey(Phaser.Keyboard.Q);
+    _W = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    _E = game.input.keyboard.addKey(Phaser.Keyboard.E);
+    _R = game.input.keyboard.addKey(Phaser.Keyboard.R);
 
     fdas = new Phaser.Physics.P2.BodyDebug(game, player);
 
@@ -172,7 +176,22 @@ function createGame() {
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
     console.log('createdone');
-
+    $('#OpenStore').removeClass('disabled');
+    //Listener to react to store button click
+    $('#OpenStore').on('click', Foundation.utils.debounce(function(e){
+        //Pause the game
+        game.paused = true;
+        //disable key logger from game
+        game.input.keyboard.disabled = true;
+        //Update Store Stats Panels
+        updateStore();
+        //Hide the Main Window Contents
+        $('#mainContent').addClass('hide');
+        //show the store window
+        $('#storeWindow').removeClass('hide');
+        //Make the Animation
+        resumeAni();
+    }, 300, true));
 }
 
 function updateGame() {

@@ -38,10 +38,10 @@ function CreatePlayer() {
 
 /* TODO Add Acceleration to the game */
 function playerControls() {
-    if (shootKey.isDown) { // is the S key pressed
-        fire = true;
-    } else if (shootKey.justReleased) { //if S key is released
-        fire = false;
+    if (_Q.isDown) { // is the S key pressed
+        QFire = true;
+    } else if (_Q.justReleased) { //if S key is released
+        QFire = false;
     }
     if (cursors.left.isDown) { //left arrow pressed
         player.body.velocity.x = -player.velocity; //set velocity
@@ -71,7 +71,7 @@ function playerControls() {
         /*   TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
         player.frame = 11; // set player to jump sprite, removing for now, so jump animation plays only when jumping, not if falling
     }
-    if (fire) {
+    if (QFire) {
 
         shootBullet();
 

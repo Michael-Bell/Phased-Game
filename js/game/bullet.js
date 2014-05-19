@@ -1,14 +1,14 @@
+var QAmmo='';
 bulletInit = function () {
-
     // Define constants
-    this.SHOT_DELAY = 500; // milliseconds (10 bullets/second)
-    this.BULLET_SPEED = 250; // pixels/second
-    this.NUMBER_OF_BULLETS = 10;
+    QAmmo.SHOT_DELAY = 500; // milliseconds (10 bullets/second)
+    QAmmo.BULLET_SPEED = 250; // pixels/second
+    QAmmo.NUMBER_OF_BULLETS = 10;
 
 
     // Create an object pool of bullets
     this.bulletPool = this.game.add.group();
-    for (var i = 0; i < this.NUMBER_OF_BULLETS; i++) {
+    for (var i = 0; i < QAmmo.NUMBER_OF_BULLETS; i++) {
         // Create each bullet and add it to the group.
         var bullet = this.game.add.sprite(0, 0, 'bullet');
         this.bulletPool.add(bullet);
@@ -25,8 +25,8 @@ bulletInit = function () {
         bullet.body.collides(enemyCollisionGroup);
         console.log(bullet);
         // Define constants that affect motion
-        this.SPEED = 250; // missile speed pixels/second
-        this.TURN_RATE = 5; // turn rate in degrees/frame
+        QAmmo.SPEED = 250; // missile speed pixels/second
+        QAmmo.TURN_RATE = 5; // turn rate in degrees/frame
         // Set its initial state to "dead".
         bullet.kill();
         bullet.events.onKilled.add(particleBurst, this);
@@ -34,33 +34,33 @@ bulletInit = function () {
     }
 };
 
+
+function canShoot(bulletType){
+    console.log(bulletType);
+    if (bulletType.lastBulletShotAt === undefined) bulletType.lastBulletShotAt = 0;
+    if (game.time.now - bulletType.lastBulletShotAt < bulletType.SHOT_DELAY) return false;
+    bulletType.lastBulletShotAt = game.time.now;
+    console.log(bulletType.lastBulletShotAt);
+    return true;
+}
 shootBullet = function () {
     // Enforce a short delay between shots by recording
     // the time that each bullet is shot and testing if
     // the amount of time since the last shot is more than
     // the required delay.
     if (this.lastBulletShotAt === undefined) this.lastBulletShotAt = 0;
-    if (this.game.time.now - this.lastBulletShotAt < this.SHOT_DELAY) return;
+    if (this.game.time.now - this.lastBulletShotAt < this.SHOT_DELAY) return false;
     this.lastBulletShotAt = this.game.time.now;
 
-    switch (player.bulletType) {
 
-        case 0:
             normalBullet();
-            break; // Never Forget
 
-        case 1:
             game.add.existing(
                 new Missile(game, player.x,player.y)
             );
-            break;
 
-        default:
-
-
-    }
     fx.play('shoot');
-
+ return true;
 
 };
 
