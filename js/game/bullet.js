@@ -1,4 +1,4 @@
-var QAmmo='';
+var QAmmo={};
 bulletInit = function () {
     // Define constants
     QAmmo.SHOT_DELAY = 500; // milliseconds (10 bullets/second)
@@ -36,7 +36,6 @@ bulletInit = function () {
 
 
 function canShoot(bulletType){
-    console.log(bulletType);
     if (bulletType.lastBulletShotAt === undefined) bulletType.lastBulletShotAt = 0;
     if (game.time.now - bulletType.lastBulletShotAt < bulletType.SHOT_DELAY) return false;
     bulletType.lastBulletShotAt = game.time.now;
@@ -52,12 +51,6 @@ shootBullet = function () {
     if (this.game.time.now - this.lastBulletShotAt < this.SHOT_DELAY) return false;
     this.lastBulletShotAt = this.game.time.now;
 
-
-            normalBullet();
-
-            game.add.existing(
-                new Missile(game, player.x,player.y)
-            );
 
     fx.play('shoot');
  return true;

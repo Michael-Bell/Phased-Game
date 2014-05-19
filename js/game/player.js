@@ -73,7 +73,9 @@ function playerControls() {
     }
     if (QFire) {
 
-        shootBullet();
+        if(canShoot(QAmmo)){
+            normalBullet();
+        }
 
     }
     if (!player.inWorld) {
