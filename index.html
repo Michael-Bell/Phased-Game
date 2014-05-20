@@ -274,6 +274,23 @@
 <script  src="js/game/database.js"></script>
 <script src="js/game/storeAnimation.js"></script>
 
+<script type="text/javascript">
+    var $buoop = {
+
+        reminder: 0,                   // atfer how many hours should the message reappear
+        test: false,                    // true = always show the bar (for testing)
+        text: "Your browser is out of date. Update your browser for more security, comfort and the best experience on this site. We recommend the latest version of Firefox",                       // custom notification html text
+        newwindow: true                 // open link in new window/tab
+    };
+    $buoop.ol = window.onload;
+    window.onload=function(){
+        try {if ($buoop.ol) $buoop.ol();}catch (e) {}
+        var e = document.createElement("script");
+        e.setAttribute("type", "text/javascript");
+        e.setAttribute("src", "//browser-update.org/update.js");
+        document.body.appendChild(e);
+    }
+</script>
 
 </body>
 
