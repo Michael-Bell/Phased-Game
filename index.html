@@ -224,14 +224,14 @@
         <div class="content active" id="goldPanel">
             <div class="row">
                 <div class="medium-4 columns">
-                    <a href="#" class="button expand" data-revealid="buyLifespan" data-reveal>Bullet Lifespan - Can We</a>
-                    <a href="#" class="button expand" data-revealid="buyBetterGun" data-reveal>Upgrade Bullets - Make these</a>
-                    <a href="#" class="button expand" data-revealid="buyFastShoot" data-reveal>Faster Shooting - items that</a>
-                    <a href="#" class="button expand" data-revealid="buyVelocity" data-reveal>Bullet Velocity - cause effects</a>
-                    <a href="#" class="button expand" data-revealid="buyHeight" data-reveal>Jump Height - and Blatantly</a>
-                    <a href="#" class="button expand" data-revealid="buyMoreJump" data-reveal>More Jumps - Rip off</a>
-                    <a href="#" class="button expand" data-revealid="buyHealthRegen" data-reveal>Faster Regen - LOL</a>
-                    <a href="#" class="button expand" data-revealid="buyMaxHealth" data-reveal>Max Health - Names?</a>
+                    <a href="#" class="button expand" data-revealid="buyLifespan" data-reveal>Bullet Lifespan</a>
+                    <a href="#" class="button expand" data-reveal-id="newGun" data-reveal>New Weapon</a>
+                    <a href="#" class="button expand" data-revealid="buyFastShoot" data-reveal>Faster Shooting</a>
+                    <a href="#" class="button expand" data-revealid="buyVelocity" data-reveal>Bullet Velocity</a>
+                    <a href="#" class="button expand" data-revealid="buyHeight" data-reveal>Jump Height</a>
+                    <a href="#" class="button expand" data-revealid="buyMoreJump" data-reveal>More Jumps</a>
+                    <a href="#" class="button expand" data-revealid="buyHealthRegen" data-reveal>Faster Regen</a>
+                    <a href="#" class="button expand" data-revealid="buyMaxHealth" data-reveal>Max Health</a>
                 </div>
                 <div class="medium-4 columns" id="storeMiddle" text-center>
                 <div  id="animationDiv"></div>
@@ -259,8 +259,48 @@
             I dunno, stats stuff here
         </div>
     </div>
-
+    <!-- All Store Modals Here -->
+    <div id="newGun" class="reveal-modal" data-reveal>
+        <h1>
+            <small>New Guns</small>
+        </h1>
+        <div class="medium-4 column">
+            <ul class="pricing-table">
+                <li class="title">Homin Missiles</li>
+                <li class="price">$45</li>
+                <li class="description">This homin missile allows you to murder your enemies from a distance. They choose the closest enemy and home in on them. They cannot see the ground so think before you shoot</li>
+                <li class="bullet-item">1 Second lifespan</li>
+                <li class="bullet-item">1 Damage</li>
+                <li class="bullet-item">Shooting rate: 1/5 Seconds</li>
+                <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+            </ul>
+        </div>
+        <div class="medium-4 column">
+            <ul class="pricing-table">
+                <li class="title">Standard</li>
+                <li class="price">$99.99</li>
+                <li class="description">An awesome description</li>
+                <li class="bullet-item">1 Database</li>
+                <li class="bullet-item">5GB Storage</li>
+                <li class="bullet-item">20 Users</li>
+                <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+            </ul>
+        </div>
+        <div class="medium-4 column">
+            <ul class="pricing-table">
+                <li class="title">Standard</li>
+                <li class="price">$99.99</li>
+                <li class="description">An awesome description</li>
+                <li class="bullet-item">1 Database</li>
+                <li class="bullet-item">5GB Storage</li>
+                <li class="bullet-item">20 Users</li>
+                <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
+
+
 
 <script src="js/vendor/jquery.min.js">
 
@@ -269,7 +309,7 @@
 
 </script>
 <script  src="js/game/store.js"></script>
-<script src="http://cdn.jsdelivr.net/pouchdb/2.1.0/pouchdb.min.js"></script>
+<script src="js/vendor/pouchdb.min.js"></script>
 <script src="js/game/app.js"></script>
 <script  src="js/game/database.js"></script>
 <script src="js/game/storeAnimation.js"></script>

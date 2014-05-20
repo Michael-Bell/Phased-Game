@@ -5,12 +5,13 @@
 var WAmmo={};
 WAmmo.SHOT_DELAY = 500; // milliseconds (10 bullets/second)
 WAmmo.BULLET_SPEED = 250; // pixels/second
-WAmmo.NUMBER_OF_BULLETS = 10;
+WAmmo.missileLifespan=500;
+WAmmo.enabled=false;
 
 // Missile constructor
 var Missile = function(game, x, y) {
     Phaser.Sprite.call(this, game, x, y, 'bullet');
-    missileLifespan=2500;
+
     // Set the pivot point for this sprite to the center
     this.anchor.setTo(0.5, 0.5);
 
@@ -44,7 +45,7 @@ var Missile = function(game, x, y) {
     // to the center of the missile. See update() below.
     this.smokePosition = new Phaser.Point(this.width/2, 0);
     this.targetEnemy = getClosest(this);
-    this.lifespan = missileLifespan;
+    this.lifespan = WAmmo.missileLifespan;
     this.events.onKilled.add(particleBurst, this);
     this.events.onKilled.add(stopMissileEmitter, this);
 
