@@ -64,8 +64,8 @@ function tileGen() {
         item.body.collides(playerCollisionGroup);
         item.body.collides(tilesCollisionGroup);
         // item.body.angularVelocity = 5000;
-
-        ff = item;
+        item.revive(health = Math.floor( Math.random() * (3 - 1) + 1));
+        item.events.onKilled.add(flyerCoinDrop, this)
     });
 
     /*var

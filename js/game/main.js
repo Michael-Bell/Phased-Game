@@ -23,6 +23,7 @@ Game.Pre.prototype = {
         game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
         game.load.spritesheet('heart', 'assets/heart/red_spritesheet.png', 70, 70, 5);
         game.load.image('goldcoin', 'assets/goldcoin.png');
+        game.load.image('tnt', 'assets/tnt.png');
         game.load.image('tiles', 'assets/map/groundSprite.png');
         game.load.image('coinBox', 'assets/bonus.png');
         game.load.image('endblock', 'assets/ground_sand.png');
@@ -192,6 +193,8 @@ function createGame() {
         //Make the Animation
         resumeAni();
     }, 300, true));
+
+    bombInit();
 }
 
 function updateGame() {

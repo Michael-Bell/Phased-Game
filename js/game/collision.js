@@ -41,8 +41,6 @@ function collisionHandler(weakerObject, strongerObject) {
                 weakerObject.health = weakerObject.health - strongerObject.dmg;
 
             } else {
-                gencoins(strongerObject.x, strongerObject.y, weakerObject.sprite.goldWorth);
-                xpgain(weakerObject.sprite.xpWorth);
                 //weakerObject.sprite.kill();
                 strongerObject.sprite.kill();
                 weakerObject.sprite.destroy();

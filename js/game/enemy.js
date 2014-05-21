@@ -38,3 +38,7 @@ function animateEnemies() { // tween animate flying up and down
 
 }
 
+function flyerCoinDrop(){
+    gencoins(this.x, this.y, this.goldWorth);
+    xpgain(this.xpWorth);
+}

@@ -9,7 +9,7 @@ function canShoot(bulletType){
     if (bulletType.lastBulletShotAt === undefined) bulletType.lastBulletShotAt = 0;
     if (game.time.now - bulletType.lastBulletShotAt < bulletType.SHOT_DELAY || bulletType.enabled===false) return false;
     bulletType.lastBulletShotAt = game.time.now;
-    console.log(bulletType);
+   // console.log(bulletType);
     return true;
 }
 shootBullet = function () {

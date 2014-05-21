@@ -48,6 +48,12 @@ function playerControls() {
     } else { //if W key is released
         WFire = false;
     }
+    if(_E.isDown){
+        EFire=true;
+    }
+    else{
+        EFire=false;
+    }
     if (cursors.left.isDown) { //left arrow pressed
         player.body.velocity.x = -player.velocity; //set velocity
         player.animations.play('walk'); // play walking animation
@@ -90,7 +96,11 @@ function playerControls() {
                 new Missile(game, player.x,player.y)
             );
         }
-
+    }
+    if(EFire){
+        if(canShoot(EAmmo)){
+            newBomb();
+        }
     }
     if (!player.inWorld) {
         player.health = -100;
