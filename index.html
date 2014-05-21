@@ -226,14 +226,14 @@
         <div class="content active" id="goldPanel">
             <div class="row">
                 <div class="medium-4 columns">
-                    <a href="#" class="button expand" data-reveal-id="buyLifespan" data-reveal>Bullet Lifespan</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyLifespan" data-reveal>Bullet Lifespan</a>
                     <a href="#" class="button expand" data-reveal-id="newGun" data-reveal>New Weapon</a>
-                    <a href="#" class="button expand" data-reveal-id="buyFastShoot" data-reveal>Faster Shooting</a>
-                    <a href="#" class="button expand" data-reveal-id="buyVelocity" data-reveal>Bullet Velocity</a>
-                    <a href="#" class="button expand" data-reveal-id="buyHeight" data-reveal>Jump Height</a>
-                    <a href="#" class="button expand" data-reveal-id="buyMoreJump" data-reveal>More Jumps</a>
-                    <a href="#" class="button expand" data-reveal-id="buyHealthRegen" data-reveal>Faster Regen</a>
-                    <a href="#" class="button expand" data-reveal-id="buyMaxHealth" data-reveal>Max Health</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyFastShoot" data-reveal>Faster Shooting</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyVelocity" data-reveal>Bullet Velocity</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyHeight" data-reveal>Jump Height</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyMoreJump" data-reveal>More Jumps</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyHealthRegen" data-reveal>Faster Regen</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyMaxHealth" data-reveal>Max Health</a>
                 </div>
                 <div class="medium-4 columns text-center" id="storeMiddle">
                 <div  id="animationDiv"></div>
@@ -276,23 +276,23 @@
         <div class="medium-4 column" >
             <ul class="pricing-table">
                 <li class="title">Homing Missiles</li>
-                <li class="price">$500</li>
+                <li class="price"><del>$500</del> FREE!</li>
                 <li class="description">This homing missile allows you to murder your enemies from a distance. They choose the closest enemy and home in on them. They cannot see the ground so think before you shoot. <strong>Both this and the Q bullet can be equipped with explosive bullets</strong></li>
                 <li class="bullet-item">1 Second lifespan</li>
                 <li class="bullet-item">1 Damage</li>
                 <li class="bullet-item">Shooting rate: 1 per 5 Seconds</li>
-                <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+                <li class="cta-button"><a id="enableMissile" class="button" href="#">Buy Now</a></li>
             </ul>
         </div>
         <div class="medium-4 column">
             <ul class="pricing-table">
                 <li class="title">Bombs</li>
-                <li class="price">$750</li>
-                <li class="description">Lob a grenade at your enemies. This item is affected by gravity and will fall in an arc. It will explode on contact, or after x amount of seconds. These will hurt you, so be careful.</li>
-                <li class="bullet-item">4 Seconds</li>
-                <li class="bullet-item">3 Damage in center, Area Affect: 1 Damage</li>
-                <li class="bullet-item">Shooting Rate: 1 per 12 Seconds</li>
-                <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+                <li class="price"><del>$750</del> FREE!</li>
+                <li class="description">Drop some TNT, explodes and can cause damage to your enemies.</li>
+                <li class="bullet-item">2 Seconds till explodes</li>
+                <li class="bullet-item">5 Damage in center, Area Affect: 1-3 Damage</li>
+                <li class="bullet-item">Shooting Rate: 1 per 6 Seconds</li>
+                <li class="cta-button"><a id='enableTNT' class="button" href="#">Buy Now</a></li>
             </ul>
         </div>
         <div class="medium-4 column">
@@ -303,7 +303,7 @@
                 <li class="bullet-item">1 Second</li>
                 <li class="bullet-item">3 Damage</li>
                 <li class="bullet-item">Shooting Rate: 1 per 25 Seconds</li>
-                <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+                <li class="cta-button"><a class="button disabled" href="#">Buy Now</a></li>
             </ul>
         </div>
 </div>

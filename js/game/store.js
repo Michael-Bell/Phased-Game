@@ -38,3 +38,7 @@ $('#CloseStore').on('click', Foundation.utils.debounce(function(e){
     $('#storeWindow').addClass('hide');
     pauseAni();
 }, 300, true));
+
+
+$('#enableTNT').on('click',Foundation.utils.debounce(function(e){EAmmo.enabled=true;},true));
+$('#enableMissile').on('click',Foundation.utils.debounce(function(e){WAmmo.enabled=true;},true));
