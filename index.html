@@ -235,7 +235,7 @@
         <div class="content active" id="goldPanel">
             <div class="row">
                 <div class="medium-4 columns">
-                    <a href="#" class="button expand disabled" data-reveal-id="buyLifespan" data-reveal>Bullet
+                    <a href="#" class="button expand" data-reveal-id="buyLifespan" data-reveal>Bullet
                         Lifespan</a>
                     <a href="#" class="button expand" data-reveal-id="newGun" data-reveal>New Weapon</a>
                     <a href="#" class="button expand disabled" data-reveal-id="buyFastShoot" data-reveal>Faster
@@ -319,7 +319,7 @@
                 <div class="row text-center">
                     <ul class="button-group round extend">
                         <li><a href="#" id="RLifeM" class="small button alert">-</a></li>
-                        <li><a href="#" id="QRLifeA" class="small button success">+</a></li>
+                        <li><a href="#" id="RLifeA" class="small button success">+</a></li>
                     </ul>
                 </div>
             </div>
@@ -328,6 +328,7 @@
             <div class="medium-12 columns panel">
                 <p>500 millisecond increase is 25G. Press the +/- buttons on each column to increase or decrease
                     lifespans to your liking.</p>
+                <p>Current Gold: <span id="pgold"></span>G</p>
             </div>
         </div>
     </div>
@@ -340,8 +341,7 @@
                 <ul class="pricing-table">
                     <li class="title">Homing Missiles</li>
                     <li class="price">
-                        <del>500G</del>
-                        FREE!
+                      500G
                     </li>
                     <li class="description">This homing missile allows you to murder your enemies from a distance. They
                         choose the closest enemy and home in on them. They cannot see the ground so think before you
@@ -356,9 +356,8 @@
                 <ul class="pricing-table">
                     <li class="title">Bombs</li>
                     <li class="price">
-                        <del>750G</del>
-                        FREE!
-                    </li>
+                        750G
+                                            </li>
                     <li class="description">Drop some TNT, explodes and can cause damage to your enemies.</li>
                     <li class="bullet-item">2 Seconds till explodes</li>
                     <li class="bullet-item">5 Damage in center, Area Affect: 1-3 Damage</li>

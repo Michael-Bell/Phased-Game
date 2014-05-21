@@ -10,7 +10,7 @@ EAmmo.enabled=false;
 EAmmo.NUMBER_OF_BULLETS=20;
 EAmmo.Splashrange=70*3.5;
 EAmmo.hitrange = 70*2;
-
+EAmmo.cost=750
 
 
 

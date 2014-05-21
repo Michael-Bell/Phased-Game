@@ -28,6 +28,7 @@ function updateStore(){
     $('#WLifespan').text(WAmmo.missileLifespan/1000);
     $('#ELifespan').text(EAmmo.missileLifespan/1000);
     $('#RLifespan').text(RAmmo.life/1000);
+    $('#pgold').text(player.gold);
 }
 
 $('#CloseStore').on('click', Foundation.utils.debounce(function(e){
@@ -43,21 +44,79 @@ $('#CloseStore').on('click', Foundation.utils.debounce(function(e){
 }, 300, true));
 
 /* New Gun Buttons*/
-$('#enableTNT').on('click',Foundation.utils.debounce(function(e){EAmmo.enabled=true;},true));
-$('#enableMissile').on('click',Foundation.utils.debounce(function(e){WAmmo.enabled=true;},true));
+$('#enableTNT').on('click',Foundation.utils.debounce(function(e){
+    if (player.gold>=EAmmo.cost) {
+        EAmmo.enabled = true;
+        player.gold -= EAmmo.cost
+    }},true));
+$('#enableMissile').on('click',Foundation.utils.debounce(function(e){
+    if (player.gold>=WAmmo.cost) {
+        WAmmo.enabled = true;
+        player.gold-=WAmmo.cost;
+    }},true));
 $('#enableLaser').on('click',Foundation.utils.debounce(function(e){RAmmo.enabled=true;},true));
 
 /* Lifespan Buttons */
-$('#QLifeM').on('click',Foundation.utils.debounce(function(e){bulletLifespan-=500; updateStore();},true));
-$('#QLifeA').on('click',Foundation.utils.debounce(function(e){bulletLifespan+=500; updateStore();},true));
+LIFE_COST = 25;
+$('#QLifeM').on('click',Foundation.utils.debounce(function(e){
+    if (bulletLifespan>0) {
+        bulletLifespan -= 500;
+        player.gold += LIFE_COST;
+        updateStore();
 
-$('#WLifeM').on('click',Foundation.utils.debounce(function(e){WAmmo.missileLifespan-=500; updateStore();},true));
-$('#WLifeA').on('click',Foundation.utils.debounce(function(e){WAmmo.missileLifespan+=500; updateStore();},true));
+    }},true));
+$('#QLifeA').on('click',Foundation.utils.debounce(function(e){
 
-$('#ELifeM').on('click',Foundation.utils.debounce(function(e){EAmmo.missileLifespan-=500; updateStore();},true));
-$('#ELifeA').on('click',Foundation.utils.debounce(function(e){EAmmo.missileLifespan+=500; updateStore();},true));
+    if (player.gold>=LIFE_COST) {
+        bulletLifespan += 500;
+        player.gold -= LIFE_COST;
+        updateStore();
+    }
 
-$('#RLifeM').on('click',Foundation.utils.debounce(function(e){EAmmo.missileLifespan-=500; updateStore();},true));
-$('#RLifeA').on('click',Foundation.utils.debounce(function(e){EAmmo.missileLifespan+=500; updateStore();},true));
+    },true));
+
+$('#WLifeM').on('click',Foundation.utils.debounce(function(e){
+    if (WAmmo.missileLifespan>0) {
+        WAmmo.missileLifespan -= 500;
+        player.gold += LIFE_COST;
+        updateStore();
+
+    }},true));
+$('#WLifeA').on('click',Foundation.utils.debounce(function(e){
+    if (player.gold>=LIFE_COST) {
+        WAmmo.missileLifespan += 500;
+        player.gold -= LIFE_COST;
+        updateStore();
+
+    }},true));
+
+$('#ELifeM').on('click',Foundation.utils.debounce(function(e){
+    if (EAmmo.missileLifespan>0) {
+        EAmmo.missileLifespan -= 500;
+        player.gold += LIFE_COST;
+        updateStore();
+
+    }},true));
+$('#ELifeA').on('click',Foundation.utils.debounce(function(e){
+    if (player.gold>=LIFE_COST) {
+        EAmmo.missileLifespan += 500;
+        player.gold -= LIFE_COST;
+        updateStore();
+
+    }},true));
+
+$('#RLifeM').on('click',Foundation.utils.debounce(function(e){
+    if (RAmmo.life>0) {
+        RAmmo.life -= 500;
+        player.gold += LIFE_COST;
+        updateStore();
+
+    }},true));
+$('#RLifeA').on('click',Foundation.utils.debounce(function(e){
+    if (player.gold>=LIFE_COST) {
+        RAmmo.life += 500;
+        player.gold -= LIFE_COST;
+        updateStore();
+    }},true));
 
 

@@ -7,7 +7,7 @@ WAmmo.SHOT_DELAY = 500; // milliseconds (10 bullets/second)
 WAmmo.BULLET_SPEED = 250; // pixels/second
 WAmmo.missileLifespan=500;
 WAmmo.enabled=false;
-
+WAmmo.cost=500;
 // Missile constructor
 var Missile = function(game, x, y) {
     Phaser.Sprite.call(this, game, x, y, 'bullet');
