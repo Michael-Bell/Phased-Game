@@ -42,3 +42,4 @@ $('#CloseStore').on('click', Foundation.utils.debounce(function(e){
 
 $('#enableTNT').on('click',Foundation.utils.debounce(function(e){EAmmo.enabled=true;},true));
 $('#enableMissile').on('click',Foundation.utils.debounce(function(e){WAmmo.enabled=true;},true));
+$('#enableLaser').on('click',Foundation.utils.debounce(function(e){RAmmo.enabled=true;},true));
