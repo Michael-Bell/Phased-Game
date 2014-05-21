@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="css/app.css"/>
     <script src="js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="js/vendor/phaser.min.js"></script>
@@ -28,192 +28,201 @@
 
 <body>
 <div id="mainContent">
-<div id="scoreModal" class="reveal-modal" data-reveal>
-    <div class="large-7 column">
-        <dl class="tabs" data-tab>
-            <dd class="active">
-                <a href="#panel2-1">
-                    Your Score
-                </a>
-            </dd>
-            <dd>
-                <a href="#panel2-2">
-                    HighScores
-                </a>
-            </dd>
-            <dd>
-                <a href="#panel2-3">
-                    Latest Scores
-                </a>
-            </dd>
-        </dl>
-        <div class="tabs-content">
-            <div class="content active" id="panel2-1">
-                <h3>
-                    <small>
-                        Score:
-                    </small>
-                </h3>
+    <div id="scoreModal" class="reveal-modal" data-reveal>
+        <div class="large-7 column">
+            <dl class="tabs" data-tab>
+                <dd class="active">
+                    <a href="#panel2-1">
+                        Your Score
+                    </a>
+                </dd>
+                <dd>
+                    <a href="#panel2-2">
+                        HighScores
+                    </a>
+                </dd>
+                <dd>
+                    <a href="#panel2-3">
+                        Latest Scores
+                    </a>
+                </dd>
+            </dl>
+            <div class="tabs-content">
+                <div class="content active" id="panel2-1">
+                    <h3>
+                        <small>
+                            Score:
+                        </small>
+                    </h3>
 
-                <div id="scoreBox">
+                    <div id="scoreBox">
+                    </div>
+                    <h3>
+                        <small>
+                            Gold:
+                        </small>
+                    </h3>
+
+                    <div id="goldBox">
+                    </div>
+                    <h3>
+                        <small>
+                            XP:
+                        </small>
+                    </h3>
+
+                    <div id="xpBox">
+                    </div>
+                    <br>
+                    <blockquote id="quote">
+
+                    </blockquote>
                 </div>
-                <h3>
-                    <small>
-                        Gold:
-                    </small>
-                </h3>
 
-                <div id="goldBox">
+                <div class="content" id="panel2-2">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th width="200">Name</th>
+                            <th>Score</th>
+                        </tr>
+                        </thead>
+                        <tbody id="highscores">
+                        </tbody>
+                    </table>
+
                 </div>
-                <h3>
-                    <small>
-                        XP:
-                    </small>
-                </h3>
+                <div class="content" id="panel2-3">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th width="200">Name</th>
+                            <th>Score</th>
+                        </tr>
+                        </thead>
+                        <tbody id="todo-list">
 
-                <div id="xpBox">
+                        </tbody>
+                    </table>
                 </div>
-                <br>
-                <blockquote id="quote">
 
-                </blockquote>
             </div>
 
-            <div class="content" id="panel2-2">
-                <table>
-                    <thead>
-                    <tr>
-                        <th width="200">Name</th>
-                        <th>Score</th>
-                    </tr>
-                    </thead>
-                    <tbody id="highscores">
-                    </tbody>
-                </table>
+        </div>
+
+
+        <div class="large-4 columns">
+            <h1 id="winDeathHeader" class="subheader">You Died</h1>
+
+            <h3>
+                <small>Submit your score</small>
+            </h3>
+
+
+            <label>Name <input type="text" id="name" placeholder="John Smith"></label>
+
+            <label>Score</label>
+            <h4>
+                <small id="score2">
+                </small>
+            </h4>
+            <button id="submit" class="expand">Submit</button>
+            <button id="restart" class="expand">New Game</button>
+            <button id="continue" class="expand">Continue</button>
+
+        </div>
+
+
+    </div>
+    <div class="row">
+
+        <div class="large-10 columns">
+            <div class="prog progress min-height-vert-center nice round" id="prog"><span id="meter"
+                                                                                         class="prog meter min-height-vert-center"
+                                                                                         style="width: 5%"></span></div>
+            <div class="hide min-height-vert-center" id="Game"></div>
+
+        </div>
+
+        <div class="large-2 columns text-center">
+            <div class="panel">
+                <p>
+
+                <h2>
+                    <small>Score</small>
+                </h2>
+                Health Points:
+                <div id="health"></div>
+                Gold:
+                <div id="gold"></div>
+                XP:
+                <div id="xp"></div>
 
             </div>
-            <div class="content" id="panel2-3">
-                <table>
-                    <thead>
-                    <tr>
-                        <th width="200">Name</th>
-                        <th>Score</th>
-                    </tr>
-                    </thead>
-                    <tbody id="todo-list">
+            <a href="#" class="button" data-reveal-id="info" data-reveal>
+                About
+            </a>
 
-                    </tbody>
-                </table>
+            <div id="info" class="reveal-modal" data-reveal>
+                <h1>
+                    <small>Phased Game</small>
+                </h1>
+                <p>This is a platforming game being built for IT. It uses the
+                    <em>
+                        <a href="http://phaser.io">
+                            Phaser.js
+                        </a>game engine</em> to power it. Hopefully this will be a fun game, and it
+                    will not break. You can play the current release
+                    <a href="http://michaelbell.ca/Phased-Game">
+                        here
+                    </a>. If you like the game, <a href="mailto:marvinpa97@shaw.ca">tell me!</a>
+                    <a href="http://github.com/michael-bell/Phased-Game" class="button expand [radius round]">
+                        View the Code
+                    </a>
+                </p>
+                <a class="close-reveal-modal">&#215;</a>
             </div>
+            <a href="#" class="button" data-reveal-id="htp" data-reveal>
+                How to Play
+            </a>
 
+            <div id="htp" class="reveal-modal" data-reveal>
+                <h1>
+                    <small>How to Play</small>
+                </h1>
+                <p><kbd>Up</kbd>+<kbd>Down</kbd>+<kbd>Left</kbd>+<kbd>Right</kbd> to move</p>
+
+                <p><kbd>Q</kbd>: Shoot a normal bullet</p>
+
+                <p><kbd>W</kbd>: Shoot a Homing Missile</p>
+
+                <p><kbd>E</kbd>: Bombs Away</p>
+
+                <p><kbd>R</kbd>: Fire a lazer</p>
+
+                <p><kbd>P</kbd>: Pause the game</p>
+
+                <p><kbd>S</kbd>: Enable/Disable Sound Effects</p>
+
+                <p><kbd>M</kbd>: Enable Disable background music</p>
+                As of this update, the following are <strong>not</strong> implemented: <kbd>E R S M</kbd>
+                <a class="close-reveal-modal">&#215;</a>
+            </div>
+            <a href="#" class="button disabled" id="OpenStore">
+                Store </a>
         </div>
 
     </div>
 
 
-    <div class="large-4 columns">
-        <h1 id="winDeathHeader" class="subheader">You Died</h1>
-
-        <h3>
-            <small>Submit your score</small>
-        </h3>
-
-
-        <label>Name <input type="text" id="name" placeholder="John Smith"></label>
-
-        <label>Score</label>
-        <h4>
-            <small  id="score2">
-            </small>
-        </h4>
-        <button id="submit"  class="expand" >Submit</button>
-        <button id="restart" class="expand">New Game</button>
-        <button id="continue" class="expand">Continue</button>
-
-    </div>
-
-
-</div>
-<div class="row">
-
-    <div class="large-10 columns">
-        <div class="prog progress min-height-vert-center nice round" id="prog"> <span id="meter" class="prog meter min-height-vert-center" style="width: 5%"></span> </div>
-        <div class="hide min-height-vert-center" id="Game"></div>
-
-    </div>
-
-    <div class="large-2 columns text-center">
-        <div class="panel">
-            <p>
-
-            <h2>
-                <small>Score</small>
-            </h2>
-            Health Points:
-            <div id="health"></div>
-            Gold:
-            <div id="gold"></div>
-            XP:
-            <div id="xp"></div>
-
+    <div class="row">
+        <div class="large-12 text-center">
+            <footer>A game made by
+                <strong>Jesse</strong> and
+                <strong>Michael</strong>
+            </footer>
         </div>
-        <a href="#" class="button" data-reveal-id="info" data-reveal>
-            About
-        </a>
-
-        <div id="info" class="reveal-modal" data-reveal>
-            <h1>
-                <small>Phased Game</small>
-            </h1>
-            <p>This is a platforming game being built for IT. It uses the
-                <em>
-                    <a href="http://phaser.io">
-                        Phaser.js
-                    </a>game engine</em> to power it. Hopefully this will be a fun game, and it
-                will not break. You can play the current release
-                <a href="http://michaelbell.ca/Phased-Game">
-                    here
-                </a>. If you like the game, <a href="mailto:marvinpa97@shaw.ca">tell me!</a>
-                <a href="http://github.com/michael-bell/Phased-Game" class="button expand [radius round]">
-                    View the Code
-                </a>
-            </p>
-            <a class="close-reveal-modal">&#215;</a>
-        </div>
-        <a href="#" class="button" data-reveal-id="htp" data-reveal>
-            How to Play
-        </a>
-
-        <div id="htp" class="reveal-modal" data-reveal>
-            <h1>
-                <small>How to Play</small>
-            </h1>
-            <p><kbd>Up</kbd>+<kbd>Down</kbd>+<kbd>Left</kbd>+<kbd>Right</kbd> to move</p>
-            <p><kbd>Q</kbd>: Shoot a normal bullet</p>
-            <p><kbd>W</kbd>: Shoot a Homing Missile</p>
-            <p><kbd>E</kbd>: Bombs Away</p>
-            <p><kbd>R</kbd>: Fire a lazer</p>
-            <p><kbd>P</kbd>: Pause the game</p>
-            <p><kbd>S</kbd>: Enable/Disable Sound Effects</p>
-            <p><kbd>M</kbd>: Enable Disable background music</p>
-            As of this update, the following are <strong>not</strong> implemented: <kbd>E R S M</kbd>
-            <a class="close-reveal-modal">&#215;</a>
-        </div>
-        <a href="#" class="button disabled" id="OpenStore">
-            Store    </a>
     </div>
-
-</div>
-
-
-<div class="row">
-    <div class="large-12 text-center">
-        <footer>A game made by
-            <strong>Jesse</strong> and
-            <strong>Michael</strong>
-        </footer>
-    </div>
-</div>
 
 </div>
 
@@ -226,17 +235,21 @@
         <div class="content active" id="goldPanel">
             <div class="row">
                 <div class="medium-4 columns">
-                    <a href="#" class="button expand disabled" data-reveal-id="buyLifespan" data-reveal>Bullet Lifespan</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyLifespan" data-reveal>Bullet
+                        Lifespan</a>
                     <a href="#" class="button expand" data-reveal-id="newGun" data-reveal>New Weapon</a>
-                    <a href="#" class="button expand disabled" data-reveal-id="buyFastShoot" data-reveal>Faster Shooting</a>
-                    <a href="#" class="button expand disabled" data-reveal-id="buyVelocity" data-reveal>Bullet Velocity</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyFastShoot" data-reveal>Faster
+                        Shooting</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyVelocity" data-reveal>Bullet
+                        Velocity</a>
                     <a href="#" class="button expand disabled" data-reveal-id="buyHeight" data-reveal>Jump Height</a>
                     <a href="#" class="button expand disabled" data-reveal-id="buyMoreJump" data-reveal>More Jumps</a>
-                    <a href="#" class="button expand disabled" data-reveal-id="buyHealthRegen" data-reveal>Faster Regen</a>
+                    <a href="#" class="button expand disabled" data-reveal-id="buyHealthRegen" data-reveal>Faster
+                        Regen</a>
                     <a href="#" class="button expand disabled" data-reveal-id="buyMaxHealth" data-reveal>Max Health</a>
                 </div>
                 <div class="medium-4 columns text-center" id="storeMiddle">
-                <div  id="animationDiv"></div>
+                    <div id="animationDiv"></div>
 
                     <a href="#" class="button expanded" id="CloseStore">Exit Store</a>
 
@@ -252,7 +265,8 @@
                         <div id="StoreGold"></div>
                         XP:
                         <div id="StoreXp"></div>
-                        <div class="nice round progress secondary large-10"> <span id="xpMeter" class="meter" style="width: 9%"></span> </div>
+                        <div class="nice round progress secondary large-10"><span id="xpMeter" class="meter"
+                                                                                  style="width: 9%"></span></div>
                     </div>
                 </div>
             </div>
@@ -265,52 +279,109 @@
     <div id="buyLifespan" class="reveal-modal" data-reveal>
         <h1>
             <small>Increase Weapon Lifespans</small>
-            <p>500 millisecond increase is 25G</p>
         </h1>
+        <p></p>
 
+        <div class="row">
+            <div class="medium-3 columns">
+                <h2><small>Normal Bullet</small></h2>
+                <div class="panel"><h2 id="QLifespan"></h2> Seconds</div>
+                <div class="row text-center">
+                    <ul class="button-group round extend">
+                        <li><a href="#" id="QLifeM" class="small button alert">-</a></li>
+                        <li><a href="#" id="QLifeA" class="small button success">+</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="medium-3 columns">
+                <h2><small>Homing Missile</small></h2>
+                <div class="panel"><h2 id="WLifespan"></h2> Seconds</div>
+                <div class="row text-center">
+                    <ul class="button-group round extend">
+                        <li><a href="#" id="WLifeM" class="small button alert">-</a></li>
+                        <li><a href="#" id="WLifeA" class="small button success">+</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="medium-3 columns">
+                <h2><small>Bomb Timer</small></h2>
+                <div class="panel"><h2 id="ELifespan"></h2> Seconds</div>
+                <div class="row text-center">
+                    <ul class="button-group round extend">
+                        <li><a href="#" id="ELifeM" class="small button alert">-</a></li>
+                        <li><a href="#" id="ELifeA" class="small button success">+</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="medium-3 columns">
+                <h2><small>Laser Timer</small></h2>
+                <div class="panel"><h2 id="RLifespan"></h2> Seconds</div>
+                <div class="row text-center">
+                    <ul class="button-group round extend">
+                        <li><a href="#" id="RLifeM" class="small button alert">-</a></li>
+                        <li><a href="#" id="QRLifeA" class="small button success">+</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="medium-12 columns panel">
+                <p>500 millisecond increase is 25G. Press the +/- buttons on each column to increase or decrease
+                    lifespans to your liking.</p>
+            </div>
+        </div>
+    </div>
     <div id="newGun" class="reveal-modal" data-reveal>
         <h1>
             <small>New Guns</small>
         </h1>
         <div class="row">
-        <div class="medium-4 column" >
-            <ul class="pricing-table">
-                <li class="title">Homing Missiles</li>
-                <li class="price"><del>500G</del> FREE!</li>
-                <li class="description">This homing missile allows you to murder your enemies from a distance. They choose the closest enemy and home in on them. They cannot see the ground so think before you shoot. <strong>Both this and the Q bullet can be equipped with explosive bullets</strong></li>
-                <li class="bullet-item">1 Second lifespan</li>
-                <li class="bullet-item">1 Damage</li>
-                <li class="bullet-item">Shooting rate: 1 per 5 Seconds</li>
-                <li class="cta-button"><a id="enableMissile" class="button" href="#">Buy Now</a></li>
-            </ul>
+            <div class="medium-4 column">
+                <ul class="pricing-table">
+                    <li class="title">Homing Missiles</li>
+                    <li class="price">
+                        <del>500G</del>
+                        FREE!
+                    </li>
+                    <li class="description">This homing missile allows you to murder your enemies from a distance. They
+                        choose the closest enemy and home in on them. They cannot see the ground so think before you
+                        shoot. <strong>Both this and the Q bullet can be equipped with explosive bullets</strong></li>
+                    <li class="bullet-item">1 Second lifespan</li>
+                    <li class="bullet-item">1 Damage</li>
+                    <li class="bullet-item">Shooting rate: 1 per 5 Seconds</li>
+                    <li class="cta-button"><a id="enableMissile" class="button" href="#">Buy Now</a></li>
+                </ul>
+            </div>
+            <div class="medium-4 column">
+                <ul class="pricing-table">
+                    <li class="title">Bombs</li>
+                    <li class="price">
+                        <del>750G</del>
+                        FREE!
+                    </li>
+                    <li class="description">Drop some TNT, explodes and can cause damage to your enemies.</li>
+                    <li class="bullet-item">2 Seconds till explodes</li>
+                    <li class="bullet-item">5 Damage in center, Area Affect: 1-3 Damage</li>
+                    <li class="bullet-item">Shooting Rate: 1 per 6 Seconds</li>
+                    <li class="cta-button"><a id='enableTNT' class="button" href="#">Buy Now</a></li>
+                </ul>
+            </div>
+            <div class="medium-4 column">
+                <ul class="pricing-table">
+                    <li class="title">Laser Beam Sunglasses</li>
+                    <li class="price">1200G</li>
+                    <li class="description">These glasses allow the user to shoot a laser beam out of their eyes. Goes
+                        through all obstacles, phases out at the end of the screen.
+                    </li>
+                    <li class="bullet-item">1 Second</li>
+                    <li class="bullet-item">3 Damage</li>
+                    <li class="bullet-item">Shooting Rate: 1 per 25 Seconds</li>
+                    <li class="cta-button"><a id="enableLaser" class="button disabled" href="#">Buy Now</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="medium-4 column">
-            <ul class="pricing-table">
-                <li class="title">Bombs</li>
-                <li class="price"><del>750G</del> FREE!</li>
-                <li class="description">Drop some TNT, explodes and can cause damage to your enemies.</li>
-                <li class="bullet-item">2 Seconds till explodes</li>
-                <li class="bullet-item">5 Damage in center, Area Affect: 1-3 Damage</li>
-                <li class="bullet-item">Shooting Rate: 1 per 6 Seconds</li>
-                <li class="cta-button"><a id='enableTNT' class="button" href="#">Buy Now</a></li>
-            </ul>
-        </div>
-        <div class="medium-4 column">
-            <ul class="pricing-table">
-                <li class="title">Laser Beam Sunglasses</li>
-                <li class="price">1200G</li>
-                <li class="description">These glasses allow the user to shoot a laser beam out of their eyes. Goes through all obstacles, phases out at the end of the screen.</li>
-                <li class="bullet-item">1 Second</li>
-                <li class="bullet-item">3 Damage</li>
-                <li class="bullet-item">Shooting Rate: 1 per 25 Seconds</li>
-                <li class="cta-button"><a id="enableLaser" class="button disabled" href="#">Buy Now</a></li>
-            </ul>
-        </div>
-</div>
     </div>
 </div>
-
 
 
 <script src="js/vendor/jquery.min.js">
@@ -319,10 +390,10 @@
 <script src="js/vendor/foundation.min.js">
 
 </script>
-<script  src="js/game/store.js"></script>
+<script src="js/game/store.js"></script>
 <script src="js/vendor/pouchdb.min.js"></script>
 <script src="js/game/app.js"></script>
-<script  src="js/game/database.js"></script>
+<script src="js/game/database.js"></script>
 <script src="js/game/storeAnimation.js"></script>
 
 <script type="text/javascript">
@@ -334,8 +405,11 @@
         newwindow: true                 // open link in new window/tab
     };
     $buoop.ol = window.onload;
-    window.onload=function(){
-        try {if ($buoop.ol) $buoop.ol();}catch (e) {}
+    window.onload = function () {
+        try {
+            if ($buoop.ol) $buoop.ol();
+        } catch (e) {
+        }
         var e = document.createElement("script");
         e.setAttribute("type", "text/javascript");
         e.setAttribute("src", "//browser-update.org/update.js");
