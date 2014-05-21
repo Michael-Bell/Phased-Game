@@ -25,6 +25,35 @@ function GenerateEnemy(x, y, uniqueID) {
     enemyGroup.callAll('animations.play', 'animations', 'wings');
 }
 
+function rotateEnemies() {     // Trying to make the flyas rotate themselves upright after they get knocked upsidedown.
+    enemyGroup.forEach(function (item) {
+    if(90<=item.body.angle && item.body.angle<=179){
+       item.body.angularForce=-10;
+        item.body.angularDamping=.3;
+        //console.log('hrotate l');
+    }
+        if(10<item.body.angle && item.body.angle<90){
+        item.body.angularForce=-5;
+            item.body.angularDamping=.5;
+          //console.log('rotate l');
+    }
+        if(-180<=item.body.angle && item.body.angle<-90){
+        item.body.angularForce=10;
+            item.body.angularDamping=.3;
+         //   console.log('hrotate r');
+    }
+        if(-90<=item.body.angle && item.body.angle<-10){
+        item.body.angularForce=5;
+            item.body.angularDamping=.5;
+         //   console.log('rotate r');
+    }
+        if(-10<=item.body.angle && item.body.angle<=10){
+      //item.body.angularForce=0;
+            item.body.angularDamping=.8;
+    }
+    });
+}
+
 function animateEnemies() { // tween animate flying up and down
     //  Here we'll chain 4 different tweens together and play through them all in a loop
     enemyGroup.forEach(function (item) {
@@ -32,8 +61,9 @@ function animateEnemies() { // tween animate flying up and down
         var temp = game.add.sprite(item.x, item.y);
         game.physics.p2.enable(temp);
         temp.body.static = true;
-        item.body.fixedRotation = true;
-        var spring = game.physics.p2.createSpring(item, temp, 125, 6, 99);
+        //item.body.fixedRotation = true;
+        item.body.angularDamping=.5;
+        var spring = game.physics.p2.createSpring(item, temp, 100, 6, 100);
     });
 
 }

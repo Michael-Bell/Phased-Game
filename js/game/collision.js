@@ -1,4 +1,5 @@
 var str;
+var jumpCountFix;
 function collisionHandler(weakerObject, strongerObject) {
     aaa = weakerObject;
     // Stronger object damages weaker objects, removes 1 health
@@ -22,9 +23,12 @@ function collisionHandler(weakerObject, strongerObject) {
                     weakerObject.sprite.inv = true; // the player is made invunerable
                     game.time.events.add(Phaser.Timer.SECOND * 2, playerInv, this); // We want him to be vunerable again in two seconds
                     game.time.events.add(Phaser.Timer.SECOND * .1, incjumpCount, this); // We need a timer here so if he gets hit while on the ground, he doesn't get a triple jump.
-                    weakerObject.sprite.velocity = 100;
+                    //weakerObject.sprite.velocity = 100;
+                    jumpCountFix=jumpCount;
+                    jumpCount=2;
+                    player.jumpUp=player.jumpUp/1.3;
                     weakerObject.sprite.healthRegen = false;
-                    weakerObject.sprite.body.velocity.y = -200;
+                    weakerObject.sprite.body.velocity.y = -250;
                     if (player.scale.x < 0) {
                         weakerObject.sprite.knockedLeft = 1;
                     } else {
@@ -53,7 +57,7 @@ function collisionHandler(weakerObject, strongerObject) {
 }
 
 function incjumpCount() {
-    jumpCount = 2;
+    jumpCount = jumpCountFix;
 }
 var aaa;
 function bulletWallColl(bullet, wall) {

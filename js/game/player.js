@@ -23,6 +23,7 @@ function CreatePlayer() {
     player.scale.y = .9;
     player.health = 29; // health
     player.velocity = 200;
+    player.jumpUp = 600;
     player.inv = false; // player is not invunerable to start
     player.inv.time = 1000; // invunerable for 1 sec after damage taken
     player.body.immovable = false; // a test, enemies are pushing the player through the floor
@@ -63,9 +64,9 @@ function playerControls() {
     if (touchingDown(player)) { //is the player sprite touching another object on bottom?
         player.body.angularVelocity = 0; // stop spinning
         player.body.angle = 0; // stand up straight
-        player.healthRegen = true;
-        jumpCount = 0; // reset jump counter
-        player.velocity = 200;
+        player.healthRegen = true;  //turn healing back on
+        game.time.events.add(Phaser.Timer.SECOND * .1, groundReset, this);
+
 
     } else { // if not on the ground
         /*   TODO see if you like this or not, remove this else statement, or remove the frame set in jumpCheck()*/
@@ -82,6 +83,12 @@ function playerControls() {
     }
 }
 
+function groundReset(){
+    if (touchingDown(player)) { //If the player is STILL touching the ground. Ie. he did not bounce off an enemy
+    jumpCount = 0; // reset jump counter
+    player.velocity = 200;  //reset Veloctiy
+    player.jumpUp = 600;  //reset Jump amount
+}}
 
 function playerInv() {
     player.inv = false;
