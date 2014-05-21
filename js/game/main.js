@@ -28,7 +28,7 @@ Game.Pre.prototype = {
         game.load.image('endblock', 'assets/ground_sand.png');
         //game.load.image('smoke','assets/smoke.png');
         game.load.image('particle', 'assets/particle.png');
-        game.load.image('gparticle', 'assets/GreenParticle.png');
+        game.load.audio('sfx', [ 'assets/sfx/sfx.ogg' ]);
 
         game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level2', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
@@ -139,6 +139,10 @@ function createGame() {
     cursors = game.input.keyboard.createCursorKeys();
     shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
+    _Q = game.input.keyboard.addKey(Phaser.Keyboard.Q);
+    _W = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    _E = game.input.keyboard.addKey(Phaser.Keyboard.E);
+    _R = game.input.keyboard.addKey(Phaser.Keyboard.R);
 
     fdas = new Phaser.Physics.P2.BodyDebug(game, player);
 
@@ -159,13 +163,35 @@ function createGame() {
     explosionEmitter.maxParticleSpeed.setTo(400, 400);
     explosionEmitter.gravity = 0;
 
+    fx = game.add.audio('sfx');
+    //	And this defines the markers.
+    //	They consist of a key (for replaying), the time the sound starts and the duration, both given in seconds.
+    //	You can also set the volume and loop state, although we don't use them in this example (see the docs)
+    fx.addMarker('shoot', 0, 1.7,.3);
+    fx.addMarker('bulletExplode',1.7,0.062);
+
 
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
     console.log('createdone');
-
+    $('#OpenStore').removeClass('disabled');
+    //Listener to react to store button click
+    $('#OpenStore').on('click', Foundation.utils.debounce(function(e){
+        //Pause the game
+        game.paused = true;
+        //disable key logger from game
+        game.input.keyboard.disabled = true;
+        //Update Store Stats Panels
+        updateStore();
+        //Hide the Main Window Contents
+        $('#mainContent').addClass('hide');
+        //show the store window
+        $('#storeWindow').removeClass('hide');
+        //Make the Animation
+        resumeAni();
+    }, 300, true));
 }
 
 function updateGame() {
@@ -327,4 +353,5 @@ function particleBurst(item) {
     //  The third is ignored when using burst/explode mode
     //  The final parameter (10) is how many particles will be emitted in this single burst
     explosionEmitter.start(true, 250, null, 50);
+    fx.play('bulletExplode');
 }

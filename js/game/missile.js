@@ -1,70 +1,17 @@
-bulletInit = function () {
+/**
+ * Contains code for Homing Missiles
+ */
 
-    // Define constants
-    this.SHOT_DELAY = 500; // milliseconds (10 bullets/second)
-    this.BULLET_SPEED = 250; // pixels/second
-    this.NUMBER_OF_BULLETS = 10;
-
-
-    // Create an object pool of bullets
-    this.bulletPool = this.game.add.group();
-    for (var i = 0; i < this.NUMBER_OF_BULLETS; i++) {
-        // Create each bullet and add it to the group.
-        var bullet = this.game.add.sprite(0, 0, 'bullet');
-        this.bulletPool.add(bullet);
-        //   console.log(bullet);
-        // Set its pivot point to the center of the bullet
-        bullet.anchor.setTo(0.5, 0.5);
-        // Enable physics on the bullet
-        game.physics.p2.enable(bullet, false); // we need physics
-
-        // Enable physics on the missile
-        bullet.body.data.gravityScale = 0;
-        bullet.body.setCollisionGroup(bulletCollisionGroup);
-        bullet.body.collides(tilesCollisionGroup, bulletWallColl, this);
-        bullet.body.collides(enemyCollisionGroup);
-        console.log(bullet);
-        // Define constants that affect motion
-        this.SPEED = 250; // missile speed pixels/second
-        this.TURN_RATE = 5; // turn rate in degrees/frame
-        // Set its initial state to "dead".
-        bullet.kill();
-        bullet.events.onKilled.add(particleBurst, this);
-
-    }
-};
-
-shootBullet = function () {
-    // Enforce a short delay between shots by recording
-    // the time that each bullet is shot and testing if
-    // the amount of time since the last shot is more than
-    // the required delay.
-    if (this.lastBulletShotAt === undefined) this.lastBulletShotAt = 0;
-    if (this.game.time.now - this.lastBulletShotAt < this.SHOT_DELAY) return;
-    this.lastBulletShotAt = this.game.time.now;
-
-    switch (player.bulletType) {
-
-        case 0:
-            normalBullet();
-            break; // Never Forget
-
-        case 1:
-            game.add.existing(
-                new Missile(game, player.x,player.y)
-            );
-            break;
-
-        default:
-
-    }
-
-};
+var WAmmo={};
+WAmmo.SHOT_DELAY = 500; // milliseconds (10 bullets/second)
+WAmmo.BULLET_SPEED = 250; // pixels/second
+WAmmo.missileLifespan=500;
+WAmmo.enabled=false;
 
 // Missile constructor
 var Missile = function(game, x, y) {
     Phaser.Sprite.call(this, game, x, y, 'bullet');
-    missileLifespan=2500;
+
     // Set the pivot point for this sprite to the center
     this.anchor.setTo(0.5, 0.5);
 
@@ -98,13 +45,15 @@ var Missile = function(game, x, y) {
     // to the center of the missile. See update() below.
     this.smokePosition = new Phaser.Point(this.width/2, 0);
     this.targetEnemy = getClosest(this);
-    this.lifespan = missileLifespan;
-    this.events.onKilled.add(stopMissileEmitter, this);
+    this.lifespan = WAmmo.missileLifespan;
     this.events.onKilled.add(particleBurst, this);
+    this.events.onKilled.add(stopMissileEmitter, this);
 
     this.body.setCollisionGroup(bulletCollisionGroup);
     this.body.collides(tilesCollisionGroup, bulletWallColl, this);
     this.body.collides(enemyCollisionGroup);
+    fx.play('shoot');
+
 
 };
 
@@ -160,50 +109,20 @@ Missile.prototype.update = function() {
 
 function getClosest(bullet){
     enemy = enemyGroup.getFirstExists();
-
-    enemyGroup.forEach(function (item) {
-    if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x-player.x>=0){
-        enemy=item;
+    if(enemy===null){
+        return bullet;
     }
+    enemyGroup.forEach(function (item) {
+        if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x>player.x){
+            enemy=item;
+        }
     });
+
     return enemy;
 }
 
 function stopMissileEmitter(){
     this.smokeEmitter.on = false;
-}
-
-
-function normalBullet(){
-    // Get a dead bullet from the pool
-    var bullet = this.bulletPool.getFirstDead();
-
-    // If there aren't any bullets available then don't shoot
-    if (bullet === null || bullet === undefined) return;
-
-    // Revive the bullet
-    // This makes the bullet "alive"
-    bullet.revive();
-    bullet.lifespan = bulletLifespan;
-
-    // Bullets should kill themselves when they leave the world.
-    // Phaser takes care of this for me by setting this flag
-    // but you can do it yourself by killing the bullet if
-    // its x,y coordinates are outside of the world.
-    bullet.checkWorldBounds = true;
-    bullet.outOfBoundsKill = true;
-
-    // Set the bullet position to the gun position.
-    bullet.reset(player.x, player.y);
-
-    // Shoot it
-    if (player.scale.x < 0) {
-        bullet.body.velocity.x = -this.BULLET_SPEED;
-        bullet.scale.x = -1;
-    }
-    else {
-        bullet.body.velocity.x = this.BULLET_SPEED;
-        bullet.scale.x = 1;
-    }
-    bullet.body.velocity.y = 0;
+    //this.smokeEmitter.destroy();
+    this.destroy();
 }
