@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="css/app.css"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="js/vendor/phaser.min.js"></script>
     <script type="text/javascript" src="js/game/platforms.js"></script>
@@ -206,7 +207,8 @@
 
                 <p><kbd>M</kbd>: Enable Disable background music</p>
                 As of this update, the following are <strong>not</strong> implemented: <kbd>E R S M</kbd>
-                <a class="close-reveal-modal">&#215;</a>
+                <a c
+                   lass="close-reveal-modal">&#215;</a>
             </div>
             <a href="#" class="button disabled" id="OpenStore">
                 Store </a>
@@ -227,159 +229,235 @@
 </div>
 
 <div id="storeWindow" class="">
-    <dl class="tabs" data-tab>
-        <dd class="active"><a href="#goldPanel">Gold</a></dd>
-        <dd><a href="#statsPanel">DEX STR</a></dd>
-    </dl>
-    <div class="tabs-content">
-        <div class="content active" id="goldPanel">
-            <div class="row">
-                <div class="medium-4 columns">
-                    <a href="#" class="button expand" data-reveal-id="buyLifespan" data-reveal>Bullet
-                        Lifespan</a>
-                    <a href="#" class="button expand" data-reveal-id="newGun" data-reveal>New Weapon</a>
-                    <a href="#" class="button expand disabled" data-reveal-id="buyFastShoot" data-reveal>Faster
-                        Shooting</a>
-                    <a href="#" class="button expand disabled" data-reveal-id="buyVelocity" data-reveal>Bullet
-                        Velocity</a>
-                    <a href="#" class="button expand disabled" data-reveal-id="buyHeight" data-reveal>Jump Height</a>
-                    <a href="#" class="button expand disabled" data-reveal-id="buyMoreJump" data-reveal>More Jumps</a>
-                    <a href="#" class="button expand disabled" data-reveal-id="buyHealthRegen" data-reveal>Faster
-                        Regen</a>
-                    <a href="#" class="button expand disabled" data-reveal-id="buyMaxHealth" data-reveal>Max Health</a>
-                </div>
-                <div class="medium-4 columns text-center" id="storeMiddle">
-                    <div id="animationDiv"></div>
-
-                    <a href="#" class="button expanded" id="CloseStore">Exit Store</a>
-
-                </div>
-                <div class="medium-4 columns">
-                    <div class="panel">
-                        <h2>
-                            <small>Stats</small>
-                        </h2>
-                        Health Points:
-                        <div id="StoreHealth"></div>
-                        Gold:
-                        <div id="StoreGold"></div>
-                        XP:
-                        <div id="StoreXp"></div>
-                        <div class="nice round progress secondary large-10"><span id="xpMeter" class="meter"
-                                                                                  style="width: 9%"></span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content" id="statsPanel">
-            I dunno, stats stuff here
-        </div>
-    </div>
-    <!-- All Store Modals Here -->
-    <div id="buyLifespan" class="reveal-modal" data-reveal>
-        <h1>
-            <small>Increase Weapon Lifespans</small>
-        </h1>
-        <p></p>
-
+<dl class="tabs" data-tab>
+    <dd class="active"><a href="#goldPanel">Gold</a></dd>
+    <dd><a href="#statsPanel">DEX STR</a></dd>
+</dl>
+<div class="tabs-content">
+    <div class="content active" id="goldPanel">
         <div class="row">
-            <div class="medium-3 columns">
-                <h2><small>Normal Bullet</small></h2>
-                <div class="panel"><h2 id="QLifespan"></h2> Seconds</div>
-                <div class="row text-center">
-                    <ul class="button-group round extend">
-                        <li><a href="#" id="QLifeM" class="small button alert">-</a></li>
-                        <li><a href="#" id="QLifeA" class="small button success">+</a></li>
-                    </ul>
-                </div>
+            <div class="medium-4 columns">
+                <a href="#" class="button expand" data-reveal-id="buyLifespan" data-reveal>Bullet
+                    Lifespan</a>
+                <a href="#" class="button expand" data-reveal-id="newGun" data-reveal>New Weapon</a>
+                <a href="#" class="button expand disabled" data-reveal-id="buyFastShoot" data-reveal>Faster
+                    Shooting</a>
+                <a href="#" class="button expand disabled" data-reveal-id="buyVelocity" data-reveal>Bullet
+                    Velocity</a>
+                <a href="#" class="button expand disabled" data-reveal-id="buyHeight" data-reveal>Jump Height</a>
+                <a href="#" class="button expand disabled" data-reveal-id="buyMoreJump" data-reveal>More Jumps</a>
+                <a href="#" class="button expand disabled" data-reveal-id="buyHealthRegen" data-reveal>Faster
+                    Regen</a>
+                <a href="#" class="button expand disabled" data-reveal-id="buyMaxHealth" data-reveal>Max Health</a>
             </div>
-            <div class="medium-3 columns">
-                <h2><small>Homing Missile</small></h2>
-                <div class="panel"><h2 id="WLifespan"></h2> Seconds</div>
-                <div class="row text-center">
-                    <ul class="button-group round extend">
-                        <li><a href="#" id="WLifeM" class="small button alert">-</a></li>
-                        <li><a href="#" id="WLifeA" class="small button success">+</a></li>
-                    </ul>
-                </div>
+            <div class="medium-4 columns text-center" id="storeMiddle">
+                <div id="animationDiv"></div>
+
+                <a href="#" class="button expanded" id="CloseStore">Exit Store</a>
+
             </div>
-            <div class="medium-3 columns">
-                <h2><small>Bomb Timer</small></h2>
-                <div class="panel"><h2 id="ELifespan"></h2> Seconds</div>
-                <div class="row text-center">
-                    <ul class="button-group round extend">
-                        <li><a href="#" id="ELifeM" class="small button alert">-</a></li>
-                        <li><a href="#" id="ELifeA" class="small button success">+</a></li>
-                    </ul>
+            <div class="medium-4 columns">
+                <div class="panel">
+                    <h2>
+                        <small>Stats</small>
+                    </h2>
+                    Health Points:
+                    <div id="StoreHealth"></div>
+                    Gold:
+                    <div id="StoreGold"></div>
+                    XP:
+                    <div id="StoreXp"></div>
+                    <div class="nice round progress secondary large-10"><span id="xpMeter" class="meter"
+                                                                              style="width: 9%"></span></div>
                 </div>
-            </div>
-            <div class="medium-3 columns">
-                <h2><small>Laser Timer</small></h2>
-                <div class="panel"><h2 id="RLifespan"></h2> Seconds</div>
-                <div class="row text-center">
-                    <ul class="button-group round extend">
-                        <li><a href="#" id="RLifeM" class="small button alert">-</a></li>
-                        <li><a href="#" id="RLifeA" class="small button success">+</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="medium-12 columns panel">
-                <p>500 millisecond increase is 25G. Press the +/- buttons on each column to increase or decrease
-                    lifespans to your liking.</p>
-                <p>Current Gold: <span id="pgold"></span>G</p>
             </div>
         </div>
     </div>
-    <div id="newGun" class="reveal-modal" data-reveal>
-        <h1>
-            <small>New Guns</small>
-        </h1>
-        <div class="row">
-            <div class="medium-4 column">
-                <ul class="pricing-table">
-                    <li class="title">Homing Missiles</li>
-                    <li class="price">
-                      500G
-                    </li>
-                    <li class="description">This homing missile allows you to murder your enemies from a distance. They
-                        choose the closest enemy and home in on them. They cannot see the ground so think before you
-                        shoot. <strong>Both this and the Q bullet can be equipped with explosive bullets</strong></li>
-                    <li class="bullet-item">1 Second lifespan</li>
-                    <li class="bullet-item">1 Damage</li>
-                    <li class="bullet-item">Shooting rate: 1 per 5 Seconds</li>
-                    <li class="cta-button"><a id="enableMissile" class="button" href="#">Buy Now</a></li>
+    <div class="content" id="statsPanel">
+        I dunno, stats stuff here
+    </div>
+</div>
+<!-- All Store Modals Here -->
+<div id="buyLifespan" class="reveal-modal" data-reveal>
+    <h1>
+        <small>Increase Weapon Lifespans</small>
+    </h1>
+    <p></p>
+
+    <div class="row">
+        <div class="medium-3 columns">
+            <h2>
+                <small>Normal Bullet</small>
+            </h2>
+            <div class="panel"><h2 id="QLifespan"></h2> Seconds</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="QLifeM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="QLifeA" class="small button success"><i class="fa fa-plus"></i></a></li>
                 </ul>
             </div>
-            <div class="medium-4 column">
-                <ul class="pricing-table">
-                    <li class="title">Bombs</li>
-                    <li class="price">
-                        750G
-                                            </li>
-                    <li class="description">Drop some TNT, explodes and can cause damage to your enemies.</li>
-                    <li class="bullet-item">2 Seconds till explodes</li>
-                    <li class="bullet-item">5 Damage in center, Area Affect: 1-3 Damage</li>
-                    <li class="bullet-item">Shooting Rate: 1 per 6 Seconds</li>
-                    <li class="cta-button"><a id='enableTNT' class="button" href="#">Buy Now</a></li>
+        </div>
+        <div class="medium-3 columns">
+            <h2>
+                <small>Homing Missile</small>
+            </h2>
+            <div class="panel"><h2 id="WLifespan"></h2> Seconds</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="WLifeM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="WLifeA" class="small button success"><i class="fa fa-plus"></i></a></li>
                 </ul>
             </div>
-            <div class="medium-4 column">
-                <ul class="pricing-table">
-                    <li class="title">Laser Beam Sunglasses</li>
-                    <li class="price">1200G</li>
-                    <li class="description">These glasses allow the user to shoot a laser beam out of their eyes. Goes
-                        through all obstacles, phases out at the end of the screen.
-                    </li>
-                    <li class="bullet-item">1 Second</li>
-                    <li class="bullet-item">3 Damage</li>
-                    <li class="bullet-item">Shooting Rate: 1 per 25 Seconds</li>
-                    <li class="cta-button"><a id="enableLaser" class="button disabled" href="#">Buy Now</a></li>
+        </div>
+        <div class="medium-3 columns">
+            <h2>
+                <small>Bomb Timer</small>
+            </h2>
+            <div class="panel"><h2 id="ELifespan"></h2> Seconds</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="ELifeM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="ELifeA" class="small button success"><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="medium-3 columns">
+            <h2>
+                <small>Laser Timer</small>
+            </h2>
+            <div class="panel"><h2 id="RLifespan"></h2> Seconds</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="RLifeM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="RLifeA" class="small button success"><i class="fa fa-plus"></i></a></li>
                 </ul>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="medium-12 columns panel">
+            <p>500 millisecond increase is 25G. Press the <i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> buttons on each column to increase or decrease
+                lifespans to your liking.</p>
+
+            <p>Current Gold: <span class="pgold"></span>G</p>
+        </div>
+    </div>
+</div>
+<!-- Faster Shooting Interval -->
+<div id="buyFastShoot" class="reveal-modal" data-reveal>
+    <h1>
+        <small>Decrease Shooting Interval</small>
+    </h1>
+    <p></p>
+
+    <div class="row">
+        <div class="medium-3 columns">
+            <h2>
+                <small>Normal Bullet</small>
+            </h2>
+            <div class="panel"><h2 id="Qint"></h2> Seconds</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="QintM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="QintA" class="small button success"><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="medium-3 columns">
+            <h2>
+                <small>Homing Missile</small>
+            </h2>
+            <div class="panel"><h2 id="Wint"></h2> Seconds</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="WintM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="WintA" class="small button success"><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="medium-3 columns">
+            <h2>
+                <small>Bomb Shoot</small>
+            </h2>
+            <div class="panel"><h2 id="Eint"></h2> Seconds</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="EintM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="EintA" class="small button success"><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="medium-3 columns">
+            <h2>
+                <small>Laser Shoot</small>
+            </h2>
+            <div class="panel"><h2 id="Rint"></h2> Seconds</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="RintM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="RintA" class="small button success"><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="medium-12 columns panel">
+            <p>500 millisecond decrease is 25G. Press the <i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> buttons on each column to increase or decrease
+                shooting speeds to your liking.</p>
+
+            <p>Current Gold: <span class="""pgold"></span>G</p>
+        </div>
+    </div>
+</div>
+
+<div id="newGun" class="reveal-modal" data-reveal>
+    <h1>
+        <small>New Guns</small>
+    </h1>
+    <div class="row">
+        <div class="medium-4 column">
+            <ul class="pricing-table">
+                <li class="title">Homing Missiles</li>
+                <li class="price">
+                    500G
+                </li>
+                <li class="description">This homing missile allows you to murder your enemies from a distance. They
+                    choose the closest enemy and home in on them. They cannot see the ground so think before you
+                    shoot. <strong>Both this and the Q bullet can be equipped with explosive bullets</strong></li>
+                <li class="bullet-item">1 Second lifespan</li>
+                <li class="bullet-item">1 Damage</li>
+                <li class="bullet-item">Shooting rate: 1 per 5 Seconds</li>
+                <li class="cta-button"><a id="enableMissile" class="button" href="#">Buy Now</a></li>
+            </ul>
+        </div>
+        <div class="medium-4 column">
+            <ul class="pricing-table">
+                <li class="title">Bombs</li>
+                <li class="price">
+                    750G
+                </li>
+                <li class="description">Drop some TNT, explodes and can cause damage to your enemies.</li>
+                <li class="bullet-item">2 Seconds till explodes</li>
+                <li class="bullet-item">5 Damage in center, Area Affect: 1-3 Damage</li>
+                <li class="bullet-item">Shooting Rate: 1 per 6 Seconds</li>
+                <li class="cta-button"><a id='enableTNT' class="button" href="#">Buy Now</a></li>
+            </ul>
+        </div>
+        <div class="medium-4 column">
+            <ul class="pricing-table">
+                <li class="title">Laser Beam Sunglasses</li>
+                <li class="price">1200G</li>
+                <li class="description">These glasses allow the user to shoot a laser beam out of their eyes. Goes
+                    through all obstacles, phases out at the end of the screen.
+                </li>
+                <li class="bullet-item">1 Second</li>
+                <li class="bullet-item">3 Damage</li>
+                <li class="bullet-item">Shooting Rate: 1 per 25 Seconds</li>
+                <li class="cta-button"><a id="enableLaser" class="button disabled" href="#">Buy Now</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 </div>
 
 

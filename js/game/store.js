@@ -28,7 +28,7 @@ function updateStore(){
     $('#WLifespan').text(WAmmo.missileLifespan/1000);
     $('#ELifespan').text(EAmmo.missileLifespan/1000);
     $('#RLifespan').text(RAmmo.life/1000);
-    $('#pgold').text(player.gold);
+    $('.pgold').text(player.gold);
 }
 
 $('#CloseStore').on('click', Foundation.utils.debounce(function(e){
