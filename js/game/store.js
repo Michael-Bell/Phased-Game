@@ -192,3 +192,75 @@ $('#RintA').on('click', Foundation.utils.debounce(function (e) {
         updateStore();
     }
 }, true));
+
+
+/* Bullet Velocity Modal */
+DELAY_COST = 25;
+$('#QVELM').on('click', Foundation.utils.debounce(function (e) {
+    if (QAmmo.BULLET_SPEED > 50) {
+        QAmmo.BULLET_SPEED -= 50;
+        player.gold += DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+$('#QVELA').on('click', Foundation.utils.debounce(function (e) {
+
+    if (player.gold >= DELAY_COST) {
+        QAmmo.BULLET_SPEED += 50;
+        player.gold -= DELAY_COST;
+        updateStore();
+    }
+
+}, true));
+
+$('#WVELM').on('click', Foundation.utils.debounce(function (e) {
+    if (WAmmo.BULLET_SPEED > 50) {
+        WAmmo.BULLET_SPEED -= 50;
+        player.gold += DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+$('#WVELA').on('click', Foundation.utils.debounce(function (e) {
+    if (player.gold >= DELAY_COST) {
+        WAmmo.BULLET_SPEED += 50;
+        player.gold -= DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+
+$('#EVELM').on('click', Foundation.utils.debounce(function (e) {
+    if (EAmmo.BULLET_SPEED > 50) {
+        EAmmo.BULLET_SPEED -= 50;
+        player.gold += DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+$('#EVELA').on('click', Foundation.utils.debounce(function (e) {
+    if (player.gold >= DELAY_COST) {
+        EAmmo.BULLET_SPEED += 50;
+        player.gold -= DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+
+$('#RVELM').on('click', Foundation.utils.debounce(function (e) {
+    if (RAmmo.BULLET_SPEED > 50) {
+        RAmmo.BULLET_SPEED -= 50;
+        player.gold += DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+$('#RVELA').on('click', Foundation.utils.debounce(function (e) {
+    if (player.gold >= DELAY_COST) {
+        RAmmo.BULLET_SPEED += 50;
+        player.gold -= DELAY_COST;
+        updateStore();
+    }
+}, true));
+

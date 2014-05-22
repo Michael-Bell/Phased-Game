@@ -45,7 +45,7 @@ function collisionHandler(weakerObject, strongerObject) {
                 weakerObject.health = weakerObject.health - strongerObject.dmg;
 
             } else {
-                //weakerObject.sprite.kill();
+                weakerObject.sprite.kill();
                 strongerObject.sprite.kill();
                 weakerObject.sprite.destroy();
             }
