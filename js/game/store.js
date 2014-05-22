@@ -28,6 +28,10 @@ function updateStore(){
     $('#WLifespan').text(WAmmo.missileLifespan/1000);
     $('#ELifespan').text(EAmmo.missileLifespan/1000);
     $('#RLifespan').text(RAmmo.life/1000);
+    $('#Qint').text(QAmmo.SHOT_DELAY/1000);
+    $('#Wint').text(WAmmo.SHOT_DELAY/1000);
+    $('#Eint').text(EAmmo.SHOT_DELAY/1000);
+    $('#Rint').text(RAmmo.SHOT_DELAY/1000);
     $('.pgold').text(player.gold);
 }
 
@@ -59,7 +63,7 @@ $('#enableLaser').on('click',Foundation.utils.debounce(function(e){RAmmo.enabled
 /* Lifespan Buttons */
 LIFE_COST = 25;
 $('#QLifeM').on('click',Foundation.utils.debounce(function(e){
-    if (bulletLifespan>0) {
+    if (bulletLifespan>500) {
         bulletLifespan -= 500;
         player.gold += LIFE_COST;
         updateStore();
@@ -76,7 +80,7 @@ $('#QLifeA').on('click',Foundation.utils.debounce(function(e){
     },true));
 
 $('#WLifeM').on('click',Foundation.utils.debounce(function(e){
-    if (WAmmo.missileLifespan>0) {
+    if (WAmmo.missileLifespan>500) {
         WAmmo.missileLifespan -= 500;
         player.gold += LIFE_COST;
         updateStore();
@@ -91,7 +95,7 @@ $('#WLifeA').on('click',Foundation.utils.debounce(function(e){
     }},true));
 
 $('#ELifeM').on('click',Foundation.utils.debounce(function(e){
-    if (EAmmo.missileLifespan>0) {
+    if (EAmmo.missileLifespan>500) {
         EAmmo.missileLifespan -= 500;
         player.gold += LIFE_COST;
         updateStore();
@@ -106,7 +110,7 @@ $('#ELifeA').on('click',Foundation.utils.debounce(function(e){
     }},true));
 
 $('#RLifeM').on('click',Foundation.utils.debounce(function(e){
-    if (RAmmo.life>0) {
+    if (RAmmo.life>500) {
         RAmmo.life -= 500;
         player.gold += LIFE_COST;
         updateStore();
@@ -119,4 +123,72 @@ $('#RLifeA').on('click',Foundation.utils.debounce(function(e){
         updateStore();
     }},true));
 
+/* Shooting Interval Code */
+DELAY_COST = 25;
+$('#QintM').on('click', Foundation.utils.debounce(function (e) {
+    if (QAmmo.SHOT_DELAY > 500) {
+        QAmmo.SHOT_DELAY -= 500;
+        player.gold += DELAY_COST;
+        updateStore();
 
+    }
+}, true));
+$('#QintA').on('click', Foundation.utils.debounce(function (e) {
+
+    if (player.gold >= DELAY_COST) {
+        QAmmo.SHOT_DELAY += 500;
+        player.gold -= DELAY_COST;
+        updateStore();
+    }
+
+}, true));
+
+$('#WintM').on('click', Foundation.utils.debounce(function (e) {
+    if (WAmmo.SHOT_DELAY > 500) {
+        WAmmo.SHOT_DELAY -= 500;
+        player.gold += DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+$('#WintA').on('click', Foundation.utils.debounce(function (e) {
+    if (player.gold >= DELAY_COST) {
+        WAmmo.SHOT_DELAY += 500;
+        player.gold -= DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+
+$('#EintM').on('click', Foundation.utils.debounce(function (e) {
+    if (EAmmo.SHOT_DELAY > 500) {
+        EAmmo.SHOT_DELAY -= 500;
+        player.gold += DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+$('#EintA').on('click', Foundation.utils.debounce(function (e) {
+    if (player.gold >= DELAY_COST) {
+        EAmmo.SHOT_DELAY += 500;
+        player.gold -= DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+
+$('#RintM').on('click', Foundation.utils.debounce(function (e) {
+    if (RAmmo.SHOT_DELAY > 500) {
+        RAmmo.SHOT_DELAY -= 500;
+        player.gold += DELAY_COST;
+        updateStore();
+
+    }
+}, true));
+$('#RintA').on('click', Foundation.utils.debounce(function (e) {
+    if (player.gold >= DELAY_COST) {
+        RAmmo.SHOT_DELAY += 500;
+        player.gold -= DELAY_COST;
+        updateStore();
+    }
+}, true));
