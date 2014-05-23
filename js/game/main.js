@@ -94,7 +94,7 @@ var bullets;
 var map;
 var bgColor = 0x4488cc;
 var layer;
-
+var rain,donutRain;
 var bulletLifespan = 1000; //time for bullets to live in milliseconds
 var explosionEmitter;
 
@@ -198,6 +198,7 @@ function createGame() {
 }
 
 function updateGame() {
+    rotateEnemies();
     textUpdate();
     //game.physics.arcade.collide(player, ground); // Player cannot go through ground
     // game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
