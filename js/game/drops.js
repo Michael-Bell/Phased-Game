@@ -7,7 +7,7 @@ function gencoins(x, y, goldincrease) { //Trying to make a gold coin come drop o
     g.body.velocity.x = 100 - Math.random() * 200;
 
     g.bounceCount = 0;
-    g.despawntimer = game.time.now + 1000 + Math.random() * 1000;
+    g.despawntimer = game.time.now + 50000 + Math.random() * 1000;
     g.goldincrease = goldincrease;
     g.body.setCollisionGroup(coinCollisionGroup);
     g.body.collides(tilesCollisionGroup);

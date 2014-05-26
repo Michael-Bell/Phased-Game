@@ -21,6 +21,7 @@ Game.Pre.prototype = {
         game.load.image('bullet', 'assets/bullet.png');
         game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
         game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
+        game.load.spritesheet('snake', 'assets/enemies/snakesheet.png', 16, 6, 2);
         game.load.spritesheet('heart', 'assets/heart/red_spritesheet.png', 70, 70, 5);
         game.load.image('goldcoin', 'assets/goldcoin.png');
         game.load.image('tnt', 'assets/tnt.png');
@@ -216,7 +217,7 @@ function updateGame() {
     coinBounce();
     knockback();
     leveltimer(0);
-    //rotateEnemies();
+    rotateEnemies();
     player.body.velocity.x = 0;  //Remove for Ice level
     //game.camera.y = player.y - 200;
     //game.camera.x = player.x - 500; // Hacky camera following
@@ -241,9 +242,9 @@ function jump(number) {
     if(number===1){       //This makes the jump=1 after you are off the ground instead of instantly resetting back to 0.
         game.time.events.add(Phaser.Timer.SECOND * .1, firstJump, this);
     }
-    player.body.moveUp(600); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
+    player.body.moveUp(player.jumpUp); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
     if (number === 2) { // is this a double jump
-        player.body.moveUp(600 + DEX);
+        player.body.moveUp(player.jumpUp + DEX);
         player.body.rotateLeft(150); // start spinning
 
     }
