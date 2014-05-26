@@ -61,7 +61,7 @@ function resumeAni(){
         Animplayer.x=anim.width/2;
     }
     function testdebug(){
-        anim.debug.spriteInfo(Animplayer, 0, 32);
+
 
     }
 

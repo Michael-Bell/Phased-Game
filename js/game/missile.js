@@ -19,7 +19,7 @@ var Missile = function(game, x, y) {
     game.physics.enable(this, Phaser.Physics.P2JS);
     this.body.fixedRotation = true;
     // Define constants that affect motion
-    this.SPEED = 250; // missile speed pixels/second
+    this.SPEED = WAmmo.BULLET_SPEED; // missile speed pixels/second
     this.TURN_RATE = 5; // turn rate in degrees/frame
     this.SMOKE_LIFETIME = 3000; // milliseconds
     // Add a smoke emitter with 100 particles positioned relative to the

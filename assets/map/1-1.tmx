@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="128" height="19" tilewidth="70" tileheight="70">
+<map version="1.0" orientation="orthogonal" width="128" height="20" tilewidth="70" tileheight="70">
  <tileset firstgid="1" name="groundSprite" tilewidth="70" tileheight="70">
   <image source="../groundSprite.png" width="210" height="210"/>
  </tileset>
  <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
   <image source="../enemies/flysheet.png" width="138" height="64"/>
  </tileset>
- <layer name="ground" width="128" height="19">
+ <layer name="ground" width="128" height="20">
   <data encoding="base64" compression="zlib">
-   eJztl0EKAzEIRWczzP1v3FVAgolRY7ThP3DTltD+pxn7PAAAAAAAgPKSAjWJcNTO+0ihF+qzw1HvnSv0wp2suOd6AfipMFNa962AnWznDcvsw7+NCrPeY3WPZ4AOKat+v9qdbX82t+vjDohjltXKvq3phwjPuAN8cP5HM6T5/8W9FuX6ljtgdBfSHKWs+76XzvPkNMt85OHf/Ut5ejjxe3aeX92/14n2eSXNr9Qrkf4j5kf6fLZ/S2YndhPaK9ZsVsnOOtv/yt18yvnNNYJ7L+P7zXaj7Oxa/QCWsBDB
+   eJztmNEOgCAIRX1p/f8f9+RmDEVFhOyejZdqLu8FIu+U0o34bQAAAAAAgDdXESAmFh7l9cpZGbkQnxUeUd+5QC6cSY/3XC4APRFqCuco+/H2PDNT+/B/jgi1TtGco0baR3Qkreh8tVpbujY366MH2NHSqmfeHskHC5/RA3Rw/tdqaOT/i7tm5fUpPaDWC0sdJa1p3kvraXRqaV7z4ev+S3pq2LGfletH91/ryej3SqpfKVcs/beoH+l5b/9nNNsxm5S5MqtNL95ae/vf05t3eX5y1ODuebxfazby1i7HAye3FEE=
   </data>
  </layer>
- <objectgroup name="enemy" width="128" height="19">
-  <object gid="10" x="546" y="812"/>
-  <object gid="11" x="878" y="788"/>
-  <object gid="10" x="1322" y="780"/>
-  <object gid="10" x="2598" y="1180"/>
-  <object gid="10" x="2866" y="512"/>
-  <object gid="10" x="3342" y="688"/>
-  <object gid="10" x="3334" y="272"/>
-  <object gid="10" x="2126" y="344"/>
-  <object gid="10" x="4122" y="384"/>
-  <object gid="10" x="4530" y="348"/>
-  <object gid="10" x="5786" y="396"/>
-  <object gid="10" x="5946" y="660"/>
-  <object gid="10" x="6834" y="724"/>
-  <object gid="10" x="7606" y="616"/>
-  <object gid="10" x="8474" y="872"/>
+ <objectgroup name="enemy" width="128" height="20">
+  <object gid="10" x="546" y="882"/>
+  <object gid="11" x="878" y="858"/>
+  <object gid="10" x="1322" y="850"/>
+  <object gid="10" x="2598" y="1250"/>
+  <object gid="10" x="2866" y="582"/>
+  <object gid="10" x="3342" y="758"/>
+  <object gid="10" x="3334" y="342"/>
+  <object gid="10" x="2126" y="414"/>
+  <object gid="10" x="4122" y="454"/>
+  <object gid="10" x="4530" y="418"/>
+  <object gid="10" x="5786" y="466"/>
+  <object gid="10" x="5946" y="730"/>
+  <object gid="10" x="6834" y="794"/>
+  <object gid="10" x="7606" y="686"/>
+  <object gid="10" x="8474" y="942"/>
  </objectgroup>
- <layer name="special" width="128" height="19">
+ <layer name="special" width="128" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt2DsOABAQBUCJ+99ZpVEQ8QtmGiU2b0U2BGri6QPQFIsVYCdvz1zqCQBk/gX0kBdudyLDs/bUf2uVs0+zUG73Q4ZfvtsqagYAMC4BT/wANw==
+   eJzt2MsKABAQBVDl///ZykZJ8grnbCwx3ZEmBKAmnj4ATbFYAXby9sylngBA5l9AD3nhdicyPGtP/bdWOfs0C+V2P2T45butomYAAOMSUfwANw==
   </data>
  </layer>
- <layer name="end" width="128" height="19">
+ <layer name="end" width="128" height="20">
   <data encoding="base64" compression="zlib">
-   eJztwzENAAAIA7C9+DfMOwuENmkCAAAAAAAAAMA1U4G/FpLYABw=
+   eJztwzENAAAIA7C9+DfMOwuENmkCAAAAAAAAAABcMhX4awGU2AAc
   </data>
  </layer>
 </map>
