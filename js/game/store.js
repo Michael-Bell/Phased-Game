@@ -35,6 +35,7 @@ function updateStore(){
     $('#Rint').text(RAmmo.SHOT_DELAY/1000);
     $('#QVEL').text(QAmmo.BULLET_SPEED);
     $('#WVEL').text(WAmmo.BULLET_SPEED);
+    $('#nJ').text(allowedjumps);
     $('.pgold').text(currentgold);
 }
 
@@ -254,6 +255,24 @@ $('#JM').on('click',Foundation.utils.debounce(function(e){
     if(jumpVelocity>50){
         jumpVelocity -=50;
         currentgold+=JV_COST;
+        updateStore();
+    }
+},true));
+
+/* Jump number Handlers */
+J_COST=100;
+$('#nJa').on('click',Foundation.utils.debounce(function(e){
+    if(currentgold>=J_COST){
+        allowedjumps +=1;
+        currentgold-=J_COST;
+        updateStore();
+    }
+},true));
+
+$('#nJm').on('click',Foundation.utils.debounce(function(e){
+    if(allowedjumps>1){
+        allowedjumps -=1;
+        currentgold+=J_COST;
         updateStore();
     }
 },true));

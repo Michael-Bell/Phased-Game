@@ -232,7 +232,7 @@
                 <a href="#" class="button expand" data-reveal-id="buyVelocity" data-reveal>Bullet
                     Velocity</a>
                 <a href="#" class="button expand" data-reveal-id="buyHeight" data-reveal>Jump Height</a>
-                <a href="#" class="button expand disabled" data-reveal-id="buyMoreJump" data-reveal>More Jumps</a>
+                <a href="#" class="button expand" data-reveal-id="buyMoreJump" data-reveal>More Jumps</a>
                 <a href="#" class="button expand disabled" data-reveal-id="buyHealthRegen" data-reveal>Faster
                     Regen</a>
                 <a href="#" class="button expand disabled" data-reveal-id="buyMaxHealth" data-reveal>Max Health</a>
@@ -522,9 +522,9 @@
 </div>
 
 <!-- more jumps module -->
-<div id="" class="reveal-modal" data-reveal>
+<div id="buyMoreJump" class="reveal-modal" data-reveal>
     <h1>
-        <small>Jump Height</small>
+        <small>More Jumps</small>
     </h1>
     <p></p>
 
@@ -532,11 +532,11 @@
         <div class="medium-2 columns"><p> </p></div>
         <div class="medium-8 columns text-center">
 
-            <div class="panel"><h2 id=""></h2> Pixels/Second</div>
+            <div class="panel"><h2 id="nJ"></h2> Jumps</div>
             <div class="row text-center">
                 <ul class="button-group round extend">
-                    <li><a href="#" id="" class="small button alert"><i class="fa fa-minus"></i></a></li>
-                    <li><a href="#" id="" class="small button success"><i class="fa fa-plus"></i></a></li>
+                    <li><a href="#" id="nJm" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="nJa" class="small button success"><i class="fa fa-plus"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -545,11 +545,13 @@
 
     <div class="row">
         <div class="medium-12 columns panel">
-            <p>50 increase is 25G. Press the <i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> buttons to change your jump velocity.</p>
+            <p>1 Jump increase is 100G. Press the <i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> buttons to change the number of jumps.</p>
 
             <p>Current Gold: <span class="pgold"></span>G</p>
         </div>
     </div>
+
+</div>
 
 </div>
 

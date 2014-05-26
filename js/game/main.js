@@ -253,7 +253,7 @@ function firstJump(){  //For the timer so you don't get a triple jump.
 var score;
 function render() {
 
-    game.debug.text(game.time.fps, 32, 32 )
+    game.debug.text(game.time.fps, 32, 32 );
     //game.debug.text(Math.floor(levelTime/60),32,128);//inaccurate timer
 
 }
