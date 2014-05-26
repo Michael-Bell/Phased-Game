@@ -19,6 +19,7 @@ $('#storeWindow').addClass('hide');
 
 
 function updateStore(){
+    $('#JumpVelocity').text(jumpVelocity);
     $("#StoreHealth").text(player.health);
     $("#StoreXp").text(currentxp);
     $("#StoreGold").text(currentgold);
@@ -34,7 +35,6 @@ function updateStore(){
     $('#Rint').text(RAmmo.SHOT_DELAY/1000);
     $('#QVEL').text(QAmmo.BULLET_SPEED);
     $('#WVEL').text(WAmmo.BULLET_SPEED);
-    $('#JumpVelocity').text(jumpVelocity);
     $('.pgold').text(currentgold);
 }
 
@@ -241,7 +241,6 @@ $('#WVELA').on('click', Foundation.utils.debounce(function (e) {
 }, true));
 
 /* Jump Velocity Handlers */
-/* New Gun Buttons*/
 JV_COST=25;
 $('#JA').on('click',Foundation.utils.debounce(function(e){
     if(currentgold>=JV_COST){

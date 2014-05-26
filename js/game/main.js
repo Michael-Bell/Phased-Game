@@ -103,6 +103,7 @@ var winQuote = "You Completed the level. Congrats on making it this far, maybe y
 var playerCollisionGroup;
 var coinCollisionGroup;
 var jumpVelocity=600;
+var allowedjumps;
 //var levelTime=2*60*60;//2minutes*60Seconds*60updates/second
 /** @todo Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
 
@@ -197,6 +198,7 @@ function createGame() {
     }, 300, true));
 
     bombInit();
+    allowedjumps=2;
     // if you don't need to use the next line, keep it commented out
     game.time.advancedTiming = true
 }
@@ -238,7 +240,7 @@ function updateGame() {
     }*/
 }
 jumpCheck = function () { // lovely function to see if you can jump
-    if (jumpCount < 2) { // if less than 2 jumps on the counter
+    if (jumpCount < allowedjumps) { // if less than 2 jumps on the counter
         jumpCount++; // add a jump
         player.frame = 11; //set the jump frame(may be redundant?)
         // Why is this not working?
@@ -252,7 +254,7 @@ function jump(number) {
         game.time.events.add(Phaser.Timer.SECOND * .1, firstJump, this);
     }
     player.body.moveUp(jumpVelocity); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
-    if (number === 2) { // is this a double jump
+    if (number>=2) { // is this a double jump
         player.body.moveUp(jumpVelocity + DEX);
         player.body.rotateLeft(150); // start spinning
 
