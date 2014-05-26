@@ -206,20 +206,6 @@ function createGame() {
 function updateGame() {
     rotateEnemies();
     textUpdate();
-    //game.physics.arcade.collide(player, ground); // Player cannot go through ground
-    // game.physics.arcade.collide(coinGroup, ground); // delete this if you want the coins to go through the ground
-    /*   game.physics.arcade.overlap(player, layer); // Player cannot go through ground
-     game.physics.arcade.collide(player, layer); // Player cannot go through ground
-     game.physics.arcade.collide(player, coinBoxGroup, collideCoinbox, null, this);
-     game.physics.arcade.collide(player, endBlocks, levelComplete, null, this);
-     game.physics.arcade.collide(bullets, layer, bulletWallColl, null, this);
-     game.physics.arcade.collide(coinGroup, layer); // delete this if you want the coins to go through the ground
-     game.physics.arcade.overlap(coinGroup, player, playerCoins, null, this);
-     game.physics.arcade.overlap(player, enemyGroup, collisionHandler, null, this); // collisionHandler is called when player and flya(enemy) collide
-     game.physics.arcade.collide(player, flyLayer, flyColl, null, this); // collisionHandler is called when player and flya(enemy) collide
-     game.physics.arcade.collide(player, bounceBlock, invGravity, null, this);
-     game.physics.arcade.overlap(enemyGroup, bullets, collisionHandler, null, this); // calls CollisionHandler function when bullet hits flya
-     */ // TODO make collisionHandler awesome and have it handle all collisions - DONE For now
     coinBounce();
     knockback();
     leveltimer(0);
@@ -229,7 +215,6 @@ function updateGame() {
     //game.camera.x = player.x - 500; // Hacky camera following
     game.camera.follow(player);
 
-    /* TODO I saw a camera.follow function in the docs, see if its better at following the sprites */
     healthCheck();
     xpcheck();
     playerControls.call(this);
@@ -269,14 +254,12 @@ var score;
 function render() {
 
     game.debug.text(game.time.fps, 32, 32 )
-    //game.debug.text(Math.floor(levelTime/60),32,128);//innacruate timer
+    //game.debug.text(Math.floor(levelTime/60),32,128);//inaccurate timer
 
 }
 
 function dead(cause) { // you died :(
-    /* TODO make a death screen with cool statistics on the game */
-
-    showScores();
+     showScores();
     if (player.health < 2) {
         gameLevel.int=1;
         gameLevel.string = 'level1';
