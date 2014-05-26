@@ -7,22 +7,7 @@
     <link rel="stylesheet" href="css/app.css"/>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="js/vendor/modernizr.js"></script>
-    <script type="text/javascript" src="js/vendor/phaser.min.js"></script>
-    <script type="text/javascript" src="js/game/platforms.js"></script>
-    <script type="text/javascript" src="js/game/shootHandler.js"></script>
-    <script type="text/javascript" src="js/game/camera.js"></script>
-    <script type="text/javascript" src="js/game/player.js"></script>
-    <script type="text/javascript" src="js/game/enemy.js"></script>
-    <script type="text/javascript" src="js/game/rain.js"></script>
-    <script type="text/javascript" src="js/game/hearts.js"></script>
-    <script type="text/javascript" src="js/game/experience.js"></script>
-    <script type="text/javascript" src="js/game/drops.js"></script>
-    <script type="text/javascript" src="js/game/collision.js"></script>
-    <script type="text/javascript" src="js/game/QBullet.js"></script>
-    <script type="text/javascript" src="js/game/missile.js"></script>
-    <script type="text/javascript" src="js/game/laser.js"></script>
-    <script type="text/javascript" src="js/game/bomb.js"></script>
-    <script type="text/javascript" src="js/game/main.js"></script>
+
 
     <title>Game</title>
 </head>
@@ -210,8 +195,7 @@
 
                 <p><kbd>M</kbd>: Enable Disable background music</p>
                 As of this update, the following are <strong>not</strong> implemented: <kbd>E R S M</kbd>
-                <a c
-                   lass="close-reveal-modal">&#215;</a>
+                <a class="close-reveal-modal">&#215;</a>
             </div>
             <a href="#" class="button disabled" id="OpenStore">
                 Store </a>
@@ -247,7 +231,7 @@
                     Shooting</a>
                 <a href="#" class="button expand" data-reveal-id="buyVelocity" data-reveal>Bullet
                     Velocity</a>
-                <a href="#" class="button expand disabled" data-reveal-id="buyHeight" data-reveal>Jump Height</a>
+                <a href="#" class="button expand" data-reveal-id="buyHeight" data-reveal>Jump Height</a>
                 <a href="#" class="button expand disabled" data-reveal-id="buyMoreJump" data-reveal>More Jumps</a>
                 <a href="#" class="button expand disabled" data-reveal-id="buyHealthRegen" data-reveal>Faster
                     Regen</a>
@@ -255,8 +239,8 @@
             </div>
             <div class="medium-4 columns text-center" id="storeMiddle">
                 <div id="animationDiv"></div>
-
-                <a href="#" class="button expanded" id="CloseStore">Exit Store</a>
+                <a href="#" class="button expand" id="addGold">Give 500G</a>
+                <a href="#" class="button expand" id="CloseStore">Exit Store</a>
 
             </div>
             <div class="medium-4 columns">
@@ -506,8 +490,68 @@
     </div>
 </div>
 
+<!-- Jump Height Increase -->
+<div id="buyHeight" class="reveal-modal" data-reveal>
+    <h1>
+        <small>Jump Height</small>
+    </h1>
+    <p></p>
+
+    <div class="row text-center">
+        <div class="medium-2 columns"><p> </p></div>
+        <div class="medium-8 columns text-center">
+
+            <div class="panel"><h2 id="JumpVelocity"></h2> Pixels/Second</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="JM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="JA" class="small button success"><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="medium-2 columns"><p> </p></div>
+        </div>
+
+    <div class="row">
+        <div class="medium-12 columns panel">
+            <p>50 increase is 25G. Press the <i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> buttons to change your jump velocity.</p>
+
+            <p>Current Gold: <span class="pgold"></span>G</p>
+        </div>
+    </div>
 </div>
 
+<!-- more jumps module -->
+<div id="" class="reveal-modal" data-reveal>
+    <h1>
+        <small>Jump Height</small>
+    </h1>
+    <p></p>
+
+    <div class="row text-center">
+        <div class="medium-2 columns"><p> </p></div>
+        <div class="medium-8 columns text-center">
+
+            <div class="panel"><h2 id="JumpVelocity"></h2> Pixels/Second</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="JM" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="JA" class="small button success"><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="medium-2 columns"><p> </p></div>
+    </div>
+
+    <div class="row">
+        <div class="medium-12 columns panel">
+            <p>50 increase is 25G. Press the <i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> buttons to change your jump velocity.</p>
+
+            <p>Current Gold: <span class="pgold"></span>G</p>
+        </div>
+    </div>
+
+</div>
 
 <script src="js/vendor/jquery.min.js">
 
@@ -515,11 +559,27 @@
 <script src="js/vendor/foundation.min.js">
 
 </script>
-<script src="js/game/store.js"></script>
 <script src="js/vendor/pouchdb.min.js"></script>
+<script type="text/javascript" src="js/vendor/phaser.min.js"></script>
+<script type="text/javascript" src="js/game/platforms.js"></script>
+<script type="text/javascript" src="js/game/shootHandler.js"></script>
+<script type="text/javascript" src="js/game/camera.js"></script>
+<script type="text/javascript" src="js/game/player.js"></script>
+<script type="text/javascript" src="js/game/enemy.js"></script>
+<script type="text/javascript" src="js/game/rain.js"></script>
+<script type="text/javascript" src="js/game/hearts.js"></script>
+<script type="text/javascript" src="js/game/experience.js"></script>
+<script type="text/javascript" src="js/game/drops.js"></script>
+<script type="text/javascript" src="js/game/collision.js"></script>
+<script type="text/javascript" src="js/game/QBullet.js"></script>
+<script type="text/javascript" src="js/game/missile.js"></script>
+<script type="text/javascript" src="js/game/laser.js"></script>
+<script type="text/javascript" src="js/game/bomb.js"></script>
+<script src="js/game/store.js"></script>
 <script src="js/game/app.js"></script>
 <script src="js/game/database.js"></script>
 <script src="js/game/storeAnimation.js"></script>
+<script src="js/game/main.js"></script>
 
 <script type="text/javascript">
     var $buoop = {

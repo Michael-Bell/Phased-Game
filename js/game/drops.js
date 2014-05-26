@@ -49,7 +49,7 @@ var asdf;
 function playerCoins(test, impactCoin) {
     _coin = impactCoin.sprite;
 
-    player.gold = _coin.goldincrease + player.gold + Math.floor(Math.random() * DEX / 5);
+    currentgold = _coin.goldincrease + currentgold + Math.floor(Math.random() * DEX / 5);
     _coin.kill();
 }
 

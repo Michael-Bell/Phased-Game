@@ -29,7 +29,6 @@ function CreatePlayer() {
     player.body.immovable = false; // a test, enemies are pushing the player through the floor
     player.dmg = 1 + Math.floor(STR / 10);
     player.healthRegen = true;
-    player.gold = 0;
     player.knockedLeft = 0;
     player.knockedRight = 0;
     player.bulletType = 1;
@@ -39,22 +38,11 @@ function CreatePlayer() {
 
 /* TODO Add Acceleration to the game */
 function playerControls() {
-    if (_Q.isDown) { // is the Q key pressed
-        QFire = true;
-    } else { //if Q key is released
-        QFire = false;
-    }
-    if (_W.isDown) { // is the W key pressed
-        WFire = true;
-    } else { //if W key is released
-        WFire = false;
-    }
-    if(_E.isDown){
-        EFire=true;
-    }
-    else{
-        EFire=false;
-    }
+    QFire = _Q.isDown;
+    WFire = _W.isDown;
+
+        EFire=_E.isDown;
+
     if (cursors.left.isDown) { //left arrow pressed
         player.body.velocity.x = -player.velocity; //set velocity
         player.animations.play('walk'); // play walking animation

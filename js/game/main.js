@@ -97,16 +97,18 @@ var layer;
 var rain,donutRain;
 var bulletLifespan = 1000; //time for bullets to live in milliseconds
 var explosionEmitter;
-
+var currentgold = 0;
 var deadQuote = 'You tried your best, but you have perished. Better luck next time. You were killed by ';
 var winQuote = "You Completed the level. Congrats on making it this far, maybe you should play a good game now, like League or something....";
 var playerCollisionGroup;
 var coinCollisionGroup;
-
+var jumpVelocity=600;
+//var levelTime=2*60*60;//2minutes*60Seconds*60updates/second
 /** @todo Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
 
 function createGame() {
     console.log('createstart');
+  //  levelTime=2*60*60;//2minutes*60Seconds*60updates/second
 
     //  Modify the world and camera bounds
 
@@ -195,6 +197,8 @@ function createGame() {
     }, 300, true));
 
     bombInit();
+    // if you don't need to use the next line, keep it commented out
+    game.time.advancedTiming = true
 }
 
 function updateGame() {
@@ -227,6 +231,11 @@ function updateGame() {
     healthCheck();
     xpcheck();
     playerControls.call(this);
+/*    levelTime--;
+    if(levelTime<0){
+        player.health=-3;
+        dead('running out of time');
+    }*/
 }
 jumpCheck = function () { // lovely function to see if you can jump
     if (jumpCount < 2) { // if less than 2 jumps on the counter
@@ -242,9 +251,9 @@ function jump(number) {
     if(number===1){       //This makes the jump=1 after you are off the ground instead of instantly resetting back to 0.
         game.time.events.add(Phaser.Timer.SECOND * .1, firstJump, this);
     }
-    player.body.moveUp(600); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
+    player.body.moveUp(jumpVelocity); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
     if (number === 2) { // is this a double jump
-        player.body.moveUp(600 + DEX);
+        player.body.moveUp(jumpVelocity + DEX);
         player.body.rotateLeft(150); // start spinning
 
     }
@@ -257,13 +266,8 @@ function firstJump(){  //For the timer so you don't get a triple jump.
 var score;
 function render() {
 
-    // Sprite debug info
-    // game.debug.bodyInfo(player, 32, 32);
-    // game.debug.body(player);
-    // game.debug.spriteInfo(item, 32, 32);
-    //game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 64);
-
-    //game.debug.text("Next tick: " + game.time.events.next.toFixed(0), 32, 96);
+    game.debug.text(game.time.fps, 32, 32 )
+    //game.debug.text(Math.floor(levelTime/60),32,128);//innacruate timer
 
 }
 
@@ -280,7 +284,7 @@ function dead(cause) { // you died :(
         $('#submit').removeClass('hide');
         $('#restart').removeClass('hide');
         $('#continue').addClass('hide');
-        console.log('dead');
+        currentgold=0;
     }
     else {
         console.log("else" + gameLevel.int + gameLevel.max);
@@ -314,7 +318,7 @@ function dead(cause) { // you died :(
     game.state.start('dead');
     $("#scoreBox").text(score);
     $("#score2").text(score);
-    $("#goldBox").text(player.gold);
+    $("#goldBox").text(currentgold);
     $("#xpBox").text(currentxp);
     $('#scoreModal').foundation('reveal', 'open');
 }
@@ -331,16 +335,16 @@ function deadStateCreate() {
 
 }
 
-leveltimer(15000);
-function leveltimer(time) {
-    if (time != 0) {
-        ltimer = time;
-    }
+leveltimer(15000); //what is this???
+function leveltimer(time) { // oh, is this your level timer?
+    if (time != 0) {// ok, so you call it once, but it sets an internal var and doesnt even return a value?
+        ltimer = time;// ummm ok, phaser has a built in timer function, you should probably be using that...
+    }// i put a innacurate timer in, its commented out because it is costly and is lag inducing.
     ltimer--;
 }
 
 function getScore(bonus) {
-    return Math.floor((Math.floor(player.gold * LUK / 10) + Math.floor(currentxp * INT / 10) + STR + DEX) * bonus);
+    return Math.floor((Math.floor(currentgold * LUK / 10) + Math.floor(currentxp * INT / 10) + STR + DEX) * bonus);
 }
 
 function invGravity() {

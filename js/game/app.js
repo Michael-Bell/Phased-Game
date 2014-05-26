@@ -10,7 +10,7 @@ $('#restart').on('click', Foundation.utils.debounce(function (e) {
 
 function textUpdate() {
     Foundation.utils.S('#health').html(player.health);
-    Foundation.utils.S('#gold').html(player.gold);
+    Foundation.utils.S('#gold').html(currentgold);
     Foundation.utils.S("#xp").html(currentxp);
 }
 
