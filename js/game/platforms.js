@@ -66,6 +66,7 @@ function tileGen() {
         // item.body.angularVelocity = 5000;
         item.revive(health = Math.floor( Math.random() * (3 - 1) + 1));
         item.events.onKilled.add(flyerCoinDrop, item)
+        console.log(item);
     });
 
     /*var

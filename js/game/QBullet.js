@@ -3,11 +3,6 @@
  */
 
 var QAmmo={};
-// Define constants
-QAmmo.SHOT_DELAY = 500; // milliseconds (10 bullets/second)
-QAmmo.BULLET_SPEED = 250; // pixels/second
-QAmmo.NUMBER_OF_BULLETS = 10;
-QAmmo.enabled=true;
 
 
 

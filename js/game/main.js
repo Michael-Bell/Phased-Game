@@ -104,7 +104,7 @@ var winQuote = "You Completed the level. Congrats on making it this far, maybe y
 var playerCollisionGroup;
 var coinCollisionGroup;
 var jumpVelocity=600;
-var allowedjumps;
+var allowedjumps =2;
 //var levelTime=2*60*60;//2minutes*60Seconds*60updates/second
 /** @todo Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
 
@@ -198,7 +198,7 @@ function createGame() {
     }, 300, true));
 
     bombInit();
-    allowedjumps=2;
+
     // if you don't need to use the next line, keep it commented out
     game.time.advancedTiming = true
 }
@@ -258,26 +258,53 @@ function render() {
 
 }
 
+function resetItems(restart) {
+
+    QAmmo.SHOT_DELAY = 3000; // milliseconds (10 bullets/second)
+    QAmmo.BULLET_SPEED = 250; // pixels/second
+    QAmmo.NUMBER_OF_BULLETS = 10;
+    QAmmo.enabled=true;
+    WAmmo.SHOT_DELAY = 300; // milliseconds (10 bullets/second)
+    WAmmo.BULLET_SPEED = 250; // pixels/second
+    WAmmo.missileLifespan=500;
+    WAmmo.enabled=false;
+    WAmmo.cost=500;
+    EAmmo.SHOT_DELAY = 1000*4; // 6 seconds
+    EAmmo.missileLifespan=2500;
+    EAmmo.enabled=false;
+    EAmmo.NUMBER_OF_BULLETS=20;
+    EAmmo.Splashrange=70*3.5;
+    EAmmo.hitrange = 70*2;
+    EAmmo.cost=750;
+
+    jumpVelocity=600
+
+    allowedjumps = 2;
+    if (restart) {
+        gameLevel.int = 1;
+        gameLevel.string = 'level1';
+        currentgold = Math.floor(currentgold / 10); // lets not be mean, lets give them some of their gold back
+    }
+
+}
 function dead(cause) { // you died :(
      showScores();
     if (player.health < 2) {
-        gameLevel.int=1;
-        gameLevel.string = 'level1';
+
         score = getScore(1);
         $("#winDeathHeader").text('You Died');
         $("#quote").text(deadQuote + cause);
         $('#submit').removeClass('hide');
         $('#restart').removeClass('hide');
         $('#continue').addClass('hide');
-        currentgold=0;
+        resetItems(true);
     }
     else {
         console.log("else" + gameLevel.int + gameLevel.max);
         if (gameLevel.int === gameLevel.max) {
             console.log(gameLevel);
             $("#winDeathHeader").text('You Win');
-            gameLevel.int=1;
-            gameLevel.string = 'level1';
+            resetItems(true);
             score = getScore(1.3);
             $("#quote").text(winQuote);
             $('#submit').removeClass('hide');
@@ -348,3 +375,5 @@ function particleBurst(item) {
     explosionEmitter.start(true, 250, null, 50);
     fx.play('bulletExplode');
 }
+
+resetItems();

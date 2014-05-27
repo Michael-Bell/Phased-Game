@@ -8,7 +8,7 @@
  </tileset>
  <layer name="ground" width="128" height="20">
   <data encoding="base64" compression="zlib">
-   eJztmNEOgCAIRX1p/f8f9+RmDEVFhOyejZdqLu8FIu+U0o34bQAAAAAAgDdXESAmFh7l9cpZGbkQnxUeUd+5QC6cSY/3XC4APRFqCuco+/H2PDNT+/B/jgi1TtGco0baR3Qkreh8tVpbujY366MH2NHSqmfeHskHC5/RA3Rw/tdqaOT/i7tm5fUpPaDWC0sdJa1p3kvraXRqaV7z4ev+S3pq2LGfletH91/ryej3SqpfKVcs/beoH+l5b/9nNNsxm5S5MqtNL95ae/vf05t3eX5y1ODuebxfazby1i7HAye3FEE=
+   eJztmd0OwyAIRr1p9v5v3CuTzqDyI0LtdxJu1sZsHLB0XqWUC/HZAAAAAAAA/2BWyo+Ho7re7xGohfyscNR6pwK1cCYc91QtADsZekrqvgbQE+28oul9+NeRoddbtO7xDJAxy1U7X63Obe+/cIt/7AF8RrnizNuSevDwjD3ABuW/10OS9y/qMy/Xp+wBnPPBWa7bup+tZ8nTKOc9D2/373l+u+P3rFw/u3+rE+nzynrW7+nfo39m90f71+Rsx2zyrBVtbrhE5zraP2dv3uX85OhBXYv4fqPZKDp3NW4jbhNB
   </data>
  </layer>
  <objectgroup name="enemy" width="128" height="20">

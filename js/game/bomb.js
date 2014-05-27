@@ -4,13 +4,6 @@
 
 
 var EAmmo={};
-EAmmo.SHOT_DELAY = 1000*6; // 6 seconds
-EAmmo.missileLifespan=2*1000;
-EAmmo.enabled=false;
-EAmmo.NUMBER_OF_BULLETS=20;
-EAmmo.Splashrange=70*3.5;
-EAmmo.hitrange = 70*2;
-EAmmo.cost=750;
 
 
 
