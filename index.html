@@ -49,7 +49,7 @@
                         </small>
                     </h3>
 
-                    <div id="goldBox">
+                    <div class="pgold">
                     </div>
                     <h3>
                         <small>
@@ -140,7 +140,7 @@
                 Health Points:
                 <div id="health"></div>
                 Gold:
-                <div id="gold"></div>
+                <div class="pgold"></div>
                 XP:
                 <div id="xp"></div>
 
@@ -211,7 +211,7 @@
     </div>
 
 </div>
-
+<!-- store Panel -->
 <div id="storeWindow" class="">
 <dl class="tabs" data-tab>
     <dd class="active"><a href="#goldPanel">Gold</a></dd>
@@ -232,7 +232,7 @@
             </div>
             <div class="medium-4 columns text-center" id="storeMiddle">
                 <div id="animationDiv"></div>
-                <a href="#" class="button expand" id="addGold">Give 500G</a>
+                <a href="#" class="button expand hide" id="addGold">Give 500G</a>
                 <a href="#" class="button expand" id="CloseStore">Exit Store</a>
 
             </div>
@@ -244,7 +244,7 @@
                     Health Points:
                     <div id="StoreHealth"></div>
                     Gold:
-                    <div id="StoreGold"></div>
+                    <div class="pgold" id="StoreGold"></div>
                     XP:
                     <div id="StoreXp"></div>
                     <div class="nice round progress secondary large-10"><span id="xpMeter" class="meter"
@@ -258,6 +258,7 @@
     </div>
 </div>
 <!-- All Store Modals Here -->
+<!-- Increase Weapon Lifespan Modal -->
 <div id="buyLifespan" class="reveal-modal" data-reveal>
     <h1>
         <small>Increase Weapon Lifespans</small>
@@ -390,6 +391,7 @@
     </div>
 </div>
 
+<!-- New Gun Upgrade -->
 <div id="newGun" class="reveal-modal" data-reveal>
     <h1>
         <small>New Guns</small>
@@ -580,12 +582,9 @@
 
 </div>
 
-<script src="js/vendor/jquery.min.js">
-
-</script>
-<script src="js/vendor/foundation.min.js">
-
-</script>
+<!-- Javascripts -->
+<script src="js/vendor/jquery.min.js"></script>
+<script src="js/vendor/foundation.min.js"></script>
 <script src="js/vendor/pouchdb.min.js"></script>
 <script type="text/javascript" src="js/vendor/phaser.min.js"></script>
 <script type="text/javascript" src="js/game/platforms.js"></script>
