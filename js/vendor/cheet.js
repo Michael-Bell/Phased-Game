@@ -298,4 +298,5 @@ cheet('c h e a p s k a t e', function () {
 currentgold+=300;
 updateStore();
 cheatsUsed++;
-});*/
+});
+*/
