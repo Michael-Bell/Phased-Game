@@ -1,4 +1,7 @@
 /*
+var cheatsUsed=0;
+*/
+/*
 The MIT License (MIT)
 
 Copyright (c) 2013 Louis Acresti
@@ -20,7 +23,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
- */
+ *//*
+
 
 (function (global) {
 	'use strict';
@@ -287,9 +291,11 @@ cheet('d o n u t', function () {
         rain.on=true;
     }
     donut=!donut;
+    //not adding a cheat to the cheats used, donuts don't affect your score
 });
 
 cheet('c h e a p s k a t e', function () {
 currentgold+=300;
 updateStore();
-});
+cheatsUsed++;
+});*/
