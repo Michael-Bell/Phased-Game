@@ -31,14 +31,3 @@ $('#continue').on('click', Foundation.utils.debounce(function (e) {
 
 }, 300, true));
 
-$('#donut').on('click', Foundation.utils.debounce(function (e) {
-    if(!donut){
-        donutRain.on=true;
-        rain.on=false;
-    }
-    else{
-        donutRain.on=false;
-        rain.on=true;
-    }
-    donut=!donut;
-}, true));
