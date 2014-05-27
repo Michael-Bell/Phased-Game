@@ -36,6 +36,7 @@ function updateStore(){
     $('#QVEL').text(QAmmo.BULLET_SPEED);
     $('#WVEL').text(WAmmo.BULLET_SPEED);
     $('#nJ').text(allowedjumps);
+    $('#maxHealth').text(maxHealth);
     $('.pgold').text(currentgold);
 }
 
@@ -273,6 +274,24 @@ $('#nJm').on('click',Foundation.utils.debounce(function(e){
     if(allowedjumps>1){
         allowedjumps -=1;
         currentgold+=J_COST;
+        updateStore();
+    }
+},true));
+
+/* Max Health */
+HEALTH_COST=30;
+$('#maxHealthAdd').on('click',Foundation.utils.debounce(function(e){
+    if(currentgold>=HEALTH_COST && maxHealth<40){
+        maxHealth +=10;
+        currentgold-=HEALTH_COST;
+        updateStore();
+    }
+},true));
+
+$('#maxHealthMinus').on('click',Foundation.utils.debounce(function(e){
+    if(maxHealth>10){
+        maxHealth -=10;
+        currentgold+=HEALTH_COST;
         updateStore();
     }
 },true));

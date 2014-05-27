@@ -21,7 +21,7 @@ function CreatePlayer() {
     player.animations.add('walk', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 12); // setup animation
     player.scale.x = .9;
     player.scale.y = .9;
-    player.health = 29; // health
+    player.health = 10; // health
     player.velocity = 200;
     player.jumpUp = 600;
     player.inv = false; // player is not invunerable to start
@@ -112,10 +112,10 @@ function initHealthRegen() {
     //  A looped event is like a repeat event but with no limit, it will literally repeat itself forever, or until
     //  The first parameter is how long to wait before the event fires. In this case 1 second (you could pass in 1000 as the value as well.)
     //  The next two parameters are the function to call ('updateCounter') and the context under which that will happen.
-    game.time.events.loop(Phaser.Timer.SECOND * 10, healthRegen, this);
+    game.time.events.loop(Phaser.Timer.SECOND *5, healthRegen, this); // because the player now starts with only 10hp, we are now making the regen twice as fast
 }
 function healthRegen() {
-    if (player.health < 40 && player.healthRegen === true) {
+    if (player.health < maxHealth && player.healthRegen === true) {
         player.health++;
     }
 }

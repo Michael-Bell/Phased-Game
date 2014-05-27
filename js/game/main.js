@@ -103,6 +103,7 @@ var deadQuote = 'You tried your best, but you have perished. Better luck next ti
 var winQuote = "You Completed the level. Congrats on making it this far, maybe you should play a good game now, like League or something....";
 var playerCollisionGroup;
 var coinCollisionGroup;
+var maxHealth;
 var jumpVelocity=600;
 var allowedjumps =2;
 //var levelTime=2*60*60;//2minutes*60Seconds*60updates/second
@@ -264,7 +265,7 @@ function resetItems(restart) {
     QAmmo.BULLET_SPEED = 250; // pixels/second
     QAmmo.NUMBER_OF_BULLETS = 10;
     QAmmo.enabled=true;
-    WAmmo.SHOT_DELAY = 300; // milliseconds (10 bullets/second)
+    WAmmo.SHOT_DELAY = 3000; // milliseconds (10 bullets/second)
     WAmmo.BULLET_SPEED = 250; // pixels/second
     WAmmo.missileLifespan=500;
     WAmmo.enabled=false;
@@ -276,7 +277,7 @@ function resetItems(restart) {
     EAmmo.Splashrange=70*3.5;
     EAmmo.hitrange = 70*2;
     EAmmo.cost=750;
-
+    maxHealth=10
     jumpVelocity=600
 
     allowedjumps = 2;

@@ -224,18 +224,14 @@
     <div class="content active" id="goldPanel">
         <div class="row">
             <div class="medium-4 columns">
-                <a href="#" class="button expand" data-reveal-id="buyLifespan" data-reveal>Bullet
-                    Lifespan</a>
+                <a href="#" class="button expand" data-reveal-id="buyLifespan" data-reveal>Bullet Lifespan</a>
                 <a href="#" class="button expand" data-reveal-id="newGun" data-reveal>New Weapon</a>
                 <a href="#" class="button expand" data-reveal-id="buyFastShoot" data-reveal>Faster
                     Shooting</a>
-                <a href="#" class="button expand" data-reveal-id="buyVelocity" data-reveal>Bullet
-                    Velocity</a>
+                <a href="#" class="button expand" data-reveal-id="buyVelocity" data-reveal>Bullet Velocity</a>
                 <a href="#" class="button expand" data-reveal-id="buyHeight" data-reveal>Jump Height</a>
                 <a href="#" class="button expand" data-reveal-id="buyMoreJump" data-reveal>More Jumps</a>
-                <a href="#" class="button expand disabled" data-reveal-id="buyHealthRegen" data-reveal>Faster
-                    Regen</a>
-                <a href="#" class="button expand disabled" data-reveal-id="buyMaxHealth" data-reveal>Max Health</a>
+                <a href="#" class="button expand" data-reveal-id="buyMaxHealth" data-reveal>Max Health</a>
             </div>
             <div class="medium-4 columns text-center" id="storeMiddle">
                 <div id="animationDiv"></div>
@@ -548,6 +544,38 @@
             <p>1 Jump increase is 100G. Press the <i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> buttons to change the number of jumps.</p>
 
             <p>Current Gold: <span class="pgold"></span>G</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- Max Health -->
+<div id="buyMaxHealth" class="reveal-modal" data-reveal>
+    <h1>
+        <small>Max Health</small>
+    </h1>
+    <p></p>
+
+    <div class="row text-center">
+        <div class="medium-2 columns"><p> </p></div>
+        <div class="medium-8 columns text-center">
+
+            <div class="panel"><h2 id="maxHealth"></h2>hp</div>
+            <div class="row text-center">
+                <ul class="button-group round extend">
+                    <li><a href="#" id="maxHealthMinus" class="small button alert"><i class="fa fa-minus"></i></a></li>
+                    <li><a href="#" id="maxHealthAdd" class="small button success"><i class="fa fa-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="medium-2 columns"><p> </p></div>
+    </div>
+
+    <div class="row">
+        <div class="medium-12 columns panel">
+            <p>10hp increase is 30G. Press the <i class="fa fa-plus"></i>/<i class="fa fa-minus"></i> buttons to change your max hp.</p>
+            <p>Current Gold: <span class="pgold"></span>G</p>
+            <p>Also, is hp hitpoints or health points? Do you care? Change the text if needed then delete this line from index.html. Delete the &lt;p&gt; tags surrounding this line as well</p>
         </div>
     </div>
 
