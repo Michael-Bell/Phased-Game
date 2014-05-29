@@ -82,6 +82,7 @@ function tileGen() {
             item.animations.add('slither');
             item.animations.play('slither',10,true);
             item.body.gravityScale=0;
+            //game.add.tween(item.scale).to({x:1},250).to({x:-1},250).loop().start();
             var tweenScaleN = game.add.tween(item.scale).to({ x: -1 }, 100, Phaser.Easing.Linear.None);
             var tweenScaleP = game.add.tween(item.scale).to({ x: 1 }, 100, Phaser.Easing.Linear.None);
             var tweenMoveP = game.add.tween(item.body).to({x:'+150'});
