@@ -45,12 +45,11 @@ function initCoinGroup() {
      coinGroup.physicsBodyType = Phaser.Physics.P2;*/
 
 }
-var asdf;
-function playerCoins(test, impactCoin) {
-    _coin = impactCoin.sprite;
 
-    currentgold = _coin.goldincrease + currentgold + Math.floor(Math.random() * DEX / 5);
-    _coin.kill();
+function playerCoins(test, impactCoin) {
+    currentgold = impactCoin.sprite.goldincrease + currentgold + Math.floor(Math.random() * DEX / 5);
+    impactCoin.sprite.kill();
+    $(pgold).text(currentgold);
 }
 
 // TODO  add item drops

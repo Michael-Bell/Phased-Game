@@ -106,6 +106,7 @@ var coinCollisionGroup;
 var maxHealth;
 var jumpVelocity=600;
 var allowedjumps =2;
+var pgold=$('.pgold');
 //var levelTime=2*60*60;//2minutes*60Seconds*60updates/second
 /** @todo Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
 
