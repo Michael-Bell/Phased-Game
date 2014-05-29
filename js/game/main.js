@@ -21,7 +21,7 @@ Game.Pre.prototype = {
         game.load.image('bullet', 'assets/bullet.png');
         game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
         game.load.spritesheet('fly', 'assets/enemies/flysheet.png', 69, 32, 3);
-        game.load.spritesheet('snake', 'assets/enemies/snakesheet.png', 16, 6, 2);
+        game.load.spritesheet('snake', 'assets/enemies/snakesheet.png', 80, 30, 2);
         game.load.spritesheet('heart', 'assets/heart/red_spritesheet.png', 70, 70, 5);
         game.load.image('goldcoin', 'assets/goldcoin.png');
         game.load.image('tnt', 'assets/tnt.png');

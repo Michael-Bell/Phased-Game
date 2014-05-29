@@ -84,8 +84,8 @@ function tileGen() {
             item.events.onKilled.add(flyerCoinDrop, item);
             item.animations.add('slither');
             item.animations.play('slither',10,true);
-            item.scale.x=10;
-            item.scale.y=10;
+          //  item.scale.x=10;
+          //  item.scale.y=10;
             console.log('a wild snake has appeared!');
             console.log(item);
         }

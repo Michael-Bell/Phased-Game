@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="223" height="70" tilewidth="70" tileheight="70">
+ <tileset firstgid="1" name="groundSprite" tilewidth="70" tileheight="70">
+  <image source="../groundSprite.png" width="210" height="210"/>
+ </tileset>
+ <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
+  <image source="../enemies/flysheet.png" width="138" height="64"/>
+ </tileset>
+ <layer name="ground" width="223" height="70">
+  <data encoding="base64" compression="zlib">
+   eJzt20FuwkAUREGDxP2vnD2KFdPtpBepkmYDZvk0n7H9PI7jaVnWn6/HkWt+C/+d9mDj034ebwvIvLd0ts6uBzLag41PuvvueiCjPdhoutMe5LQHG+kZi/agoz3YaOZN7UFOe7DRzJvag1yz52kPctqDjWbe1B7ktAcbzbypPchpDzaaeVN7kNMebGgPNrQHG805i/Ygpz3Y0B5sNP/1tAc57cGG9mBDe7ChPdhozji1BzntwUYzb2oPctqDDe3BRtOP9iCnPdjQHmxoDzZeJ5+93r57nSwgk+5dzjmhoz3YOGvop/t42oOOfQ82tAcbV58P80wZ3OtqS9qDezU9aQ9yzTsK2oNc866Q9iDXvKOnPcil+52zFuikzWkPOu4xwMbV80ztwb0+mS+1B/e58g6D9uB+TT/ag5z2YCOZL82c0LPvwYb2YONslnTOCb/Lvgcb2oON5oxTe5Cz78HGFwWoBJA=
+  </data>
+ </layer>
+ <layer name="end" width="223" height="70">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGrz6AAB
+  </data>
+ </layer>
+ <layer name="special" width="223" height="70">
+  <data encoding="base64" compression="zlib">
+   eJzt2cEJADAIBEEh/fdsBb5CUMPM50oQ1ggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGCKUywAAAAAd3QWALZzywAAAAD6aDMAAAAAAIB/AQAAAACwnc4JAAAAAPxI+4S3EqiYABw=
+  </data>
+ </layer>
+</map>

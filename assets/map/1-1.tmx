@@ -6,8 +6,8 @@
  <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
   <image source="../enemies/flysheet.png" width="138" height="64"/>
  </tileset>
- <tileset firstgid="14" name="snakesheet" tilewidth="16" tileheight="6">
-  <image source="../enemies/snakesheet.png" width="16" height="12"/>
+ <tileset firstgid="14" name="snakesheet" tilewidth="80" tileheight="30">
+  <image source="../enemies/snakesheet.png" width="80" height="60"/>
  </tileset>
  <layer name="ground" width="128" height="20">
   <data encoding="base64" compression="zlib">
@@ -30,7 +30,7 @@
   <object gid="10" x="6834" y="794"/>
   <object gid="10" x="7606" y="686"/>
   <object gid="10" x="8474" y="942"/>
-  <object gid="14" x="382" y="1024"/>
+  <object gid="15" x="385" y="976"/>
  </objectgroup>
  <layer name="special" width="128" height="20">
   <data encoding="base64" compression="zlib">
