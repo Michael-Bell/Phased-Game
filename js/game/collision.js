@@ -57,9 +57,7 @@ function collisionHandler(weakerObject, strongerObject) {
 function incjumpCount() {
     jumpCount = jumpCountFix;
 }
-var aaa;
 function bulletWallColl(bullet, wall) {
-    asdf = bullet;
     bullet.sprite.kill();
 }
 

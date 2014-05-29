@@ -54,8 +54,6 @@ function tileGen() {
 
     enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
     enemyGroup.callAll('animations.play', 'animations', 'wings');
-    enemyGroup.callAll('animations.add', 'animations', 'slither', [1, 2], true);
-    enemyGroup.callAll('animations.play', 'animations', 'slither');
     enemyGroup.goldWorth = 5;
     enemyGroup.forEach(function (item) {
         // Update alpha first.
@@ -79,14 +77,30 @@ function tileGen() {
             item.dmg = 2;
             item.goldWorth = 15;
             item.xpWorth = 2;
-            item.body.data.gravityScale = 1;
             item.revive(health = Math.floor(Math.random() * (9 - 3) + 3));
             item.events.onKilled.add(flyerCoinDrop, item);
             item.animations.add('slither');
             item.animations.play('slither',10,true);
-          //  item.scale.x=10;
-          //  item.scale.y=10;
-            console.log('a wild snake has appeared!');
+            item.body.gravityScale=0;
+            var tweenScaleN = game.add.tween(item.scale).to({ x: -1 }, 100, Phaser.Easing.Linear.None);
+            var tweenScaleP = game.add.tween(item.scale).to({ x: 1 }, 100, Phaser.Easing.Linear.None);
+            var tweenMoveP = game.add.tween(item.body).to({x:'+150'});
+            var tweenMoveM = game.add.tween(item.body).to({x:'-150'});
+            tweenScaleN.onComplete.add(function(){
+            tweenMoveP.start();
+        });
+            tweenMoveM.onComplete.add(function(){
+            tweenScaleN.start();
+        });
+           tweenMoveP.onComplete.add(function(){
+               tweenScaleP.start();
+                  });
+            tweenScaleP.onComplete.add(
+                function(){
+                    tweenMoveM.start();
+                });
+            tweenMoveP.start();
+                console.log('a wild snake has appeared!');
             console.log(item);
         }
     });
@@ -148,7 +162,6 @@ function tileGen() {
 
 var asdf;
 function collideCoinbox(Player, block) {
-    asdf = block;
     if (player.y > block.y + 100) {   //If the player is underneath the coin box
         //console.log('BOX!');
         //console.log(block.y);

@@ -58,7 +58,6 @@ function animateEnemies() { // tween animate flying up and down
     //  Here we'll chain 4 different tweens together and play through them all in a loop
     enemyGroup.forEach(function (item) {
         if (item.key==='fly') {
-            asdf = item;
             var temp = game.add.sprite(item.x, item.y);
             game.physics.p2.enable(temp);
             temp.body.static = true;

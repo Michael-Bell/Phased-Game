@@ -37,7 +37,7 @@
                 <div class="content active" id="panel2-1">
                     <h3>
                         <small>
-                            Score:\
+                            Score:
                         </small>
                     </h3>
 
@@ -191,7 +191,7 @@
                 <p><kbd>S</kbd>: Enable/Disable Sound Effects</p>
 
                 <p><kbd>M</kbd>: Enable Disable background music</p>
-                As of this update, the following are <strong>not</strong> implemented: <kbd>E R S M</kbd>
+                As of this update, the following are <strong>not</strong> implemented: <kbd>S M</kbd>
                 <a class="close-reveal-modal">&#215;</a>
             </div>
             <a href="#" class="button disabled" id="OpenStore">
@@ -606,27 +606,19 @@
 <script src="js/game/storeAnimation.js"></script>
 <script src="js/game/main.js"></script>
 <script type="text/javascript" src="js/vendor/cheet.js"></script>
-<script type="text/javascript">
-    var $buoop = {
 
-        reminder: 0,                   // atfer how many hours should the message reappear
-        test: false,                    // true = always show the bar (for testing)
-        text: "Your browser is out of date. Update your browser for more security, comfort and the best experience on this site. We recommend the latest version of Firefox",                       // custom notification html text
-        newwindow: true                 // open link in new window/tab
-    };
+<!-- Browser Update alert, Should be no reason to edit below this line -->
+<script type="text/javascript">
+    var $buoop = {};
     $buoop.ol = window.onload;
-    window.onload = function () {
-        try {
-            if ($buoop.ol) $buoop.ol();
-        } catch (e) {
-        }
+    window.onload=function(){
+        try {if ($buoop.ol) $buoop.ol();}catch (e) {}
         var e = document.createElement("script");
         e.setAttribute("type", "text/javascript");
         e.setAttribute("src", "//browser-update.org/update.js");
         document.body.appendChild(e);
     }
 </script>
-
 </body>
 
 </html>
