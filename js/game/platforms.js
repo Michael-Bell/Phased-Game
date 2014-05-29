@@ -49,8 +49,8 @@ function tileGen() {
     map.createFromObjects('enemy', 10, 'fly', 0, true, false, enemyGroup);
     map.createFromObjects('enemy', 11, 'fly', 0, true, false, enemyGroup);
     map.createFromObjects('enemy', 12, 'fly', 0, true, false, enemyGroup);
-    map.createFromObjects('enemy', 1, 'snake', 0, true, false, enemyGroup);
-    map.createFromObjects('enemy', 2, 'snake', 0, true, false, enemyGroup);
+    map.createFromObjects('enemy', 14, 'snake', 0, true, false, enemyGroup);
+    map.createFromObjects('enemy', 15, 'snake', 0, true, false, enemyGroup);
 
     enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
     enemyGroup.callAll('animations.play', 'animations', 'wings');
@@ -84,6 +84,10 @@ function tileGen() {
             item.events.onKilled.add(flyerCoinDrop, item);
             item.animations.add('slither');
             item.animations.play('slither',10,true);
+            item.scale.x=10;
+            item.scale.y=10;
+            console.log('a wild snake has appeared!');
+            console.log(item);
         }
     });
 
