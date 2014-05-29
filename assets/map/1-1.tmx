@@ -6,9 +6,12 @@
  <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
   <image source="../enemies/flysheet.png" width="138" height="64"/>
  </tileset>
+ <tileset firstgid="14" name="snakesheet" tilewidth="16" tileheight="6">
+  <image source="../enemies/snakesheet.png" width="16" height="12"/>
+ </tileset>
  <layer name="ground" width="128" height="20">
   <data encoding="base64" compression="zlib">
-   eJztmd0OwyAIRr1p9v5v3CuTzqDyI0LtdxJu1sZsHLB0XqWUC/HZAAAAAAAA/2BWyo+Ho7re7xGohfyscNR6pwK1cCYc91QtADsZekrqvgbQE+28oul9+NeRoddbtO7xDJAxy1U7X63Obe+/cIt/7AF8RrnizNuSevDwjD3ABuW/10OS9y/qMy/Xp+wBnPPBWa7bup+tZ8nTKOc9D2/373l+u+P3rFw/u3+rE+nzynrW7+nfo39m90f71+Rsx2zyrBVtbrhE5zraP2dv3uX85OhBXYv4fqPZKDp3NW4jbhNB
+   eJztl1EPQiEIhd3dWv//H/fkZgxFQYTsfBsv1VydD7z0lFIe1N8WAAAAAAD45tUUyImHo3reuyn0Qn52OKLeuUIv3MmMe64XgJ0MM7XqvhbQE+28opl9+NeRYdYpWvd4BqwhZUX3q93Z0rO5XR93gB+jrGb27ZV+8PCMO8AG5783Qyv/v7jXvFzfcgf07sI2Rylr2vfSeZacRpn3PPy6fylPCyd+z87zs/u3Oll9XknzK/WKp3+P+ZE+H+1fk9mJ3aTtFW02s0RnHe1/5m4+5fzm6sG9F/H9RrtRdHa1Ppz5EcE=
   </data>
  </layer>
  <objectgroup name="enemy" width="128" height="20">
@@ -27,6 +30,7 @@
   <object gid="10" x="6834" y="794"/>
   <object gid="10" x="7606" y="686"/>
   <object gid="10" x="8474" y="942"/>
+  <object gid="14" x="382" y="1024"/>
  </objectgroup>
  <layer name="special" width="128" height="20">
   <data encoding="base64" compression="zlib">
