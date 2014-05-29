@@ -143,7 +143,7 @@ function createGame() {
 
 
     cursors = game.input.keyboard.createCursorKeys();
-    shootKey = game.input.keyboard.addKey(Phaser.Keyboard.S);
+    shootKey = game.input.keyboard.addKey(Phaser.Keyboard.O);
     pauseKey = game.input.keyboard.addKey(Phaser.Keyboard.P);
     _Q = game.input.keyboard.addKey(Phaser.Keyboard.Q);
     _W = game.input.keyboard.addKey(Phaser.Keyboard.W);
