@@ -280,7 +280,7 @@ THE SOFTWARE.
         }
     })(this);
 
-cheet('d o n u t', function () {
+cheet('d o n u t s', function () {
     console.log('donut');
     if(!donut){
         donutRain.on=true;
