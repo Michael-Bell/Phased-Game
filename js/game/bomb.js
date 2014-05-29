@@ -3,8 +3,7 @@
  */
 
 
-var EAmmo={};
-
+var EAmmo = {};
 
 
 bombInit = function () {
@@ -13,8 +12,8 @@ bombInit = function () {
     for (var i = 0; i < EAmmo.NUMBER_OF_BULLETS; i++) {
         // Create each bullet and add it to the group.
         var bullet = this.game.add.sprite(0, 0, 'tnt');
-/*        bullet.scale.x=.5;
-        bullet.scale.y=.5*/
+        /*        bullet.scale.x=.5;
+         bullet.scale.y=.5*/
         this.bombPool.add(bullet);
 
         //   console.log(bullet);
@@ -38,7 +37,7 @@ bombInit = function () {
 };
 
 
-function newBomb(){
+function newBomb() {
     // Get a dead bullet from the pool
     var bullet = this.bombPool.getFirstDead();
 
@@ -63,27 +62,27 @@ function newBomb(){
     // Shoot it
 
 
-   // console.log(bullet);
+    // console.log(bullet);
 
-nb=bullet;
+    nb = bullet;
 }
 var nb;
 
 
-function bombExplode(){
-console.log('80');
-    enemyGroup.forEachAlive(function(enemy) {
+function bombExplode() {
+    console.log('80');
+    enemyGroup.forEachAlive(function (enemy) {
         //console.log(enemy.health);
         if (game.math.distance(
             this.body.x, this.body.y,
-            enemy.x, enemy.y) < EAmmo.hitrange){
+            enemy.x, enemy.y) < EAmmo.hitrange) {
             console.log(enemy);
             enemy.damage(6);
         }
         if (game.math.distance(
             this.body.x, this.body.y,
             enemy.x, enemy.y) < EAmmo.Splashrange) {
-            enemy.damage(Math.floor(Math.random()*(3-1)+1));
+            enemy.damage(Math.floor(Math.random() * (3 - 1) + 1));
 
             // Create an explosion
             //this.getExplosion(enemy.x, enemy.y);

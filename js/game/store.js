@@ -2,7 +2,7 @@
  * Welcome to the store, what would you like to buy?.
  */
 //Listener to react to store button click
-$('#CloseStore').on('click', Foundation.utils.debounce(function(e){
+$('#CloseStore').on('click', Foundation.utils.debounce(function (e) {
     //Resume the game
     game.paused = false;
     //enable key logger from game
@@ -18,21 +18,21 @@ width = $('#storeMiddle').width();
 $('#storeWindow').addClass('hide');
 
 
-function updateStore(){
+function updateStore() {
     $('#JumpVelocity').text(jumpVelocity);
     $("#StoreHealth").text(player.health);
     $("#StoreXp").text(currentxp);
     $("#StoreGold").text(currentgold);
-    $("#xpBox").text(currentxp+'/'+xpneeded);
-    $('#xpMeter').css('width', currentxp/xpneeded*100 + '%');
-    $('#QLifespan').text(bulletLifespan/1000);
-    $('#WLifespan').text(WAmmo.missileLifespan/1000);
-    $('#ELifespan').text(EAmmo.missileLifespan/1000);
-    $('#RLifespan').text(RAmmo.life/1000);
-    $('#Qint').text(QAmmo.SHOT_DELAY/1000);
-    $('#Wint').text(WAmmo.SHOT_DELAY/1000);
-    $('#Eint').text(EAmmo.SHOT_DELAY/1000);
-    $('#Rint').text(RAmmo.SHOT_DELAY/1000);
+    $("#xpBox").text(currentxp + '/' + xpneeded);
+    $('#xpMeter').css('width', currentxp / xpneeded * 100 + '%');
+    $('#QLifespan').text(bulletLifespan / 1000);
+    $('#WLifespan').text(WAmmo.missileLifespan / 1000);
+    $('#ELifespan').text(EAmmo.missileLifespan / 1000);
+    $('#RLifespan').text(RAmmo.life / 1000);
+    $('#Qint').text(QAmmo.SHOT_DELAY / 1000);
+    $('#Wint').text(WAmmo.SHOT_DELAY / 1000);
+    $('#Eint').text(EAmmo.SHOT_DELAY / 1000);
+    $('#Rint').text(RAmmo.SHOT_DELAY / 1000);
     $('#QVEL').text(QAmmo.BULLET_SPEED);
     $('#WVEL').text(WAmmo.BULLET_SPEED);
     $('#nJ').text(allowedjumps);
@@ -40,7 +40,7 @@ function updateStore(){
     $('.pgold').text(currentgold);
 }
 
-$('#CloseStore').on('click', Foundation.utils.debounce(function(e){
+$('#CloseStore').on('click', Foundation.utils.debounce(function (e) {
     //Resume the game
     game.paused = false;
     //enable key logger from game
@@ -53,86 +53,97 @@ $('#CloseStore').on('click', Foundation.utils.debounce(function(e){
 }, 300, true));
 
 /* Add 500g */
-$('#addGold').on('click',Foundation.utils.debounce(function(e){
-         currentgold+=500;
-        updateStore();
- },true));
+$('#addGold').on('click', Foundation.utils.debounce(function (e) {
+    currentgold += 500;
+    updateStore();
+}, true));
 
 /* New Gun Buttons*/
-$('#enableTNT').on('click',Foundation.utils.debounce(function(e){
-    if (currentgold>=EAmmo.cost) {
+$('#enableTNT').on('click', Foundation.utils.debounce(function (e) {
+    if (currentgold >= EAmmo.cost) {
         EAmmo.enabled = true;
         currentgold -= EAmmo.cost
-    }},true));
-$('#enableMissile').on('click',Foundation.utils.debounce(function(e){
-    if (currentgold>=WAmmo.cost) {
+    }
+}, true));
+$('#enableMissile').on('click', Foundation.utils.debounce(function (e) {
+    if (currentgold >= WAmmo.cost) {
         WAmmo.enabled = true;
-        currentgold-=WAmmo.cost;
-    }},true));
-$('#enableLaser').on('click',Foundation.utils.debounce(function(e){RAmmo.enabled=true;},true));
+        currentgold -= WAmmo.cost;
+    }
+}, true));
+$('#enableLaser').on('click', Foundation.utils.debounce(function (e) {
+    RAmmo.enabled = true;
+}, true));
 
 /* Lifespan Buttons */
 LIFE_COST = 25;
-$('#QLifeM').on('click',Foundation.utils.debounce(function(e){
-    if (bulletLifespan>500) {
+$('#QLifeM').on('click', Foundation.utils.debounce(function (e) {
+    if (bulletLifespan > 500) {
         bulletLifespan -= 500;
         currentgold += LIFE_COST;
         updateStore();
 
-    }},true));
-$('#QLifeA').on('click',Foundation.utils.debounce(function(e){
+    }
+}, true));
+$('#QLifeA').on('click', Foundation.utils.debounce(function (e) {
 
-    if (currentgold>=LIFE_COST) {
+    if (currentgold >= LIFE_COST) {
         bulletLifespan += 500;
         currentgold -= LIFE_COST;
         updateStore();
     }
 
-    },true));
+}, true));
 
-$('#WLifeM').on('click',Foundation.utils.debounce(function(e){
-    if (WAmmo.missileLifespan>500) {
+$('#WLifeM').on('click', Foundation.utils.debounce(function (e) {
+    if (WAmmo.missileLifespan > 500) {
         WAmmo.missileLifespan -= 500;
         currentgold += LIFE_COST;
         updateStore();
 
-    }},true));
-$('#WLifeA').on('click',Foundation.utils.debounce(function(e){
-    if (currentgold>=LIFE_COST) {
+    }
+}, true));
+$('#WLifeA').on('click', Foundation.utils.debounce(function (e) {
+    if (currentgold >= LIFE_COST) {
         WAmmo.missileLifespan += 500;
         currentgold -= LIFE_COST;
         updateStore();
 
-    }},true));
+    }
+}, true));
 
-$('#ELifeM').on('click',Foundation.utils.debounce(function(e){
-    if (EAmmo.missileLifespan>500) {
+$('#ELifeM').on('click', Foundation.utils.debounce(function (e) {
+    if (EAmmo.missileLifespan > 500) {
         EAmmo.missileLifespan -= 500;
         currentgold += LIFE_COST;
         updateStore();
 
-    }},true));
-$('#ELifeA').on('click',Foundation.utils.debounce(function(e){
-    if (currentgold>=LIFE_COST) {
+    }
+}, true));
+$('#ELifeA').on('click', Foundation.utils.debounce(function (e) {
+    if (currentgold >= LIFE_COST) {
         EAmmo.missileLifespan += 500;
         currentgold -= LIFE_COST;
         updateStore();
 
-    }},true));
+    }
+}, true));
 
-$('#RLifeM').on('click',Foundation.utils.debounce(function(e){
-    if (RAmmo.life>500) {
+$('#RLifeM').on('click', Foundation.utils.debounce(function (e) {
+    if (RAmmo.life > 500) {
         RAmmo.life -= 500;
         currentgold += LIFE_COST;
         updateStore();
 
-    }},true));
-$('#RLifeA').on('click',Foundation.utils.debounce(function(e){
-    if (currentgold>=LIFE_COST) {
+    }
+}, true));
+$('#RLifeA').on('click', Foundation.utils.debounce(function (e) {
+    if (currentgold >= LIFE_COST) {
         RAmmo.life += 500;
-        currentgold-= LIFE_COST;
+        currentgold -= LIFE_COST;
         updateStore();
-    }},true));
+    }
+}, true));
 
 /* Shooting Interval Code */
 DELAY_COST = 25;
@@ -243,55 +254,55 @@ $('#WVELA').on('click', Foundation.utils.debounce(function (e) {
 }, true));
 
 /* Jump Velocity Handlers */
-JV_COST=25;
-$('#JA').on('click',Foundation.utils.debounce(function(e){
-    if(currentgold>=JV_COST){
-        jumpVelocity +=50;
-        currentgold-=JV_COST;
+JV_COST = 25;
+$('#JA').on('click', Foundation.utils.debounce(function (e) {
+    if (currentgold >= JV_COST) {
+        jumpVelocity += 50;
+        currentgold -= JV_COST;
         updateStore();
     }
-},true));
+}, true));
 
-$('#JM').on('click',Foundation.utils.debounce(function(e){
-    if(jumpVelocity>50){
-        jumpVelocity -=50;
-        currentgold+=JV_COST;
+$('#JM').on('click', Foundation.utils.debounce(function (e) {
+    if (jumpVelocity > 50) {
+        jumpVelocity -= 50;
+        currentgold += JV_COST;
         updateStore();
     }
-},true));
+}, true));
 
 /* Jump number Handlers */
-J_COST=100;
-$('#nJa').on('click',Foundation.utils.debounce(function(e){
-    if(currentgold>=J_COST){
-        allowedjumps +=1;
-        currentgold-=J_COST;
+J_COST = 100;
+$('#nJa').on('click', Foundation.utils.debounce(function (e) {
+    if (currentgold >= J_COST) {
+        allowedjumps += 1;
+        currentgold -= J_COST;
         updateStore();
     }
-},true));
+}, true));
 
-$('#nJm').on('click',Foundation.utils.debounce(function(e){
-    if(allowedjumps>1){
-        allowedjumps -=1;
-        currentgold+=J_COST;
+$('#nJm').on('click', Foundation.utils.debounce(function (e) {
+    if (allowedjumps > 1) {
+        allowedjumps -= 1;
+        currentgold += J_COST;
         updateStore();
     }
-},true));
+}, true));
 
 /* Max Health */
-HEALTH_COST=30;
-$('#maxHealthAdd').on('click',Foundation.utils.debounce(function(e){
-    if(currentgold>=HEALTH_COST && maxHealth<40){
-        maxHealth +=10;
-        currentgold-=HEALTH_COST;
+HEALTH_COST = 30;
+$('#maxHealthAdd').on('click', Foundation.utils.debounce(function (e) {
+    if (currentgold >= HEALTH_COST && maxHealth < 40) {
+        maxHealth += 10;
+        currentgold -= HEALTH_COST;
         updateStore();
     }
-},true));
+}, true));
 
-$('#maxHealthMinus').on('click',Foundation.utils.debounce(function(e){
-    if(maxHealth>10){
-        maxHealth -=10;
-        currentgold+=HEALTH_COST;
+$('#maxHealthMinus').on('click', Foundation.utils.debounce(function (e) {
+    if (maxHealth > 10) {
+        maxHealth -= 10;
+        currentgold += HEALTH_COST;
         updateStore();
     }
-},true));
+}, true));

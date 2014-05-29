@@ -2,8 +2,7 @@
  * Code for normal bullets(Q)
  */
 
-var QAmmo={};
-
+var QAmmo = {};
 
 
 bulletInit = function () {
@@ -32,7 +31,7 @@ bulletInit = function () {
 };
 
 
-function normalBullet(){
+function normalBullet() {
     // Get a dead bullet from the pool
     var bullet = this.bulletPool.getFirstDead();
 
@@ -52,7 +51,7 @@ function normalBullet(){
     bullet.outOfBoundsKill = true;
 
     // Set the bullet position to the gun position.
-    bullet.reset(player.x, player.y+8);
+    bullet.reset(player.x, player.y + 8);
 
     // Shoot it
     if (player.scale.x < 0) {

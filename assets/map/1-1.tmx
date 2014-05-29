@@ -38,6 +38,13 @@
   <object gid="15" x="8826" y="518"/>
   <object gid="15" x="8717" y="526"/>
   <object gid="15" x="8613" y="538"/>
+  <object gid="15" x="1340" y="931"/>
+  <object gid="15" x="864" y="951"/>
+  <object gid="15" x="1748" y="967"/>
+  <object gid="15" x="1212" y="1023"/>
+  <object gid="15" x="932" y="1023"/>
+  <object gid="15" x="588" y="1027"/>
+  <object gid="15" x="1936" y="995"/>
  </objectgroup>
  <layer name="special" width="128" height="20">
   <data encoding="base64" compression="zlib">

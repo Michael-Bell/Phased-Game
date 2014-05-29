@@ -61,7 +61,7 @@ function tileGen() {
         item.body.collides(bulletCollisionGroup, collisionHandler, this);
         item.body.collides(playerCollisionGroup);
         item.body.collides(tilesCollisionGroup);
-        if(item.key==='fly') {
+        if (item.key === 'fly') {
             item.dmg = 1;
             item.goldWorth = 5;
             item.xpWorth = 0.5;
@@ -71,57 +71,42 @@ function tileGen() {
             //enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true); // Creates and plays animation
             //enemyGroup.callAll('animations.play', 'animations', 'wings');
             item.animations.add('fly', [1, 2]);
-            item.animations.play('fly',10,true);
+            item.animations.play('fly', 10, true);
         }
-        else if(item.key==='snake'){
+        else if (item.key === 'snake') {
+
             item.dmg = 2;
             item.goldWorth = 15;
             item.xpWorth = 2;
             item.revive(health = Math.floor(Math.random() * (9 - 3) + 3));
             item.events.onKilled.add(flyerCoinDrop, item);
             item.animations.add('slither');
-            item.animations.play('slither',10,true);
-            item.body.gravityScale=0;
+            item.animations.play('slither', 10, true);
+            item.body.gravityScale = 0;
             //game.add.tween(item.scale).to({x:1},250).to({x:-1},250).loop().start();
             var tweenScaleN = game.add.tween(item.scale).to({ x: -1 }, 100, Phaser.Easing.Linear.None);
             var tweenScaleP = game.add.tween(item.scale).to({ x: 1 }, 100, Phaser.Easing.Linear.None);
-            var tweenMoveP = game.add.tween(item.body).to({x:'+150'});
-            var tweenMoveM = game.add.tween(item.body).to({x:'-150'});
-            tweenScaleN.onComplete.add(function(){
-            tweenMoveP.start();
-        });
-            tweenMoveM.onComplete.add(function(){
-            tweenScaleN.start();
-        });
-           tweenMoveP.onComplete.add(function(){
-               tweenScaleP.start();
-                  });
+            var tweenMoveP = game.add.tween(item.body).to({x: '+150'});
+            var tweenMoveM = game.add.tween(item.body).to({x: '-150'});
+            tweenScaleN.onComplete.add(function () {
+                tweenMoveP.start();
+            });
+            tweenMoveM.onComplete.add(function () {
+                tweenScaleN.start();
+            });
+            tweenMoveP.onComplete.add(function () {
+                tweenScaleP.start();
+            });
             tweenScaleP.onComplete.add(
-                function(){
+                function () {
                     tweenMoveM.start();
                 });
             tweenMoveP.start();
-                console.log('a wild snake has appeared!');
+            console.log('a wild snake has appeared!');
             console.log(item);
         }
     });
 
-    /*var
-     coinBoxGroup = game.add.group();
-     coinBoxGroup.enableBody = true;
-     coinBoxGroup.physicsBodyType = Phaser.Physics.P2JS;
-
-
-
-     //map.createFromObjects('special', 3, 'coinBox', 0, true, false, coinBoxGroup);
-
-     coinBoxGroup.forEach(function (item) {
-     // Update alpha first.
-     item.body.immovable = true;
-     item.body.static=true;
-     item.body.setCollisionGroup(coinCollisionGroup);
-     item.body.collides([coinCollisionGroup,playerCollisionGroup])
-     });*/
 
     endCollisionGroup = game.physics.p2.createCollisionGroup();
     endLayer = map.createLayer('end');

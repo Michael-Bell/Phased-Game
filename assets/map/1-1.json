@@ -336,6 +336,104 @@
                  "width":0,
                  "x":8613,
                  "y":538
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1340,
+                 "y":931
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":864,
+                 "y":951
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1748,
+                 "y":967
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1212,
+                 "y":1023
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":932,
+                 "y":1023
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":588,
+                 "y":1027
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1936,
+                 "y":995
                 }],
          "opacity":1,
          "type":"objectgroup",

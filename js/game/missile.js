@@ -2,10 +2,10 @@
  * Contains code for Homing Missiles
  */
 
-var WAmmo={};
+var WAmmo = {};
 
 // Missile constructor
-var Missile = function(game, x, y) {
+var Missile = function (game, x, y) {
     Phaser.Sprite.call(this, game, x, y, 'bullet');
 
     // Set the pivot point for this sprite to the center
@@ -39,7 +39,7 @@ var Missile = function(game, x, y) {
     this.smokeEmitter.start(false, this.SMOKE_LIFETIME, 25);
     // Create a point object to hold the position of the smoke emitter relative
     // to the center of the missile. See update() below.
-    this.smokePosition = new Phaser.Point(this.width/2, 0);
+    this.smokePosition = new Phaser.Point(this.width / 2, 0);
     this.targetEnemy = getClosest(this);
     this.lifespan = WAmmo.missileLifespan;
     this.events.onKilled.add(particleBurst, this);
@@ -57,7 +57,7 @@ var Missile = function(game, x, y) {
 Missile.prototype = Object.create(Phaser.Sprite.prototype);
 Missile.prototype.constructor = Missile;
 
-Missile.prototype.update = function() {
+Missile.prototype.update = function () {
     // Rotate the point representing the relative position of the emitter around
     // the center of the missile.
     var p = this.smokePosition.rotate(0, 0, this.rotation);
@@ -71,7 +71,7 @@ Missile.prototype.update = function() {
     // target coordinates you need.
     var targetAngle = this.game.math.angleBetween(
         this.x, this.y,
-        this.targetEnemy.x,this.targetEnemy.y
+        this.targetEnemy.x, this.targetEnemy.y
     );
 
     // Gradually (this.TURN_RATE) aim the missile towards the target angle
@@ -103,21 +103,21 @@ Missile.prototype.update = function() {
 };
 
 
-function getClosest(bullet){
+function getClosest(bullet) {
     enemy = enemyGroup.getFirstExists();
-    if(enemy===null){
+    if (enemy === null) {
         return bullet;
     }
     enemyGroup.forEach(function (item) {
-        if((enemy.x-bullet.x)>=(item.x-bullet.x) && item.x>player.x){
-            enemy=item;
+        if ((enemy.x - bullet.x) >= (item.x - bullet.x) && item.x > player.x) {
+            enemy = item;
         }
     });
 
     return enemy;
 }
 
-function stopMissileEmitter(){
+function stopMissileEmitter() {
     this.smokeEmitter.on = false;
     //this.smokeEmitter.destroy();
     this.destroy();

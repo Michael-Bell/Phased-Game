@@ -41,7 +41,7 @@ function playerControls() {
     QFire = _Q.isDown;
     WFire = _W.isDown;
 
-        EFire=_E.isDown;
+    EFire = _E.isDown;
 
     if (cursors.left.isDown) { //left arrow pressed
         player.body.velocity.x = -player.velocity; //set velocity
@@ -73,21 +73,21 @@ function playerControls() {
     }
     if (QFire) {
 
-        if(canShoot(QAmmo)){
+        if (canShoot(QAmmo)) {
             normalBullet();
         }
 
     }
     if (WFire) {
 
-        if(canShoot(WAmmo)){
+        if (canShoot(WAmmo)) {
             game.add.existing(
-                new Missile(game, player.x,player.y)
+                new Missile(game, player.x, player.y)
             );
         }
     }
-    if(EFire){
-        if(canShoot(EAmmo)){
+    if (EFire) {
+        if (canShoot(EAmmo)) {
             newBomb();
         }
     }
@@ -97,12 +97,13 @@ function playerControls() {
     }
 }
 
-function groundReset(){
+function groundReset() {
     if (touchingDown(player)) { //If the player is STILL touching the ground. Ie. he did not bounce off an enemy
-    jumpCount = 0; // reset jump counter
-    player.velocity = 200;  //reset Veloctiy
-    player.jumpUp = 600;  //reset Jump amount
-}}
+        jumpCount = 0; // reset jump counter
+        player.velocity = 200;  //reset Veloctiy
+        player.jumpUp = 600;  //reset Jump amount
+    }
+}
 
 function playerInv() {
     player.inv = false;
@@ -112,7 +113,7 @@ function initHealthRegen() {
     //  A looped event is like a repeat event but with no limit, it will literally repeat itself forever, or until
     //  The first parameter is how long to wait before the event fires. In this case 1 second (you could pass in 1000 as the value as well.)
     //  The next two parameters are the function to call ('updateCounter') and the context under which that will happen.
-    game.time.events.loop(Phaser.Timer.SECOND *5, healthRegen, this); // because the player now starts with only 10hp, we are now making the regen twice as fast
+    game.time.events.loop(Phaser.Timer.SECOND * 5, healthRegen, this); // because the player now starts with only 10hp, we are now making the regen twice as fast
 }
 function healthRegen() {
     if (player.health < maxHealth && player.healthRegen === true) {

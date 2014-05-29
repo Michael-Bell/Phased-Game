@@ -1,15 +1,15 @@
 /*
-*
-* Code to check whether you can shoot; shared between all weapons
-*
+ *
+ * Code to check whether you can shoot; shared between all weapons
+ *
  */
 
 
-function canShoot(bulletType){
+function canShoot(bulletType) {
     if (bulletType.lastBulletShotAt === undefined) bulletType.lastBulletShotAt = 0;
-    if (game.time.now - bulletType.lastBulletShotAt < bulletType.SHOT_DELAY || bulletType.enabled===false) return false;
+    if (game.time.now - bulletType.lastBulletShotAt < bulletType.SHOT_DELAY || bulletType.enabled === false) return false;
     bulletType.lastBulletShotAt = game.time.now;
-   // console.log(bulletType);
+    // console.log(bulletType);
     return true;
 }
 shootBullet = function () {
@@ -22,7 +22,7 @@ shootBullet = function () {
     this.lastBulletShotAt = this.game.time.now;
 
 
- return true;
+    return true;
 
 };
 

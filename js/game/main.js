@@ -16,7 +16,7 @@ Game.Pre = function (game) {
 
 Game.Pre.prototype = {
     preload: function () {
-      //  console.log('preload start');
+        //  console.log('preload start');
         // Load Assets
         game.load.image('bullet', 'assets/bullet.png');
         game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
@@ -40,7 +40,7 @@ Game.Pre.prototype = {
 
 
         this.load.onFileComplete.add(function (progress) {
-          //  console.log(progress);
+            //  console.log(progress);
             $('#meter').css('width', progress + '%');
             if (progress === 100) {
                 $('.prog').addClass('hide');
@@ -48,7 +48,7 @@ Game.Pre.prototype = {
                 game.state.start('main')
             }
         });
-       // console.log('preloaddone');
+        // console.log('preloaddone');
 
     }
 };
@@ -95,7 +95,7 @@ var bullets;
 var map;
 var bgColor = 0x4488cc;
 var layer;
-var rain,donutRain;
+var rain, donutRain;
 var bulletLifespan = 1000; //time for bullets to live in milliseconds
 var explosionEmitter;
 var currentgold = 0;
@@ -104,9 +104,9 @@ var winQuote = "You Completed the level. Congrats on making it this far, maybe y
 var playerCollisionGroup;
 var coinCollisionGroup;
 var maxHealth;
-var jumpVelocity=600;
-var allowedjumps =2;
-var pgold=$('.pgold');
+var jumpVelocity = 600;
+var allowedjumps = 2;
+var pgold = $('.pgold');
 //var levelTime=2*60*60;//2minutes*60Seconds*60updates/second
 /** @todo Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
 
@@ -173,18 +173,18 @@ function createGame() {
     //	And this defines the markers.
     //	They consist of a key (for replaying), the time the sound starts and the duration, both given in seconds.
     //	You can also set the volume and loop state, although we don't use them in this example (see the docs)
-    fx.addMarker('shoot', 0, 1.7,.3);
-    fx.addMarker('bulletExplode',1.7,0.062);
+    fx.addMarker('shoot', 0, 1.7, .3);
+    fx.addMarker('bulletExplode', 1.7, 0.062);
 
 
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
-   // console.log('createdone');
+    // console.log('createdone');
     $('#OpenStore').removeClass('disabled');
     //Listener to react to store button click
-    $('#OpenStore').on('click', Foundation.utils.debounce(function(e){
+    $('#OpenStore').on('click', Foundation.utils.debounce(function (e) {
         //Pause the game
         game.paused = true;
         //disable key logger from game
@@ -220,11 +220,11 @@ function updateGame() {
     healthCheck();
     xpcheck();
     playerControls.call(this);
-/*    levelTime--;
-    if(levelTime<0){
-        player.health=-3;
-        dead('running out of time');
-    }*/
+    /*    levelTime--;
+     if(levelTime<0){
+     player.health=-3;
+     dead('running out of time');
+     }*/
 }
 jumpCheck = function () { // lovely function to see if you can jump
     if (jumpCount < allowedjumps) { // if less than 2 jumps on the counter
@@ -237,11 +237,11 @@ jumpCheck = function () { // lovely function to see if you can jump
 };
 
 function jump(number) {
-    if(number===1){       //This makes the jump=1 after you are off the ground instead of instantly resetting back to 0.
+    if (number === 1) {       //This makes the jump=1 after you are off the ground instead of instantly resetting back to 0.
         game.time.events.add(Phaser.Timer.SECOND * .1, firstJump, this);
     }
     player.body.moveUp(jumpVelocity); // 0,0 is top left of map, so -velocity sends you up, also there is gravity, so it brings you down
-    if (number>=2) { // is this a double jump
+    if (number >= 2) { // is this a double jump
         player.body.moveUp(jumpVelocity + DEX);
         player.body.rotateLeft(150); // start spinning
 
@@ -249,37 +249,37 @@ function jump(number) {
 
 }
 
-function firstJump(){  //For the timer so you don't get a triple jump.
-    jumpCount=1;
+function firstJump() {  //For the timer so you don't get a triple jump.
+    jumpCount = 1;
 }
 var score;
 function render() {
 
-    game.debug.text(game.time.fps, 32, 32 );
+    game.debug.text(game.time.fps, 32, 32);
     //game.debug.text(Math.floor(levelTime/60),32,128);//inaccurate timer
 
 }
 
 function resetItems(restart) {
-    cheatsUsed=0;
+    cheatsUsed = 0;
     QAmmo.SHOT_DELAY = 3000; // milliseconds (10 bullets/second)
     QAmmo.BULLET_SPEED = 250; // pixels/second
     QAmmo.NUMBER_OF_BULLETS = 10;
-    QAmmo.enabled=true;
+    QAmmo.enabled = true;
     WAmmo.SHOT_DELAY = 3000; // milliseconds (10 bullets/second)
     WAmmo.BULLET_SPEED = 250; // pixels/second
-    WAmmo.missileLifespan=500;
-    WAmmo.enabled=false;
-    WAmmo.cost=500;
-    EAmmo.SHOT_DELAY = 1000*4; // 6 seconds
-    EAmmo.missileLifespan=2500;
-    EAmmo.enabled=false;
-    EAmmo.NUMBER_OF_BULLETS=20;
-    EAmmo.Splashrange=70*3.5;
-    EAmmo.hitrange = 70*2;
-    EAmmo.cost=750;
-    maxHealth=10
-    jumpVelocity=600
+    WAmmo.missileLifespan = 500;
+    WAmmo.enabled = false;
+    WAmmo.cost = 500;
+    EAmmo.SHOT_DELAY = 1000 * 4; // 6 seconds
+    EAmmo.missileLifespan = 2500;
+    EAmmo.enabled = false;
+    EAmmo.NUMBER_OF_BULLETS = 20;
+    EAmmo.Splashrange = 70 * 3.5;
+    EAmmo.hitrange = 70 * 2;
+    EAmmo.cost = 750;
+    maxHealth = 10
+    jumpVelocity = 600
 
     allowedjumps = 2;
     if (restart) {
@@ -290,7 +290,7 @@ function resetItems(restart) {
 
 }
 function dead(cause) { // you died :(
-     showScores();
+    showScores();
     if (player.health < 2) {
 
         score = getScore(1);
@@ -358,7 +358,7 @@ function leveltimer(time) { // oh, is this your level timer?
 }
 
 function getScore(bonus) {
-return Math.floor((Math.floor(currentgold * LUK / 10) + Math.floor(currentxp * INT / 10) + STR + DEX) * bonus);
+    return Math.floor((Math.floor(currentgold * LUK / 10) + Math.floor(currentxp * INT / 10) + STR + DEX) * bonus);
 }
 
 function invGravity() {

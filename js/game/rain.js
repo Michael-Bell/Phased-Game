@@ -1,16 +1,16 @@
 /**
  * Created by Owner on 4/4/14.
  */
-donut=false;
+donut = false;
 function loadRain() {
     game.load.image('rain', 'assets/rain.png');
     game.load.image('donut', 'assets/donut.png');
-   // console.log('load Rain');
+    // console.log('load Rain');
 }
 
 function createRain() {
     rain = game.add.emitter(game.world.centerX, 0, 400);
- // console.log('createRain');
+    // console.log('createRain');
     rain.width = game.world.width;
     // emitter.angle = 30; // uncomment to set an angle for the rain.
     rain.makeParticles('rain');
@@ -34,6 +34,6 @@ function createRain() {
     donutRain.minRotation = 0;
     donutRain.maxRotation = 0;
     donutRain.start(false, 2000, 5, 0);
-    donutRain.on=false;
+    donutRain.on = false;
 }
 
