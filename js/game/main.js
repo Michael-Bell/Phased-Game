@@ -16,7 +16,7 @@ Game.Pre = function (game) {
 
 Game.Pre.prototype = {
     preload: function () {
-        console.log('preload start');
+      //  console.log('preload start');
         // Load Assets
         game.load.image('bullet', 'assets/bullet.png');
         game.load.spritesheet('player', 'assets/character/sheet/sprite.png', 75, 96, 12);
@@ -40,7 +40,7 @@ Game.Pre.prototype = {
 
 
         this.load.onFileComplete.add(function (progress) {
-            console.log(progress);
+          //  console.log(progress);
             $('#meter').css('width', progress + '%');
             if (progress === 100) {
                 $('.prog').addClass('hide');
@@ -48,7 +48,7 @@ Game.Pre.prototype = {
                 game.state.start('main')
             }
         });
-        console.log('preloaddone');
+       // console.log('preloaddone');
 
     }
 };
@@ -110,7 +110,7 @@ var allowedjumps =2;
 /** @todo Abstract Code, I think thats what it's called, anyways move the code into small functions with descriptive names to make the main.js pretty */
 
 function createGame() {
-    console.log('createstart');
+    //console.log('createstart');
 
     //  Modify the world and camera bounds
 
@@ -180,7 +180,7 @@ function createGame() {
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
     gencoins(200, 700, 2);
-    console.log('createdone');
+   // console.log('createdone');
     $('#OpenStore').removeClass('disabled');
     //Listener to react to store button click
     $('#OpenStore').on('click', Foundation.utils.debounce(function(e){
@@ -260,7 +260,7 @@ function render() {
 }
 
 function resetItems(restart) {
-
+    cheatsUsed=0;
     QAmmo.SHOT_DELAY = 3000; // milliseconds (10 bullets/second)
     QAmmo.BULLET_SPEED = 250; // pixels/second
     QAmmo.NUMBER_OF_BULLETS = 10;
@@ -357,7 +357,7 @@ function leveltimer(time) { // oh, is this your level timer?
 }
 
 function getScore(bonus) {
-    return Math.floor((Math.floor(currentgold * LUK / 10) + Math.floor(currentxp * INT / 10) + STR + DEX) * bonus);
+return Math.floor((Math.floor(currentgold * LUK / 10) + Math.floor(currentxp * INT / 10) + STR + DEX) * bonus);
 }
 
 function invGravity() {

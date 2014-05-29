@@ -27,7 +27,7 @@ bombInit = function () {
         bullet.body.setCollisionGroup(bulletCollisionGroup);
         bullet.body.collides(tilesCollisionGroup);
         bullet.body.collides(enemyCollisionGroup);
-        console.log(bullet);
+        //console.log(bullet);
         // Define constants that affect motion
         // Set its initial state to "dead".
         bullet.kill();
