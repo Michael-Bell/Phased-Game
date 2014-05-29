@@ -18,11 +18,11 @@ function GenerateEnemy(x, y, uniqueID) {
     c.xpWorth = 0.5;
     //  Now using the power of callAll we can add the same animation to all enemies in the group:
     /* NOTE THIS IS A DEPRECATED FUNCTION; PLEASE USE THE ENEMYGROUP.FORALL IN PLATFROMS.JS TO SET GROUP VARS */
-    enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
+   // enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
 
     //  And play them
 
-    enemyGroup.callAll('animations.play', 'animations', 'wings');
+  //  enemyGroup.callAll('animations.play', 'animations', 'wings');
 }
 
 function rotateEnemies() {     // Trying to make the flyas rotate themselves upright after they get knocked upsidedown.
@@ -57,13 +57,14 @@ function rotateEnemies() {     // Trying to make the flyas rotate themselves upr
 function animateEnemies() { // tween animate flying up and down
     //  Here we'll chain 4 different tweens together and play through them all in a loop
     enemyGroup.forEach(function (item) {
-        asdf = item;
-        var temp = game.add.sprite(item.x, item.y);
-        game.physics.p2.enable(temp);
-        temp.body.static = true;
-        //item.body.fixedRotation = true;
-        item.body.angularDamping=.5;
-        var spring = game.physics.p2.createSpring(item, temp, 100, 6, 100);
+        if (item.key==='fly') {
+            asdf = item;
+            var temp = game.add.sprite(item.x, item.y);
+            game.physics.p2.enable(temp);
+            temp.body.static = true;
+            //item.body.fixedRotation = true;
+            var spring = game.physics.p2.createSpring(item, temp, 100, 6, 100);
+        }
     });
 
 }
@@ -72,3 +73,4 @@ function flyerCoinDrop(){
     gencoins(this.x, this.y, this.goldWorth);
     xpgain(this.xpWorth);
 }
+

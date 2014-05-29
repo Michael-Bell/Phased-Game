@@ -49,24 +49,42 @@ function tileGen() {
     map.createFromObjects('enemy', 10, 'fly', 0, true, false, enemyGroup);
     map.createFromObjects('enemy', 11, 'fly', 0, true, false, enemyGroup);
     map.createFromObjects('enemy', 12, 'fly', 0, true, false, enemyGroup);
+    map.createFromObjects('enemy', 1, 'snake', 0, true, false, enemyGroup);
+    map.createFromObjects('enemy', 2, 'snake', 0, true, false, enemyGroup);
 
     enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true);
     enemyGroup.callAll('animations.play', 'animations', 'wings');
+    enemyGroup.callAll('animations.add', 'animations', 'slither', [1, 2], true);
+    enemyGroup.callAll('animations.play', 'animations', 'slither');
     enemyGroup.goldWorth = 5;
     enemyGroup.forEach(function (item) {
         // Update alpha first.
-        item.dmg = 1;
-        item.goldWorth = 5;
-        item.xpWorth = 0.5;
-        item.body.data.gravityScale = 1;
         item.body.setCollisionGroup(enemyCollisionGroup);
         item.body.collides(bulletCollisionGroup, collisionHandler, this);
         item.body.collides(playerCollisionGroup);
         item.body.collides(tilesCollisionGroup);
-        // item.body.angularVelocity = 5000;
-        item.revive(health = Math.floor( Math.random() * (3 - 1) + 1));
-        item.events.onKilled.add(flyerCoinDrop, item)
-       // console.log(item);
+        if(item.key==='fly') {
+            item.dmg = 1;
+            item.goldWorth = 5;
+            item.xpWorth = 0.5;
+            item.body.data.gravityScale = 1;
+            item.revive(health = Math.floor(Math.random() * (3 - 1) + 1));
+            item.events.onKilled.add(flyerCoinDrop, item);
+            //enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true); // Creates and plays animation
+            //enemyGroup.callAll('animations.play', 'animations', 'wings');
+            item.animations.add('fly', [1, 2]);
+            item.animations.play('fly',10,true);
+        }
+        else if(item.key==='snake'){
+            item.dmg = 2;
+            item.goldWorth = 15;
+            item.xpWorth = 2;
+            item.body.data.gravityScale = 1;
+            item.revive(health = Math.floor(Math.random() * (9 - 3) + 3));
+            item.events.onKilled.add(flyerCoinDrop, item);
+            item.animations.add('slither');
+            item.animations.play('slither',10,true);
+        }
     });
 
     /*var
