@@ -52,7 +52,7 @@ function normalBullet(){
     bullet.outOfBoundsKill = true;
 
     // Set the bullet position to the gun position.
-    bullet.reset(player.x, player.y);
+    bullet.reset(player.x, player.y+8);
 
     // Shoot it
     if (player.scale.x < 0) {
