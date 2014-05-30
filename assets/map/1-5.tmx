@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="128" height="20" tilewidth="70" tileheight="70">
+ <tileset firstgid="1" name="groundSprite" tilewidth="70" tileheight="70">
+  <image source="../groundSprite.png" width="210" height="210"/>
+ </tileset>
+ <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
+  <image source="../enemies/flysheet.png" width="138" height="64"/>
+ </tileset>
+ <tileset firstgid="14" name="snakesheet" tilewidth="16" tileheight="6">
+  <image source="../enemies/snakesheet.png" width="80" height="60"/>
+ </tileset>
+ <layer name="ground" width="128" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt08EJwCAQRcFFEPvvOJdcBTEKxp2BhwX8tUREUdoAAAAAAADgq9Z5T1PfuM/ItrP7tzj/tv9o5X/cuT972D83+69XlboHQeIEIw==
+  </data>
+ </layer>
+ <objectgroup name="enemy" width="128" height="20">
+  <object gid="33" x="1904" y="1273"/>
+  <object gid="33" x="4786" y="1246"/>
+  <object gid="33" x="4683" y="1240"/>
+  <object gid="33" x="6231" y="1240"/>
+  <object gid="11" x="2619" y="784"/>
+  <object gid="11" x="4014" y="900"/>
+ </objectgroup>
+ <layer name="special" width="128" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt2EEKwCAMAMEE2/9/uReFINaqCLG6AzkVQdgcpCIAAAAAAGBVwfsCcHHFUe+LTMAOj9mlP8bR/2z0P4NKuTX996fS31+lfs5D6Z0XKt/w3fFP/U81utt5w9b+pXPswNruOElrQ/rvwfZ/69fb3/4jov/aUv9a+7xhMGPRH70eQF8Anw==
+  </data>
+ </layer>
+ <layer name="end" width="128" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAMA6C+9W+4BiZgByQkAAAAAAAAAAAAwGc9DiocAC4=
+  </data>
+ </layer>
+</map>
