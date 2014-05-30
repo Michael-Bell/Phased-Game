@@ -6,19 +6,51 @@
  <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
   <image source="../enemies/flysheet.png" width="138" height="64"/>
  </tileset>
+ <tileset firstgid="14" name="snakesheet" tilewidth="80" tileheight="30">
+  <image source="../enemies/snakesheet.png" width="80" height="60"/>
+ </tileset>
  <layer name="ground" width="223" height="70">
   <data encoding="base64" compression="zlib">
-   eJzt20FuwkAUREGDxP2vnD2KFdPtpBepkmYDZvk0n7H9PI7jaVnWn6/HkWt+C/+d9mDj034ebwvIvLd0ts6uBzLag41PuvvueiCjPdhoutMe5LQHG+kZi/agoz3YaOZN7UFOe7DRzJvag1yz52kPctqDjWbe1B7ktAcbzbypPchpDzaaeVN7kNMebGgPNrQHG805i/Ygpz3Y0B5sNP/1tAc57cGG9mBDe7ChPdhozji1BzntwUYzb2oPctqDDe3BRtOP9iCnPdjQHmxoDzZeJ5+93r57nSwgk+5dzjmhoz3YOGvop/t42oOOfQ82tAcbV58P80wZ3OtqS9qDezU9aQ9yzTsK2oNc866Q9iDXvKOnPcil+52zFuikzWkPOu4xwMbV80ztwb0+mS+1B/e58g6D9uB+TT/ag5z2YCOZL82c0LPvwYb2YONslnTOCb/Lvgcb2oON5oxTe5Cz78HGFwWoBJA=
+   eJzt3NFuozAQBdCoUv7/l1d92JfdQo3xjGfCORJqn8A4c2MwJl+v1+vLZrOlbwAAAAAAAFDZe3cDoLh34MYa+rKfSp9ZpbbAk8niHP3GamrqOn1GFLUFdcjjz2b65WhOzFzZuKf309PP/9tZH0RkaWR/PhfgLtcC1+grZqibGPq1ht3jiDqAOSPrp+QLrts9LhLP5wsAwE6uRyGee3tmeI8VcslVLv3Nt6p1YAyGHDO5kkG4505+PiF/3dtPP6tyk127n5B3nififm10fyuO/T74HyqLrNWMHPyUW/nbw++9jsk454z9Hx3j7rHfB39hVub3zO5sywtV7KjFqGP6PR862HlNvTN7kceHM1XuY3f8hl3k8eFMpXpb/exidxv+7q9SH1NDxZpY9bz+TvYi2lCxr8lX+bt41Zz/7jZU7V/26FATu8erau2gvy71MDM/EnFuM/uVO/7VrR6urO+M5p2o/nasV+taD0ft3rGub+R4HfuY/63KY/d6qLSO9mwtaPd+Zi31sJY19fxGTUA+mYN8cscn6XJ9X7Vd9DA6/x45P//bvipmsUIbYMadHO3OotzRTfRz7Iwcyh2dZI5NkRmUO7rYfW+2+n4UqqtYq3fuLaGySnOQZ0bnaTucC89Vbd5/1u55UxihPiGH8QDyyBvkkjfIYXyDPLIG8bxvD3nkDOIZ12DMqvdUZQyu+QNq0Al7
   </data>
  </layer>
  <layer name="end" width="223" height="70">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGrz6AAB
+   eJztw7EJAAAIA7Cu/v+wH3RwExJIAgAAAAAAAAA0cwgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHy0SqgB2
   </data>
  </layer>
  <layer name="special" width="223" height="70">
   <data encoding="base64" compression="zlib">
-   eJzt2cEJADAIBEEh/fdsBb5CUMPM50oQ1ggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGCKUywAAAAAd3QWALZzywAAAAD6aDMAAAAAAIB/AQAAAACwnc4JAAAAAPxI+4S3EqiYABw=
+   eJzt3DEKwCAMAEAh//9zhw6Fkji0hUa8WzSOAU1wyBgAAMSLfRYD8D9vMwAAekIAAAAAAAAAAAAAAID+ZvMcAIB1qOMAAHDRH89V+cnO5RIAAAAAAAAAgB3EbQUAAAD4kj8H6MFdBICTmgi9uJMAAAAAAAAAAADASqpZPVHssxgAAAAAAAAAAACAZw7cKABP
   </data>
  </layer>
+ <objectgroup name="enemy" width="223" height="70">
+  <object gid="10" x="3278" y="336"/>
+  <object gid="10" x="3870" y="560"/>
+  <object gid="10" x="4574" y="672"/>
+  <object gid="10" x="5070" y="976"/>
+  <object gid="10" x="5758" y="848"/>
+  <object gid="10" x="1166" y="3824"/>
+  <object gid="10" x="2382" y="3136"/>
+  <object gid="10" x="3854" y="2832"/>
+  <object gid="10" x="5982" y="2576"/>
+  <object gid="10" x="7598" y="2640"/>
+  <object gid="10" x="8318" y="2384"/>
+  <object gid="10" x="9358" y="1904"/>
+  <object gid="10" x="10318" y="1504"/>
+  <object gid="10" x="12558" y="1808"/>
+  <object gid="14" x="792" y="4351"/>
+  <object gid="14" x="3112" y="3199"/>
+  <object gid="14" x="4712" y="2063"/>
+  <object gid="14" x="6600" y="2863"/>
+  <object gid="14" x="9400" y="399"/>
+  <object gid="14" x="9288" y="191"/>
+  <object gid="14" x="11096" y="1423"/>
+  <object gid="14" x="9544" y="2031"/>
+  <object gid="14" x="8568" y="2687"/>
+  <object gid="14" x="13192" y="1743"/>
+  <object gid="14" x="14600" y="1151"/>
+  <object gid="14" x="12712" y="607"/>
+  <object gid="14" x="-8" y="319"/>
+ </objectgroup>
 </map>

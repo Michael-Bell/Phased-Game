@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="223" height="70" tilewidth="70" tileheight="70">
+ <tileset firstgid="1" name="groundSprite" tilewidth="70" tileheight="70">
+  <image source="../groundSprite.png" width="210" height="210"/>
+ </tileset>
+ <tileset firstgid="10" name="flysheet" tilewidth="69" tileheight="32">
+  <image source="../enemies/flysheet.png" width="138" height="64"/>
+ </tileset>
+ <tileset firstgid="14" name="snakesheet" tilewidth="80" tileheight="30">
+  <image source="../enemies/snakesheet.png" width="80" height="60"/>
+ </tileset>
+ <layer name="ground" width="223" height="70">
+  <data encoding="base64" compression="zlib">
+   eJzt3dtu6zAMRFG/BP3/Py6KIEBq2LIuFEci9wL4liqWzIEcNef05ziOH4qiqE1qhPras5Ql9VwoG+o57F4q6nlnq1nU81qldqJeqwzlRT3PSGvpSb2mkWoF6jWIsIae1Ou9W+1AvUY7r5039T3ZoYCZ1P29agEe1H2+WgEq6t4nc8CbOhPkDXhT54XMITN1dsgdslLnh7whK3WWyByyUmeKzCErdbbIHbJS54vcYbaX+gJuqDNG5jAb2SNz8Ldq7v6oM0fu8PH6KqvxVkbuoGaZt5ljfo9tgbxBZWY+ZrG8ZjKHUa/D/nlxRTPmRsbQK3reAE+1eWrNXeSMts4t8lqgzw5nFCsiexgxO3eR+y36/FA2cv9n9U6GM5iPpzlmWYdMRs8Z1T2R4Zw08twyUfbqrN+Dn8eveZ+dPpeSuxg87+M5C4r3vruW0XFLNSL6Hg4AWAv7DZR45gF0+NwB6GU4xwd6zTp3A3DtKWNkD7DBngb4IW+ABnkDAAAAAADZ1fxbE84tATvkCfDDHgbMxzMjIuBzEODnnK/S/w9PDoExLXl7yiA5BK7dPT9a/a0UMgjMzxl7IXDN8+/vteSQLCI6debYE5GVOmMeOWRPxYrUubJ4Nq2puzEAFXWWVskx4E3d/ytU715KZjFC3fc7FxnECHX/Rij2wjVYP5v0jNPyenXfRiueW/2VvhPSs85X49WOcf6ZEnWvZi/yN6b2e1it+1bPOFfn6SXq3qP+ZzB6Dq2eAXq+/1h6j9rxrsYo7bkl6p6j8mSwpbfv1qAnc6Xxe8f7vrbefVLda1Rdn+yuNy9n6ntydW+eXndHPQeq/V63ZtHy3Kf353vnbTXOrHtS+7orv9tGYD4=
+  </data>
+ </layer>
+ <layer name="end" width="223" height="70">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIA7C9+DdM9uOANmkCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAJ3OsBfa4AC4=
+  </data>
+ </layer>
+ <layer name="special" width="223" height="70">
+  <data encoding="base64" compression="zlib">
+   eJzt20sKgDAMBcBC739ncSuC0I991pmN21byEglYCgAAAAAAAAAAAAAAADBCXX0A+JDkvCSfDZ6oXxhHngDgP8x9yCSbPFEjc3m/MJ+cAXzXzj1857tBD9kAAAAAkthVALCSOQQAAAAAAABj1MsTAAAAAADIYHcP68khAAAAAECenv8g7H0BAHiD705gldb+o29BllrkkjYj6yahBhPOAAlkAQDumZEAAAAAAJwOrbgAYQ==
+  </data>
+ </layer>
+ <objectgroup name="enemy" width="223" height="70">
+  <object gid="10" x="5758" y="2656"/>
+  <object gid="10" x="5918" y="2656"/>
+  <object gid="10" x="6030" y="2640"/>
+  <object gid="10" x="7358" y="1904"/>
+  <object gid="10" x="7534" y="1968"/>
+  <object gid="10" x="8686" y="1600"/>
+  <object gid="10" x="8830" y="1632"/>
+  <object gid="10" x="8846" y="1776"/>
+  <object gid="10" x="10606" y="1184"/>
+  <object gid="10" x="10686" y="1248"/>
+  <object gid="10" x="12318" y="1440"/>
+  <object gid="10" x="12574" y="1680"/>
+  <object gid="10" x="14222" y="1344"/>
+  <object gid="10" x="14606" y="1472"/>
+  <object gid="10" x="15054" y="1856"/>
+  <object gid="10" x="7710" y="4032"/>
+  <object gid="10" x="8094" y="3984"/>
+  <object gid="10" x="8558" y="4016"/>
+  <object gid="10" x="8958" y="4016"/>
+  <object gid="10" x="9374" y="4064"/>
+  <object gid="10" x="9822" y="4160"/>
+  <object gid="10" x="10286" y="4224"/>
+  <object gid="15" x="2664" y="3583"/>
+  <object gid="15" x="3000" y="3631"/>
+  <object gid="15" x="3128" y="3647"/>
+  <object gid="15" x="3224" y="3663"/>
+  <object gid="15" x="3240" y="3663"/>
+  <object gid="15" x="3288" y="3663"/>
+  <object gid="15" x="3400" y="3695"/>
+  <object gid="15" x="3656" y="3711"/>
+  <object gid="15" x="3768" y="3711"/>
+  <object gid="15" x="3816" y="3711"/>
+  <object gid="15" x="3848" y="3711"/>
+  <object gid="15" x="3736" y="3519"/>
+  <object gid="15" x="3608" y="3391"/>
+  <object gid="15" x="3448" y="3263"/>
+  <object gid="15" x="3368" y="3071"/>
+  <object gid="15" x="3400" y="2863"/>
+  <object gid="15" x="3576" y="2671"/>
+  <object gid="15" x="3672" y="2559"/>
+  <object gid="15" x="3576" y="2351"/>
+  <object gid="15" x="3480" y="2223"/>
+  <object gid="15" x="3400" y="2111"/>
+  <object gid="15" x="3592" y="1887"/>
+  <object gid="15" x="3768" y="1823"/>
+  <object gid="15" x="3848" y="2079"/>
+  <object gid="15" x="3816" y="2255"/>
+  <object gid="15" x="3768" y="2447"/>
+  <object gid="15" x="3096" y="3279"/>
+  <object gid="15" x="3320" y="3295"/>
+  <object gid="15" x="3384" y="3391"/>
+  <object gid="15" x="3432" y="3535"/>
+  <object gid="15" x="13384" y="4255"/>
+  <object gid="15" x="13464" y="4255"/>
+  <object gid="15" x="13080" y="3935"/>
+  <object gid="15" x="14504" y="4079"/>
+  <object gid="15" x="15336" y="4335"/>
+  <object gid="15" x="15048" y="4239"/>
+  <object gid="15" x="15128" y="1215"/>
+  <object gid="15" x="14776" y="1087"/>
+  <object gid="15" x="14456" y="959"/>
+  <object gid="15" x="13864" y="879"/>
+  <object gid="15" x="13048" y="991"/>
+  <object gid="15" x="12280" y="1151"/>
+  <object gid="15" x="11464" y="1071"/>
+  <object gid="15" x="10504" y="799"/>
+  <object gid="15" x="9576" y="719"/>
+  <object gid="15" x="8984" y="991"/>
+  <object gid="15" x="8280" y="1359"/>
+  <object gid="15" x="7448" y="1711"/>
+  <object gid="15" x="6728" y="1823"/>
+  <object gid="15" x="5752" y="1743"/>
+  <object gid="15" x="5048" y="1551"/>
+  <object gid="15" x="4360" y="1423"/>
+  <object gid="15" x="3624" y="1327"/>
+  <object gid="15" x="3016" y="1471"/>
+  <object gid="15" x="2632" y="1855"/>
+  <object gid="15" x="2376" y="2143"/>
+ </objectgroup>
+</map>

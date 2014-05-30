@@ -66,7 +66,7 @@ function tileGen() {
             item.goldWorth = 5;
             item.xpWorth = 0.5;
             item.body.data.gravityScale = 1;
-            item.revive(health = Math.floor(Math.random() * (3 - 1) + 1));
+            item.health = Math.floor(Math.random() * (3 - 1) + 1);
             item.events.onKilled.add(flyerCoinDrop, item);
             //enemyGroup.callAll('animations.add', 'animations', 'wings', [1, 2], 10, true); // Creates and plays animation
             //enemyGroup.callAll('animations.play', 'animations', 'wings');
@@ -74,11 +74,11 @@ function tileGen() {
             item.animations.play('fly', 10, true);
         }
         else if (item.key === 'snake') {
-
+            item.body.setZeroDamping();
             item.dmg = 2;
             item.goldWorth = 15;
             item.xpWorth = 2;
-            item.revive(health = Math.floor(Math.random() * (9 - 3) + 3));
+            item.health = Math.floor(Math.random() * (9 - 3) + 3);
             item.events.onKilled.add(flyerCoinDrop, item);
             item.animations.add('slither');
             item.animations.play('slither', 10, true);

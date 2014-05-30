@@ -5,7 +5,7 @@ var game = new Phaser.Game(800, 560, Phaser.CANVAS, 'Game');
 //Various Variables, some are not even used, some are important, some are repetative, and some are essential, I don't really remember which are which
 
 /** Contains information on current level */
-gameLevel = {string: 'level1', int: 1, max: 3};
+gameLevel = {string: 'level1', int: 1, max: 6};
 
 /** create the Gamestate object*/
 Game = {};
@@ -32,10 +32,12 @@ Game.Pre.prototype = {
         game.load.image('particle', 'assets/particle.png');
         game.load.audio('sfx', [ 'assets/sfx/sfx.ogg' ]);
 
-        game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
+       // game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level2', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level3', 'assets/map/1-3.json', null, Phaser.Tilemap.TILED_JSON);
-
+        game.load.tilemap('level1', 'assets/map/1-4.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level5', 'assets/map/1-5.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level6', 'assets/map/1-6.json', null, Phaser.Tilemap.TILED_JSON);
         loadRain();
 
 
