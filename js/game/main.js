@@ -32,10 +32,10 @@ Game.Pre.prototype = {
         game.load.image('particle', 'assets/particle.png');
         game.load.audio('sfx', [ 'assets/sfx/sfx.ogg' ]);
 
-       // game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level1', 'assets/map/1-1.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level2', 'assets/map/1-2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level3', 'assets/map/1-3.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.tilemap('level1', 'assets/map/1-4.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('level4', 'assets/map/1-4.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level5', 'assets/map/1-5.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('level6', 'assets/map/1-6.json', null, Phaser.Tilemap.TILED_JSON);
         loadRain();
